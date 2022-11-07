@@ -84,7 +84,7 @@ class BaseViewController: UIViewController {
     
     func setupAttributes() {
         // Override Attributes
-        view.backgroundColor = #colorLiteral(red: 0.09803921569, green: 0.09803921569, blue: 0.09803921569, alpha: 1)
+        view.backgroundColor = Color.BaseColor.white
 //        view.backgroundColor = Color.mainContainerBackgroundColor
     }
     

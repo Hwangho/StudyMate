@@ -31,6 +31,6 @@ class BaseCollectionViewCell: UICollectionViewCell {
      */
     func setupAttributes() {
         // Override Attributes
-        self.contentView.backgroundColor = Color.BaseColor.background
+        self.contentView.backgroundColor = Color.BaseColor.white
     }
 }

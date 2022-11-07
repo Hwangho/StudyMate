@@ -19,7 +19,6 @@
 		0EB826D12918E1C900CA626A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB826D02918E1C900CA626A /* BaseViewController.swift */; };
 		0EB826D32918E29500CA626A /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB826D22918E29500CA626A /* BaseView.swift */; };
 		0EB826D52918E2C600CA626A /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB826D42918E2C600CA626A /* BaseCollectionViewCell.swift */; };
-		0EB826DC2918E2E400CA626A /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB826D82918E2E400CA626A /* Theme.swift */; };
 		0EB826DD2918E2E400CA626A /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB826D92918E2E400CA626A /* Font.swift */; };
 		0EB826DE2918E2E400CA626A /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB826DA2918E2E400CA626A /* Color.swift */; };
 		33FCF15BF2A2AFDB12681E71 /* Pods_StudyMate_StudyMateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C2F97C840E6D1D34A9BFCC7 /* Pods_StudyMate_StudyMateUITests.framework */; };
@@ -61,7 +60,6 @@
 		0EB826D02918E1C900CA626A /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		0EB826D22918E29500CA626A /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		0EB826D42918E2C600CA626A /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
-		0EB826D82918E2E400CA626A /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		0EB826D92918E2E400CA626A /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		0EB826DA2918E2E400CA626A /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		12585CB0DD1706A6930D932D /* Pods-StudyMate-StudyMateUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMate-StudyMateUITests.debug.xcconfig"; path = "Target Support Files/Pods-StudyMate-StudyMateUITests/Pods-StudyMate-StudyMateUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -285,7 +283,6 @@
 		0EB826D62918E2E400CA626A /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				0EB826D82918E2E400CA626A /* Theme.swift */,
 				0EB826D92918E2E400CA626A /* Font.swift */,
 				0EB826DA2918E2E400CA626A /* Color.swift */,
 			);
@@ -509,7 +506,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EB826972918B4AF00CA626A /* ViewController.swift in Sources */,
-				0EB826DC2918E2E400CA626A /* Theme.swift in Sources */,
 				0EB826D12918E1C900CA626A /* BaseViewController.swift in Sources */,
 				0EB826DE2918E2E400CA626A /* Color.swift in Sources */,
 				0EB826D32918E29500CA626A /* BaseView.swift in Sources */,
