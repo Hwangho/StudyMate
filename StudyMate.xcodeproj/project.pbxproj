@@ -16,6 +16,9 @@
 		0EB826AA2918B4B100CA626A /* StudyMateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB826A92918B4B100CA626A /* StudyMateTests.swift */; };
 		0EB826B42918B4B100CA626A /* StudyMateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB826B32918B4B100CA626A /* StudyMateUITests.swift */; };
 		0EB826B62918B4B100CA626A /* StudyMateUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB826B52918B4B100CA626A /* StudyMateUITestsLaunchTests.swift */; };
+		33FCF15BF2A2AFDB12681E71 /* Pods_StudyMate_StudyMateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C2F97C840E6D1D34A9BFCC7 /* Pods_StudyMate_StudyMateUITests.framework */; };
+		6197C0DDB0AB2B1E96EA203F /* Pods_StudyMateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BAA7A9CF80E6040823CED8F /* Pods_StudyMateTests.framework */; };
+		DDA35DA2CEDB8AB2628858BD /* Pods_StudyMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A7669B0A6210A7BFBA7D74 /* Pods_StudyMate.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,15 @@
 		0EB826AF2918B4B100CA626A /* StudyMateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StudyMateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EB826B32918B4B100CA626A /* StudyMateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyMateUITests.swift; sourceTree = "<group>"; };
 		0EB826B52918B4B100CA626A /* StudyMateUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyMateUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		12585CB0DD1706A6930D932D /* Pods-StudyMate-StudyMateUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMate-StudyMateUITests.debug.xcconfig"; path = "Target Support Files/Pods-StudyMate-StudyMateUITests/Pods-StudyMate-StudyMateUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		2368E47E329355D01685A4EA /* Pods-StudyMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMate.release.xcconfig"; path = "Target Support Files/Pods-StudyMate/Pods-StudyMate.release.xcconfig"; sourceTree = "<group>"; };
+		2C2F97C840E6D1D34A9BFCC7 /* Pods_StudyMate_StudyMateUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyMate_StudyMateUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D0C744CB33BD32236B9EAC0 /* Pods-StudyMateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMateTests.debug.xcconfig"; path = "Target Support Files/Pods-StudyMateTests/Pods-StudyMateTests.debug.xcconfig"; sourceTree = "<group>"; };
+		32A7669B0A6210A7BFBA7D74 /* Pods_StudyMate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyMate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71631DE532A30A31D5301870 /* Pods-StudyMate-StudyMateUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMate-StudyMateUITests.release.xcconfig"; path = "Target Support Files/Pods-StudyMate-StudyMateUITests/Pods-StudyMate-StudyMateUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8BAA7A9CF80E6040823CED8F /* Pods_StudyMateTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyMateTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A971A89E97159664AC055E40 /* Pods-StudyMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMate.debug.xcconfig"; path = "Target Support Files/Pods-StudyMate/Pods-StudyMate.debug.xcconfig"; sourceTree = "<group>"; };
+		C09E86A79850C527F9BC0EBE /* Pods-StudyMateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMateTests.release.xcconfig"; path = "Target Support Files/Pods-StudyMateTests/Pods-StudyMateTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDA35DA2CEDB8AB2628858BD /* Pods_StudyMate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6197C0DDB0AB2B1E96EA203F /* Pods_StudyMateTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +84,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33FCF15BF2A2AFDB12681E71 /* Pods_StudyMate_StudyMateUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08B704470094FF2E0A5EAC9E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				32A7669B0A6210A7BFBA7D74 /* Pods_StudyMate.framework */,
+				2C2F97C840E6D1D34A9BFCC7 /* Pods_StudyMate_StudyMateUITests.framework */,
+				8BAA7A9CF80E6040823CED8F /* Pods_StudyMateTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0EB826862918B4AF00CA626A = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +108,8 @@
 				0EB826A82918B4B100CA626A /* StudyMateTests */,
 				0EB826B22918B4B100CA626A /* StudyMateUITests */,
 				0EB826902918B4AF00CA626A /* Products */,
+				337E82F4AEEF8310B9651173 /* Pods */,
+				08B704470094FF2E0A5EAC9E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,6 +178,20 @@
 			path = StoryBoard;
 			sourceTree = "<group>";
 		};
+		337E82F4AEEF8310B9651173 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A971A89E97159664AC055E40 /* Pods-StudyMate.debug.xcconfig */,
+				2368E47E329355D01685A4EA /* Pods-StudyMate.release.xcconfig */,
+				12585CB0DD1706A6930D932D /* Pods-StudyMate-StudyMateUITests.debug.xcconfig */,
+				71631DE532A30A31D5301870 /* Pods-StudyMate-StudyMateUITests.release.xcconfig */,
+				2D0C744CB33BD32236B9EAC0 /* Pods-StudyMateTests.debug.xcconfig */,
+				C09E86A79850C527F9BC0EBE /* Pods-StudyMateTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -158,6 +199,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0EB826B92918B4B100CA626A /* Build configuration list for PBXNativeTarget "StudyMate" */;
 			buildPhases = (
+				95E290C0A780F96126F5299C /* [CP] Check Pods Manifest.lock */,
 				0EB8268B2918B4AF00CA626A /* Sources */,
 				0EB8268C2918B4AF00CA626A /* Frameworks */,
 				0EB8268D2918B4AF00CA626A /* Resources */,
@@ -175,6 +217,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0EB826BC2918B4B100CA626A /* Build configuration list for PBXNativeTarget "StudyMateTests" */;
 			buildPhases = (
+				1562D4353CF84B0AFE6A6107 /* [CP] Check Pods Manifest.lock */,
 				0EB826A12918B4B100CA626A /* Sources */,
 				0EB826A22918B4B100CA626A /* Frameworks */,
 				0EB826A32918B4B100CA626A /* Resources */,
@@ -193,6 +236,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0EB826BF2918B4B100CA626A /* Build configuration list for PBXNativeTarget "StudyMateUITests" */;
 			buildPhases = (
+				AF8727E274576B391A51829C /* [CP] Check Pods Manifest.lock */,
 				0EB826AB2918B4B100CA626A /* Sources */,
 				0EB826AC2918B4B100CA626A /* Frameworks */,
 				0EB826AD2918B4B100CA626A /* Resources */,
@@ -276,6 +320,75 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1562D4353CF84B0AFE6A6107 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StudyMateTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		95E290C0A780F96126F5299C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StudyMate-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF8727E274576B391A51829C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StudyMate-StudyMateUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0EB8268B2918B4AF00CA626A /* Sources */ = {
@@ -456,6 +569,7 @@
 		};
 		0EB826BA2918B4B100CA626A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A971A89E97159664AC055E40 /* Pods-StudyMate.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -488,6 +602,7 @@
 		};
 		0EB826BB2918B4B100CA626A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2368E47E329355D01685A4EA /* Pods-StudyMate.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -520,6 +635,7 @@
 		};
 		0EB826BD2918B4B100CA626A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D0C744CB33BD32236B9EAC0 /* Pods-StudyMateTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -540,6 +656,7 @@
 		};
 		0EB826BE2918B4B100CA626A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C09E86A79850C527F9BC0EBE /* Pods-StudyMateTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -560,6 +677,7 @@
 		};
 		0EB826C02918B4B100CA626A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12585CB0DD1706A6930D932D /* Pods-StudyMate-StudyMateUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -578,6 +696,7 @@
 		};
 		0EB826C12918B4B100CA626A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71631DE532A30A31D5301870 /* Pods-StudyMate-StudyMateUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
