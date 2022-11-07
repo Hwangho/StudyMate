@@ -21,6 +21,11 @@
 		0EB826D52918E2C600CA626A /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB826D42918E2C600CA626A /* BaseCollectionViewCell.swift */; };
 		0EB826DD2918E2E400CA626A /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB826D92918E2E400CA626A /* Font.swift */; };
 		0EB826DE2918E2E400CA626A /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB826DA2918E2E400CA626A /* Color.swift */; };
+		0EB826E12918F42200CA626A /* SelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB826E02918F42200CA626A /* SelectButton.swift */; };
+		0EB826E329191D2000CA626A /* SDSSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB826E229191D2000CA626A /* SDSSelectButton.swift */; };
+		0EB826E62919214900CA626A /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0EB826E42919214900CA626A /* NotoSansKR-Regular.otf */; };
+		0EB826E72919214900CA626A /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0EB826E52919214900CA626A /* NotoSansKR-Medium.otf */; };
+		0EB826E9291932E500CA626A /* keywordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB826E8291932E500CA626A /* keywordButton.swift */; };
 		33FCF15BF2A2AFDB12681E71 /* Pods_StudyMate_StudyMateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C2F97C840E6D1D34A9BFCC7 /* Pods_StudyMate_StudyMateUITests.framework */; };
 		6197C0DDB0AB2B1E96EA203F /* Pods_StudyMateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BAA7A9CF80E6040823CED8F /* Pods_StudyMateTests.framework */; };
 		DDA35DA2CEDB8AB2628858BD /* Pods_StudyMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A7669B0A6210A7BFBA7D74 /* Pods_StudyMate.framework */; };
@@ -62,6 +67,11 @@
 		0EB826D42918E2C600CA626A /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		0EB826D92918E2E400CA626A /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		0EB826DA2918E2E400CA626A /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		0EB826E02918F42200CA626A /* SelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectButton.swift; sourceTree = "<group>"; };
+		0EB826E229191D2000CA626A /* SDSSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDSSelectButton.swift; sourceTree = "<group>"; };
+		0EB826E42919214900CA626A /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
+		0EB826E52919214900CA626A /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
+		0EB826E8291932E500CA626A /* keywordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keywordButton.swift; sourceTree = "<group>"; };
 		12585CB0DD1706A6930D932D /* Pods-StudyMate-StudyMateUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMate-StudyMateUITests.debug.xcconfig"; path = "Target Support Files/Pods-StudyMate-StudyMateUITests/Pods-StudyMate-StudyMateUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2368E47E329355D01685A4EA /* Pods-StudyMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMate.release.xcconfig"; path = "Target Support Files/Pods-StudyMate/Pods-StudyMate.release.xcconfig"; sourceTree = "<group>"; };
 		2C2F97C840E6D1D34A9BFCC7 /* Pods_StudyMate_StudyMateUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyMate_StudyMateUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,6 +182,7 @@
 				0EB826C82918E0EB00CA626A /* Service */,
 				0EB826C72918E0D800CA626A /* Router */,
 				0EB826D62918E2E400CA626A /* Constants */,
+				0EB826DF2918F31D00CA626A /* Custom */,
 				0EB826CF2918E1B900CA626A /* Base */,
 			);
 			path = Source;
@@ -259,6 +270,7 @@
 		0EB826CD2918E12F00CA626A /* Enum */ = {
 			isa = PBXGroup;
 			children = (
+				0EB826E229191D2000CA626A /* SDSSelectButton.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -266,6 +278,8 @@
 		0EB826CE2918E13E00CA626A /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				0EB826E52919214900CA626A /* NotoSansKR-Medium.otf */,
+				0EB826E42919214900CA626A /* NotoSansKR-Regular.otf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -287,6 +301,15 @@
 				0EB826DA2918E2E400CA626A /* Color.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		0EB826DF2918F31D00CA626A /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				0EB826E02918F42200CA626A /* SelectButton.swift */,
+				0EB826E8291932E500CA626A /* keywordButton.swift */,
+			);
+			path = Custom;
 			sourceTree = "<group>";
 		};
 		337E82F4AEEF8310B9651173 /* Pods */ = {
@@ -313,6 +336,7 @@
 				0EB8268B2918B4AF00CA626A /* Sources */,
 				0EB8268C2918B4AF00CA626A /* Frameworks */,
 				0EB8268D2918B4AF00CA626A /* Resources */,
+				68F820C26DBFA7E396D8F4A0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -350,6 +374,7 @@
 				0EB826AB2918B4B100CA626A /* Sources */,
 				0EB826AC2918B4B100CA626A /* Frameworks */,
 				0EB826AD2918B4B100CA626A /* Resources */,
+				10D590FD334921E3FA498694 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -411,6 +436,8 @@
 			files = (
 				0EB8269F2918B4B000CA626A /* LaunchScreen.storyboard in Resources */,
 				0EB8269C2918B4B000CA626A /* Assets.xcassets in Resources */,
+				0EB826E72919214900CA626A /* NotoSansKR-Medium.otf in Resources */,
+				0EB826E62919214900CA626A /* NotoSansKR-Regular.otf in Resources */,
 				0EB8269A2918B4AF00CA626A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,6 +459,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		10D590FD334921E3FA498694 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StudyMate-StudyMateUITests/Pods-StudyMate-StudyMateUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StudyMate-StudyMateUITests/Pods-StudyMate-StudyMateUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StudyMate-StudyMateUITests/Pods-StudyMate-StudyMateUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		1562D4353CF84B0AFE6A6107 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -452,6 +496,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		68F820C26DBFA7E396D8F4A0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StudyMate/Pods-StudyMate-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StudyMate/Pods-StudyMate-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StudyMate/Pods-StudyMate-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		95E290C0A780F96126F5299C /* [CP] Check Pods Manifest.lock */ = {
@@ -505,9 +566,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EB826E12918F42200CA626A /* SelectButton.swift in Sources */,
 				0EB826972918B4AF00CA626A /* ViewController.swift in Sources */,
 				0EB826D12918E1C900CA626A /* BaseViewController.swift in Sources */,
 				0EB826DE2918E2E400CA626A /* Color.swift in Sources */,
+				0EB826E9291932E500CA626A /* keywordButton.swift in Sources */,
+				0EB826E329191D2000CA626A /* SDSSelectButton.swift in Sources */,
 				0EB826D32918E29500CA626A /* BaseView.swift in Sources */,
 				0EB826932918B4AF00CA626A /* AppDelegate.swift in Sources */,
 				0EB826DD2918E2E400CA626A /* Font.swift in Sources */,

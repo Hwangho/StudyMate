@@ -6,6 +6,8 @@ target 'StudyMate' do
   use_frameworks!
 
   # Pods for StudyMate
+    pod 'SnapKit', '~> 5.6.0'
+
 
 
 
