@@ -29,6 +29,7 @@ final class SelectButton: UIButton {
         backgroundColor = type.backgroundColor
         layer.borderColor = type.borderColor
         layer.borderWidth = type.borderWidth
+        layer.cornerRadius = 8
     }
     
 }
