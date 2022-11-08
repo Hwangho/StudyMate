@@ -19,7 +19,7 @@ class BaseViewController: UIViewController {
         return type(of: self).description().components(separatedBy: ".").last ?? ""
     }()
     
-//    weak var coordinatorDelegate: CoordinatorDidFinishDelegate?
+    weak var coordinatorDelegate: CoordinatorDidFinishDelegate?
     
 //    var disposeBag = DisposeBag()
     
@@ -46,8 +46,9 @@ class BaseViewController: UIViewController {
         setupLifeCycleBinding()
     }
     
+    
     deinit {
-//        coordinatorDelegate?.didFinishCoordinator()
+        coordinatorDelegate?.didFinishCoordinator()
         dump("DEINIT: \(self.className)")
     }
     
