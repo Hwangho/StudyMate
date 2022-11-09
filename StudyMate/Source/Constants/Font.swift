@@ -22,24 +22,44 @@ enum Font {
     case Body4_R12
     case caption_R10
     
-    
-    var setUIFont: UIFont {
+    var fontType: String {
         switch self {
-        case .Display1_R20: return UIFont(name: "NotoSansKR-Regular", size: 20)!
-            
-        case .Title1_M16: return UIFont(name:  "NotoSansKR-Medium", size: 16)!
-        case .Title2_R16: return UIFont(name: "NotoSansKR-Regular", size: 16)!
-        case .Title3_M14: return UIFont(name:  "NotoSansKR-Medium", size: 14)!
-        case .Title4_R14: return UIFont(name: "NotoSansKR-Regular", size: 14)!
-        case .Title5_M12: return UIFont(name:  "NotoSansKR-Medium", size: 12)!
-        case .Title5_R12: return UIFont(name: "NotoSansKR-Regular", size: 12)!
-            
-        case .Body1_M16: return UIFont(name:  "NotoSansKR-Medium", size: 16)!
-        case .Body2_R16: return UIFont(name: "NotoSansKR-Regular", size: 16)!
-        case .Body3_R14: return UIFont(name: "NotoSansKR-Regular", size: 12)!
-        case .Body4_R12: return UIFont(name: "NotoSansKR-Regular", size: 12)!
-            
-        case .caption_R10: return UIFont(name: "NotoSansKR-Regular", size: 10)!
+        case .Display1_R20, .Title2_R16, .Title4_R14, .Title5_R12, .Body2_R16, .Body3_R14, .Body4_R12, .caption_R10:
+            return "NotoSansKR-Regular"
+        case .Title1_M16, .Title3_M14, .Title5_M12, .Body1_M16:
+            return "NotoSansKR-Medium"
+        }
+    }
+    
+    var fontSize: CGFloat {
+        switch self {
+        case .Display1_R20:
+            return 20
+        case .Title2_R16, .Body2_R16, .Title1_M16, .Body1_M16:
+            return 16
+        case .Title4_R14, .Body3_R14, .Title3_M14:
+            return 14
+        case .Title5_R12, .Body4_R12, .Title5_M12:
+            return 12
+        case .caption_R10:
+            return 10
+        }
+    }
+    
+    var lineHeightRate: CGFloat {
+        switch self {
+        case .Display1_R20, .Title1_M16, .Title2_R16, .Title3_M14, .Title4_R14:
+            return 160
+        case .Title5_M12, .Title5_R12:
+            return 150
+        case .Body1_M16, .Body2_R16:
+            return 185
+        case .Body3_R14:
+            return 170
+        case .Body4_R12:
+            return 180
+        case .caption_R10:
+            return 160
         }
     }
     

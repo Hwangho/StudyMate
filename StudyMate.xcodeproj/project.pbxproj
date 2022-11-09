@@ -41,6 +41,11 @@
 		0EB82711291A31B500CA626A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB82710291A31B500CA626A /* HomeViewController.swift */; };
 		0EB82714291A320F00CA626A /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB82713291A320F00CA626A /* HomeCoordinator.swift */; };
 		0EB82716291A328800CA626A /* HomeCoordinatorContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB82715291A328800CA626A /* HomeCoordinatorContext.swift */; };
+		0EB82718291A46B100CA626A /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB82717291A46B100CA626A /* UILabel+Extension.swift */; };
+		0EB8271A291A486300CA626A /* LineHeightLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB82719291A486300CA626A /* LineHeightLabel.swift */; };
+		0EB8271D291A4DC800CA626A /* OnBoardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB8271C291A4DC800CA626A /* OnBoardingCollectionViewCell.swift */; };
+		0EB82720291A746F00CA626A /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB8271F291A746F00CA626A /* OnBoardingViewModel.swift */; };
+		0EB82722291A88B000CA626A /* AppCoordinatorContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB82721291A88B000CA626A /* AppCoordinatorContext.swift */; };
 		33FCF15BF2A2AFDB12681E71 /* Pods_StudyMate_StudyMateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C2F97C840E6D1D34A9BFCC7 /* Pods_StudyMate_StudyMateUITests.framework */; };
 		6197C0DDB0AB2B1E96EA203F /* Pods_StudyMateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BAA7A9CF80E6040823CED8F /* Pods_StudyMateTests.framework */; };
 		DDA35DA2CEDB8AB2628858BD /* Pods_StudyMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A7669B0A6210A7BFBA7D74 /* Pods_StudyMate.framework */; };
@@ -102,6 +107,11 @@
 		0EB82710291A31B500CA626A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0EB82713291A320F00CA626A /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		0EB82715291A328800CA626A /* HomeCoordinatorContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinatorContext.swift; sourceTree = "<group>"; };
+		0EB82717291A46B100CA626A /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		0EB82719291A486300CA626A /* LineHeightLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineHeightLabel.swift; sourceTree = "<group>"; };
+		0EB8271C291A4DC800CA626A /* OnBoardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCollectionViewCell.swift; sourceTree = "<group>"; };
+		0EB8271F291A746F00CA626A /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
+		0EB82721291A88B000CA626A /* AppCoordinatorContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorContext.swift; sourceTree = "<group>"; };
 		12585CB0DD1706A6930D932D /* Pods-StudyMate-StudyMateUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMate-StudyMateUITests.debug.xcconfig"; path = "Target Support Files/Pods-StudyMate-StudyMateUITests/Pods-StudyMate-StudyMateUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2368E47E329355D01685A4EA /* Pods-StudyMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMate.release.xcconfig"; path = "Target Support Files/Pods-StudyMate/Pods-StudyMate.release.xcconfig"; sourceTree = "<group>"; };
 		2C2F97C840E6D1D34A9BFCC7 /* Pods_StudyMate_StudyMateUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyMate_StudyMateUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +159,14 @@
 				8BAA7A9CF80E6040823CED8F /* Pods_StudyMateTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0EAE332F291B65FC00AA4FE6 /* Certification */ = {
+			isa = PBXGroup;
+			children = (
+				0EB8271F291A746F00CA626A /* OnBoardingViewModel.swift */,
+			);
+			path = Certification;
 			sourceTree = "<group>";
 		};
 		0EB826862918B4AF00CA626A = {
@@ -255,6 +273,8 @@
 		0EB826C62918E0C800CA626A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				0EB8271E291A745B00CA626A /* OnBoarding */,
+				0EAE332F291B65FC00AA4FE6 /* Certification */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -290,6 +310,7 @@
 		0EB826CB2918E11300CA626A /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				0EB82717291A46B100CA626A /* UILabel+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -297,6 +318,7 @@
 		0EB826CC2918E12100CA626A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				0EB8271B291A4DB400CA626A /* OnBoardingCell */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -343,6 +365,7 @@
 			children = (
 				0EB826E02918F42200CA626A /* SelectButton.swift */,
 				0EB826E8291932E500CA626A /* keywordButton.swift */,
+				0EB82719291A486300CA626A /* LineHeightLabel.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -381,6 +404,7 @@
 			isa = PBXGroup;
 			children = (
 				0EB826EF29193CE800CA626A /* AppCoordinator.swift */,
+				0EB82721291A88B000CA626A /* AppCoordinatorContext.swift */,
 			);
 			path = AppCoordinator;
 			sourceTree = "<group>";
@@ -435,6 +459,21 @@
 				0EB82715291A328800CA626A /* HomeCoordinatorContext.swift */,
 			);
 			path = HomeCoordinator;
+			sourceTree = "<group>";
+		};
+		0EB8271B291A4DB400CA626A /* OnBoardingCell */ = {
+			isa = PBXGroup;
+			children = (
+				0EB8271C291A4DC800CA626A /* OnBoardingCollectionViewCell.swift */,
+			);
+			path = OnBoardingCell;
+			sourceTree = "<group>";
+		};
+		0EB8271E291A745B00CA626A /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = OnBoarding;
 			sourceTree = "<group>";
 		};
 		337E82F4AEEF8310B9651173 /* Pods */ = {
@@ -691,11 +730,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EB8271D291A4DC800CA626A /* OnBoardingCollectionViewCell.swift in Sources */,
 				0EB82711291A31B500CA626A /* HomeViewController.swift in Sources */,
 				0EB826FF2919F7F400CA626A /* BaseCoordinatorContext.swift in Sources */,
 				0EB826FB2919736F00CA626A /* CertificationCoordinator.swift in Sources */,
 				0EB826E12918F42200CA626A /* SelectButton.swift in Sources */,
 				0EB826F5291966C900CA626A /* TabbarViewController.swift in Sources */,
+				0EB8271A291A486300CA626A /* LineHeightLabel.swift in Sources */,
 				0EB8270C291A2CAD00CA626A /* TabBarItem.swift in Sources */,
 				0EB82716291A328800CA626A /* HomeCoordinatorContext.swift in Sources */,
 				0EB82707291A28E400CA626A /* CertificationViewController.swift in Sources */,
@@ -708,13 +749,16 @@
 				0EB826E329191D2000CA626A /* SDSSelectButton.swift in Sources */,
 				0EB826D32918E29500CA626A /* BaseView.swift in Sources */,
 				0EB826F7291966E500CA626A /* OnBoardingViewController.swift in Sources */,
+				0EB82718291A46B100CA626A /* UILabel+Extension.swift in Sources */,
 				0EB826932918B4AF00CA626A /* AppDelegate.swift in Sources */,
 				0EB826EE29193B3600CA626A /* Coordinator.swift in Sources */,
 				0EB826DD2918E2E400CA626A /* Font.swift in Sources */,
+				0EB82722291A88B000CA626A /* AppCoordinatorContext.swift in Sources */,
 				0EB826F92919736500CA626A /* OnBoardingCoordinator.swift in Sources */,
 				0EB82714291A320F00CA626A /* HomeCoordinator.swift in Sources */,
 				0EB82705291A265700CA626A /* OnBoardingCoordinatorContext.swift in Sources */,
 				0EB8270E291A2E5E00CA626A /* MainCoordinatorContext.swift in Sources */,
+				0EB82720291A746F00CA626A /* OnBoardingViewModel.swift in Sources */,
 				0EB826952918B4AF00CA626A /* SceneDelegate.swift in Sources */,
 				0EB826D52918E2C600CA626A /* BaseCollectionViewCell.swift in Sources */,
 			);

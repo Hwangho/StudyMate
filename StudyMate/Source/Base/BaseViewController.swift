@@ -8,7 +8,7 @@
 
 import UIKit
 
-//import RxSwift
+import RxSwift
 
 
 class BaseViewController: UIViewController {
@@ -21,7 +21,7 @@ class BaseViewController: UIViewController {
     
     weak var coordinatorDelegate: CoordinatorDidFinishDelegate?
     
-//    var disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     
     
     // MARK: Layout Constraints
