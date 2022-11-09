@@ -32,4 +32,11 @@ enum Certification {
         case .checkCertification: return "인증 문자 받기"
         }
     }
+    
+    var nextButton: Certification? {
+        switch self {
+        case .inputphoneNumber: return .checkCertification
+        case .checkCertification: return nil
+        }
+    }
 }
