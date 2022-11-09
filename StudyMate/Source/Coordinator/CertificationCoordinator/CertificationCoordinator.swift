@@ -26,7 +26,7 @@ class CertificationCoordinator: Coordinator {
     
     /// Custom Func
     func start(animated: Bool = true) {
-        let viewcontroller = CertificationViewController()
+        let viewcontroller = CertificationViewController(type: .inputphoneNumber)
         viewcontroller.coordinator = self
         viewcontroller.coordinatorDelegate = self
         presenter.pushViewController(viewcontroller, animated: animated)

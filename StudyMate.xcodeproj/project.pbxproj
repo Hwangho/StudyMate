@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0EAE3331291B6AAF00AA4FE6 /* Certification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE3330291B6AAF00AA4FE6 /* Certification.swift */; };
+		0EAE3333291B722F00AA4FE6 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE3332291B722F00AA4FE6 /* UITextField+Extension.swift */; };
 		0EB826932918B4AF00CA626A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB826922918B4AF00CA626A /* AppDelegate.swift */; };
 		0EB826952918B4AF00CA626A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB826942918B4AF00CA626A /* SceneDelegate.swift */; };
 		0EB8269A2918B4AF00CA626A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EB826982918B4AF00CA626A /* Main.storyboard */; };
@@ -69,6 +71,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0EAE3330291B6AAF00AA4FE6 /* Certification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Certification.swift; sourceTree = "<group>"; };
+		0EAE3332291B722F00AA4FE6 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		0EB8268F2918B4AF00CA626A /* StudyMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EB826922918B4AF00CA626A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EB826942918B4AF00CA626A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -311,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				0EB82717291A46B100CA626A /* UILabel+Extension.swift */,
+				0EAE3332291B722F00AA4FE6 /* UITextField+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -328,6 +333,7 @@
 			children = (
 				0EB826E229191D2000CA626A /* SDSSelectButton.swift */,
 				0EB8270B291A2CAD00CA626A /* TabBarItem.swift */,
+				0EAE3330291B6AAF00AA4FE6 /* Certification.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -736,6 +742,7 @@
 				0EB826FB2919736F00CA626A /* CertificationCoordinator.swift in Sources */,
 				0EB826E12918F42200CA626A /* SelectButton.swift in Sources */,
 				0EB826F5291966C900CA626A /* TabbarViewController.swift in Sources */,
+				0EAE3333291B722F00AA4FE6 /* UITextField+Extension.swift in Sources */,
 				0EB8271A291A486300CA626A /* LineHeightLabel.swift in Sources */,
 				0EB8270C291A2CAD00CA626A /* TabBarItem.swift in Sources */,
 				0EB82716291A328800CA626A /* HomeCoordinatorContext.swift in Sources */,
@@ -748,6 +755,7 @@
 				0EB826E9291932E500CA626A /* keywordButton.swift in Sources */,
 				0EB826E329191D2000CA626A /* SDSSelectButton.swift in Sources */,
 				0EB826D32918E29500CA626A /* BaseView.swift in Sources */,
+				0EAE3331291B6AAF00AA4FE6 /* Certification.swift in Sources */,
 				0EB826F7291966E500CA626A /* OnBoardingViewController.swift in Sources */,
 				0EB82718291A46B100CA626A /* UILabel+Extension.swift in Sources */,
 				0EB826932918B4AF00CA626A /* AppDelegate.swift in Sources */,
