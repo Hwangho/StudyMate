@@ -8,6 +8,8 @@
 import UIKit
 
 import SnapKit
+import RxSwift
+import RxCocoa
 
 
 class CertificationViewController: BaseViewController {
@@ -19,7 +21,7 @@ class CertificationViewController: BaseViewController {
     
     var titleLabel = LineHeightLabel()
     
-    lazy var textFieldView = SignUpTextFieldView(type: type)
+    lazy var textFieldView = CertificationFieldView(type: type)
     
     lazy var DoneButton = SelectButton(type: .disable, title: type.buttonTitle)
     
@@ -29,10 +31,13 @@ class CertificationViewController: BaseViewController {
     
     let type: Certification
     
+    let viewModel: CertificationViewModel
+    
     
     /// initialization
-    init(type: Certification) {
+    init(type: Certification, viewModel: CertificationViewModel = CertificationViewModel()) {
         self.type = type
+        self.viewModel = viewModel
         super.init()
     }
     
@@ -58,7 +63,6 @@ class CertificationViewController: BaseViewController {
     
     override func setupAttributes() {
         super.setupAttributes()
-        scrollView.showsVerticalScrollIndicator = false
         scrollView.isScrollEnabled = false
           
         titleLabel.setupFont(type: .Display1_R20)
@@ -69,11 +73,9 @@ class CertificationViewController: BaseViewController {
     }
     
     override func setupLayout() {
-        
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints { make in
             make.edges.equalTo(view)
-            
         }
 
         scrollView.addSubview(contentView)
@@ -104,15 +106,62 @@ class CertificationViewController: BaseViewController {
             make.height.equalTo(DoneButton.snp.width).multipliedBy(48.0/343)
             make.centerX.equalToSuperview()
         }
-        
-
-        
-
     }
     
     override func setData() {
         titleLabel.text = type.labeltitle
     }
+    
+    override func setupBinding() {
+        switch type {
+        case .inputphoneNumber:
+            /// Action
+            textFieldView.textField.rx.text
+                .orEmpty
+                .distinctUntilChanged()
+                .map{ 
+                    CertificationViewModel.Action.inputText($0.applyoriginalPhoneNumber()) }
+                .bind(to: viewModel.action)
+                .disposed(by: disposeBag)
+            
+            textFieldView.textField.rx.controlEvent(.editingDidBegin)
+                .map { true }
+                .bind { [weak self] value in
+                    self?.textFieldView.focusTexField(value: value)}
+                .disposed(by: disposeBag)
+            
+            textFieldView.textField.rx.controlEvent(.editingDidEnd)
+                .map { false }
+                .bind { [weak self] value in
+                    self?.textFieldView.focusTexField(value: value)}
+                .disposed(by: disposeBag)
+            
+            /// State
+            viewModel.currentStore
+                .map { $0.checkNumberValid }
+                .bind { [weak self] value in
+                    let type: SDSSelectButton = value ? .fill : .disable
+                    self?.DoneButton.setupAttribute(type: type)}
+                .disposed(by: disposeBag)
+                
+            viewModel.currentStore
+                .map { $0.phoneNumber }
+                .bind { [weak self] text in
+                    guard let text = text else { return }
+                    self?.textFieldView.textField.text = text.applyPatternOnNumbers()
+                }
+                .disposed(by: disposeBag)
+
+        case .checkCertification:
+            print("a")
+        }
+    }
+
+}
+
+
+// MARK: - keyBoard 관련
+extension CertificationViewController {
     
     
     private func setupGestureRecognizer() {
@@ -124,61 +173,6 @@ class CertificationViewController: BaseViewController {
       view.endEditing(true)
     }
     
-}
-
-
-class SignUpTextFieldView: BaseView {
-    
-    /// UI
-    let textField = UITextField()
-    
-    let lineView = UIView()
-    
-    let type: Certification
-    
-    init(type: Certification) {
-        self.type = type
-        super.init(frame: .zero)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
-    /// Life Cycle
-    override func setupAttributes() {
-        lineView.backgroundColor = Color.BaseColor.gray3
-        textField.placeholder = type.placholder
-        textField.setupFont(type: .Title4_R14)
-    }
-    
-    override func setupLayout() {
-        [textField, lineView].forEach {
-            addSubview($0)
-        }
-        
-        textField.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.horizontalEdges.equalToSuperview().inset(12)
-        }
-        
-        lineView.snp.makeConstraints { make in
-            make.top.equalTo(textField.snp.bottom).offset(10)
-            make.bottom.horizontalEdges.equalToSuperview()
-            make.height.equalTo(1)
-        }
-    }
-    
-    func setupFocusTextField() {
-        
-    }
-
-    
-}
-
-// MARK: - keyBoard 관련
-extension CertificationViewController {
     
     func addKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification , object: nil)
@@ -200,7 +194,7 @@ extension CertificationViewController {
             UIView.animate(withDuration: 0) {
                 self.DoneButton.frame.origin.y -= keyboardHeight
                 self.DoneButton.snp.updateConstraints { make in
-                    make.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(keyboardHeight-16)
+                    make.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(keyboardHeight)
                 }
             } completion: { _ in
                 self.view.layoutIfNeeded()

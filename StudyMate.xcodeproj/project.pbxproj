@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0EAE3331291B6AAF00AA4FE6 /* Certification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE3330291B6AAF00AA4FE6 /* Certification.swift */; };
 		0EAE3333291B722F00AA4FE6 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE3332291B722F00AA4FE6 /* UITextField+Extension.swift */; };
+		0EAE3335291B917200AA4FE6 /* CertificationFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE3334291B917200AA4FE6 /* CertificationFieldView.swift */; };
+		0EAE3337291BA07200AA4FE6 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE3336291BA07200AA4FE6 /* String+Extension.swift */; };
 		0EB826932918B4AF00CA626A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB826922918B4AF00CA626A /* AppDelegate.swift */; };
 		0EB826952918B4AF00CA626A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB826942918B4AF00CA626A /* SceneDelegate.swift */; };
 		0EB8269A2918B4AF00CA626A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EB826982918B4AF00CA626A /* Main.storyboard */; };
@@ -46,7 +48,7 @@
 		0EB82718291A46B100CA626A /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB82717291A46B100CA626A /* UILabel+Extension.swift */; };
 		0EB8271A291A486300CA626A /* LineHeightLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB82719291A486300CA626A /* LineHeightLabel.swift */; };
 		0EB8271D291A4DC800CA626A /* OnBoardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB8271C291A4DC800CA626A /* OnBoardingCollectionViewCell.swift */; };
-		0EB82720291A746F00CA626A /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB8271F291A746F00CA626A /* OnBoardingViewModel.swift */; };
+		0EB82720291A746F00CA626A /* CertificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB8271F291A746F00CA626A /* CertificationViewModel.swift */; };
 		0EB82722291A88B000CA626A /* AppCoordinatorContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB82721291A88B000CA626A /* AppCoordinatorContext.swift */; };
 		33FCF15BF2A2AFDB12681E71 /* Pods_StudyMate_StudyMateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C2F97C840E6D1D34A9BFCC7 /* Pods_StudyMate_StudyMateUITests.framework */; };
 		6197C0DDB0AB2B1E96EA203F /* Pods_StudyMateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BAA7A9CF80E6040823CED8F /* Pods_StudyMateTests.framework */; };
@@ -73,6 +75,8 @@
 /* Begin PBXFileReference section */
 		0EAE3330291B6AAF00AA4FE6 /* Certification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Certification.swift; sourceTree = "<group>"; };
 		0EAE3332291B722F00AA4FE6 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		0EAE3334291B917200AA4FE6 /* CertificationFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationFieldView.swift; sourceTree = "<group>"; };
+		0EAE3336291BA07200AA4FE6 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		0EB8268F2918B4AF00CA626A /* StudyMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EB826922918B4AF00CA626A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EB826942918B4AF00CA626A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,7 +118,7 @@
 		0EB82717291A46B100CA626A /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		0EB82719291A486300CA626A /* LineHeightLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineHeightLabel.swift; sourceTree = "<group>"; };
 		0EB8271C291A4DC800CA626A /* OnBoardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCollectionViewCell.swift; sourceTree = "<group>"; };
-		0EB8271F291A746F00CA626A /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
+		0EB8271F291A746F00CA626A /* CertificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationViewModel.swift; sourceTree = "<group>"; };
 		0EB82721291A88B000CA626A /* AppCoordinatorContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorContext.swift; sourceTree = "<group>"; };
 		12585CB0DD1706A6930D932D /* Pods-StudyMate-StudyMateUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMate-StudyMateUITests.debug.xcconfig"; path = "Target Support Files/Pods-StudyMate-StudyMateUITests/Pods-StudyMate-StudyMateUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2368E47E329355D01685A4EA /* Pods-StudyMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMate.release.xcconfig"; path = "Target Support Files/Pods-StudyMate/Pods-StudyMate.release.xcconfig"; sourceTree = "<group>"; };
@@ -168,7 +172,7 @@
 		0EAE332F291B65FC00AA4FE6 /* Certification */ = {
 			isa = PBXGroup;
 			children = (
-				0EB8271F291A746F00CA626A /* OnBoardingViewModel.swift */,
+				0EB8271F291A746F00CA626A /* CertificationViewModel.swift */,
 			);
 			path = Certification;
 			sourceTree = "<group>";
@@ -316,6 +320,7 @@
 			children = (
 				0EB82717291A46B100CA626A /* UILabel+Extension.swift */,
 				0EAE3332291B722F00AA4FE6 /* UITextField+Extension.swift */,
+				0EAE3336291BA07200AA4FE6 /* String+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -372,6 +377,7 @@
 				0EB826E02918F42200CA626A /* SelectButton.swift */,
 				0EB826E8291932E500CA626A /* keywordButton.swift */,
 				0EB82719291A486300CA626A /* LineHeightLabel.swift */,
+				0EAE3334291B917200AA4FE6 /* CertificationFieldView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -744,6 +750,7 @@
 				0EB826F5291966C900CA626A /* TabbarViewController.swift in Sources */,
 				0EAE3333291B722F00AA4FE6 /* UITextField+Extension.swift in Sources */,
 				0EB8271A291A486300CA626A /* LineHeightLabel.swift in Sources */,
+				0EAE3337291BA07200AA4FE6 /* String+Extension.swift in Sources */,
 				0EB8270C291A2CAD00CA626A /* TabBarItem.swift in Sources */,
 				0EB82716291A328800CA626A /* HomeCoordinatorContext.swift in Sources */,
 				0EB82707291A28E400CA626A /* CertificationViewController.swift in Sources */,
@@ -766,8 +773,9 @@
 				0EB82714291A320F00CA626A /* HomeCoordinator.swift in Sources */,
 				0EB82705291A265700CA626A /* OnBoardingCoordinatorContext.swift in Sources */,
 				0EB8270E291A2E5E00CA626A /* MainCoordinatorContext.swift in Sources */,
-				0EB82720291A746F00CA626A /* OnBoardingViewModel.swift in Sources */,
+				0EB82720291A746F00CA626A /* CertificationViewModel.swift in Sources */,
 				0EB826952918B4AF00CA626A /* SceneDelegate.swift in Sources */,
+				0EAE3335291B917200AA4FE6 /* CertificationFieldView.swift in Sources */,
 				0EB826D52918E2C600CA626A /* BaseCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
