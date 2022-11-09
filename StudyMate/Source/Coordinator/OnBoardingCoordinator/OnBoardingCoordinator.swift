@@ -33,3 +33,7 @@ class OnBoardingCoordinator: Coordinator {
     }
     
 }
+
+
+// MARK: - App
+extension OnBoardingCoordinator : AppCoordinatorContext { }

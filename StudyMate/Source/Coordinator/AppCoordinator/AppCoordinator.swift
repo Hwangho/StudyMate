@@ -41,19 +41,26 @@ class AppCoordinator: Coordinator {
 //        var type: InitalViewType = UserDefaults.standard.bool(forKey: "checkEnterboarding") ? .onBoarding: .certification
         
         let type: InitalViewType = .onBoarding
-        
+        showInitialView(with: type)
+    }
+    
+    
+    /// Custom Func
+    func showInitialView(with type: InitalViewType) {
         switch type {
         case .onBoarding:
+            presenter = UINavigationController()
             firstStartOnBoarding(present: presenter)
-            self.window.rootViewController = self.presenter
+            self.window.rootViewController = presenter
             
         case .certification:
+            presenter = UINavigationController()
             firstStartCertification(prsent: presenter)
-            self.window.rootViewController = self.presenter
+            self.window.rootViewController = presenter
             
         case .main:
             firstStartMain(tabbar: tabbar)
-            self.window.rootViewController = self.tabbar
+            self.window.rootViewController = tabbar
         }
         
         self.window.makeKeyAndVisible()
