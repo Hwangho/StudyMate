@@ -8,8 +8,6 @@
 import UIKit
 
 import SnapKit
-import RxSwift
-import RxCocoa
 
 
 final class OnBoardingViewController: BaseViewController {
@@ -31,24 +29,12 @@ final class OnBoardingViewController: BaseViewController {
     
     var datasource: DataSource!
     
-    let viewModel: OnBoardingViewModel
-    
-    
-    /// initialization
-    init(viewModel: OnBoardingViewModel = OnBoardingViewModel()) {
-        self.viewModel = viewModel
-        super.init()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     
     /// Life Cycle
     override func setupAttributes() {
         super.setupAttributes()
         setPageControl()
+        startButton.addTarget(self, action: #selector(tuchStartButton), for: .touchUpInside)
     }
     
     override func setupLayout() {
@@ -80,15 +66,11 @@ final class OnBoardingViewController: BaseViewController {
         setupDataSource()
     }
     
-    override func setupBinding() {
-        // Action
-        startButton.rx.tap
-            .bind(onNext: { [weak self] in
-                self?.coordinator?.showInitialView(with: .certification)
-            })
-            .disposed(by: disposeBag)
-        
-        // State
+    
+    /// Custom Func
+    @objc
+    private func tuchStartButton() {
+        coordinator?.showInitialView(with: .certification)
     }
     
     

@@ -161,6 +161,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		0EAE332F291B65FC00AA4FE6 /* Certification */ = {
+			isa = PBXGroup;
+			children = (
+				0EB8271F291A746F00CA626A /* OnBoardingViewModel.swift */,
+			);
+			path = Certification;
+			sourceTree = "<group>";
+		};
 		0EB826862918B4AF00CA626A = {
 			isa = PBXGroup;
 			children = (
@@ -266,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				0EB8271E291A745B00CA626A /* OnBoarding */,
+				0EAE332F291B65FC00AA4FE6 /* Certification */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -463,7 +472,6 @@
 		0EB8271E291A745B00CA626A /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
-				0EB8271F291A746F00CA626A /* OnBoardingViewModel.swift */,
 			);
 			path = OnBoarding;
 			sourceTree = "<group>";

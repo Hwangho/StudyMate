@@ -14,11 +14,11 @@ import RxRelay
 class OnBoardingViewModel {
     
     enum Action {
-        case tapStartButton
+        
     }
     
     enum Mutation {
-        case setStartButton
+        
     }
     
     struct Store {
@@ -50,19 +50,12 @@ class OnBoardingViewModel {
     
     /// mutate, action
     private func mutate(_ action: Action) -> Observable<Mutation> {
-        switch action {
-            
-        case .tapStartButton:
-            return .just(.setStartButton)
-        }
+        
+
     }
     
     private func reduce(_ mutation: Mutation) -> Observable<Store> {
-        switch mutation {
-            
-        case .setStartButton:
-            print("a")
-        }
+        
         
         return .just(store)
     }
