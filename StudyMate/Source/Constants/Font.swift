@@ -9,7 +9,6 @@ import UIKit
 
 
 enum Font {
-    
     case Display1_R20
     case Title1_M16
     case Title2_R16

@@ -13,7 +13,6 @@ class LineHeightLabel: UILabel {
     /// Custom Func
     func setupFont(type: Font) {
         font = UIFont(name: type.fontType, size: type.fontSize)
-        
         let lineSpacing = type.fontSize * type.lineHeightRate/100
         addLineSpacing(spacing: lineSpacing)
     }

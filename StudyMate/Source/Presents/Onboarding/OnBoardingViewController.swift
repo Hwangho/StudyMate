@@ -8,6 +8,8 @@
 import UIKit
 
 import SnapKit
+import RxSwift
+import RxCocoa
 
 
 final class OnBoardingViewController: BaseViewController {
@@ -28,6 +30,19 @@ final class OnBoardingViewController: BaseViewController {
     var coordinator: OnBoardingCoordinator?
     
     var datasource: DataSource!
+    
+    let viewModel: OnBoardingViewModel
+    
+    
+    /// initialization
+    init(viewModel: OnBoardingViewModel = OnBoardingViewModel()) {
+        self.viewModel = viewModel
+        super.init()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     
     /// Life Cycle
@@ -65,6 +80,19 @@ final class OnBoardingViewController: BaseViewController {
         setupDataSource()
     }
     
+    override func setupBinding() {
+        // Action
+        startButton.rx.tap
+            .bind(onNext: { [weak self] in
+                self?.coordinator?.showInitialView(with: .certification)
+            })
+            .disposed(by: disposeBag)
+        
+        // State
+    }
+    
+    
+    /// Custom Func
     func setPageControl() {
         pageControl.numberOfPages = Item.allCases.count
         pageControl.currentPage = 0
@@ -131,8 +159,8 @@ extension OnBoardingViewController {
                 section.orthogonalScrollingBehavior = .groupPaging
                 
                 //setup pageControl
-                section.visibleItemsInvalidationHandler = { (items, offset, env) -> Void in
-                    self.pageControl.currentPage = items.last?.indexPath.row ?? 0
+                section.visibleItemsInvalidationHandler = { [weak self] (items, offset, env) -> Void in
+                    self?.pageControl.currentPage = items.last?.indexPath.row ?? 0
                 }
                 
                 return section
@@ -140,6 +168,8 @@ extension OnBoardingViewController {
         }
     }
     
+    
+    /// Datasource
     private func setupDataSource() {
         let cell = CellRegister { cell, indexPath, itemIdentifier in
             cell.setConfigure(type: itemIdentifier)

@@ -7,7 +7,8 @@ target 'StudyMate' do
 
   # Pods for StudyMate
     pod 'SnapKit', '~> 5.6.0'
-
+    pod 'RxSwift', '6.5.0'
+    pod 'RxCocoa', '6.5.0'
 
 
 
