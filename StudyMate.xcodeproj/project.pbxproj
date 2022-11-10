@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		0EAE3331291B6AAF00AA4FE6 /* Certification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE3330291B6AAF00AA4FE6 /* Certification.swift */; };
 		0EAE3333291B722F00AA4FE6 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE3332291B722F00AA4FE6 /* UITextField+Extension.swift */; };
-		0EAE3335291B917200AA4FE6 /* CertificationFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE3334291B917200AA4FE6 /* CertificationFieldView.swift */; };
+		0EAE3335291B917200AA4FE6 /* LineTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE3334291B917200AA4FE6 /* LineTextFieldView.swift */; };
 		0EAE3337291BA07200AA4FE6 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE3336291BA07200AA4FE6 /* String+Extension.swift */; };
+		0EAE3339291BA9D800AA4FE6 /* CertificationTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE3338291BA9D800AA4FE6 /* CertificationTextFieldView.swift */; };
+		0EAE333B291BC27C00AA4FE6 /* LineTextFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE333A291BC27C00AA4FE6 /* LineTextFieldType.swift */; };
 		0EB826932918B4AF00CA626A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB826922918B4AF00CA626A /* AppDelegate.swift */; };
 		0EB826952918B4AF00CA626A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB826942918B4AF00CA626A /* SceneDelegate.swift */; };
 		0EB8269A2918B4AF00CA626A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EB826982918B4AF00CA626A /* Main.storyboard */; };
@@ -75,8 +77,10 @@
 /* Begin PBXFileReference section */
 		0EAE3330291B6AAF00AA4FE6 /* Certification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Certification.swift; sourceTree = "<group>"; };
 		0EAE3332291B722F00AA4FE6 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
-		0EAE3334291B917200AA4FE6 /* CertificationFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationFieldView.swift; sourceTree = "<group>"; };
+		0EAE3334291B917200AA4FE6 /* LineTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTextFieldView.swift; sourceTree = "<group>"; };
 		0EAE3336291BA07200AA4FE6 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		0EAE3338291BA9D800AA4FE6 /* CertificationTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationTextFieldView.swift; sourceTree = "<group>"; };
+		0EAE333A291BC27C00AA4FE6 /* LineTextFieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTextFieldType.swift; sourceTree = "<group>"; };
 		0EB8268F2918B4AF00CA626A /* StudyMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EB826922918B4AF00CA626A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EB826942918B4AF00CA626A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -339,6 +343,7 @@
 				0EB826E229191D2000CA626A /* SDSSelectButton.swift */,
 				0EB8270B291A2CAD00CA626A /* TabBarItem.swift */,
 				0EAE3330291B6AAF00AA4FE6 /* Certification.swift */,
+				0EAE333A291BC27C00AA4FE6 /* LineTextFieldType.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -377,7 +382,8 @@
 				0EB826E02918F42200CA626A /* SelectButton.swift */,
 				0EB826E8291932E500CA626A /* keywordButton.swift */,
 				0EB82719291A486300CA626A /* LineHeightLabel.swift */,
-				0EAE3334291B917200AA4FE6 /* CertificationFieldView.swift */,
+				0EAE3334291B917200AA4FE6 /* LineTextFieldView.swift */,
+				0EAE3338291BA9D800AA4FE6 /* CertificationTextFieldView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -744,6 +750,8 @@
 			files = (
 				0EB8271D291A4DC800CA626A /* OnBoardingCollectionViewCell.swift in Sources */,
 				0EB82711291A31B500CA626A /* HomeViewController.swift in Sources */,
+				0EAE3339291BA9D800AA4FE6 /* CertificationTextFieldView.swift in Sources */,
+				0EAE333B291BC27C00AA4FE6 /* LineTextFieldType.swift in Sources */,
 				0EB826FF2919F7F400CA626A /* BaseCoordinatorContext.swift in Sources */,
 				0EB826FB2919736F00CA626A /* CertificationCoordinator.swift in Sources */,
 				0EB826E12918F42200CA626A /* SelectButton.swift in Sources */,
@@ -775,7 +783,7 @@
 				0EB8270E291A2E5E00CA626A /* MainCoordinatorContext.swift in Sources */,
 				0EB82720291A746F00CA626A /* CertificationViewModel.swift in Sources */,
 				0EB826952918B4AF00CA626A /* SceneDelegate.swift in Sources */,
-				0EAE3335291B917200AA4FE6 /* CertificationFieldView.swift in Sources */,
+				0EAE3335291B917200AA4FE6 /* LineTextFieldView.swift in Sources */,
 				0EB826D52918E2C600CA626A /* BaseCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

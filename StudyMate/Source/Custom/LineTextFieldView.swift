@@ -10,18 +10,19 @@ import UIKit
 import SnapKit
 
 
-class CertificationFieldView: BaseView {
+class LineTextFieldView: BaseView {
     
     /// UI
     let textField = UITextField()
     
     let lineView = UIView()
     
-    let type: Certification
+    /// variable
+    let type: LineTextFieldType
     
     
     /// initialization
-    init(type: Certification) {
+    init(type: LineTextFieldType) {
         self.type = type
         super.init(frame: .zero)
     }
@@ -40,9 +41,10 @@ class CertificationFieldView: BaseView {
         switch type {
         case .inputphoneNumber:
             textField.keyboardType = .phonePad
-            
-        case .checkCertification:
-            textField.keyboardType = .numberPad
+        case .nickName:
+            print("nucname")
+        case .email:
+            print("email")
         }
     }
     
@@ -70,5 +72,4 @@ class CertificationFieldView: BaseView {
     }
 
 }
-
 

@@ -11,6 +11,7 @@ import Foundation
 extension String {
     func applyPatternOnNumbers() -> String {
         var pureNumber = self.replacingOccurrences( of: "[^0-9]", with: "", options: .regularExpression)
+        
         if self.count < 11 {
             for index in 0 ..<  "XXX-XXX-XXXX".count {
                 guard index < pureNumber.count else { return pureNumber }
