@@ -16,20 +16,26 @@ class CertificationCoordinator: Coordinator {
     
     var childCoordinators: [Coordinator]
     
+    let type: Certification
+    
     
     /// initialziation
-    init(present: UINavigationController = UINavigationController()) {
+    init(present: UINavigationController = UINavigationController(), type: Certification = .phoneNumber) {
         self.presenter = present
+        self.type = type
         self.childCoordinators = []
     }
     
     
     /// Custom Func
     func start(animated: Bool = true) {
-        let viewcontroller = CertificationViewController()
+        let viewcontroller = CertificationViewController(type: type)
         viewcontroller.coordinator = self
         viewcontroller.coordinatorDelegate = self
         presenter.pushViewController(viewcontroller, animated: animated)
     }
     
 }
+
+
+extension CertificationCoordinator: CertificationCoordinatorContext { }

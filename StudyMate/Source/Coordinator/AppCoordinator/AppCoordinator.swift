@@ -40,7 +40,7 @@ class AppCoordinator: Coordinator {
     func start(animated: Bool = true) {
 //        var type: InitalViewType = UserDefaults.standard.bool(forKey: "checkEnterboarding") ? .onBoarding: .certification
         
-        let type: InitalViewType = .onBoarding
+        let type: InitalViewType = .certification
         showInitialView(with: type)
     }
     

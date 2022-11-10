@@ -86,6 +86,7 @@ class BaseViewController: UIViewController {
     func setupAttributes() {
         // Override Attributes
         view.backgroundColor = Color.BaseColor.white
+        navigation()
 //        view.backgroundColor = Color.mainContainerBackgroundColor
     }
     
@@ -103,6 +104,28 @@ class BaseViewController: UIViewController {
     
     func setData() {
         // Override Set Data
+    }
+    
+    
+    // MARK: Custom Func
+    func navigation() {
+        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.isTranslucent = false   /// navigation 반투명 상태 제거
+        navigationController?.navigationBar.backgroundColor = Color.BaseColor.white    /// bacground 색상
+        
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.backgroundColor = Color.BaseColor.white
+        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Color.BaseColor.black,
+                                                       NSAttributedString.Key.font: UIFont(name: Font.Title3_M14.fontType, size: Font.Title3_M14.fontSize)! ]
+
+        navigationController?.navigationBar.standardAppearance = navigationBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
+        
+        let backBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow"), style: .done, target: self, action: nil)
+        self.navigationItem.backBarButtonItem = backBarButtonItem
+
+        let backButton  = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backButton
     }
     
 }
