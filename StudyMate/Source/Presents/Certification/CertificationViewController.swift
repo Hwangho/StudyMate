@@ -19,9 +19,13 @@ class CertificationViewController: BaseViewController {
 
     var contentView = UIView()
     
+    let titleBackVoew = UIView()
+    
     var titleLabel = LineHeightLabel()
     
-    lazy var textFieldView = CertificationFieldView(type: type)
+    lazy var phonNumberTextFieldView = LineTextFieldView(type: .inputphoneNumber)
+    
+    lazy var NumberTextFieldView = CertificationTextFieldView()
     
     lazy var DoneButton = SelectButton(type: .disable, title: type.buttonTitle)
     
@@ -53,11 +57,23 @@ class CertificationViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        textFieldView.textField.becomeFirstResponder()
+        switch type {
+        case .phoneNumber:
+            phonNumberTextFieldView.textField.becomeFirstResponder()
+        case .certificationNumber:
+            NumberTextFieldView.textField.becomeFirstResponder()
+        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        textFieldView.textField.resignFirstResponder()
+        switch type {
+        case .phoneNumber:
+            phonNumberTextFieldView.textField.resignFirstResponder()
+        case .certificationNumber:
+            NumberTextFieldView.textField.resignFirstResponder()
+        }
+        
         removeKeyboardNotifications()
     }
     
@@ -85,18 +101,33 @@ class CertificationViewController: BaseViewController {
             make.width.height.equalTo(view)
         }
         
-        [titleLabel, textFieldView].forEach {
-            contentView.addSubview($0)
-        }
         
+        titleBackVoew.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(110)
+            make.center.equalToSuperview()
         }
         
-        textFieldView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(80)
-            make.horizontalEdges.equalToSuperview().inset(16)
+        
+        contentView.addSubview(titleBackVoew)
+        titleBackVoew.snp.makeConstraints { make in
+            make.top.horizontalEdges.equalToSuperview()
+            make.height.equalTo(view.snp.height).multipliedBy(222.0/812.0)
+        }
+        
+        switch type {
+        case .phoneNumber:
+            contentView.addSubview(phonNumberTextFieldView)
+            phonNumberTextFieldView.snp.makeConstraints { make in
+                make.top.equalTo(titleBackVoew.snp.bottom)
+                make.horizontalEdges.equalToSuperview().inset(16)
+            }
+            
+        case .certificationNumber:
+            contentView.addSubview(NumberTextFieldView)
+            NumberTextFieldView.snp.makeConstraints { make in
+                make.top.equalTo(titleBackVoew.snp.bottom)
+                make.horizontalEdges.equalToSuperview().inset(16)
+            }
         }
         
         view.addSubview(DoneButton)
@@ -113,27 +144,88 @@ class CertificationViewController: BaseViewController {
     }
     
     override func setupBinding() {
+        
         switch type {
-        case .inputphoneNumber:
+        case .phoneNumber:
             /// Action
-            textFieldView.textField.rx.text
+            phonNumberTextFieldView.textField.rx.text
                 .orEmpty
                 .distinctUntilChanged()
-                .map{ 
-                    CertificationViewModel.Action.inputText($0.applyoriginalPhoneNumber()) }
+                .map{
+                    CertificationViewModel.Action.inputText(.phoneNumber, $0.applyoriginalPhoneNumber()) }
                 .bind(to: viewModel.action)
                 .disposed(by: disposeBag)
             
-            textFieldView.textField.rx.controlEvent(.editingDidBegin)
+            phonNumberTextFieldView.textField.rx.controlEvent(.editingDidBegin)
                 .map { true }
                 .bind { [weak self] value in
-                    self?.textFieldView.focusTexField(value: value)}
+                    self?.phonNumberTextFieldView.focusTexField(value: value)}
                 .disposed(by: disposeBag)
             
-            textFieldView.textField.rx.controlEvent(.editingDidEnd)
+            phonNumberTextFieldView.textField.rx.controlEvent(.editingDidEnd)
                 .map { false }
                 .bind { [weak self] value in
-                    self?.textFieldView.focusTexField(value: value)}
+                    self?.phonNumberTextFieldView.focusTexField(value: value)}
+                .disposed(by: disposeBag)
+            
+            DoneButton.rx.tap
+                .map {
+                    CertificationViewModel.Action.doneButton(.phoneNumber) }
+                .bind(to: viewModel.action)
+                .disposed(by: disposeBag)
+            
+            /// State            
+            viewModel.currentStore
+                .map { $0.checkNumberValid }
+                .distinctUntilChanged()
+                .bind { [weak self] value in
+                    let type: SDSSelectButton = value ? .fill : .disable
+                    self?.DoneButton.setupAttribute(type: type)}
+                .disposed(by: disposeBag)
+                
+            viewModel.currentStore
+                .map{ $0.phoneNumber }
+                .bind { [weak self] text in
+                    guard let text = text else { return }
+                    self?.phonNumberTextFieldView.textField.text = text.applyPatternOnNumbers()
+                }
+                .disposed(by: disposeBag)
+            
+            viewModel.currentStore
+                .distinctUntilChanged{ $0.checkReciveMessage }
+                .map{ $0.checkReciveMessage }
+                .subscribe { [weak self] istrue in
+                    if istrue {
+                        self?.coordinator!.nextCertification(type: .certificationNumber)
+                    }
+                }
+                .disposed(by: disposeBag)
+
+        case .certificationNumber:
+            /// Action
+            NumberTextFieldView.textField.rx.text
+                .orEmpty
+                .distinctUntilChanged()
+                .map{
+                    CertificationViewModel.Action.inputText(.certificationNumber, $0) }
+                .bind(to: viewModel.action)
+                .disposed(by: disposeBag)
+            
+            NumberTextFieldView.textField.rx.controlEvent(.editingDidBegin)
+                .map { true }
+                .bind { [weak self] value in
+                    self?.NumberTextFieldView.focusTexField(value: value)}
+                .disposed(by: disposeBag)
+            
+            NumberTextFieldView.textField.rx.controlEvent(.editingDidEnd)
+                .map { false }
+                .bind { [weak self] value in
+                    self?.NumberTextFieldView.focusTexField(value: value)}
+                .disposed(by: disposeBag)
+            
+            DoneButton.rx.tap
+                .map { CertificationViewModel.Action.doneButton(.certificationNumber) }
+                .bind(to: viewModel.action)
                 .disposed(by: disposeBag)
             
             /// State
@@ -145,15 +237,12 @@ class CertificationViewController: BaseViewController {
                 .disposed(by: disposeBag)
                 
             viewModel.currentStore
-                .map { $0.phoneNumber }
+                .map { $0.certificationNumber }
                 .bind { [weak self] text in
                     guard let text = text else { return }
-                    self?.textFieldView.textField.text = text.applyPatternOnNumbers()
+                    self?.NumberTextFieldView.textField.text = text
                 }
                 .disposed(by: disposeBag)
-
-        case .checkCertification:
-            print("a")
         }
     }
 
@@ -163,7 +252,6 @@ class CertificationViewController: BaseViewController {
 // MARK: - keyBoard 관련
 extension CertificationViewController {
     
-    
     private func setupGestureRecognizer() {
       let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
       view.addGestureRecognizer(tap)
@@ -172,7 +260,6 @@ extension CertificationViewController {
     @objc func handleTap(_ gesture: UITapGestureRecognizer) {
       view.endEditing(true)
     }
-    
     
     func addKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification , object: nil)
