@@ -38,4 +38,11 @@ class BaseView: UIView {
         // Override Attributes
         backgroundColor = Color.BaseColor.white
     }
+    
+    /**
+    Binding 관련 작업
+     */
+    func setupBinding() {
+        
+    }
 }
