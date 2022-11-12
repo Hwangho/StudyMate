@@ -28,7 +28,6 @@ class CertificationTextFieldView: BaseView {
     
     /// Life Cycle
     override func setupAttributes() {
-        textField.placeholder = "인증번호 입력"
         textField.setupFont(type: .Title4_R14)
         textField.keyboardType = .numberPad
         
