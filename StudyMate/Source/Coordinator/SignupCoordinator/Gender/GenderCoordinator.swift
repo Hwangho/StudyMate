@@ -1,14 +1,14 @@
 //
-//  CertificationCoordinator.swift
+//  GenderCoordinator.swift
 //  StudyMate
 //
-//  Created by 송황호 on 2022/11/08.
+//  Created by 송황호 on 2022/11/10.
 //
 
 import UIKit
 
 
-class CertificationCoordinator: Coordinator {
+class GenderCoordinator: Coordinator {
     
     var delegate: CoordinatorDidFinishDelegate?
     
@@ -16,20 +16,17 @@ class CertificationCoordinator: Coordinator {
     
     var childCoordinators: [Coordinator]
     
-    let type: Certification
-    
     
     /// initialziation
-    init(present: UINavigationController = UINavigationController(), type: Certification = .phoneNumber) {
+    init(present: UINavigationController = UINavigationController()) {
         self.presenter = present
-        self.type = type
         self.childCoordinators = []
     }
     
     
     /// Custom Func
     func start(animated: Bool = true) {
-        let viewcontroller = CertificationViewController(type: type)
+        let viewcontroller = GenderViewController()
         viewcontroller.coordinator = self
         viewcontroller.coordinatorDelegate = self
         presenter.pushViewController(viewcontroller, animated: animated)
@@ -37,8 +34,3 @@ class CertificationCoordinator: Coordinator {
     
 }
 
-
-extension CertificationCoordinator: CertificationCoordinatorContext { }
-
-
-extension CertificationCoordinator: NickNameCoordinatorContext { }
