@@ -23,7 +23,7 @@ class CertificationViewController: BaseViewController {
     
     var titleLabel = LineHeightLabel()
     
-    lazy var phonNumberTextFieldView = LineTextFieldView(type: .inputphoneNumber)
+    lazy var phonNumberTextFieldView = LineTextFieldView()
     
     lazy var NumberTextFieldView = CertificationTextFieldView()
     
@@ -50,33 +50,6 @@ class CertificationViewController: BaseViewController {
     }
     
     
-    /// Life Cycle
-    override func viewWillAppear(_ animated: Bool) {
-        addKeyboardNotifications()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        switch type {
-        case .phoneNumber:
-            phonNumberTextFieldView.textField.becomeFirstResponder()
-        case .certificationNumber:
-            NumberTextFieldView.textField.becomeFirstResponder()
-        }
-        
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        switch type {
-        case .phoneNumber:
-            phonNumberTextFieldView.textField.resignFirstResponder()
-        case .certificationNumber:
-            NumberTextFieldView.textField.resignFirstResponder()
-        }
-        
-        removeKeyboardNotifications()
-    }
-    
     override func setupAttributes() {
         super.setupAttributes()
         scrollView.isScrollEnabled = false
@@ -85,7 +58,14 @@ class CertificationViewController: BaseViewController {
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 2
         
-        setupGestureRecognizer()
+        switch type {
+        case .phoneNumber:
+            phonNumberTextFieldView.textField.keyboardType = .phonePad
+            phonNumberTextFieldView.textField.placeholder = type.placholder
+        case .certificationNumber:
+            NumberTextFieldView.textField.keyboardType = .numberPad
+            NumberTextFieldView.textField.placeholder = type.placholder
+        }
     }
     
     override func setupLayout() {
@@ -93,7 +73,7 @@ class CertificationViewController: BaseViewController {
         scrollView.snp.makeConstraints { make in
             make.edges.equalTo(view)
         }
-
+        
         scrollView.addSubview(contentView)
         contentView.snp.makeConstraints { make in
             make.top.bottom.equalTo(scrollView)
@@ -114,6 +94,8 @@ class CertificationViewController: BaseViewController {
             make.height.equalTo(view.snp.height).multipliedBy(222.0/812.0)
         }
         
+        view.addSubview(DoneButton)
+        
         switch type {
         case .phoneNumber:
             contentView.addSubview(phonNumberTextFieldView)
@@ -122,22 +104,29 @@ class CertificationViewController: BaseViewController {
                 make.horizontalEdges.equalToSuperview().inset(16)
             }
             
+            DoneButton.snp.makeConstraints { make in
+                make.top.equalTo(phonNumberTextFieldView.snp.bottom).offset(72)
+                make.width.equalToSuperview().multipliedBy(343.0/375.0)
+                make.height.equalTo(DoneButton.snp.width).multipliedBy(48.0/343)
+                make.centerX.equalToSuperview()
+            }
+            
         case .certificationNumber:
             contentView.addSubview(NumberTextFieldView)
             NumberTextFieldView.snp.makeConstraints { make in
                 make.top.equalTo(titleBackVoew.snp.bottom)
                 make.horizontalEdges.equalToSuperview().inset(16)
             }
-        }
-        
-        view.addSubview(DoneButton)
-        DoneButton.snp.makeConstraints { make in
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
-            make.width.equalToSuperview().multipliedBy(343.0/375.0)
-            make.height.equalTo(DoneButton.snp.width).multipliedBy(48.0/343)
-            make.centerX.equalToSuperview()
+            
+            DoneButton.snp.makeConstraints { make in
+                make.top.equalTo(NumberTextFieldView.snp.bottom).offset(72)
+                make.width.equalToSuperview().multipliedBy(343.0/375.0)
+                make.height.equalTo(DoneButton.snp.width).multipliedBy(48.0/343)
+                make.centerX.equalToSuperview()
+            }
         }
     }
+    
     
     override func setData() {
         titleLabel.text = type.labeltitle
@@ -151,8 +140,7 @@ class CertificationViewController: BaseViewController {
             phonNumberTextFieldView.textField.rx.text
                 .orEmpty
                 .distinctUntilChanged()
-                .map{
-                    CertificationViewModel.Action.inputText(.phoneNumber, $0.applyoriginalPhoneNumber()) }
+                .map{ CertificationViewModel.Action.inputText(.phoneNumber, $0.applyoriginalPhoneNumber()) }
                 .bind(to: viewModel.action)
                 .disposed(by: disposeBag)
             
@@ -174,7 +162,7 @@ class CertificationViewController: BaseViewController {
                 .bind(to: viewModel.action)
                 .disposed(by: disposeBag)
             
-            /// State            
+            /// State
             viewModel.currentStore
                 .map { $0.checkNumberValid }
                 .distinctUntilChanged()
@@ -182,7 +170,7 @@ class CertificationViewController: BaseViewController {
                     let type: SDSSelectButton = value ? .fill : .disable
                     self?.DoneButton.setupAttribute(type: type)}
                 .disposed(by: disposeBag)
-                
+            
             viewModel.currentStore
                 .map{ $0.phoneNumber }
                 .bind { [weak self] text in
@@ -200,7 +188,7 @@ class CertificationViewController: BaseViewController {
                     }
                 }
                 .disposed(by: disposeBag)
-
+            
         case .certificationNumber:
             /// Action
             NumberTextFieldView.textField.rx.text
@@ -235,7 +223,7 @@ class CertificationViewController: BaseViewController {
                     let type: SDSSelectButton = value ? .fill : .disable
                     self?.DoneButton.setupAttribute(type: type)}
                 .disposed(by: disposeBag)
-                
+            
             viewModel.currentStore
                 .map { $0.certificationNumber }
                 .bind { [weak self] text in
@@ -243,66 +231,16 @@ class CertificationViewController: BaseViewController {
                     self?.NumberTextFieldView.textField.text = text
                 }
                 .disposed(by: disposeBag)
-        }
-    }
-
-}
-
-
-// MARK: - keyBoard 관련
-extension CertificationViewController {
-    
-    private func setupGestureRecognizer() {
-      let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-      view.addGestureRecognizer(tap)
-    }
-
-    @objc func handleTap(_ gesture: UITapGestureRecognizer) {
-      view.endEditing(true)
-    }
-    
-    func addKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification , object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    func removeKeyboardNotifications() {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification , object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    @objc
-    func keyboardWillShow(_ noti: NSNotification) {
-        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardRectangle.height
-
-            UIView.animate(withDuration: 0) {
-                self.DoneButton.frame.origin.y -= keyboardHeight
-                self.DoneButton.snp.updateConstraints { make in
-                    make.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(keyboardHeight)
+            viewModel.currentStore
+                .distinctUntilChanged{ $0.checkCertification }
+                .map{ $0.checkCertification }
+                .subscribe { [weak self] istrue in
+                    if istrue {
+                        self?.coordinator!.startNickName()
+                    }
                 }
-            } completion: { _ in
-                self.view.layoutIfNeeded()
-            }
-        }
-    }
-    
-    @objc
-    func keyboardWillHide(_ noti: NSNotification) {
-        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardRectangle.height
-            
-            UIView.animate(withDuration: 0) {
-                self.DoneButton.frame.origin.y += keyboardHeight
-                self.DoneButton.snp.updateConstraints { make in
-                    make.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(16)
-                }
-            } completion: { _ in
-                self.view.layoutIfNeeded()
-            }
+                .disposed(by: disposeBag)
         }
     }
     

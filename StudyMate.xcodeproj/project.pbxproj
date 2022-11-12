@@ -7,12 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E843CE1291F70C000D7D259 /* BirthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E843CE0291F70C000D7D259 /* BirthViewModel.swift */; };
 		0EAE3331291B6AAF00AA4FE6 /* Certification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE3330291B6AAF00AA4FE6 /* Certification.swift */; };
 		0EAE3333291B722F00AA4FE6 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE3332291B722F00AA4FE6 /* UITextField+Extension.swift */; };
 		0EAE3335291B917200AA4FE6 /* LineTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE3334291B917200AA4FE6 /* LineTextFieldView.swift */; };
 		0EAE3337291BA07200AA4FE6 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE3336291BA07200AA4FE6 /* String+Extension.swift */; };
 		0EAE3339291BA9D800AA4FE6 /* CertificationTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE3338291BA9D800AA4FE6 /* CertificationTextFieldView.swift */; };
 		0EAE333B291BC27C00AA4FE6 /* LineTextFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE333A291BC27C00AA4FE6 /* LineTextFieldType.swift */; };
+		0EAE3340291CCEB700AA4FE6 /* SignupType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE333F291CCEB700AA4FE6 /* SignupType.swift */; };
+		0EAE3342291CD0E400AA4FE6 /* NickNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE3341291CD0E400AA4FE6 /* NickNameViewController.swift */; };
+		0EAE3344291CD2B700AA4FE6 /* BirthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE3343291CD2B700AA4FE6 /* BirthViewController.swift */; };
+		0EAE3346291CD30F00AA4FE6 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE3345291CD30F00AA4FE6 /* EmailViewController.swift */; };
+		0EAE3348291CD31B00AA4FE6 /* GenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE3347291CD31B00AA4FE6 /* GenderViewController.swift */; };
+		0EAE334B291CD42A00AA4FE6 /* NickNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE334A291CD42A00AA4FE6 /* NickNameViewModel.swift */; };
+		0EAE334E291CD76A00AA4FE6 /* NickNameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE334D291CD76A00AA4FE6 /* NickNameCoordinator.swift */; };
+		0EAE3350291CDD3E00AA4FE6 /* NickNameCoordinatorContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE334F291CDD3E00AA4FE6 /* NickNameCoordinatorContext.swift */; };
+		0EAE3354291CE8B000AA4FE6 /* BirthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE3353291CE8B000AA4FE6 /* BirthCoordinator.swift */; };
+		0EAE3356291CE8F100AA4FE6 /* BirthCoordinatorContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE3355291CE8F100AA4FE6 /* BirthCoordinatorContext.swift */; };
+		0EAE3359291CEA8E00AA4FE6 /* EmailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE3358291CEA8E00AA4FE6 /* EmailCoordinator.swift */; };
+		0EAE335B291CEA9800AA4FE6 /* EmailCoordinatorContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE335A291CEA9800AA4FE6 /* EmailCoordinatorContext.swift */; };
+		0EAE335E291CEC3000AA4FE6 /* GenderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE335D291CEC3000AA4FE6 /* GenderCoordinator.swift */; };
+		0EAE3360291CEC5300AA4FE6 /* GenderCoordinatorContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE335F291CEC5300AA4FE6 /* GenderCoordinatorContext.swift */; };
+		0EAE3366291D045600AA4FE6 /* BirthLineTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE3365291D045600AA4FE6 /* BirthLineTextFieldView.swift */; };
 		0EB826932918B4AF00CA626A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB826922918B4AF00CA626A /* AppDelegate.swift */; };
 		0EB826952918B4AF00CA626A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB826942918B4AF00CA626A /* SceneDelegate.swift */; };
 		0EB8269A2918B4AF00CA626A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EB826982918B4AF00CA626A /* Main.storyboard */; };
@@ -75,12 +91,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E843CE0291F70C000D7D259 /* BirthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthViewModel.swift; sourceTree = "<group>"; };
 		0EAE3330291B6AAF00AA4FE6 /* Certification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Certification.swift; sourceTree = "<group>"; };
 		0EAE3332291B722F00AA4FE6 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		0EAE3334291B917200AA4FE6 /* LineTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTextFieldView.swift; sourceTree = "<group>"; };
 		0EAE3336291BA07200AA4FE6 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		0EAE3338291BA9D800AA4FE6 /* CertificationTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationTextFieldView.swift; sourceTree = "<group>"; };
 		0EAE333A291BC27C00AA4FE6 /* LineTextFieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTextFieldType.swift; sourceTree = "<group>"; };
+		0EAE333F291CCEB700AA4FE6 /* SignupType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupType.swift; sourceTree = "<group>"; };
+		0EAE3341291CD0E400AA4FE6 /* NickNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameViewController.swift; sourceTree = "<group>"; };
+		0EAE3343291CD2B700AA4FE6 /* BirthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthViewController.swift; sourceTree = "<group>"; };
+		0EAE3345291CD30F00AA4FE6 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
+		0EAE3347291CD31B00AA4FE6 /* GenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewController.swift; sourceTree = "<group>"; };
+		0EAE334A291CD42A00AA4FE6 /* NickNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameViewModel.swift; sourceTree = "<group>"; };
+		0EAE334D291CD76A00AA4FE6 /* NickNameCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameCoordinator.swift; sourceTree = "<group>"; };
+		0EAE334F291CDD3E00AA4FE6 /* NickNameCoordinatorContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameCoordinatorContext.swift; sourceTree = "<group>"; };
+		0EAE3353291CE8B000AA4FE6 /* BirthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthCoordinator.swift; sourceTree = "<group>"; };
+		0EAE3355291CE8F100AA4FE6 /* BirthCoordinatorContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthCoordinatorContext.swift; sourceTree = "<group>"; };
+		0EAE3358291CEA8E00AA4FE6 /* EmailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCoordinator.swift; sourceTree = "<group>"; };
+		0EAE335A291CEA9800AA4FE6 /* EmailCoordinatorContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCoordinatorContext.swift; sourceTree = "<group>"; };
+		0EAE335D291CEC3000AA4FE6 /* GenderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderCoordinator.swift; sourceTree = "<group>"; };
+		0EAE335F291CEC5300AA4FE6 /* GenderCoordinatorContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderCoordinatorContext.swift; sourceTree = "<group>"; };
+		0EAE3365291D045600AA4FE6 /* BirthLineTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthLineTextFieldView.swift; sourceTree = "<group>"; };
 		0EB8268F2918B4AF00CA626A /* StudyMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EB826922918B4AF00CA626A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EB826942918B4AF00CA626A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -181,6 +213,73 @@
 			path = Certification;
 			sourceTree = "<group>";
 		};
+		0EAE333C291CCD5C00AA4FE6 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				0EAE3341291CD0E400AA4FE6 /* NickNameViewController.swift */,
+				0EAE3343291CD2B700AA4FE6 /* BirthViewController.swift */,
+				0EAE3345291CD30F00AA4FE6 /* EmailViewController.swift */,
+				0EAE3347291CD31B00AA4FE6 /* GenderViewController.swift */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
+		0EAE3349291CD40B00AA4FE6 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				0EAE334A291CD42A00AA4FE6 /* NickNameViewModel.swift */,
+				0E843CE0291F70C000D7D259 /* BirthViewModel.swift */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
+		0EAE334C291CD73500AA4FE6 /* SignupCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				0EAE3351291CE88800AA4FE6 /* NickName */,
+				0EAE3352291CE89000AA4FE6 /* Birth */,
+				0EAE3357291CEA7F00AA4FE6 /* Email */,
+				0EAE335C291CEC2000AA4FE6 /* Gender */,
+			);
+			path = SignupCoordinator;
+			sourceTree = "<group>";
+		};
+		0EAE3351291CE88800AA4FE6 /* NickName */ = {
+			isa = PBXGroup;
+			children = (
+				0EAE334D291CD76A00AA4FE6 /* NickNameCoordinator.swift */,
+				0EAE334F291CDD3E00AA4FE6 /* NickNameCoordinatorContext.swift */,
+			);
+			path = NickName;
+			sourceTree = "<group>";
+		};
+		0EAE3352291CE89000AA4FE6 /* Birth */ = {
+			isa = PBXGroup;
+			children = (
+				0EAE3353291CE8B000AA4FE6 /* BirthCoordinator.swift */,
+				0EAE3355291CE8F100AA4FE6 /* BirthCoordinatorContext.swift */,
+			);
+			path = Birth;
+			sourceTree = "<group>";
+		};
+		0EAE3357291CEA7F00AA4FE6 /* Email */ = {
+			isa = PBXGroup;
+			children = (
+				0EAE3358291CEA8E00AA4FE6 /* EmailCoordinator.swift */,
+				0EAE335A291CEA9800AA4FE6 /* EmailCoordinatorContext.swift */,
+			);
+			path = Email;
+			sourceTree = "<group>";
+		};
+		0EAE335C291CEC2000AA4FE6 /* Gender */ = {
+			isa = PBXGroup;
+			children = (
+				0EAE335D291CEC3000AA4FE6 /* GenderCoordinator.swift */,
+				0EAE335F291CEC5300AA4FE6 /* GenderCoordinatorContext.swift */,
+			);
+			path = Gender;
+			sourceTree = "<group>";
+		};
 		0EB826862918B4AF00CA626A = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +376,7 @@
 				0EB8270A291A2B0000CA626A /* Tabbar */,
 				0EB826F12919668900CA626A /* Onboarding */,
 				0EB826F22919669600CA626A /* Certification */,
+				0EAE333C291CCD5C00AA4FE6 /* Signup */,
 				0EB8270F291A319F00CA626A /* Home */,
 			);
 			path = Presents;
@@ -287,6 +387,7 @@
 			children = (
 				0EB8271E291A745B00CA626A /* OnBoarding */,
 				0EAE332F291B65FC00AA4FE6 /* Certification */,
+				0EAE3349291CD40B00AA4FE6 /* Signup */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -344,6 +445,7 @@
 				0EB8270B291A2CAD00CA626A /* TabBarItem.swift */,
 				0EAE3330291B6AAF00AA4FE6 /* Certification.swift */,
 				0EAE333A291BC27C00AA4FE6 /* LineTextFieldType.swift */,
+				0EAE333F291CCEB700AA4FE6 /* SignupType.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -383,6 +485,7 @@
 				0EB826E8291932E500CA626A /* keywordButton.swift */,
 				0EB82719291A486300CA626A /* LineHeightLabel.swift */,
 				0EAE3334291B917200AA4FE6 /* LineTextFieldView.swift */,
+				0EAE3365291D045600AA4FE6 /* BirthLineTextFieldView.swift */,
 				0EAE3338291BA9D800AA4FE6 /* CertificationTextFieldView.swift */,
 			);
 			path = Custom;
@@ -396,6 +499,7 @@
 				0EB827002919F86900CA626A /* AppCoordinator */,
 				0EB827012919F89100CA626A /* OnBoardingCoordinator */,
 				0EB827022919F89E00CA626A /* CertificationCoordinator */,
+				0EAE334C291CD73500AA4FE6 /* SignupCoordinator */,
 				0EB827032919F8AA00CA626A /* MainCoordinator */,
 				0EB82712291A31E900CA626A /* HomeCoordinator */,
 			);
@@ -749,33 +853,41 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EB8271D291A4DC800CA626A /* OnBoardingCollectionViewCell.swift in Sources */,
+				0EAE3366291D045600AA4FE6 /* BirthLineTextFieldView.swift in Sources */,
 				0EB82711291A31B500CA626A /* HomeViewController.swift in Sources */,
 				0EAE3339291BA9D800AA4FE6 /* CertificationTextFieldView.swift in Sources */,
 				0EAE333B291BC27C00AA4FE6 /* LineTextFieldType.swift in Sources */,
 				0EB826FF2919F7F400CA626A /* BaseCoordinatorContext.swift in Sources */,
 				0EB826FB2919736F00CA626A /* CertificationCoordinator.swift in Sources */,
+				0EAE334E291CD76A00AA4FE6 /* NickNameCoordinator.swift in Sources */,
 				0EB826E12918F42200CA626A /* SelectButton.swift in Sources */,
 				0EB826F5291966C900CA626A /* TabbarViewController.swift in Sources */,
 				0EAE3333291B722F00AA4FE6 /* UITextField+Extension.swift in Sources */,
 				0EB8271A291A486300CA626A /* LineHeightLabel.swift in Sources */,
+				0EAE335E291CEC3000AA4FE6 /* GenderCoordinator.swift in Sources */,
 				0EAE3337291BA07200AA4FE6 /* String+Extension.swift in Sources */,
 				0EB8270C291A2CAD00CA626A /* TabBarItem.swift in Sources */,
 				0EB82716291A328800CA626A /* HomeCoordinatorContext.swift in Sources */,
 				0EB82707291A28E400CA626A /* CertificationViewController.swift in Sources */,
 				0EB826F029193CE800CA626A /* AppCoordinator.swift in Sources */,
 				0EB826D12918E1C900CA626A /* BaseViewController.swift in Sources */,
+				0EAE334B291CD42A00AA4FE6 /* NickNameViewModel.swift in Sources */,
 				0EB826DE2918E2E400CA626A /* Color.swift in Sources */,
 				0EB82709291A299A00CA626A /* CertificationCoordinatorContext.swift in Sources */,
+				0EAE3346291CD30F00AA4FE6 /* EmailViewController.swift in Sources */,
 				0EB826FD2919737B00CA626A /* MainCoordinator.swift in Sources */,
+				0EAE3342291CD0E400AA4FE6 /* NickNameViewController.swift in Sources */,
 				0EB826E9291932E500CA626A /* keywordButton.swift in Sources */,
 				0EB826E329191D2000CA626A /* SDSSelectButton.swift in Sources */,
 				0EB826D32918E29500CA626A /* BaseView.swift in Sources */,
 				0EAE3331291B6AAF00AA4FE6 /* Certification.swift in Sources */,
 				0EB826F7291966E500CA626A /* OnBoardingViewController.swift in Sources */,
+				0E843CE1291F70C000D7D259 /* BirthViewModel.swift in Sources */,
 				0EB82718291A46B100CA626A /* UILabel+Extension.swift in Sources */,
 				0EB826932918B4AF00CA626A /* AppDelegate.swift in Sources */,
 				0EB826EE29193B3600CA626A /* Coordinator.swift in Sources */,
 				0EB826DD2918E2E400CA626A /* Font.swift in Sources */,
+				0EAE3340291CCEB700AA4FE6 /* SignupType.swift in Sources */,
 				0EB82722291A88B000CA626A /* AppCoordinatorContext.swift in Sources */,
 				0EB826F92919736500CA626A /* OnBoardingCoordinator.swift in Sources */,
 				0EB82714291A320F00CA626A /* HomeCoordinator.swift in Sources */,
@@ -783,8 +895,16 @@
 				0EB8270E291A2E5E00CA626A /* MainCoordinatorContext.swift in Sources */,
 				0EB82720291A746F00CA626A /* CertificationViewModel.swift in Sources */,
 				0EB826952918B4AF00CA626A /* SceneDelegate.swift in Sources */,
+				0EAE3344291CD2B700AA4FE6 /* BirthViewController.swift in Sources */,
 				0EAE3335291B917200AA4FE6 /* LineTextFieldView.swift in Sources */,
+				0EAE3350291CDD3E00AA4FE6 /* NickNameCoordinatorContext.swift in Sources */,
+				0EAE3356291CE8F100AA4FE6 /* BirthCoordinatorContext.swift in Sources */,
+				0EAE3348291CD31B00AA4FE6 /* GenderViewController.swift in Sources */,
+				0EAE3359291CEA8E00AA4FE6 /* EmailCoordinator.swift in Sources */,
+				0EAE335B291CEA9800AA4FE6 /* EmailCoordinatorContext.swift in Sources */,
+				0EAE3354291CE8B000AA4FE6 /* BirthCoordinator.swift in Sources */,
 				0EB826D52918E2C600CA626A /* BaseCollectionViewCell.swift in Sources */,
+				0EAE3360291CEC5300AA4FE6 /* GenderCoordinatorContext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

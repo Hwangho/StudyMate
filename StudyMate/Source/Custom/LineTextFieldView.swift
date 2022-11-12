@@ -16,36 +16,12 @@ class LineTextFieldView: BaseView {
     let textField = UITextField()
     
     let lineView = UIView()
-    
-    /// variable
-    let type: LineTextFieldType
-    
-    
-    /// initialization
-    init(type: LineTextFieldType) {
-        self.type = type
-        super.init(frame: .zero)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+
     
     /// Life Cycle
     override func setupAttributes() {
         lineView.backgroundColor = Color.BaseColor.gray3
-        textField.placeholder = type.placholder
         textField.setupFont(type: .Title4_R14)
-        
-        switch type {
-        case .inputphoneNumber:
-            textField.keyboardType = .phonePad
-        case .nickName:
-            print("nucname")
-        case .email:
-            print("email")
-        }
     }
     
     override func setupLayout() {
@@ -59,7 +35,7 @@ class LineTextFieldView: BaseView {
         }
         
         lineView.snp.makeConstraints { make in
-            make.top.equalTo(textField.snp.bottom).offset(10)
+            make.top.equalTo(textField.snp.bottom).offset(12)
             make.bottom.horizontalEdges.equalToSuperview()
             make.height.equalTo(1)
         }
