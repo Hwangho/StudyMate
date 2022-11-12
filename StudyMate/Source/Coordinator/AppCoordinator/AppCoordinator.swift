@@ -55,7 +55,8 @@ class AppCoordinator: Coordinator {
             
         case .certification:
             presenter = UINavigationController()
-            firstStartCertification(prsent: presenter)
+            startBirth()
+//            firstStartCertification(prsent: presenter)
             self.window.rootViewController = presenter
             
         case .main:
@@ -77,6 +78,8 @@ class AppCoordinator: Coordinator {
 
 // MARK: - OnBoarding
 extension AppCoordinator: OnBoardingCoordinatorContext { }
+
+extension AppCoordinator: BirthCoordinatorContext {}
 
 
 // MARK: - Certification
