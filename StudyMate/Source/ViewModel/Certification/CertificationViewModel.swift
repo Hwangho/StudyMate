@@ -7,6 +7,7 @@
 
 import UIKit
 
+import FirebaseAuth
 import RxSwift
 import RxRelay
 
@@ -45,10 +46,13 @@ class CertificationViewModel {
     
     var disposeBag = DisposeBag()
     
+    let service: CertificationServiceprotocool
+    
     
     /// initialization
-    init(store: Store = Store()) {
+    init(store: Store = Store(), service: CertificationServiceprotocool = CertificationService()) {
         self.store = store
+        self.service = service
         
         action
             .flatMapLatest(mutate)
@@ -97,6 +101,8 @@ class CertificationViewModel {
             switch type {
             case .phoneNumber:
                 /// api 통신으로 전화번호 보내고 error 없이 잘 받아오면 True 넘기기  안되면 error 도 같이 보내줘야 될듯!!
+                service.verifyPhoneNumber(phoneNumber: store.phoneNumber!)
+                
                 return .just(.reciveMessage(true))
                 
             case .certificationNumber:
