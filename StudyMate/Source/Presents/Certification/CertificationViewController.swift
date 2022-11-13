@@ -179,6 +179,18 @@ class CertificationViewController: BaseViewController {
                 }
                 .disposed(by: disposeBag)
             
+//            viewModel.currentStore
+//                .distinctUntilChanged { $0.checkReciveMessage }
+//                .map { $0.checkReciveMessage }
+//                .subscribe { value in
+//                    switch value {
+//                    case .success(let value):
+//                        print("성공")
+//                    case .error(let error):
+//                        print("error")
+//                    }
+//                }
+            
             viewModel.currentStore
                 .distinctUntilChanged{ $0.checkReciveMessage }
                 .map{ $0.checkReciveMessage }
