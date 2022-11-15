@@ -55,8 +55,7 @@ class AppCoordinator: Coordinator {
             
         case .certification:
             presenter = UINavigationController()
-            startBirth()
-//            firstStartCertification(prsent: presenter)
+            firstStartCertification(prsent: presenter)
             self.window.rootViewController = presenter
             
         case .main:

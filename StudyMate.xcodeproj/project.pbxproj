@@ -10,6 +10,10 @@
 		0E843CE1291F70C000D7D259 /* BirthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E843CE0291F70C000D7D259 /* BirthViewModel.swift */; };
 		0E843CF32920AB0400D7D259 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E843CF22920AB0400D7D259 /* GoogleService-Info.plist */; };
 		0E843CF52920AF0900D7D259 /* CertificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E843CF42920AF0900D7D259 /* CertificationService.swift */; };
+		0EA9E3C62920C79C00FFC0D5 /* LocalUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA9E3C52920C79C00FFC0D5 /* LocalUserDefaults.swift */; };
+		0EA9E3C82922CB7800FFC0D5 /* UserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA9E3C72922CB7800FFC0D5 /* UserRouter.swift */; };
+		0EA9E3CA2922CBEB00FFC0D5 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA9E3C92922CBEB00FFC0D5 /* APIKeys.swift */; };
+		0EA9E3CC2922E0E700FFC0D5 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA9E3CB2922E0E700FFC0D5 /* UserRepository.swift */; };
 		0EAE3331291B6AAF00AA4FE6 /* Certification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE3330291B6AAF00AA4FE6 /* Certification.swift */; };
 		0EAE3333291B722F00AA4FE6 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE3332291B722F00AA4FE6 /* UITextField+Extension.swift */; };
 		0EAE3335291B917200AA4FE6 /* LineTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE3334291B917200AA4FE6 /* LineTextFieldView.swift */; };
@@ -70,6 +74,7 @@
 		0EB8271D291A4DC800CA626A /* OnBoardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB8271C291A4DC800CA626A /* OnBoardingCollectionViewCell.swift */; };
 		0EB82720291A746F00CA626A /* CertificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB8271F291A746F00CA626A /* CertificationViewModel.swift */; };
 		0EB82722291A88B000CA626A /* AppCoordinatorContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB82721291A88B000CA626A /* AppCoordinatorContext.swift */; };
+		0EE856F72922ECC900EA9AE5 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE856F62922ECC900EA9AE5 /* UserService.swift */; };
 		33FCF15BF2A2AFDB12681E71 /* Pods_StudyMate_StudyMateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C2F97C840E6D1D34A9BFCC7 /* Pods_StudyMate_StudyMateUITests.framework */; };
 		6197C0DDB0AB2B1E96EA203F /* Pods_StudyMateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BAA7A9CF80E6040823CED8F /* Pods_StudyMateTests.framework */; };
 		DDA35DA2CEDB8AB2628858BD /* Pods_StudyMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A7669B0A6210A7BFBA7D74 /* Pods_StudyMate.framework */; };
@@ -97,6 +102,10 @@
 		0E843CF22920AB0400D7D259 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0E843CF42920AF0900D7D259 /* CertificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationService.swift; sourceTree = "<group>"; };
 		0EA9E3C42920C39D00FFC0D5 /* StudyMate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StudyMate.entitlements; sourceTree = "<group>"; };
+		0EA9E3C52920C79C00FFC0D5 /* LocalUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUserDefaults.swift; sourceTree = "<group>"; };
+		0EA9E3C72922CB7800FFC0D5 /* UserRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRouter.swift; sourceTree = "<group>"; };
+		0EA9E3C92922CBEB00FFC0D5 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		0EA9E3CB2922E0E700FFC0D5 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		0EAE3330291B6AAF00AA4FE6 /* Certification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Certification.swift; sourceTree = "<group>"; };
 		0EAE3332291B722F00AA4FE6 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		0EAE3334291B917200AA4FE6 /* LineTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTextFieldView.swift; sourceTree = "<group>"; };
@@ -161,6 +170,7 @@
 		0EB8271C291A4DC800CA626A /* OnBoardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		0EB8271F291A746F00CA626A /* CertificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationViewModel.swift; sourceTree = "<group>"; };
 		0EB82721291A88B000CA626A /* AppCoordinatorContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorContext.swift; sourceTree = "<group>"; };
+		0EE856F62922ECC900EA9AE5 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		12585CB0DD1706A6930D932D /* Pods-StudyMate-StudyMateUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMate-StudyMateUITests.debug.xcconfig"; path = "Target Support Files/Pods-StudyMate-StudyMateUITests/Pods-StudyMate-StudyMateUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2368E47E329355D01685A4EA /* Pods-StudyMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMate.release.xcconfig"; path = "Target Support Files/Pods-StudyMate/Pods-StudyMate.release.xcconfig"; sourceTree = "<group>"; };
 		2C2F97C840E6D1D34A9BFCC7 /* Pods_StudyMate_StudyMateUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyMate_StudyMateUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -344,8 +354,8 @@
 				0EB826CD2918E12F00CA626A /* Enum */,
 				0EB826EC29193AE100CA626A /* Coordinator */,
 				0EB826CB2918E11300CA626A /* Extension */,
-				0EB826C92918E0F200CA626A /* Repository */,
 				0EB826C82918E0EB00CA626A /* Service */,
+				0EB826C92918E0F200CA626A /* Repository */,
 				0EB826C72918E0D800CA626A /* Router */,
 				0EB826D62918E2E400CA626A /* Constants */,
 				0EB826DF2918F31D00CA626A /* Custom */,
@@ -402,6 +412,7 @@
 		0EB826C72918E0D800CA626A /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				0EA9E3C72922CB7800FFC0D5 /* UserRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -410,6 +421,7 @@
 			isa = PBXGroup;
 			children = (
 				0E843CF42920AF0900D7D259 /* CertificationService.swift */,
+				0EE856F62922ECC900EA9AE5 /* UserService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -417,6 +429,7 @@
 		0EB826C92918E0F200CA626A /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				0EA9E3CB2922E0E700FFC0D5 /* UserRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -480,6 +493,8 @@
 		0EB826D62918E2E400CA626A /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				0EA9E3C92922CBEB00FFC0D5 /* APIKeys.swift */,
+				0EA9E3C52920C79C00FFC0D5 /* LocalUserDefaults.swift */,
 				0EB826D92918E2E400CA626A /* Font.swift */,
 				0EB826DA2918E2E400CA626A /* Color.swift */,
 			);
@@ -870,8 +885,10 @@
 				0EB826FB2919736F00CA626A /* CertificationCoordinator.swift in Sources */,
 				0EAE334E291CD76A00AA4FE6 /* NickNameCoordinator.swift in Sources */,
 				0EB826E12918F42200CA626A /* SelectButton.swift in Sources */,
+				0EA9E3CA2922CBEB00FFC0D5 /* APIKeys.swift in Sources */,
 				0EB826F5291966C900CA626A /* TabbarViewController.swift in Sources */,
 				0EAE3333291B722F00AA4FE6 /* UITextField+Extension.swift in Sources */,
+				0EA9E3C62920C79C00FFC0D5 /* LocalUserDefaults.swift in Sources */,
 				0EB8271A291A486300CA626A /* LineHeightLabel.swift in Sources */,
 				0E843CF52920AF0900D7D259 /* CertificationService.swift in Sources */,
 				0EAE335E291CEC3000AA4FE6 /* GenderCoordinator.swift in Sources */,
@@ -885,6 +902,7 @@
 				0EB826DE2918E2E400CA626A /* Color.swift in Sources */,
 				0EB82709291A299A00CA626A /* CertificationCoordinatorContext.swift in Sources */,
 				0EAE3346291CD30F00AA4FE6 /* EmailViewController.swift in Sources */,
+				0EA9E3C82922CB7800FFC0D5 /* UserRouter.swift in Sources */,
 				0EB826FD2919737B00CA626A /* MainCoordinator.swift in Sources */,
 				0EAE3342291CD0E400AA4FE6 /* NickNameViewController.swift in Sources */,
 				0EB826E9291932E500CA626A /* keywordButton.swift in Sources */,
@@ -893,6 +911,7 @@
 				0EAE3331291B6AAF00AA4FE6 /* Certification.swift in Sources */,
 				0EB826F7291966E500CA626A /* OnBoardingViewController.swift in Sources */,
 				0E843CE1291F70C000D7D259 /* BirthViewModel.swift in Sources */,
+				0EE856F72922ECC900EA9AE5 /* UserService.swift in Sources */,
 				0EB82718291A46B100CA626A /* UILabel+Extension.swift in Sources */,
 				0EB826932918B4AF00CA626A /* AppDelegate.swift in Sources */,
 				0EB826EE29193B3600CA626A /* Coordinator.swift in Sources */,
@@ -906,6 +925,7 @@
 				0EB82720291A746F00CA626A /* CertificationViewModel.swift in Sources */,
 				0EB826952918B4AF00CA626A /* SceneDelegate.swift in Sources */,
 				0EAE3344291CD2B700AA4FE6 /* BirthViewController.swift in Sources */,
+				0EA9E3CC2922E0E700FFC0D5 /* UserRepository.swift in Sources */,
 				0EAE3335291B917200AA4FE6 /* LineTextFieldView.swift in Sources */,
 				0EAE3350291CDD3E00AA4FE6 /* NickNameCoordinatorContext.swift in Sources */,
 				0EAE3356291CE8F100AA4FE6 /* BirthCoordinatorContext.swift in Sources */,
