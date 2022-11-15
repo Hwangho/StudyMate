@@ -7,6 +7,7 @@
 
 import UIKit
 
+import FirebaseAuth
 import SnapKit
 import RxSwift
 import RxCocoa
@@ -156,20 +157,42 @@ class CertificationViewController: BaseViewController {
                     self?.phonNumberTextFieldView.focusTexField(value: value)}
                 .disposed(by: disposeBag)
             
+//            DoneButton.rx.tap
+//                .map { CertificationViewModel.Action.doneButton(.phoneNumber) }
+//                .bind(to: viewModel.action)
+//                .disposed(by: disposeBag)
+            
             DoneButton.rx.tap
-                .map {
-                    CertificationViewModel.Action.doneButton(.phoneNumber) }
-                .bind(to: viewModel.action)
+                .bind{ [weak self] in
+                    var value = self?.viewModel.store.phoneNumber
+                    value?.removeFirst()
+                    let phoneNumber = "+82" + (value ?? "")
+
+                    PhoneAuthProvider.provider().verifyPhoneNumber("+1 650-555-1111", uiDelegate: nil) { verificationID, error in
+                        if let error = error {
+                            // 여기서 error handling
+                            print(error)
+                        }
+
+                        if let verificationID = verificationID {
+                            LocalUserDefaults.shared.set(key: .verificationID, value: verificationID)
+                            self?.coordinator!.nextCertification(type: .certificationNumber)
+                        }
+                    }
+                }
                 .disposed(by: disposeBag)
+            
             
             /// State
             viewModel.currentStore
                 .map { $0.checkNumberValid }
-                .distinctUntilChanged()
                 .bind { [weak self] value in
                     let type: SDSSelectButton = value ? .fill : .disable
-                    self?.DoneButton.setupAttribute(type: type)}
+                    self?.DoneButton.setupAttribute(type: type)
+                    self?.DoneButton.isEnabled = value
+                }
                 .disposed(by: disposeBag)
+            
             
             viewModel.currentStore
                 .map{ $0.phoneNumber }
@@ -178,6 +201,30 @@ class CertificationViewController: BaseViewController {
                     self?.phonNumberTextFieldView.textField.text = text.applyPatternOnNumbers()
                 }
                 .disposed(by: disposeBag)
+            
+//            viewModel.currentStore
+//                .distinctUntilChanged{ $0.checkReciveMessage }
+//                .map{ $0.checkReciveMessage }
+//                .subscribe { [weak self] istrue in
+//                    if istrue {
+//                        self?.coordinator!.nextCertification(type: .certificationNumber)
+//                    }
+//                }
+//                .disposed(by: disposeBag)
+            
+//            viewModel.currentStore
+//                .map { $0.checkReciveMessage }
+//                .subscribe { <#Single<String>?#> in
+//                    <#code#>
+//                } onError: { <#Error#> in
+//                    <#code#>
+//                } onCompleted: {
+//                    <#code#>
+//                } onDisposed: {
+//                    <#code#>
+//                }
+
+            
             
 //            viewModel.currentStore
 //                .distinctUntilChanged { $0.checkReciveMessage }
@@ -190,24 +237,14 @@ class CertificationViewController: BaseViewController {
 //                        print("error")
 //                    }
 //                }
-            
-            viewModel.currentStore
-                .distinctUntilChanged{ $0.checkReciveMessage }
-                .map{ $0.checkReciveMessage }
-                .subscribe { [weak self] istrue in
-                    if istrue {
-                        self?.coordinator!.nextCertification(type: .certificationNumber)
-                    }
-                }
-                .disposed(by: disposeBag)
+        
             
         case .certificationNumber:
             /// Action
             NumberTextFieldView.textField.rx.text
                 .orEmpty
                 .distinctUntilChanged()
-                .map{
-                    CertificationViewModel.Action.inputText(.certificationNumber, $0) }
+                .map{ CertificationViewModel.Action.inputText(.certificationNumber, $0) }
                 .bind(to: viewModel.action)
                 .disposed(by: disposeBag)
             
@@ -228,12 +265,57 @@ class CertificationViewController: BaseViewController {
                 .bind(to: viewModel.action)
                 .disposed(by: disposeBag)
             
+            DoneButton.rx.tap
+                .bind { [weak self] in
+                    /// 인증번호 누르고 입력!!
+                    
+                    let verificationID: String? = LocalUserDefaults.shared.value(key: .verificationID)
+                    
+                    let credential = PhoneAuthProvider.provider().credential(
+                        withVerificationID: verificationID!,
+                        verificationCode: (self?.viewModel.store.certificationNumber)!
+                    )
+                    
+                    Auth.auth().signIn(with: credential) { authData, error in
+                        
+                        if let error = error {
+                            guard let errorCode = (error as? NSError)?.code else {return}
+                            print("errorCode: \(errorCode)")
+                        }
+                        
+                        print(authData)
+                        
+                        let currentUser = Auth.auth().currentUser
+                        currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
+                            if let error = error {
+                                print(error)
+                                return
+                            }
+                            
+                            LocalUserDefaults.shared.set(key: .FirebaseidToken, value: idToken)
+                            
+                            print(idToken)
+                            
+                            self?.viewModel.userservice.signin()
+                                .subscribe(onSuccess: { user in
+                                    self?.coordinator?.startNickName()
+                                }, onFailure: { error in
+                                    print(error)
+                                })
+                                .disposed(by: self!.disposeBag)
+                        }
+                    }
+                }
+                .disposed(by: disposeBag)
+        
             /// State
             viewModel.currentStore
                 .map { $0.checkNumberValid }
                 .bind { [weak self] value in
                     let type: SDSSelectButton = value ? .fill : .disable
-                    self?.DoneButton.setupAttribute(type: type)}
+                    self?.DoneButton.setupAttribute(type: type)
+                    self?.DoneButton.isEnabled = value
+                }
                 .disposed(by: disposeBag)
             
             viewModel.currentStore
@@ -244,15 +326,15 @@ class CertificationViewController: BaseViewController {
                 }
                 .disposed(by: disposeBag)
             
-            viewModel.currentStore
-                .distinctUntilChanged{ $0.checkCertification }
-                .map{ $0.checkCertification }
-                .subscribe { [weak self] istrue in
-                    if istrue {
-                        self?.coordinator!.startNickName()
-                    }
-                }
-                .disposed(by: disposeBag)
+//            viewModel.currentStore
+//                .distinctUntilChanged{ $0.checkCertification }
+//                .map{ $0.checkCertification }
+//                .subscribe { [weak self] istrue in
+//                    if istrue {
+//                        self?.coordinator!.startNickName()
+//                    }
+//                }
+//                .disposed(by: disposeBag)
         }
     }
     

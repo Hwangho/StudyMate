@@ -59,21 +59,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-
 }
 
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
-
+    
     // token 정보를 확인하고 싶다면 해당 Func을 실행하시면 됩니다~! (FCM registration token)
     func checkToken() {
         Messaging.messaging().token { token, error in
-          if let error = error {
-            print("Error fetching FCM registration token: \(error)")
-          } else if let token = token {
-            print("FCM registration token: \(token)")
-          }
+            if let error = error {
+                print("Error fetching FCM registration token: \(error)")
+            } else if let token = token {
+                print("FCM registration token: \(token)")
+                LocalUserDefaults.shared.set(key: .FCMToken, value: token)
+            }
         }
     }
 }
@@ -83,7 +82,7 @@ extension AppDelegate {
     // UIKit은 앱을 APN에 성공적으로 등록한 후 이 메서드를 호출
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         // Firebase 에서 대리자로 APNs 토큰을 설정해주는 곳
-          Messaging.messaging().apnsToken = deviceToken
+        Messaging.messaging().apnsToken = deviceToken
     }
 }
 
