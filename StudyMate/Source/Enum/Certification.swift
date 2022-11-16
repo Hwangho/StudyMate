@@ -33,10 +33,4 @@ enum Certification {
         }
     }
     
-    var nextType: Certification? {
-        switch self {
-        case .phoneNumber: return .certificationNumber
-        case .certificationNumber: return nil
-        }
-    }
 }

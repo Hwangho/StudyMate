@@ -8,7 +8,7 @@
 import Foundation
 
 
-enum SignupType {
+enum SignupType: Hashable {
     case nickname
     case birth
     case email
@@ -38,12 +38,4 @@ enum SignupType {
         }
     }
     
-    var nextType: SignupType? {
-        switch self {
-        case .nickname: return .birth
-        case .birth: return .email
-        case .email: return .gender
-        case .gender: return nil
-        }
-    }
 }

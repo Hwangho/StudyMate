@@ -129,13 +129,13 @@ class BirthViewController: BaseViewController {
         
         DoneButton.rx.tap
             .bind{ [weak self] in
+                LocalUserDefaults.shared.set(key: .birth, value: self?.viewModel.store.birthDay)
                 self?.coordinator?.startEmail()
             }
             .disposed(by: disposeBag)
             
         /// State
         viewModel.currentStore
-//            .distinctUntilChanged { $0.birthDay }
             .map { ($0.year, $0.month, $0.day) }
             .bind { [weak self] (year, month, day) in
                 self?.yearTextFieldView.textField.text = year
@@ -168,7 +168,6 @@ class BirthViewController: BaseViewController {
         components.calendar = calendar
 
         // datePicker max 날짜 세팅 -> 오늘 날짜 에서
-        //
         components.year = -1
         components.month = 12
         let maxDate = calendar.date(byAdding: components, to: currentDate)!

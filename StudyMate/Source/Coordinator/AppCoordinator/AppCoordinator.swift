@@ -7,6 +7,8 @@
 
 import UIKit
 
+import RxSwift
+
 
 class AppCoordinator: Coordinator {
     
@@ -28,19 +30,24 @@ class AppCoordinator: Coordinator {
     
     var tabbar: TabbarViewController
     
+    var service: UserServiceProtocool
+    
+    var disposeBag = DisposeBag()
+    
     
     /// initialziation
     init(window: UIWindow) {
         self.window = window
         self.childCoordinators = []
         self.presenter = UINavigationController()
-        self .tabbar = TabbarViewController()
+        self.tabbar = TabbarViewController()
+        self.service = UserService()
     }
     
     func start(animated: Bool = true) {
-//        var type: InitalViewType = UserDefaults.standard.bool(forKey: "checkEnterboarding") ? .onBoarding: .certification
+        let value: Bool? = LocalUserDefaults.shared.value(key: .onBoarding)
         
-        let type: InitalViewType = .certification
+        let type: InitalViewType = value == nil ? .onBoarding : .certification
         showInitialView(with: type)
     }
     
@@ -55,7 +62,14 @@ class AppCoordinator: Coordinator {
             
         case .certification:
             presenter = UINavigationController()
-            firstStartCertification(prsent: presenter)
+            
+            let value: String? = LocalUserDefaults.shared.value(key: .FirebaseidToken)
+            if value == nil {
+                firstStartCertification(prsent: presenter)
+            } else {
+                firstStartNickName(present: presenter)
+            }
+            
             self.window.rootViewController = presenter
             
         case .main:
@@ -78,6 +92,8 @@ class AppCoordinator: Coordinator {
 // MARK: - OnBoarding
 extension AppCoordinator: OnBoardingCoordinatorContext { }
 
+
+// MARK: - Birth
 extension AppCoordinator: BirthCoordinatorContext {}
 
 
@@ -87,3 +103,15 @@ extension AppCoordinator: CertificationCoordinatorContext { }
 
 // MARK: - Mian
 extension AppCoordinator: MainCoordinatorContext { }
+
+
+// MARK: - NickName
+extension AppCoordinator: NickNameCoordinatorContext { }
+
+
+
+
+
+
+
+extension AppCoordinator: GenderCoordinatorContext {}

@@ -11,6 +11,7 @@ import FirebaseAuth
 import SnapKit
 import RxSwift
 import RxCocoa
+import Moya
 
 
 class CertificationViewController: BaseViewController {
@@ -157,31 +158,27 @@ class CertificationViewController: BaseViewController {
                     self?.phonNumberTextFieldView.focusTexField(value: value)}
                 .disposed(by: disposeBag)
             
-//            DoneButton.rx.tap
-//                .map { CertificationViewModel.Action.doneButton(.phoneNumber) }
-//                .bind(to: viewModel.action)
-//                .disposed(by: disposeBag)
-            
             DoneButton.rx.tap
                 .bind{ [weak self] in
                     var value = self?.viewModel.store.phoneNumber
                     value?.removeFirst()
                     let phoneNumber = "+82" + (value ?? "")
-
-                    PhoneAuthProvider.provider().verifyPhoneNumber("+1 650-555-1111", uiDelegate: nil) { verificationID, error in
+                    LocalUserDefaults.shared.set(key: .phoneNumber, value: phoneNumber)
+                    
+                    PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
                         if let error = error {
-                            // 여기서 error handling
-                            print(error)
+                            self?.showAlertMessage(title: error.localizedDescription)
+                            return
                         }
 
                         if let verificationID = verificationID {
                             LocalUserDefaults.shared.set(key: .verificationID, value: verificationID)
+                            
                             self?.coordinator!.nextCertification(type: .certificationNumber)
                         }
                     }
                 }
                 .disposed(by: disposeBag)
-            
             
             /// State
             viewModel.currentStore
@@ -202,44 +199,8 @@ class CertificationViewController: BaseViewController {
                 }
                 .disposed(by: disposeBag)
             
-//            viewModel.currentStore
-//                .distinctUntilChanged{ $0.checkReciveMessage }
-//                .map{ $0.checkReciveMessage }
-//                .subscribe { [weak self] istrue in
-//                    if istrue {
-//                        self?.coordinator!.nextCertification(type: .certificationNumber)
-//                    }
-//                }
-//                .disposed(by: disposeBag)
-            
-//            viewModel.currentStore
-//                .map { $0.checkReciveMessage }
-//                .subscribe { <#Single<String>?#> in
-//                    <#code#>
-//                } onError: { <#Error#> in
-//                    <#code#>
-//                } onCompleted: {
-//                    <#code#>
-//                } onDisposed: {
-//                    <#code#>
-//                }
-
-            
-            
-//            viewModel.currentStore
-//                .distinctUntilChanged { $0.checkReciveMessage }
-//                .map { $0.checkReciveMessage }
-//                .subscribe { value in
-//                    switch value {
-//                    case .success(let value):
-//                        print("성공")
-//                    case .error(let error):
-//                        print("error")
-//                    }
-//                }
-        
-            
         case .certificationNumber:
+            
             /// Action
             NumberTextFieldView.textField.rx.text
                 .orEmpty
@@ -279,11 +240,11 @@ class CertificationViewController: BaseViewController {
                     Auth.auth().signIn(with: credential) { authData, error in
                         
                         if let error = error {
-                            guard let errorCode = (error as? NSError)?.code else {return}
-                            print("errorCode: \(errorCode)")
+                            let errorCode = (error as NSError).code
+                            let type = ServerError.init(rawValue: errorCode) ?? ServerError.error
+                            self?.showAlertMessage(title: type.message)
+                            return
                         }
-                        
-                        print(authData)
                         
                         let currentUser = Auth.auth().currentUser
                         currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
@@ -294,20 +255,30 @@ class CertificationViewController: BaseViewController {
                             
                             LocalUserDefaults.shared.set(key: .FirebaseidToken, value: idToken)
                             
-                            print(idToken)
-                            
                             self?.viewModel.userservice.signin()
-                                .subscribe(onSuccess: { user in
-                                    self?.coordinator?.startNickName()
+                                .subscribe(onSuccess: { _ in
+                                    /// 이미 가입 되어 있을 경우!! 로그인 성공
+                                    self?.coordinator?.showInitialView(with: .main)
                                 }, onFailure: { error in
-                                    print(error)
+                                    
+                                    let moyaError: MoyaError? = error as? MoyaError
+                                    let response : Response? = moyaError?.response
+                                    let statusCode : Int? = response?.statusCode
+                                    
+                                    let type = ServerError.init(rawValue: statusCode!) ?? ServerError.error
+                                    switch type {
+                                    case .noneSignup:
+                                        self?.coordinator?.startNickName()
+                                    default:
+                                        self?.showAlertMessage(title: type.message)
+                                    }
                                 })
                                 .disposed(by: self!.disposeBag)
                         }
                     }
                 }
                 .disposed(by: disposeBag)
-        
+            
             /// State
             viewModel.currentStore
                 .map { $0.checkNumberValid }
@@ -326,15 +297,6 @@ class CertificationViewController: BaseViewController {
                 }
                 .disposed(by: disposeBag)
             
-//            viewModel.currentStore
-//                .distinctUntilChanged{ $0.checkCertification }
-//                .map{ $0.checkCertification }
-//                .subscribe { [weak self] istrue in
-//                    if istrue {
-//                        self?.coordinator!.startNickName()
-//                    }
-//                }
-//                .disposed(by: disposeBag)
         }
     }
     

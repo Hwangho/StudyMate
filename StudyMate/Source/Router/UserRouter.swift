@@ -53,7 +53,7 @@ extension UserRouter: TargetType {
         case .signin:
             return .requestParameters(
                 parameters: self.parameters,
-                encoding: JSONEncoding.default)
+                encoding: URLEncoding.default)
             
         default: return .requestPlain
         }
@@ -63,15 +63,20 @@ extension UserRouter: TargetType {
         let idToken: String? = LocalUserDefaults.shared.value(key: .FirebaseidToken)
         
         switch self {
-        case .signin, .signup:
+        case .signin:
             return [
                 "Content-Type": "application/json",
+                "idtoken": "\(idToken ?? "")"
+            ]
+            
+        case .signup:
+            return [
+                "Content-Type": "application/x-www-form-urlencoded",
                 "idtoken": "\(idToken ?? "")"
             ]
             
         default: return  ["Content-Type": "application/x-www-form-urlencoded"]
         }
     }
-    
     
 }

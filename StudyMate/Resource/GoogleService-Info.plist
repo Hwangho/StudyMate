@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>128915966971-3tm464hj8t5tko9eg9626jk5pn2qksv8.apps.googleusercontent.com</string>
+	<string>355153590205-t8u7u644sesms399b5iunjeskdccbt08.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.128915966971-3tm464hj8t5tko9eg9626jk5pn2qksv8</string>
+	<string>com.googleusercontent.apps.355153590205-t8u7u644sesms399b5iunjeskdccbt08</string>
 	<key>API_KEY</key>
-	<string>AIzaSyA6Aozxzzbas3PA5nNgVS6Ae3kDquqSHJA</string>
+	<string>AIzaSyAfEkILibfqCV19V2JrJGbmfG17eRLmP4U</string>
 	<key>GCM_SENDER_ID</key>
-	<string>128915966971</string>
+	<string>355153590205</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.hwanghooo.StudyMate</string>
+	<string>com.memolease.sesacslp</string>
 	<key>PROJECT_ID</key>
-	<string>studymate-2b503</string>
+	<string>sesac-1</string>
 	<key>STORAGE_BUCKET</key>
-	<string>studymate-2b503.appspot.com</string>
+	<string>sesac-1.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:128915966971:ios:208cc74c8e91270b65d95e</string>
+	<string>1:355153590205:ios:5d4a8ca9947951ab9e04d4</string>
 </dict>
 </plist>

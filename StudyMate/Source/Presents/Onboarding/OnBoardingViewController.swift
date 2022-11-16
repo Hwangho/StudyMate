@@ -70,6 +70,7 @@ final class OnBoardingViewController: BaseViewController {
     /// Custom Func
     @objc
     private func tuchStartButton() {
+        LocalUserDefaults.shared.set(key: .onBoarding, value: true)
         coordinator?.showInitialView(with: .certification)
     }
     
