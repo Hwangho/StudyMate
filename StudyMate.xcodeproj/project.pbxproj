@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0E843CE1291F70C000D7D259 /* BirthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E843CE0291F70C000D7D259 /* BirthViewModel.swift */; };
-		0E843CF32920AB0400D7D259 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E843CF22920AB0400D7D259 /* GoogleService-Info.plist */; };
 		0E843CF52920AF0900D7D259 /* CertificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E843CF42920AF0900D7D259 /* CertificationService.swift */; };
 		0EA9E3C62920C79C00FFC0D5 /* LocalUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA9E3C52920C79C00FFC0D5 /* LocalUserDefaults.swift */; };
 		0EA9E3C82922CB7800FFC0D5 /* UserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA9E3C72922CB7800FFC0D5 /* UserRouter.swift */; };
@@ -75,6 +74,13 @@
 		0EB82720291A746F00CA626A /* CertificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB8271F291A746F00CA626A /* CertificationViewModel.swift */; };
 		0EB82722291A88B000CA626A /* AppCoordinatorContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB82721291A88B000CA626A /* AppCoordinatorContext.swift */; };
 		0EE856F72922ECC900EA9AE5 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE856F62922ECC900EA9AE5 /* UserService.swift */; };
+		0EE856F9292316D600EA9AE5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0EE856F8292316D600EA9AE5 /* GoogleService-Info.plist */; };
+		0EE856FB2923218500EA9AE5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE856FA2923218500EA9AE5 /* User.swift */; };
+		0EE856FD29240A0C00EA9AE5 /* ServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE856FC29240A0C00EA9AE5 /* ServerError.swift */; };
+		0EE856FF29240B0200EA9AE5 /* EmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE856FE29240B0200EA9AE5 /* EmailViewModel.swift */; };
+		0EE8570129240B0900EA9AE5 /* GenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE8570029240B0900EA9AE5 /* GenderViewModel.swift */; };
+		0EE8570429246FFF00EA9AE5 /* GenderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE8570329246FFF00EA9AE5 /* GenderCollectionViewCell.swift */; };
+		0EE857062924D27F00EA9AE5 /* ResponseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE857052924D27E00EA9AE5 /* ResponseWrapper.swift */; };
 		33FCF15BF2A2AFDB12681E71 /* Pods_StudyMate_StudyMateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C2F97C840E6D1D34A9BFCC7 /* Pods_StudyMate_StudyMateUITests.framework */; };
 		6197C0DDB0AB2B1E96EA203F /* Pods_StudyMateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BAA7A9CF80E6040823CED8F /* Pods_StudyMateTests.framework */; };
 		DDA35DA2CEDB8AB2628858BD /* Pods_StudyMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A7669B0A6210A7BFBA7D74 /* Pods_StudyMate.framework */; };
@@ -99,7 +105,6 @@
 
 /* Begin PBXFileReference section */
 		0E843CE0291F70C000D7D259 /* BirthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthViewModel.swift; sourceTree = "<group>"; };
-		0E843CF22920AB0400D7D259 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0E843CF42920AF0900D7D259 /* CertificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationService.swift; sourceTree = "<group>"; };
 		0EA9E3C42920C39D00FFC0D5 /* StudyMate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StudyMate.entitlements; sourceTree = "<group>"; };
 		0EA9E3C52920C79C00FFC0D5 /* LocalUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUserDefaults.swift; sourceTree = "<group>"; };
@@ -171,6 +176,13 @@
 		0EB8271F291A746F00CA626A /* CertificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationViewModel.swift; sourceTree = "<group>"; };
 		0EB82721291A88B000CA626A /* AppCoordinatorContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorContext.swift; sourceTree = "<group>"; };
 		0EE856F62922ECC900EA9AE5 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		0EE856F8292316D600EA9AE5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0EE856FA2923218500EA9AE5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0EE856FC29240A0C00EA9AE5 /* ServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerError.swift; sourceTree = "<group>"; };
+		0EE856FE29240B0200EA9AE5 /* EmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewModel.swift; sourceTree = "<group>"; };
+		0EE8570029240B0900EA9AE5 /* GenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewModel.swift; sourceTree = "<group>"; };
+		0EE8570329246FFF00EA9AE5 /* GenderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderCollectionViewCell.swift; sourceTree = "<group>"; };
+		0EE857052924D27E00EA9AE5 /* ResponseWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseWrapper.swift; sourceTree = "<group>"; };
 		12585CB0DD1706A6930D932D /* Pods-StudyMate-StudyMateUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMate-StudyMateUITests.debug.xcconfig"; path = "Target Support Files/Pods-StudyMate-StudyMateUITests/Pods-StudyMate-StudyMateUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2368E47E329355D01685A4EA /* Pods-StudyMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMate.release.xcconfig"; path = "Target Support Files/Pods-StudyMate/Pods-StudyMate.release.xcconfig"; sourceTree = "<group>"; };
 		2C2F97C840E6D1D34A9BFCC7 /* Pods_StudyMate_StudyMateUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyMate_StudyMateUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -244,6 +256,8 @@
 			children = (
 				0EAE334A291CD42A00AA4FE6 /* NickNameViewModel.swift */,
 				0E843CE0291F70C000D7D259 /* BirthViewModel.swift */,
+				0EE856FE29240B0200EA9AE5 /* EmailViewModel.swift */,
+				0EE8570029240B0900EA9AE5 /* GenderViewModel.swift */,
 			);
 			path = Signup;
 			sourceTree = "<group>";
@@ -367,7 +381,7 @@
 		0EB826C32918C32E00CA626A /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				0E843CF22920AB0400D7D259 /* GoogleService-Info.plist */,
+				0EE856F8292316D600EA9AE5 /* GoogleService-Info.plist */,
 				0EB826CE2918E13E00CA626A /* Font */,
 				0EB826A02918B4B000CA626A /* Info.plist */,
 				0EB8269B2918B4B000CA626A /* Assets.xcassets */,
@@ -437,6 +451,7 @@
 		0EB826CA2918E10B00CA626A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0EE856FA2923218500EA9AE5 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -455,6 +470,7 @@
 			isa = PBXGroup;
 			children = (
 				0EB8271B291A4DB400CA626A /* OnBoardingCell */,
+				0EE8570229246FF100EA9AE5 /* GenderCell */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -467,6 +483,7 @@
 				0EAE3330291B6AAF00AA4FE6 /* Certification.swift */,
 				0EAE333A291BC27C00AA4FE6 /* LineTextFieldType.swift */,
 				0EAE333F291CCEB700AA4FE6 /* SignupType.swift */,
+				0EE856FC29240A0C00EA9AE5 /* ServerError.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -497,6 +514,7 @@
 				0EA9E3C52920C79C00FFC0D5 /* LocalUserDefaults.swift */,
 				0EB826D92918E2E400CA626A /* Font.swift */,
 				0EB826DA2918E2E400CA626A /* Color.swift */,
+				0EE857052924D27E00EA9AE5 /* ResponseWrapper.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -619,6 +637,14 @@
 			children = (
 			);
 			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		0EE8570229246FF100EA9AE5 /* GenderCell */ = {
+			isa = PBXGroup;
+			children = (
+				0EE8570329246FFF00EA9AE5 /* GenderCollectionViewCell.swift */,
+			);
+			path = GenderCell;
 			sourceTree = "<group>";
 		};
 		337E82F4AEEF8310B9651173 /* Pods */ = {
@@ -748,7 +774,7 @@
 				0EB826E72919214900CA626A /* NotoSansKR-Medium.otf in Resources */,
 				0EB826E62919214900CA626A /* NotoSansKR-Regular.otf in Resources */,
 				0EB8269A2918B4AF00CA626A /* Main.storyboard in Resources */,
-				0E843CF32920AB0400D7D259 /* GoogleService-Info.plist in Resources */,
+				0EE856F9292316D600EA9AE5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -884,13 +910,17 @@
 				0EB826FF2919F7F400CA626A /* BaseCoordinatorContext.swift in Sources */,
 				0EB826FB2919736F00CA626A /* CertificationCoordinator.swift in Sources */,
 				0EAE334E291CD76A00AA4FE6 /* NickNameCoordinator.swift in Sources */,
+				0EE856FB2923218500EA9AE5 /* User.swift in Sources */,
 				0EB826E12918F42200CA626A /* SelectButton.swift in Sources */,
 				0EA9E3CA2922CBEB00FFC0D5 /* APIKeys.swift in Sources */,
 				0EB826F5291966C900CA626A /* TabbarViewController.swift in Sources */,
 				0EAE3333291B722F00AA4FE6 /* UITextField+Extension.swift in Sources */,
+				0EE856FD29240A0C00EA9AE5 /* ServerError.swift in Sources */,
+				0EE8570129240B0900EA9AE5 /* GenderViewModel.swift in Sources */,
 				0EA9E3C62920C79C00FFC0D5 /* LocalUserDefaults.swift in Sources */,
 				0EB8271A291A486300CA626A /* LineHeightLabel.swift in Sources */,
 				0E843CF52920AF0900D7D259 /* CertificationService.swift in Sources */,
+				0EE856FF29240B0200EA9AE5 /* EmailViewModel.swift in Sources */,
 				0EAE335E291CEC3000AA4FE6 /* GenderCoordinator.swift in Sources */,
 				0EAE3337291BA07200AA4FE6 /* String+Extension.swift in Sources */,
 				0EB8270C291A2CAD00CA626A /* TabBarItem.swift in Sources */,
@@ -917,6 +947,7 @@
 				0EB826EE29193B3600CA626A /* Coordinator.swift in Sources */,
 				0EB826DD2918E2E400CA626A /* Font.swift in Sources */,
 				0EAE3340291CCEB700AA4FE6 /* SignupType.swift in Sources */,
+				0EE857062924D27F00EA9AE5 /* ResponseWrapper.swift in Sources */,
 				0EB82722291A88B000CA626A /* AppCoordinatorContext.swift in Sources */,
 				0EB826F92919736500CA626A /* OnBoardingCoordinator.swift in Sources */,
 				0EB82714291A320F00CA626A /* HomeCoordinator.swift in Sources */,
@@ -925,6 +956,7 @@
 				0EB82720291A746F00CA626A /* CertificationViewModel.swift in Sources */,
 				0EB826952918B4AF00CA626A /* SceneDelegate.swift in Sources */,
 				0EAE3344291CD2B700AA4FE6 /* BirthViewController.swift in Sources */,
+				0EE8570429246FFF00EA9AE5 /* GenderCollectionViewCell.swift in Sources */,
 				0EA9E3CC2922E0E700FFC0D5 /* UserRepository.swift in Sources */,
 				0EAE3335291B917200AA4FE6 /* LineTextFieldView.swift in Sources */,
 				0EAE3350291CDD3E00AA4FE6 /* NickNameCoordinatorContext.swift in Sources */,

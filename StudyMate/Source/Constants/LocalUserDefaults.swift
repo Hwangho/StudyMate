@@ -8,10 +8,17 @@
 import Foundation
 
 
-enum UserDefaultsType: String {
+enum UserDefaultsType: String, CaseIterable {
+    case onBoarding
     case verificationID
     case FirebaseidToken
     case FCMToken
+    
+    case phoneNumber
+    case nickName
+    case birth
+    case email
+    case gender
 }
 
 final class LocalUserDefaults {
@@ -30,6 +37,13 @@ final class LocalUserDefaults {
     
     func remove(key: UserDefaultsType) {
         self.userDefaults.set(nil, forKey: key.rawValue)
+    }
+    
+    func checkUserDefualt() {
+        UserDefaultsType.allCases.forEach { type in
+            let value = self.userDefaults.object(forKey: type.rawValue) as? Any
+            print("\(type.rawValue): \(value)")
+        } 
     }
 
 }

@@ -106,39 +106,16 @@ class CertificationViewModel {
                 /// api 통신으로 전화번호 보내고 error 없이 잘 받아오면 True 넘기기  안되면 error 도 같이 보내줘야 될듯!!
                 store.phoneNumber?.removeFirst()
                 let phoneNumber = "+82" + (store.phoneNumber ?? "")
-
+                
                 return service.verifyPhoneNumber(phoneNumber: phoneNumber)
                     .asObservable()
                     .map { value in
                         LocalUserDefaults.shared.set(key: .FirebaseidToken, value: value)
                         return .reciveMessage(true)
                     }
-              
-                
-                // phoneNumber
-//                service.verifyPhoneNumber(phoneNumber: "+16505551111")
-//                    .subscribe { value in
-//                        LocalUserDefaults.shared.set(key: .FirebaseidToken, value: value)
-//                    } onFailure: { error in
-//                        <#code#>
-//                    }
-//                    .disposed(by: disposeBag)
-                
-//                return .just(.reciveMessage(true))
                 
             case .certificationNumber:
-                ///  인증번호 확인 & 서버에 인증 되었는지 체크!
-                
-                
-//                service.signin()
-//                    .asObservable()
-//                    .map { response -> Mutation in
-//                        guard response?.data != nil else {
-//                            
-//                        }
-//                        return .set
-//                        
-//                    }
+                ///  인증번호 확인 & 서버에 인증 되었는지 체크!                
                 return .just(.reciveCertification(true))
             }
         }

@@ -9,24 +9,29 @@ import RxSwift
 
 
 protocol UserServiceProtocool {
+    
     func signin() -> Single<ResponseWrapper<User>?>
+    func signup(_ phoneNumber: String, _ nick: String, _ birth: String, _ email: String, _ gender: Int) -> Single<ResponseWrapper<Int>?>
 }
 
 
 struct UserService: UserServiceProtocool {
 
-    
     let repository: UserRepositoryPorotocool
     
     init(repository: UserRepositoryPorotocool = UserRepository()) {
         self.repository = repository
     }
     
-    func signin() -> RxSwift.Single<ResponseWrapper<User>?> {
+    func signin() -> Single<ResponseWrapper<User>?>{
         return repository
             .signin()
             .map { $0 }
-//            .catchErrorJustReturn(nil)
     }
     
+    func signup(_ phoneNumber: String, _ nick: String, _ birth: String, _ email: String, _ gender: Int) -> Single<ResponseWrapper<Int>?> {
+        return repository
+            .signup(phoneNumber, nick, birth, email, gender)
+            .map { $0 }
+    }
 }

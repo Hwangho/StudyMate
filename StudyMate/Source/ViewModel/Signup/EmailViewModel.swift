@@ -1,8 +1,8 @@
 //
-//  NickNameViewModel.swift
+//  EmailViewModel.swift
 //  StudyMate
 //
-//  Created by 송황호 on 2022/11/10.
+//  Created by 송황호 on 2022/11/16.
 //
 
 import UIKit
@@ -11,20 +11,22 @@ import RxSwift
 import RxRelay
 
 
-class NickNameViewModel {
+class EmailViewModel {
     
     enum Action {
-        case inputText(String)
+        case inputEmail(String)
     }
     
     enum Mutation {
-        case setNickName(String)
-        case setTextValid(Bool)
+        case setEmail(String)
+        case setEmailValid(Bool)
     }
     
     struct Store {
-        var nickName: String?
-        var checkNickNameValid = false
+        var email: String?
+        
+        var checEmailValid = false
+        
     }
     
     
@@ -53,29 +55,23 @@ class NickNameViewModel {
     /// mutate, action
     private func mutate(_ action: Action) -> Observable<Mutation> {
         switch action {
-        case .inputText(let text):
-            var text = text
-            if text.count > 11 {
-                let index = text.index(text.startIndex, offsetBy: 11)
-                text = String(text[..<index])
-            }
+        case .inputEmail(let text):
             
-            let valid =  text.count >= 2 && text.count <= 10 ? true : false
+            
             
             return .concat([
-                Observable.just(.setNickName(text)),
-                Observable.just(.setTextValid(valid))
+                .just(.setEmail(text)),
+                .just(.setEmailValid(text.isvalidEmail))
             ])
         }
     }
     
     private func reduce(_ mutation: Mutation) -> Observable<Store> {
         switch mutation {
-        case .setNickName(let text):
-            store.nickName = text
-            
-        case .setTextValid(let value):
-            store.checkNickNameValid = value
+        case .setEmail(let email):
+            store.email = email
+        case .setEmailValid(let value):
+            store.checEmailValid = value
         }
         return .just(store)
     }

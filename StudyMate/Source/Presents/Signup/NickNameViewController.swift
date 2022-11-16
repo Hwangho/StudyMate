@@ -126,12 +126,20 @@ class NickNameViewController: BaseViewController {
         
         DoneButton.rx.tap
             .bind{ [weak self] in
+                LocalUserDefaults.shared.set(key: .nickName, value: self?.viewModel.store.nickName)
                     self?.coordinator?.startBirth()
             }
             .disposed(by: disposeBag)
         
         /// State
-        
+        viewModel.currentStore
+            .distinctUntilChanged{$0.checkNickNameValid}
+            .map { $0.checkNickNameValid }
+            .bind { [weak self] value in
+                self?.DoneButton.isEnabled = value
+                self?.DoneButton.setupAttribute(type: value ? .fill : .disable)
+            }
+            .disposed(by: disposeBag)
         
     }
     
