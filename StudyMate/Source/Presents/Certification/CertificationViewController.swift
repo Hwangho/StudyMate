@@ -173,7 +173,6 @@ class CertificationViewController: BaseViewController {
 
                         if let verificationID = verificationID {
                             LocalUserDefaults.shared.set(key: .verificationID, value: verificationID)
-                            
                             self?.coordinator!.nextCertification(type: .certificationNumber)
                         }
                     }
@@ -184,9 +183,7 @@ class CertificationViewController: BaseViewController {
             viewModel.currentStore
                 .map { $0.checkNumberValid }
                 .bind { [weak self] value in
-                    let type: SDSSelectButton = value ? .fill : .disable
-                    self?.DoneButton.setupAttribute(type: type)
-                    self?.DoneButton.isEnabled = value
+                    self?.DoneButton.ButtonisEnabled(value: value)
                 }
                 .disposed(by: disposeBag)
             
@@ -283,9 +280,7 @@ class CertificationViewController: BaseViewController {
             viewModel.currentStore
                 .map { $0.checkNumberValid }
                 .bind { [weak self] value in
-                    let type: SDSSelectButton = value ? .fill : .disable
-                    self?.DoneButton.setupAttribute(type: type)
-                    self?.DoneButton.isEnabled = value
+                    self?.DoneButton.ButtonisEnabled(value: value)
                 }
                 .disposed(by: disposeBag)
             

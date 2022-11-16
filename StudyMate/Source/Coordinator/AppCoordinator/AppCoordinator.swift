@@ -69,7 +69,7 @@ class AppCoordinator: Coordinator {
             } else {
                 firstStartNickName(present: presenter)
             }
-            
+//            firstStartNickName(present: presenter)
             self.window.rootViewController = presenter
             
         case .main:

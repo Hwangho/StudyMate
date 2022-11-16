@@ -136,8 +136,7 @@ class NickNameViewController: BaseViewController {
             .distinctUntilChanged{$0.checkNickNameValid}
             .map { $0.checkNickNameValid }
             .bind { [weak self] value in
-                self?.DoneButton.isEnabled = value
-                self?.DoneButton.setupAttribute(type: value ? .fill : .disable)
+                self?.DoneButton.ButtonisEnabled(value: value)
             }
             .disposed(by: disposeBag)
         

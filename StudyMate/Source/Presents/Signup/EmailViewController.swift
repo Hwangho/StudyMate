@@ -138,9 +138,7 @@ class EmailViewController: BaseViewController {
         viewModel.currentStore
             .map { $0.checEmailValid }
             .bind { [weak self] value in
-                let type: SDSSelectButton = value ? .fill : .disable
-                self?.DoneButton.setupAttribute(type: type)
-                self?.DoneButton.isEnabled = value
+                self?.DoneButton.ButtonisEnabled(value: value)
             }
             .disposed(by: disposeBag)
     }
