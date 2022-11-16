@@ -238,7 +238,7 @@ class CertificationViewController: BaseViewController {
                         
                         if let error = error {
                             let errorCode = (error as NSError).code
-                            let type = ServerError.init(rawValue: errorCode) ?? ServerError.error
+                            let type = ServerWrapper.init(rawValue: errorCode) ?? ServerWrapper.error
                             self?.showAlertMessage(title: type.message)
                             return
                         }
@@ -262,7 +262,7 @@ class CertificationViewController: BaseViewController {
                                     let response : Response? = moyaError?.response
                                     let statusCode : Int? = response?.statusCode
                                     
-                                    let type = ServerError.init(rawValue: statusCode!) ?? ServerError.error
+                                    let type = ServerWrapper.init(rawValue: statusCode!) ?? ServerWrapper.error
                                     switch type {
                                     case .noneSignup:
                                         self?.coordinator?.startNickName()
@@ -287,7 +287,7 @@ class CertificationViewController: BaseViewController {
             viewModel.currentStore
                 .map { $0.certificationNumber }
                 .bind { [weak self] text in
-                    guard let text = text else { return }
+//                    guard let text = text else { return }
                     self?.NumberTextFieldView.textField.text = text
                 }
                 .disposed(by: disposeBag)

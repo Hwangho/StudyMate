@@ -107,7 +107,7 @@ class CertificationViewModel {
                 store.phoneNumber?.removeFirst()
                 let phoneNumber = "+82" + (store.phoneNumber ?? "")
                 
-                return service.verifyPhoneNumber(phoneNumber: phoneNumber)
+                return service.verifyPhoneNumber(phoneNumber: "+821066841636")
                     .asObservable()
                     .map { value in
                         LocalUserDefaults.shared.set(key: .FirebaseidToken, value: value)

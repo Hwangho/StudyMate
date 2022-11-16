@@ -167,17 +167,22 @@ class BirthViewController: BaseViewController {
         components.calendar = calendar
 
         // datePicker max 날짜 세팅 -> 오늘 날짜 에서
-        components.year = -1
+        
+        
+        components.year = -18
         components.month = 12
         let maxDate = calendar.date(byAdding: components, to: currentDate)!
 
         // datePicker min 날짜 세팅 -> 30년 전 까지
         //
-        components.year = -18
+        components.year = -90
         let minDate = calendar.date(byAdding: components, to: currentDate)!
 
-        pickerView.minimumDate = minDate
         pickerView.maximumDate = maxDate
+        pickerView.minimumDate = minDate
     }
     
 }
+
+
+

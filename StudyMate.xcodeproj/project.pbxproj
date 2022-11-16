@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0E843CE1291F70C000D7D259 /* BirthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E843CE0291F70C000D7D259 /* BirthViewModel.swift */; };
 		0E843CF52920AF0900D7D259 /* CertificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E843CF42920AF0900D7D259 /* CertificationService.swift */; };
+		0E8A2305292549600073E261 /* SplachViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8A2304292549600073E261 /* SplachViewController.swift */; };
+		0E8A230829254B230073E261 /* SplachviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8A230729254B230073E261 /* SplachviewModel.swift */; };
 		0EA9E3C62920C79C00FFC0D5 /* LocalUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA9E3C52920C79C00FFC0D5 /* LocalUserDefaults.swift */; };
 		0EA9E3C82922CB7800FFC0D5 /* UserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA9E3C72922CB7800FFC0D5 /* UserRouter.swift */; };
 		0EA9E3CA2922CBEB00FFC0D5 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA9E3C92922CBEB00FFC0D5 /* APIKeys.swift */; };
@@ -76,7 +78,7 @@
 		0EE856F72922ECC900EA9AE5 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE856F62922ECC900EA9AE5 /* UserService.swift */; };
 		0EE856F9292316D600EA9AE5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0EE856F8292316D600EA9AE5 /* GoogleService-Info.plist */; };
 		0EE856FB2923218500EA9AE5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE856FA2923218500EA9AE5 /* User.swift */; };
-		0EE856FD29240A0C00EA9AE5 /* ServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE856FC29240A0C00EA9AE5 /* ServerError.swift */; };
+		0EE856FD29240A0C00EA9AE5 /* ServerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE856FC29240A0C00EA9AE5 /* ServerWrapper.swift */; };
 		0EE856FF29240B0200EA9AE5 /* EmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE856FE29240B0200EA9AE5 /* EmailViewModel.swift */; };
 		0EE8570129240B0900EA9AE5 /* GenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE8570029240B0900EA9AE5 /* GenderViewModel.swift */; };
 		0EE8570429246FFF00EA9AE5 /* GenderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE8570329246FFF00EA9AE5 /* GenderCollectionViewCell.swift */; };
@@ -106,6 +108,8 @@
 /* Begin PBXFileReference section */
 		0E843CE0291F70C000D7D259 /* BirthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthViewModel.swift; sourceTree = "<group>"; };
 		0E843CF42920AF0900D7D259 /* CertificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationService.swift; sourceTree = "<group>"; };
+		0E8A2304292549600073E261 /* SplachViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplachViewController.swift; sourceTree = "<group>"; };
+		0E8A230729254B230073E261 /* SplachviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplachviewModel.swift; sourceTree = "<group>"; };
 		0EA9E3C42920C39D00FFC0D5 /* StudyMate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StudyMate.entitlements; sourceTree = "<group>"; };
 		0EA9E3C52920C79C00FFC0D5 /* LocalUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUserDefaults.swift; sourceTree = "<group>"; };
 		0EA9E3C72922CB7800FFC0D5 /* UserRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRouter.swift; sourceTree = "<group>"; };
@@ -178,7 +182,7 @@
 		0EE856F62922ECC900EA9AE5 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		0EE856F8292316D600EA9AE5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0EE856FA2923218500EA9AE5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		0EE856FC29240A0C00EA9AE5 /* ServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerError.swift; sourceTree = "<group>"; };
+		0EE856FC29240A0C00EA9AE5 /* ServerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerWrapper.swift; sourceTree = "<group>"; };
 		0EE856FE29240B0200EA9AE5 /* EmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewModel.swift; sourceTree = "<group>"; };
 		0EE8570029240B0900EA9AE5 /* GenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewModel.swift; sourceTree = "<group>"; };
 		0EE8570329246FFF00EA9AE5 /* GenderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -230,6 +234,22 @@
 				8BAA7A9CF80E6040823CED8F /* Pods_StudyMateTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0E8A23032925494F0073E261 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				0E8A2304292549600073E261 /* SplachViewController.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		0E8A230629254B160073E261 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				0E8A230729254B230073E261 /* SplachviewModel.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 		0EAE332F291B65FC00AA4FE6 /* Certification */ = {
@@ -404,6 +424,7 @@
 		0EB826C52918E08A00CA626A /* Presents */ = {
 			isa = PBXGroup;
 			children = (
+				0E8A23032925494F0073E261 /* Splash */,
 				0EB8270A291A2B0000CA626A /* Tabbar */,
 				0EB826F12919668900CA626A /* Onboarding */,
 				0EB826F22919669600CA626A /* Certification */,
@@ -416,6 +437,7 @@
 		0EB826C62918E0C800CA626A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				0E8A230629254B160073E261 /* Splash */,
 				0EB8271E291A745B00CA626A /* OnBoarding */,
 				0EAE332F291B65FC00AA4FE6 /* Certification */,
 				0EAE3349291CD40B00AA4FE6 /* Signup */,
@@ -483,7 +505,7 @@
 				0EAE3330291B6AAF00AA4FE6 /* Certification.swift */,
 				0EAE333A291BC27C00AA4FE6 /* LineTextFieldType.swift */,
 				0EAE333F291CCEB700AA4FE6 /* SignupType.swift */,
-				0EE856FC29240A0C00EA9AE5 /* ServerError.swift */,
+				0EE856FC29240A0C00EA9AE5 /* ServerWrapper.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -923,7 +945,7 @@
 				0EA9E3CA2922CBEB00FFC0D5 /* APIKeys.swift in Sources */,
 				0EB826F5291966C900CA626A /* TabbarViewController.swift in Sources */,
 				0EAE3333291B722F00AA4FE6 /* UITextField+Extension.swift in Sources */,
-				0EE856FD29240A0C00EA9AE5 /* ServerError.swift in Sources */,
+				0EE856FD29240A0C00EA9AE5 /* ServerWrapper.swift in Sources */,
 				0EE8570129240B0900EA9AE5 /* GenderViewModel.swift in Sources */,
 				0EA9E3C62920C79C00FFC0D5 /* LocalUserDefaults.swift in Sources */,
 				0EB8271A291A486300CA626A /* LineHeightLabel.swift in Sources */,
@@ -935,6 +957,7 @@
 				0EB82716291A328800CA626A /* HomeCoordinatorContext.swift in Sources */,
 				0EB82707291A28E400CA626A /* CertificationViewController.swift in Sources */,
 				0EB826F029193CE800CA626A /* AppCoordinator.swift in Sources */,
+				0E8A2305292549600073E261 /* SplachViewController.swift in Sources */,
 				0EB826D12918E1C900CA626A /* BaseViewController.swift in Sources */,
 				0EAE334B291CD42A00AA4FE6 /* NickNameViewModel.swift in Sources */,
 				0EB826DE2918E2E400CA626A /* Color.swift in Sources */,
@@ -963,6 +986,7 @@
 				0EB8270E291A2E5E00CA626A /* MainCoordinatorContext.swift in Sources */,
 				0EB82720291A746F00CA626A /* CertificationViewModel.swift in Sources */,
 				0EB826952918B4AF00CA626A /* SceneDelegate.swift in Sources */,
+				0E8A230829254B230073E261 /* SplachviewModel.swift in Sources */,
 				0EAE3344291CD2B700AA4FE6 /* BirthViewController.swift in Sources */,
 				0EE8570429246FFF00EA9AE5 /* GenderCollectionViewCell.swift in Sources */,
 				0EA9E3CC2922E0E700FFC0D5 /* UserRepository.swift in Sources */,

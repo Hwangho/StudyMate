@@ -60,7 +60,7 @@ class BirthViewModel {
         case .inputBirth(let date):
             
             let BirthFormatter = DateFormatter()
-            BirthFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" // 2020.08.13 오후 04시 30분  2002-01-16T09:23:44.054Z
+            BirthFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" // 2020.08.13 오후 04시 30분  2002-01-16T09:23:44.054Z
             BirthFormatter.locale = Locale(identifier:"ko_KR") // PM, AM을 언어에 맞게 setting (ex: PM -> 오후)
             let Birth = BirthFormatter.string(from: date)
             
