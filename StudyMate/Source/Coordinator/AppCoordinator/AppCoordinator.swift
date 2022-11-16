@@ -13,6 +13,7 @@ import RxSwift
 class AppCoordinator: Coordinator {
     
     enum InitalViewType {
+        case splash
         case onBoarding
         case certification
         case main
@@ -55,6 +56,9 @@ class AppCoordinator: Coordinator {
     /// Custom Func
     func showInitialView(with type: InitalViewType) {
         switch type {
+        case .splash:
+            showSplash(window: window)
+            
         case .onBoarding:
             presenter = UINavigationController()
             firstStartOnBoarding(present: presenter)
@@ -69,7 +73,6 @@ class AppCoordinator: Coordinator {
             } else {
                 firstStartNickName(present: presenter)
             }
-//            firstStartNickName(present: presenter)
             self.window.rootViewController = presenter
             
         case .main:
@@ -87,6 +90,10 @@ class AppCoordinator: Coordinator {
     }
     
 }
+
+
+// MARK: - Splash
+extension AppCoordinator: SplachCoordinatorContext { }
 
 
 // MARK: - OnBoarding

@@ -138,7 +138,23 @@ class GenderViewController: BaseViewController {
             .bind { [weak self] value in
                 self?.DoneButton.ButtonisEnabled(value: value)
             }
-            .disposed(by: disposeBag)   
+            .disposed(by: disposeBag)
+        
+        viewModel.currentStore
+            .distinctUntilChanged{ $0.errorType }
+            .map { $0.errorType }
+            .bind { [weak self] type in
+                guard let type = type else { return }
+                switch type {
+                case .FireBaseToken:
+                    self?.fireBaseIDTokenRefresh()
+                    self?.viewModel.action.accept(.doneButton)
+                default:
+                    self?.showAlertMessage(title: type.message)
+                }
+            }
+            .disposed(by: disposeBag)
+            
     }
     
 }

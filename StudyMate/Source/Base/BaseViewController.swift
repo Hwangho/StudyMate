@@ -9,6 +9,7 @@
 import UIKit
 
 import RxSwift
+import FirebaseAuth
 
 
 class BaseViewController: UIViewController {
@@ -142,4 +143,19 @@ extension BaseViewController {
         alert.addAction(ok)
         present(alert, animated: true)
     }
+    
+    
+    func fireBaseIDTokenRefresh() {
+        let currentUser = Auth.auth().currentUser
+        currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
+          if let error = error {
+            // Handle error
+              print(error)
+            return
+          }
+            
+            LocalUserDefaults.shared.set(key: .FirebaseidToken, value: idToken)
+        }
+    }
 }
+

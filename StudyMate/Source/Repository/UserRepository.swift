@@ -14,8 +14,8 @@ protocol UserRepositoryPorotocool {
     
     typealias SingleResponse = Single<Response>
     
-    func signin() -> Single<ResponseWrapper<User>>
-    func signup(_ phoneNumber: String, _ nick: String, _ birth: String, _ email: String, _ gender: Int) -> Single<ResponseWrapper<Int>>
+    func signin() -> Single<Response>
+    func signup(_ phoneNumber: String, _ nick: String, _ birth: String, _ email: String, _ gender: Int) -> Single<Response>
 }
 
 struct UserRepository: UserRepositoryPorotocool {
@@ -27,13 +27,13 @@ struct UserRepository: UserRepositoryPorotocool {
     }
     
     
-    func signin() -> Single<ResponseWrapper<User>> {
+    func signin() -> Single<Response> {
         return provider.rx.request(.signin)
-            .map(ResponseWrapper<User>.self)
+//            .map(ResponseWrapper<User>.self)
     }
     
-    func signup(_ phoneNumber: String, _ nick: String, _ birth: String, _ email: String, _ gender: Int) -> Single<ResponseWrapper<Int>> {
+    func signup(_ phoneNumber: String, _ nick: String, _ birth: String, _ email: String, _ gender: Int) -> Single<Response> {
         return provider.rx.request(.signup(phoneNumber, nick, birth, email, gender))
-            .map(ResponseWrapper<Int>.self)
+            
     }
 }

@@ -7,10 +7,10 @@
 
 import UIKit
 
-import RxSwift
-import RxRelay
-
 import Moya
+import RxSwift
+import RxCocoa
+import RxRelay
 
 
 class GenderViewModel {
@@ -24,16 +24,16 @@ class GenderViewModel {
         case setGender(Int)
         case setGenderValid(Bool)
         
-        case setError(ServerError)
-        case ok(Int)
+        case setError(ServerWrapper)
+        case ok(Bool)
     }
     
     struct Store {
         var gender: Int?
         var checkGenderValid = false
-        var errorType: ServerError?
+        var errorType: ServerWrapper?
         
-        var OK: Int?
+        var OK = false
     }
     
     
@@ -81,21 +81,29 @@ class GenderViewModel {
             let birth: String? = LocalUserDefaults.shared.value(key: .birth)
             let email: String? = LocalUserDefaults.shared.value(key: .email)
             let gender: Int? = LocalUserDefaults.shared.value(key: .gender)
-
+            
             LocalUserDefaults.shared.checkUserDefualt()
-
-            return service.signup(phoneNumber!, nickname!, birth!, email!, gender!)
+            
+            let FCMToken: String? = LocalUserDefaults.shared.value(key: .FCMToken)
+            
+            return service
+                .signup(phoneNumber!, nickname!, birth!, email!, gender!)
                 .asObservable()
-                .map { response -> Mutation in
-                    guard let data = response?.data else {
-                        let type: ServerError = ServerError(rawValue: response?.statusCode ?? 0) ?? .error
+                .map{ response -> Mutation in
+                    guard let statusCode = response?.statusCode else { return  .ok(false) }
+                    print(statusCode)
+                    
+                    if statusCode == 200 {
+                        return .ok(true)
+                    } else {
+                        let type: ServerWrapper = ServerWrapper(rawValue: statusCode)!
                         return .setError(type)
                     }
-                    return .setGender(data)
                 }
+            
         }
     }
-    
+
     private func reduce(_ mutation: Mutation) -> Observable<Store> {
         switch mutation {
 
@@ -118,3 +126,26 @@ class GenderViewModel {
 
 
 
+
+//
+//class UserMoya {
+//
+//    let provider: MoyaProvider<UserRouter>
+//
+//    init(provider: MoyaProvider<UserRouter> = MoyaProvider<UserRouter>() ) {
+//        self.provider = provider
+//    }
+//
+//    func signup(_ phoneNumber: String, _ nick: String, _ birth: String, _ email: String, _ gender: Int) -> Single<Void> {
+//        return provider.request(.signup(phoneNumber, nick, birth, email, gender)) { result in
+//            switch result {
+//            case .success(let data):
+//                print(data)
+//                return
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+//
+//    }
+//}
