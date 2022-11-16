@@ -381,7 +381,7 @@
 		0EB826C32918C32E00CA626A /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				0EE856F8292316D600EA9AE5 /* GoogleService-Info.plist */,
+				0EE857072924EAE800EA9AE5 /* Ignore */,
 				0EB826CE2918E13E00CA626A /* Font */,
 				0EB826A02918B4B000CA626A /* Info.plist */,
 				0EB8269B2918B4B000CA626A /* Assets.xcassets */,
@@ -510,7 +510,6 @@
 		0EB826D62918E2E400CA626A /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				0EA9E3C92922CBEB00FFC0D5 /* APIKeys.swift */,
 				0EA9E3C52920C79C00FFC0D5 /* LocalUserDefaults.swift */,
 				0EB826D92918E2E400CA626A /* Font.swift */,
 				0EB826DA2918E2E400CA626A /* Color.swift */,
@@ -645,6 +644,15 @@
 				0EE8570329246FFF00EA9AE5 /* GenderCollectionViewCell.swift */,
 			);
 			path = GenderCell;
+			sourceTree = "<group>";
+		};
+		0EE857072924EAE800EA9AE5 /* Ignore */ = {
+			isa = PBXGroup;
+			children = (
+				0EA9E3C92922CBEB00FFC0D5 /* APIKeys.swift */,
+				0EE856F8292316D600EA9AE5 /* GoogleService-Info.plist */,
+			);
+			path = Ignore;
 			sourceTree = "<group>";
 		};
 		337E82F4AEEF8310B9651173 /* Pods */ = {
