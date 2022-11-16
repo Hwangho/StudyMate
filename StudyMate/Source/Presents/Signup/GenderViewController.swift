@@ -132,14 +132,11 @@ class GenderViewController: BaseViewController {
             .bind(to: viewModel.action)
             .disposed(by: disposeBag)
         
-        
         /// State
         viewModel.currentStore
             .map { $0.checkGenderValid }
             .bind { [weak self] value in
-                let type: SDSSelectButton = value ? .fill : .disable
-                self?.DoneButton.setupAttribute(type: type)
-                self?.DoneButton.isEnabled = value
+                self?.DoneButton.ButtonisEnabled(value: value)
             }
             .disposed(by: disposeBag)   
     }
