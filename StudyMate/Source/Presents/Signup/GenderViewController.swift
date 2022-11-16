@@ -145,7 +145,7 @@ class GenderViewController: BaseViewController {
 
 
 // MARK: - DiffalbeCollectionview
-extension GenderViewController {
+extension GenderViewController: UICollectionViewDelegate {
     
     enum Section: CaseIterable, Hashable {
         case gender
@@ -169,6 +169,7 @@ extension GenderViewController {
             }
         }
     }
+    
     
     /// typealias
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Item>
@@ -219,12 +220,13 @@ extension GenderViewController {
         
         return snapshot
     }
-}
-
-
-extension GenderViewController: UICollectionViewDelegate {
     
+    
+    /// Custom Func
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.action.accept(.tapGender(indexPath.item))
     }
+    
 }
+
+

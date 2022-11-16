@@ -118,7 +118,6 @@ class EmailViewController: BaseViewController {
     
     override func setupBinding() {
         /// Action
-        
         enmailTextFieldView.textField.rx.text
             .orEmpty
             .distinctUntilChanged()
