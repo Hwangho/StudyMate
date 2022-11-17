@@ -12,26 +12,26 @@ import RxSwift
 import RxCocoa
 
 
-class NickNameViewController: BaseViewController {
+final class NickNameViewController: BaseViewController {
     
     /// UI
-    lazy var scrollView = UIScrollView()
+    private lazy var scrollView = UIScrollView()
 
-    var contentView = UIView()
+    private var contentView = UIView()
     
-    let titleBackVoew = UIView()
+    private let titleBackVoew = UIView()
     
-    var titleLabel = LineHeightLabel()
+    private var titleLabel = LineHeightLabel()
     
-    lazy var nickNameTextFieldView = LineTextFieldView()
+    private lazy var nickNameTextFieldView = LineTextFieldView()
     
-    lazy var DoneButton = SelectButton(type: .disable, title: "다음")
+    private lazy var DoneButton = SelectButton(type: .disable, title: "다음")
     
     
     /// variable
     var coordinator: NickNameCoordinator?
     
-    let viewModel: NickNameViewModel
+    private let viewModel: NickNameViewModel
     
     
     /// initialization
@@ -44,6 +44,14 @@ class NickNameViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        nickNameTextFieldView.textField.becomeFirstResponder()
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        nickNameTextFieldView.textField.resignFirstResponder()
+    }
+    
     override func setupAttributes() {
         super.setupAttributes()
         scrollView.isScrollEnabled = false
@@ -52,7 +60,7 @@ class NickNameViewController: BaseViewController {
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 2
         
-        nickNameTextFieldView.textField.becomeFirstResponder()
+        setupGestureRecognizer()
     }
     
     override func setupLayout() {
@@ -126,12 +134,19 @@ class NickNameViewController: BaseViewController {
         
         DoneButton.rx.tap
             .bind{ [weak self] in
+                LocalUserDefaults.shared.set(key: .nickName, value: self?.viewModel.store.nickName)
                     self?.coordinator?.startBirth()
             }
             .disposed(by: disposeBag)
         
         /// State
-        
+        viewModel.currentStore
+            .distinctUntilChanged{$0.checkNickNameValid}
+            .map { $0.checkNickNameValid }
+            .bind { [weak self] value in
+                self?.DoneButton.ButtonisEnabled(value: value)
+            }
+            .disposed(by: disposeBag)
         
     }
     

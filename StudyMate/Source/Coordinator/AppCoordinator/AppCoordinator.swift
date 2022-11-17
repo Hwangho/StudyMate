@@ -7,10 +7,13 @@
 
 import UIKit
 
+import RxSwift
 
-class AppCoordinator: Coordinator {
+
+final class AppCoordinator: Coordinator {
     
     enum InitalViewType {
+        case splash
         case onBoarding
         case certification
         case main
@@ -18,7 +21,7 @@ class AppCoordinator: Coordinator {
     
     
     /// variable
-    var window: UIWindow
+    private var window: UIWindow
     
     var delegate: CoordinatorDidFinishDelegate?
     
@@ -26,7 +29,9 @@ class AppCoordinator: Coordinator {
     
     var childCoordinators: [Coordinator]
     
-    var tabbar: TabbarViewController
+    private var tabbar: TabbarViewController
+    
+    private var service: UserServiceProtocool
     
     
     /// initialziation
@@ -34,29 +39,35 @@ class AppCoordinator: Coordinator {
         self.window = window
         self.childCoordinators = []
         self.presenter = UINavigationController()
-        self .tabbar = TabbarViewController()
+        self.tabbar = TabbarViewController()
+        self.service = UserService()
     }
     
     func start(animated: Bool = true) {
-//        var type: InitalViewType = UserDefaults.standard.bool(forKey: "checkEnterboarding") ? .onBoarding: .certification
-        
-        let type: InitalViewType = .certification
-        showInitialView(with: type)
+        showInitialView(with: .splash)
     }
     
     
     /// Custom Func
     func showInitialView(with type: InitalViewType) {
+        
+        presenter = UINavigationController()
+        
         switch type {
+        case .splash:
+            showSplash(window: window)
+            
         case .onBoarding:
-            presenter = UINavigationController()
             firstStartOnBoarding(present: presenter)
             self.window.rootViewController = presenter
             
         case .certification:
-            presenter = UINavigationController()
-            startBirth()
-//            firstStartCertification(prsent: presenter)
+            let value: String? = LocalUserDefaults.shared.value(key: .FirebaseidToken)
+            if value == nil {
+                firstStartCertification(prsent: presenter)
+            } else {
+                firstStartNickName(present: presenter)
+            }
             self.window.rootViewController = presenter
             
         case .main:
@@ -76,10 +87,12 @@ class AppCoordinator: Coordinator {
 }
 
 
+// MARK: - Splash
+extension AppCoordinator: SplachCoordinatorContext { }
+
+
 // MARK: - OnBoarding
 extension AppCoordinator: OnBoardingCoordinatorContext { }
-
-extension AppCoordinator: BirthCoordinatorContext {}
 
 
 // MARK: - Certification
@@ -88,3 +101,8 @@ extension AppCoordinator: CertificationCoordinatorContext { }
 
 // MARK: - Mian
 extension AppCoordinator: MainCoordinatorContext { }
+
+
+// MARK: - NickName
+extension AppCoordinator: NickNameCoordinatorContext { }
+

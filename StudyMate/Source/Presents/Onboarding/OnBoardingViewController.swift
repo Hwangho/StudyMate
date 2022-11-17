@@ -70,12 +70,13 @@ final class OnBoardingViewController: BaseViewController {
     /// Custom Func
     @objc
     private func tuchStartButton() {
+        LocalUserDefaults.shared.set(key: .onBoarding, value: true)
         coordinator?.showInitialView(with: .certification)
     }
     
     
     /// Custom Func
-    func setPageControl() {
+    private func setPageControl() {
         pageControl.numberOfPages = Item.allCases.count
         pageControl.currentPage = 0
         pageControl.pageIndicatorTintColor = Color.BaseColor.gray6

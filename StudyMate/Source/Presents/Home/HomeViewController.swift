@@ -8,7 +8,7 @@
 import UIKit
 
 
-class HomeViewController: BaseViewController {
+final class HomeViewController: BaseViewController {
     
     var coordinator: HomeCoordinator?
     
