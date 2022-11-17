@@ -13,31 +13,30 @@ import RxSwift
 import RxCocoa
 import Moya
 
-
-class CertificationViewController: BaseViewController {
+final class CertificationViewController: BaseViewController {
     
     /// UI
-    lazy var scrollView = UIScrollView()
+    private lazy var scrollView = UIScrollView()
 
-    var contentView = UIView()
+    private var contentView = UIView()
     
-    let titleBackVoew = UIView()
+    private let titleBackVoew = UIView()
     
-    var titleLabel = LineHeightLabel()
+    private var titleLabel = LineHeightLabel()
     
-    lazy var phonNumberTextFieldView = LineTextFieldView()
+    private lazy var phonNumberTextFieldView = LineTextFieldView()
     
-    lazy var NumberTextFieldView = CertificationTextFieldView()
+    private lazy var NumberTextFieldView = CertificationTextFieldView()
     
-    lazy var DoneButton = SelectButton(type: .disable, title: type.buttonTitle)
+    private lazy var DoneButton = SelectButton(type: .disable, title: type.buttonTitle)
     
     
     /// variable
     var coordinator: CertificationCoordinator?
     
-    let type: Certification
+    private let type: Certification
     
-    let viewModel: CertificationViewModel
+    private let viewModel: CertificationViewModel
     
     
     /// initialization

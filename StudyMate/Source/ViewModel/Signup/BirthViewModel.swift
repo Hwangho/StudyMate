@@ -11,7 +11,7 @@ import RxSwift
 import RxRelay
 
 
-class BirthViewModel {
+final class BirthViewModel {
     
     enum Action {
         case inputBirth(Date)

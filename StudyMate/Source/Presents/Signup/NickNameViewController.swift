@@ -12,26 +12,26 @@ import RxSwift
 import RxCocoa
 
 
-class NickNameViewController: BaseViewController {
+final class NickNameViewController: BaseViewController {
     
     /// UI
-    lazy var scrollView = UIScrollView()
+    private lazy var scrollView = UIScrollView()
 
-    var contentView = UIView()
+    private var contentView = UIView()
     
-    let titleBackVoew = UIView()
+    private let titleBackVoew = UIView()
     
-    var titleLabel = LineHeightLabel()
+    private var titleLabel = LineHeightLabel()
     
-    lazy var nickNameTextFieldView = LineTextFieldView()
+    private lazy var nickNameTextFieldView = LineTextFieldView()
     
-    lazy var DoneButton = SelectButton(type: .disable, title: "다음")
+    private lazy var DoneButton = SelectButton(type: .disable, title: "다음")
     
     
     /// variable
     var coordinator: NickNameCoordinator?
     
-    let viewModel: NickNameViewModel
+    private let viewModel: NickNameViewModel
     
     
     /// initialization

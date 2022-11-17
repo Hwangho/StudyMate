@@ -13,7 +13,7 @@ import RxCocoa
 import RxRelay
 
 
-class GenderViewModel {
+final class GenderViewModel {
     
     enum Action {
         case tapGender(Int)

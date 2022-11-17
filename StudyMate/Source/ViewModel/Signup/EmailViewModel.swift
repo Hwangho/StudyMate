@@ -11,7 +11,7 @@ import RxSwift
 import RxRelay
 
 
-class EmailViewModel {
+final class EmailViewModel {
     
     enum Action {
         case inputEmail(String)

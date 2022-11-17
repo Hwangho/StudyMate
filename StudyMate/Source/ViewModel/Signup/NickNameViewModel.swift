@@ -11,7 +11,7 @@ import RxSwift
 import RxRelay
 
 
-class NickNameViewModel {
+final class NickNameViewModel {
     
     enum Action {
         case inputText(String)

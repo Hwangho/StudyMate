@@ -12,34 +12,34 @@ import RxSwift
 import RxCocoa
 
 
-class BirthViewController: BaseViewController {
+final class BirthViewController: BaseViewController {
     
     /// UI
-    lazy var scrollView = UIScrollView()
+    private lazy var scrollView = UIScrollView()
 
-    var contentView = UIView()
+    private var contentView = UIView()
     
-    let titleBackVoew = UIView()
+    private let titleBackVoew = UIView()
     
-    var stackView = UIStackView()
+    private var stackView = UIStackView()
     
-    let pickerView = UIDatePicker()
+    private let pickerView = UIDatePicker()
     
-    var titleLabel = LineHeightLabel()
+    private var titleLabel = LineHeightLabel()
     
-    lazy var yearTextFieldView = BirthLineTextFieldView(type: .year, picker: pickerView)
+    private lazy var yearTextFieldView = BirthLineTextFieldView(type: .year, picker: pickerView)
     
-    lazy var monthTextFieldView = BirthLineTextFieldView(type: .month, picker: pickerView)
+    private lazy var monthTextFieldView = BirthLineTextFieldView(type: .month, picker: pickerView)
     
-    lazy var dayTextFieldView = BirthLineTextFieldView(type: .day, picker: pickerView)
+    private lazy var dayTextFieldView = BirthLineTextFieldView(type: .day, picker: pickerView)
     
-    lazy var DoneButton = SelectButton(type: .disable, title: "다음")
+    private lazy var DoneButton = SelectButton(type: .disable, title: "다음")
     
     
     /// variable
     var coordinator: BirthCoordinator?
     
-    let viewModel: BirthViewModel
+    private let viewModel: BirthViewModel
     
     
     /// initialization
@@ -163,7 +163,7 @@ class BirthViewController: BaseViewController {
     
     
     /// CUstom Func
-    func setupDatePicker() {
+    private func setupDatePicker() {
         pickerView.preferredDatePickerStyle = .wheels
         pickerView.locale = Locale(identifier: "ko-KR")
         pickerView.datePickerMode = .date

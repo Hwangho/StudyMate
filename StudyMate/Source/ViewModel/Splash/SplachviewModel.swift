@@ -10,7 +10,7 @@ import RxRelay
 import FirebaseAuth
 
 
-class SplachviewModel {
+final class SplachviewModel {
     
     
     enum Action {
@@ -35,7 +35,7 @@ class SplachviewModel {
     
     var disposeBag = DisposeBag()
     
-    var service: UserServiceProtocool
+    private var service: UserServiceProtocool
     
     
     /// initialization
@@ -62,8 +62,6 @@ class SplachviewModel {
                     let type: ServerWrapper = ServerWrapper(rawValue: statusCode)!
                     return .setLogin(type)
                 }
-            
-            
         }
     }
     

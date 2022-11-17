@@ -11,13 +11,13 @@ import SnapKit
 import RxSwift
 
 
-class SplachViewController: BaseViewController {
+final class SplachViewController: BaseViewController {
     
-    let mainImage = UIImageView()
+    private let mainImage = UIImageView()
     
-    let titleImage = UIImageView()
+    private let titleImage = UIImageView()
     
-    let viewModel = SplachviewModel()
+    private let viewModel = SplachviewModel()
     
     var coordinator: SplachCoordinator!
     
@@ -78,7 +78,7 @@ class SplachViewController: BaseViewController {
                     case .successed:
                         self?.coordinator.showInitialView(with: .main)
                     case .FireBaseToken:
-                        self?.fireBaseIDTokenRefresh()
+                        self?.fireBaseIDTokenRefresh{}
                         self?.viewModel.action.accept(.login)
                     case .noneSignup, .clientError:
                         self?.coordinator.showInitialView(with: .certification)
@@ -90,56 +90,4 @@ class SplachViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
     }
-}
-
-
-class SplachCoordinator: Coordinator {
-
-    /// variable
-    var window: UIWindow
-    
-    var delegate: CoordinatorDidFinishDelegate?
-    
-    var presenter: UINavigationController
-    
-    var childCoordinators: [Coordinator]
-    
-    var disposeBag = DisposeBag()
-    
-    
-    /// initialziation
-    init(window: UIWindow) {
-        self.window = window
-        self.childCoordinators = []
-        self.presenter = UINavigationController()
-
-    }
-    
-    func start(animated: Bool = true) {
-        let viewcontroller = SplachViewController()
-        viewcontroller.coordinator = self
-        viewcontroller.coordinatorDelegate = self
-        window.rootViewController = viewcontroller
-    }
-    
-}
-
-extension SplachCoordinator: AppCoordinatorContext { }
-
-
-
-
-
-protocol SplachCoordinatorContext: BaseCoordinatorContext {
-    func showSplash(window: UIWindow)
-}
-
-extension SplachCoordinatorContext {
-    func showSplash(window: UIWindow) {
-        let coordinator = SplachCoordinator(window: window)
-        coordinator.delegate = self
-        childCoordinators.append(coordinator)
-        coordinator.start()
-    }
-
 }
