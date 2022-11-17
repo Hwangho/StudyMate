@@ -571,8 +571,8 @@
 			children = (
 				0EB826FE2919F7F400CA626A /* BaseCoordinatorContext.swift */,
 				0EB826ED29193B3600CA626A /* Coordinator.swift */,
-				0E4644FA2925C4A700EEC90C /* SplashCoordinator */,
 				0EB827002919F86900CA626A /* AppCoordinator */,
+				0E4644FA2925C4A700EEC90C /* SplashCoordinator */,
 				0EB827012919F89100CA626A /* OnBoardingCoordinator */,
 				0EB827022919F89E00CA626A /* CertificationCoordinator */,
 				0EAE334C291CD73500AA4FE6 /* SignupCoordinator */,

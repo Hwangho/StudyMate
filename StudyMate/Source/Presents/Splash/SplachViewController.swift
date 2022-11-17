@@ -76,7 +76,8 @@ final class SplachViewController: BaseViewController {
                     guard let type = type else { return }
                     switch type {
                     case .successed:
-                        self?.coordinator.showInitialView(with: .main)
+//                        self?.coordinator.showInitialView(with: .main)
+                        self?.coordinator.showInitialView(with: .certification)
                     case .FireBaseToken:
                         self?.fireBaseIDTokenRefresh{}
                         self?.viewModel.action.accept(.login)
