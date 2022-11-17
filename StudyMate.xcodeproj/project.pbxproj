@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E4644FC2925C4B500EEC90C /* SplachCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4644FB2925C4B500EEC90C /* SplachCoordinator.swift */; };
+		0E4644FE2925C4DD00EEC90C /* SplachCoordinatorContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4644FD2925C4DD00EEC90C /* SplachCoordinatorContext.swift */; };
 		0E843CE1291F70C000D7D259 /* BirthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E843CE0291F70C000D7D259 /* BirthViewModel.swift */; };
 		0E843CF52920AF0900D7D259 /* CertificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E843CF42920AF0900D7D259 /* CertificationService.swift */; };
 		0E8A2305292549600073E261 /* SplachViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8A2304292549600073E261 /* SplachViewController.swift */; };
@@ -106,6 +108,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E4644FB2925C4B500EEC90C /* SplachCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplachCoordinator.swift; sourceTree = "<group>"; };
+		0E4644FD2925C4DD00EEC90C /* SplachCoordinatorContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplachCoordinatorContext.swift; sourceTree = "<group>"; };
 		0E843CE0291F70C000D7D259 /* BirthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthViewModel.swift; sourceTree = "<group>"; };
 		0E843CF42920AF0900D7D259 /* CertificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationService.swift; sourceTree = "<group>"; };
 		0E8A2304292549600073E261 /* SplachViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplachViewController.swift; sourceTree = "<group>"; };
@@ -234,6 +238,15 @@
 				8BAA7A9CF80E6040823CED8F /* Pods_StudyMateTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0E4644FA2925C4A700EEC90C /* SplashCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				0E4644FB2925C4B500EEC90C /* SplachCoordinator.swift */,
+				0E4644FD2925C4DD00EEC90C /* SplachCoordinatorContext.swift */,
+			);
+			path = SplashCoordinator;
 			sourceTree = "<group>";
 		};
 		0E8A23032925494F0073E261 /* Splash */ = {
@@ -558,6 +571,7 @@
 			children = (
 				0EB826FE2919F7F400CA626A /* BaseCoordinatorContext.swift */,
 				0EB826ED29193B3600CA626A /* Coordinator.swift */,
+				0E4644FA2925C4A700EEC90C /* SplashCoordinator */,
 				0EB827002919F86900CA626A /* AppCoordinator */,
 				0EB827012919F89100CA626A /* OnBoardingCoordinator */,
 				0EB827022919F89E00CA626A /* CertificationCoordinator */,
@@ -937,6 +951,7 @@
 				0EB82711291A31B500CA626A /* HomeViewController.swift in Sources */,
 				0EAE3339291BA9D800AA4FE6 /* CertificationTextFieldView.swift in Sources */,
 				0EAE333B291BC27C00AA4FE6 /* LineTextFieldType.swift in Sources */,
+				0E4644FC2925C4B500EEC90C /* SplachCoordinator.swift in Sources */,
 				0EB826FF2919F7F400CA626A /* BaseCoordinatorContext.swift in Sources */,
 				0EB826FB2919736F00CA626A /* CertificationCoordinator.swift in Sources */,
 				0EAE334E291CD76A00AA4FE6 /* NickNameCoordinator.swift in Sources */,
@@ -968,6 +983,7 @@
 				0EAE3342291CD0E400AA4FE6 /* NickNameViewController.swift in Sources */,
 				0EB826E9291932E500CA626A /* keywordButton.swift in Sources */,
 				0EB826E329191D2000CA626A /* SDSSelectButton.swift in Sources */,
+				0E4644FE2925C4DD00EEC90C /* SplachCoordinatorContext.swift in Sources */,
 				0EB826D32918E29500CA626A /* BaseView.swift in Sources */,
 				0EAE3331291B6AAF00AA4FE6 /* Certification.swift in Sources */,
 				0EB826F7291966E500CA626A /* OnBoardingViewController.swift in Sources */,

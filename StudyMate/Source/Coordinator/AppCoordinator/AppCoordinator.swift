@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 
 
-class AppCoordinator: Coordinator {
+final class AppCoordinator: Coordinator {
     
     enum InitalViewType {
         case splash
@@ -21,7 +21,7 @@ class AppCoordinator: Coordinator {
     
     
     /// variable
-    var window: UIWindow
+    private var window: UIWindow
     
     var delegate: CoordinatorDidFinishDelegate?
     
@@ -29,11 +29,9 @@ class AppCoordinator: Coordinator {
     
     var childCoordinators: [Coordinator]
     
-    var tabbar: TabbarViewController
+    private var tabbar: TabbarViewController
     
-    var service: UserServiceProtocool
-    
-    var disposeBag = DisposeBag()
+    private var service: UserServiceProtocool
     
     
     /// initialziation
@@ -46,10 +44,7 @@ class AppCoordinator: Coordinator {
     }
     
     func start(animated: Bool = true) {
-        let value: Bool? = LocalUserDefaults.shared.value(key: .onBoarding)
-        
-        let type: InitalViewType = value == nil ? .onBoarding : .certification
-        showInitialView(with: type)
+        showInitialView(with: .splash)
     }
     
     

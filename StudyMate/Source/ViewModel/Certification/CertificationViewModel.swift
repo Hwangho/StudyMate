@@ -12,7 +12,7 @@ import RxSwift
 import RxRelay
 
 
-class CertificationViewModel {
+final class CertificationViewModel {
     
     
     

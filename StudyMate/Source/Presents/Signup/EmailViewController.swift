@@ -12,28 +12,28 @@ import RxSwift
 import RxCocoa
 
 
-class EmailViewController: BaseViewController {
+final class EmailViewController: BaseViewController {
     
     /// UI
-    lazy var scrollView = UIScrollView()
+    private lazy var scrollView = UIScrollView()
 
-    var contentView = UIView()
+    private var contentView = UIView()
     
-    let titleBackView = UIView()
+    private let titleBackView = UIView()
     
-    var titleLabel = LineHeightLabel()
+    private var titleLabel = LineHeightLabel()
     
-    var contentLabel = LineHeightLabel()
+    private var contentLabel = LineHeightLabel()
     
-    lazy var enmailTextFieldView = LineTextFieldView()
+    private lazy var enmailTextFieldView = LineTextFieldView()
     
-    lazy var DoneButton = SelectButton(type: .disable, title: "다음")
+    private lazy var DoneButton = SelectButton(type: .disable, title: "다음")
     
     
     /// variable
     var coordinator: EmailCoordinator?
     
-    let viewModel: EmailViewModel
+    private let viewModel: EmailViewModel
     
     
     /// initialization

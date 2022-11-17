@@ -12,20 +12,20 @@ import RxSwift
 import RxCocoa
 
 
-class GenderViewController: BaseViewController {
+final class GenderViewController: BaseViewController {
     
     /// UI
-    lazy var scrollView = UIScrollView()
+    private lazy var scrollView = UIScrollView()
 
-    var contentView = UIView()
+    private var contentView = UIView()
     
-    let titleBackView = UIView()
+    private let titleBackView = UIView()
     
-    var titleLabel = LineHeightLabel()
+    private var titleLabel = LineHeightLabel()
     
-    var contentLabel = LineHeightLabel()
+    private var contentLabel = LineHeightLabel()
     
-    lazy var DoneButton = SelectButton(type: .disable, title: "다음")
+    private lazy var DoneButton = SelectButton(type: .disable, title: "다음")
     
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
@@ -36,11 +36,11 @@ class GenderViewController: BaseViewController {
     
     
     /// variable
-    let viewModel: GenderViewModel
+    private  let viewModel: GenderViewModel
     
     var coordinator: GenderCoordinator?
     
-    var datasource: DataSource!
+    private var datasource: DataSource!
         
     
     /// initialization
@@ -149,8 +149,9 @@ class GenderViewController: BaseViewController {
                 case .successed:
                     self?.coordinator?.showInitialView(with: .main)
                 case .FireBaseToken:
-                    self?.fireBaseIDTokenRefresh()
-                    self?.viewModel.action.accept(.doneButton)
+                    self?.fireBaseIDTokenRefresh(handler: {
+                        self?.viewModel.action.accept(.doneButton)
+                    })
                 default:
                     self?.showAlertMessage(title: type.message)
                 }
