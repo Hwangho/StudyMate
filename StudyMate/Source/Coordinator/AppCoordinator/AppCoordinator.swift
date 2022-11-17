@@ -100,10 +100,6 @@ extension AppCoordinator: SplachCoordinatorContext { }
 extension AppCoordinator: OnBoardingCoordinatorContext { }
 
 
-// MARK: - Birth
-extension AppCoordinator: BirthCoordinatorContext {}
-
-
 // MARK: - Certification
 extension AppCoordinator: CertificationCoordinatorContext { }
 
@@ -115,10 +111,3 @@ extension AppCoordinator: MainCoordinatorContext { }
 // MARK: - NickName
 extension AppCoordinator: NickNameCoordinatorContext { }
 
-
-
-
-
-
-
-extension AppCoordinator: GenderCoordinatorContext {}

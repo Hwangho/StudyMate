@@ -146,6 +146,8 @@ class GenderViewController: BaseViewController {
             .bind { [weak self] type in
                 guard let type = type else { return }
                 switch type {
+                case .successed:
+                    self?.coordinator?.showInitialView(with: .main)
                 case .FireBaseToken:
                     self?.fireBaseIDTokenRefresh()
                     self?.viewModel.action.accept(.doneButton)

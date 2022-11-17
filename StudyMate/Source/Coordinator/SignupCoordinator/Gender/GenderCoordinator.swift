@@ -34,3 +34,6 @@ class GenderCoordinator: Coordinator {
     
 }
 
+
+
+extension GenderCoordinator: AppCoordinatorContext { }

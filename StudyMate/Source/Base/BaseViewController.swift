@@ -148,14 +148,24 @@ extension BaseViewController {
     func fireBaseIDTokenRefresh() {
         let currentUser = Auth.auth().currentUser
         currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
-          if let error = error {
-            // Handle error
-              print(error)
-            return
-          }
-            
+            if let error = error {
+                // Handle error
+                print(error)
+                return
+            }
             LocalUserDefaults.shared.set(key: .FirebaseidToken, value: idToken)
         }
+    }
+    
+    
+    /// scroll in textfield
+    func setupGestureRecognizer() {
+      let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+      view.addGestureRecognizer(tap)
+    }
+
+    @objc func handleTap(_ gesture: UITapGestureRecognizer) {
+      view.endEditing(true)
     }
 }
 

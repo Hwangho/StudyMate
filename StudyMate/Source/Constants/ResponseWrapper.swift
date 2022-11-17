@@ -29,12 +29,14 @@ struct ResponseWrapper<T: Decodable & Equatable>: ModelType, Decodable {
     enum CodingKeys: String, CodingKey {
         case statusCode
         case data
+        case error
     }
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         statusCode = try values.decode(Int.self, forKey: .statusCode)
         data = try? values.decode(T.self, forKey: .data)
+//        error = try? values.decode(Error.self, forKey: .error)
     }
 }
 

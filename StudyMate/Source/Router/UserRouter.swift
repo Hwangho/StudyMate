@@ -55,7 +55,12 @@ extension UserRouter: TargetType {
                 parameters: self.parameters,
                 encoding: URLEncoding.default)
             
-        default: return .requestPlain
+        case .signup:
+            return .requestParameters(
+                parameters: self.parameters,
+                encoding: URLEncoding.default)
+            
+//        default: return .requestPlain
         }
     }
 
@@ -65,7 +70,7 @@ extension UserRouter: TargetType {
         switch self {
         case .signin:
             return [
-                "Content-Type": "application/json",
+                "Content-Type": "application/x-www-form-urlencoded",
                 "idtoken": "\(idToken ?? "")"
             ]
             
@@ -75,7 +80,7 @@ extension UserRouter: TargetType {
                 "idtoken": "\(idToken ?? "")"
             ]
             
-        default: return  ["Content-Type": "application/x-www-form-urlencoded"]
+        
         }
     }
     

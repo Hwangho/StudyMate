@@ -86,7 +86,7 @@ class SplachViewController: BaseViewController {
                         self?.showAlertMessage(title: type.message)
                     }
                 }
-
+                LocalUserDefaults.shared.checkUserDefualt()
             }
             .disposed(by: disposeBag)
     }
