@@ -50,18 +50,18 @@ final class AppCoordinator: Coordinator {
     
     /// Custom Func
     func showInitialView(with type: InitalViewType) {
+        
+        presenter = UINavigationController()
+        
         switch type {
         case .splash:
             showSplash(window: window)
             
         case .onBoarding:
-            presenter = UINavigationController()
             firstStartOnBoarding(present: presenter)
             self.window.rootViewController = presenter
             
         case .certification:
-            presenter = UINavigationController()
-            
             let value: String? = LocalUserDefaults.shared.value(key: .FirebaseidToken)
             if value == nil {
                 firstStartCertification(prsent: presenter)
