@@ -44,6 +44,14 @@ class NickNameViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        nickNameTextFieldView.textField.becomeFirstResponder()
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        nickNameTextFieldView.textField.resignFirstResponder()
+    }
+    
     override func setupAttributes() {
         super.setupAttributes()
         scrollView.isScrollEnabled = false
@@ -52,7 +60,7 @@ class NickNameViewController: BaseViewController {
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 2
         
-        nickNameTextFieldView.textField.becomeFirstResponder()
+        setupGestureRecognizer()
     }
     
     override func setupLayout() {

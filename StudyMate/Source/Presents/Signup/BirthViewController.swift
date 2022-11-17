@@ -52,6 +52,14 @@ class BirthViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        yearTextFieldView.textField.becomeFirstResponder()
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        yearTextFieldView.textField.resignFirstResponder()
+    }
+    
     
     /// Life Cycle
     override func setupAttributes() {
@@ -63,10 +71,9 @@ class BirthViewController: BaseViewController {
         titleLabel.numberOfLines = 2
         
         stackView.distribution = .fillEqually
-
-        yearTextFieldView.textField.becomeFirstResponder()
         
         setupDatePicker()
+        setupGestureRecognizer()
     }
     
     override func setupLayout() {

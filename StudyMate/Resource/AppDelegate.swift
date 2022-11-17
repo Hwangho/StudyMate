@@ -62,6 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 
+// MARK: - UNUserNotificationCenterDelegate
 extension AppDelegate: UNUserNotificationCenterDelegate {
     
     // token 정보를 확인하고 싶다면 해당 Func을 실행하시면 됩니다~! (FCM registration token)
@@ -78,16 +79,8 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 }
 
 
-extension AppDelegate {
-    // UIKit은 앱을 APN에 성공적으로 등록한 후 이 메서드를 호출
-    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        // Firebase 에서 대리자로 APNs 토큰을 설정해주는 곳
-        Messaging.messaging().apnsToken = deviceToken
-    }
-}
 
-
-/// MessagingDelegate
+//MARK: - MessagingDelegate
 extension AppDelegate: MessagingDelegate {
     //토큰 갱신 모니터링 : 토큰 정보가 언제 바뀔까?
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
@@ -104,3 +97,13 @@ extension AppDelegate: MessagingDelegate {
       // Note: This callback is fired at each app startup and whenever a new token is generated.
     }
 }
+
+
+extension AppDelegate {
+    // UIKit은 앱을 APN에 성공적으로 등록한 후 이 메서드를 호출
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        // Firebase 에서 대리자로 APNs 토큰을 설정해주는 곳
+        Messaging.messaging().apnsToken = deviceToken
+    }
+}
+

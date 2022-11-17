@@ -25,7 +25,7 @@ class GenderViewModel {
         case setGenderValid(Bool)
         
         case setError(ServerWrapper)
-        case ok(Bool)
+        case setSuccess(Bool)
     }
     
     struct Store {
@@ -33,7 +33,7 @@ class GenderViewModel {
         var checkGenderValid = false
         var errorType: ServerWrapper?
         
-        var OK = false
+        var sucess = false
     }
     
     
@@ -90,18 +90,18 @@ class GenderViewModel {
                 .signup(phoneNumber!, nickname!, birth!, email!, gender!)
                 .asObservable()
                 .map{ response -> Mutation in
-                    guard let statusCode = response?.statusCode else { return  .ok(false) }
+                    guard let statusCode = response?.statusCode else { return  .setSuccess(false) }
                     print(statusCode)
                     
                     if statusCode == 200 {
-                        return .ok(true)
+                        return .setSuccess(true)
                     } else {
                         let type: ServerWrapper = ServerWrapper(rawValue: statusCode)!
                         return .setError(type)
                     }
                 }
-            
         }
+        
     }
 
     private func reduce(_ mutation: Mutation) -> Observable<Store> {
@@ -116,8 +116,8 @@ class GenderViewModel {
         case .setError(let type):
             store.errorType = type
             
-        case .ok(let value):
-            store.OK = value
+        case .setSuccess(let value):
+            store.sucess = value
         }
         return .just(store)
     }

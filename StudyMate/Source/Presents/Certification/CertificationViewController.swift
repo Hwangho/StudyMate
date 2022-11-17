@@ -51,6 +51,24 @@ class CertificationViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        switch type {
+        case .phoneNumber:
+            phonNumberTextFieldView.textField.becomeFirstResponder()
+        case .certificationNumber:
+            NumberTextFieldView.textField.becomeFirstResponder()
+        }
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        switch type {
+        case .phoneNumber:
+            phonNumberTextFieldView.textField.resignFirstResponder()
+        case .certificationNumber:
+            NumberTextFieldView.textField.resignFirstResponder()
+        }
+    }
     
     override func setupAttributes() {
         super.setupAttributes()
@@ -59,14 +77,17 @@ class CertificationViewController: BaseViewController {
         titleLabel.setupFont(type: .Display1_R20)
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 2
+        setupGestureRecognizer()
         
         switch type {
         case .phoneNumber:
             phonNumberTextFieldView.textField.keyboardType = .phonePad
             phonNumberTextFieldView.textField.placeholder = type.placholder
+            
         case .certificationNumber:
             NumberTextFieldView.textField.keyboardType = .numberPad
             NumberTextFieldView.textField.placeholder = type.placholder
+            
         }
     }
     

@@ -12,7 +12,7 @@ import RxSwift
 
 protocol UserRepositoryPorotocool {
     
-    typealias SingleResponse = Single<Response>
+    typealias SingleResponse = Single<ResponseWrapper<User>>
     
     func signin() -> Single<Response>
     func signup(_ phoneNumber: String, _ nick: String, _ birth: String, _ email: String, _ gender: Int) -> Single<Response>

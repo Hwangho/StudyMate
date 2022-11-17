@@ -48,6 +48,16 @@ class EmailViewController: BaseViewController {
     
     
     /// Life Cycle
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        enmailTextFieldView.textField.becomeFirstResponder()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        enmailTextFieldView.textField.resignFirstResponder()
+    }
+    
     override func setupAttributes() {
         super.setupAttributes()
         scrollView.isScrollEnabled = false
@@ -59,6 +69,8 @@ class EmailViewController: BaseViewController {
         contentLabel.setupFont(type: .Title2_R16)
         contentLabel.textColor = Color.BaseColor.gray7
         contentLabel.textAlignment = .center
+        
+        setupGestureRecognizer()
     }
     
     override func setupLayout() {
@@ -131,6 +143,19 @@ class EmailViewController: BaseViewController {
                 LocalUserDefaults.shared.set(key: .email, value: self?.viewModel.store.email)
                 self?.coordinator?.startGender()
             }
+            .disposed(by: disposeBag)
+        
+        enmailTextFieldView.textField.rx.controlEvent(.editingDidBegin)
+            .map { true }
+            .bind { [weak self] value in
+                self?.enmailTextFieldView.focusTexField(value: value)}
+            .disposed(by: disposeBag)
+        
+        enmailTextFieldView.textField.rx.controlEvent(.editingDidEnd)
+            .map { false }
+            .bind { [weak self] value in
+                self?.enmailTextFieldView
+                .focusTexField(value: value)}
             .disposed(by: disposeBag)
         
         /// State
