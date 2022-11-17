@@ -7,35 +7,36 @@
 
 import UIKit
 
+import FirebaseAuth
 import SnapKit
 import RxSwift
 import RxCocoa
+import Moya
 
-
-class CertificationViewController: BaseViewController {
+final class CertificationViewController: BaseViewController {
     
     /// UI
-    lazy var scrollView = UIScrollView()
+    private lazy var scrollView = UIScrollView()
 
-    var contentView = UIView()
+    private var contentView = UIView()
     
-    let titleBackVoew = UIView()
+    private let titleBackVoew = UIView()
     
-    var titleLabel = LineHeightLabel()
+    private var titleLabel = LineHeightLabel()
     
-    lazy var phonNumberTextFieldView = LineTextFieldView()
+    private lazy var phonNumberTextFieldView = LineTextFieldView()
     
-    lazy var NumberTextFieldView = CertificationTextFieldView()
+    private lazy var NumberTextFieldView = CertificationTextFieldView()
     
-    lazy var DoneButton = SelectButton(type: .disable, title: type.buttonTitle)
+    private lazy var DoneButton = SelectButton(type: .disable, title: type.buttonTitle)
     
     
     /// variable
     var coordinator: CertificationCoordinator?
     
-    let type: Certification
+    private let type: Certification
     
-    let viewModel: CertificationViewModel
+    private let viewModel: CertificationViewModel
     
     
     /// initialization
@@ -49,6 +50,24 @@ class CertificationViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        switch type {
+        case .phoneNumber:
+            phonNumberTextFieldView.textField.becomeFirstResponder()
+        case .certificationNumber:
+            NumberTextFieldView.textField.becomeFirstResponder()
+        }
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        switch type {
+        case .phoneNumber:
+            phonNumberTextFieldView.textField.resignFirstResponder()
+        case .certificationNumber:
+            NumberTextFieldView.textField.resignFirstResponder()
+        }
+    }
     
     override func setupAttributes() {
         super.setupAttributes()
@@ -57,14 +76,17 @@ class CertificationViewController: BaseViewController {
         titleLabel.setupFont(type: .Display1_R20)
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 2
+        setupGestureRecognizer()
         
         switch type {
         case .phoneNumber:
             phonNumberTextFieldView.textField.keyboardType = .phonePad
             phonNumberTextFieldView.textField.placeholder = type.placholder
+            
         case .certificationNumber:
             NumberTextFieldView.textField.keyboardType = .numberPad
             NumberTextFieldView.textField.placeholder = type.placholder
+            
         }
     }
     
@@ -157,19 +179,34 @@ class CertificationViewController: BaseViewController {
                 .disposed(by: disposeBag)
             
             DoneButton.rx.tap
-                .map {
-                    CertificationViewModel.Action.doneButton(.phoneNumber) }
-                .bind(to: viewModel.action)
+                .bind{ [weak self] in
+                    var value = self?.viewModel.store.phoneNumber
+                    value?.removeFirst()
+                    let phoneNumber = "+82" + (value ?? "")
+                    LocalUserDefaults.shared.set(key: .phoneNumber, value: phoneNumber)
+                    
+                    PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
+                        if let error = error {
+                            self?.showAlertMessage(title: error.localizedDescription)
+                            return
+                        }
+
+                        if let verificationID = verificationID {
+                            LocalUserDefaults.shared.set(key: .verificationID, value: verificationID)
+                            self?.coordinator!.nextCertification(type: .certificationNumber)
+                        }
+                    }
+                }
                 .disposed(by: disposeBag)
             
             /// State
             viewModel.currentStore
                 .map { $0.checkNumberValid }
-                .distinctUntilChanged()
                 .bind { [weak self] value in
-                    let type: SDSSelectButton = value ? .fill : .disable
-                    self?.DoneButton.setupAttribute(type: type)}
+                    self?.DoneButton.ButtonisEnabled(value: value)
+                }
                 .disposed(by: disposeBag)
+            
             
             viewModel.currentStore
                 .map{ $0.phoneNumber }
@@ -179,23 +216,13 @@ class CertificationViewController: BaseViewController {
                 }
                 .disposed(by: disposeBag)
             
-            viewModel.currentStore
-                .distinctUntilChanged{ $0.checkReciveMessage }
-                .map{ $0.checkReciveMessage }
-                .subscribe { [weak self] istrue in
-                    if istrue {
-                        self?.coordinator!.nextCertification(type: .certificationNumber)
-                    }
-                }
-                .disposed(by: disposeBag)
-            
         case .certificationNumber:
+            
             /// Action
             NumberTextFieldView.textField.rx.text
                 .orEmpty
                 .distinctUntilChanged()
-                .map{
-                    CertificationViewModel.Action.inputText(.certificationNumber, $0) }
+                .map{ CertificationViewModel.Action.inputText(.certificationNumber, $0) }
                 .bind(to: viewModel.action)
                 .disposed(by: disposeBag)
             
@@ -216,31 +243,75 @@ class CertificationViewController: BaseViewController {
                 .bind(to: viewModel.action)
                 .disposed(by: disposeBag)
             
+            DoneButton.rx.tap
+                .bind { [weak self] in
+                    /// 인증번호 누르고 입력!!
+                    
+                    let verificationID: String? = LocalUserDefaults.shared.value(key: .verificationID)
+                    
+                    let credential = PhoneAuthProvider.provider().credential(
+                        withVerificationID: verificationID!,
+                        verificationCode: (self?.viewModel.store.certificationNumber)!
+                    )
+                    
+                    Auth.auth().signIn(with: credential) { authData, error in
+                        
+                        if let error = error {
+                            let errorCode = (error as NSError).code
+                            let type = ServerWrapper.init(rawValue: errorCode) ?? ServerWrapper.error
+                            self?.showAlertMessage(title: type.message)
+                            return
+                        }
+                        
+                        let currentUser = Auth.auth().currentUser
+                        currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
+                            if let error = error {
+                                print(error)
+                                return
+                            }
+                            
+                            LocalUserDefaults.shared.set(key: .FirebaseidToken, value: idToken)
+                            
+                            self?.viewModel.userservice.signin()
+                                .subscribe(onSuccess: { _ in
+                                    /// 이미 가입 되어 있을 경우!! 로그인 성공
+                                    self?.coordinator?.showInitialView(with: .main)
+                                }, onFailure: { error in
+                                    
+                                    let moyaError: MoyaError? = error as? MoyaError
+                                    let response : Response? = moyaError?.response
+                                    let statusCode : Int? = response?.statusCode
+                                    
+                                    let type = ServerWrapper.init(rawValue: statusCode!) ?? ServerWrapper.error
+                                    switch type {
+                                    case .noneSignup:
+                                        self?.coordinator?.startNickName()
+                                    default:
+                                        self?.showAlertMessage(title: type.message)
+                                    }
+                                })
+                                .disposed(by: self!.disposeBag)
+                        }
+                    }
+                }
+                .disposed(by: disposeBag)
+            
             /// State
             viewModel.currentStore
                 .map { $0.checkNumberValid }
                 .bind { [weak self] value in
-                    let type: SDSSelectButton = value ? .fill : .disable
-                    self?.DoneButton.setupAttribute(type: type)}
+                    self?.DoneButton.ButtonisEnabled(value: value)
+                }
                 .disposed(by: disposeBag)
             
             viewModel.currentStore
                 .map { $0.certificationNumber }
                 .bind { [weak self] text in
-                    guard let text = text else { return }
+//                    guard let text = text else { return }
                     self?.NumberTextFieldView.textField.text = text
                 }
                 .disposed(by: disposeBag)
             
-            viewModel.currentStore
-                .distinctUntilChanged{ $0.checkCertification }
-                .map{ $0.checkCertification }
-                .subscribe { [weak self] istrue in
-                    if istrue {
-                        self?.coordinator!.startNickName()
-                    }
-                }
-                .disposed(by: disposeBag)
         }
     }
     

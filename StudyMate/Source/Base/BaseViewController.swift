@@ -9,6 +9,7 @@
 import UIKit
 
 import RxSwift
+import FirebaseAuth
 
 
 class BaseViewController: UIViewController {
@@ -109,26 +110,68 @@ class BaseViewController: UIViewController {
     
     // MARK: Custom Func
     func navigation() {
-        navigationController?.navigationBar.tintColor = .black
-        navigationController?.navigationBar.isTranslucent = false   /// navigation 반투명 상태 제거
-        navigationController?.navigationBar.backgroundColor = Color.BaseColor.white    /// bacground 색상
-
-        
         let navigationBarAppearance = UINavigationBarAppearance()
+        /// 다크모트, 화이트모드에 알맞는 view 생성
+//        navigationBarAppearance.configureWithOpaqueBackground()
         navigationBarAppearance.backgroundColor = Color.BaseColor.white
-        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Color.BaseColor.black,
-                                                       NSAttributedString.Key.font: UIFont(name: Font.Title3_M14.fontType, size: Font.Title3_M14.fontSize)! ]
 
-        navigationController?.navigationBar.standardAppearance = navigationBarAppearance
-        navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
+        /// iOS 15 이상부터 Navigation -> PushViewController 할 때
+        ///  bar appearance객체를 transparent background와 shadow가 없게 configure한다!!
+        navigationBarAppearance.configureWithTransparentBackground()
+        
+        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Color.BaseColor.black,
+                                                       NSAttributedString.Key.font: UIFont(name: Font.Title3_M14.fontType,
+                                                                                           size: Font.Title3_M14.fontSize)! ]
+        
+        UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         
         let backBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow"), style: .done, target: self, action: nil)
         self.navigationItem.backBarButtonItem = backBarButtonItem
-
         
         let backButton  = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = backButton
+        
+        navigationController?.navigationBar.tintColor = Color.BaseColor.black
+        navigationController?.view.backgroundColor = Color.BaseColor.white              /// Navagation 배경 색상을 지정
     }
     
+}
+
+
+
+extension BaseViewController {
+    
+    func showAlertMessage(title: String, button: String = "확인") {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        let ok = UIAlertAction(title: button, style: .default)
+        alert.addAction(ok)
+        present(alert, animated: true)
+    }
+    
+    
+    func fireBaseIDTokenRefresh(handler: (() -> ())?) {
+        let currentUser = Auth.auth().currentUser
+        currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
+            if let error = error {
+                // Handle error
+                print(error)
+                return
+            }
+            LocalUserDefaults.shared.set(key: .FirebaseidToken, value: idToken)
+            handler?()
+        }
+    }
+    
+    
+    /// scroll in textfield
+    func setupGestureRecognizer() {
+      let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+      view.addGestureRecognizer(tap)
+    }
+
+    @objc func handleTap(_ gesture: UITapGestureRecognizer) {
+      view.endEditing(true)
+    }
 }
 

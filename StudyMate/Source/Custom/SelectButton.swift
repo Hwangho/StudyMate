@@ -32,6 +32,12 @@ final class SelectButton: UIButton {
         layer.cornerRadius = 8
     }
     
+    func ButtonisEnabled(value: Bool) {
+        let type: SDSSelectButton = value ? .fill : .disable
+        setupAttribute(type: type)
+        isEnabled = value
+    }
+    
 }
 
 

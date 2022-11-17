@@ -12,34 +12,34 @@ import RxSwift
 import RxCocoa
 
 
-class BirthViewController: BaseViewController {
+final class BirthViewController: BaseViewController {
     
     /// UI
-    lazy var scrollView = UIScrollView()
+    private lazy var scrollView = UIScrollView()
 
-    var contentView = UIView()
+    private var contentView = UIView()
     
-    let titleBackVoew = UIView()
+    private let titleBackVoew = UIView()
     
-    var stackView = UIStackView()
+    private var stackView = UIStackView()
     
-    let pickerView = UIDatePicker()
+    private let pickerView = UIDatePicker()
     
-    var titleLabel = LineHeightLabel()
+    private var titleLabel = LineHeightLabel()
     
-    lazy var yearTextFieldView = BirthLineTextFieldView(type: .year, picker: pickerView)
+    private lazy var yearTextFieldView = BirthLineTextFieldView(type: .year, picker: pickerView)
     
-    lazy var monthTextFieldView = BirthLineTextFieldView(type: .month, picker: pickerView)
+    private lazy var monthTextFieldView = BirthLineTextFieldView(type: .month, picker: pickerView)
     
-    lazy var dayTextFieldView = BirthLineTextFieldView(type: .day, picker: pickerView)
+    private lazy var dayTextFieldView = BirthLineTextFieldView(type: .day, picker: pickerView)
     
-    lazy var DoneButton = SelectButton(type: .disable, title: "다음")
+    private lazy var DoneButton = SelectButton(type: .disable, title: "다음")
     
     
     /// variable
     var coordinator: BirthCoordinator?
     
-    let viewModel: BirthViewModel
+    private let viewModel: BirthViewModel
     
     
     /// initialization
@@ -50,6 +50,14 @@ class BirthViewController: BaseViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        yearTextFieldView.textField.becomeFirstResponder()
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        yearTextFieldView.textField.resignFirstResponder()
     }
     
     
@@ -63,10 +71,9 @@ class BirthViewController: BaseViewController {
         titleLabel.numberOfLines = 2
         
         stackView.distribution = .fillEqually
-
-        yearTextFieldView.textField.becomeFirstResponder()
         
         setupDatePicker()
+        setupGestureRecognizer()
     }
     
     override func setupLayout() {
@@ -129,13 +136,13 @@ class BirthViewController: BaseViewController {
         
         DoneButton.rx.tap
             .bind{ [weak self] in
+                LocalUserDefaults.shared.set(key: .birth, value: self?.viewModel.store.birthDay)
                 self?.coordinator?.startEmail()
             }
             .disposed(by: disposeBag)
             
         /// State
         viewModel.currentStore
-//            .distinctUntilChanged { $0.birthDay }
             .map { ($0.year, $0.month, $0.day) }
             .bind { [weak self] (year, month, day) in
                 self?.yearTextFieldView.textField.text = year
@@ -148,8 +155,7 @@ class BirthViewController: BaseViewController {
             .distinctUntilChanged{ $0.checBirthValid }
             .map { $0.checBirthValid }
             .bind { [weak self] value in
-                self?.DoneButton.isEnabled = value
-                self?.DoneButton.setupAttribute(type: value ? .fill : .disable)
+                self?.DoneButton.ButtonisEnabled(value: value)
             }
             .disposed(by: disposeBag)
         
@@ -157,7 +163,7 @@ class BirthViewController: BaseViewController {
     
     
     /// CUstom Func
-    func setupDatePicker() {
+    private func setupDatePicker() {
         pickerView.preferredDatePickerStyle = .wheels
         pickerView.locale = Locale(identifier: "ko-KR")
         pickerView.datePickerMode = .date
@@ -168,18 +174,22 @@ class BirthViewController: BaseViewController {
         components.calendar = calendar
 
         // datePicker max 날짜 세팅 -> 오늘 날짜 에서
-        //
-        components.year = -1
+        
+        
+        components.year = -18
         components.month = 12
         let maxDate = calendar.date(byAdding: components, to: currentDate)!
 
         // datePicker min 날짜 세팅 -> 30년 전 까지
         //
-        components.year = -18
+        components.year = -90
         let minDate = calendar.date(byAdding: components, to: currentDate)!
 
-        pickerView.minimumDate = minDate
         pickerView.maximumDate = maxDate
+        pickerView.minimumDate = minDate
     }
     
 }
+
+
+

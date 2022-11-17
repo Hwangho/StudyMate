@@ -42,3 +42,6 @@ extension CertificationCoordinator: CertificationCoordinatorContext { }
 
 
 extension CertificationCoordinator: NickNameCoordinatorContext { }
+
+
+extension CertificationCoordinator: AppCoordinatorContext { }

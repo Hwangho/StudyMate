@@ -12,31 +12,32 @@ import RxSwift
 import RxCocoa
 
 
-class EmailViewController: BaseViewController {
+final class EmailViewController: BaseViewController {
     
     /// UI
-    lazy var scrollView = UIScrollView()
+    private lazy var scrollView = UIScrollView()
 
-    var contentView = UIView()
+    private var contentView = UIView()
     
-    let titleBackVoew = UIView()
+    private let titleBackView = UIView()
     
-    var titleLabel = LineHeightLabel()
+    private var titleLabel = LineHeightLabel()
     
-    lazy var enmailTextFieldView = LineTextFieldView()
+    private var contentLabel = LineHeightLabel()
     
-    lazy var DoneButton = SelectButton(type: .disable, title: "다음")
+    private lazy var enmailTextFieldView = LineTextFieldView()
+    
+    private lazy var DoneButton = SelectButton(type: .disable, title: "다음")
     
     
     /// variable
     var coordinator: EmailCoordinator?
     
-    let viewModel: CertificationViewModel
-
+    private let viewModel: EmailViewModel
     
     
     /// initialization
-    init(viewModel: CertificationViewModel = CertificationViewModel()) {
+    init(viewModel: EmailViewModel = EmailViewModel()) {
         self.viewModel = viewModel
         super.init()
     }
@@ -47,6 +48,16 @@ class EmailViewController: BaseViewController {
     
     
     /// Life Cycle
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        enmailTextFieldView.textField.becomeFirstResponder()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        enmailTextFieldView.textField.resignFirstResponder()
+    }
+    
     override func setupAttributes() {
         super.setupAttributes()
         scrollView.isScrollEnabled = false
@@ -54,6 +65,12 @@ class EmailViewController: BaseViewController {
         titleLabel.setupFont(type: .Display1_R20)
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 2
+        
+        contentLabel.setupFont(type: .Title2_R16)
+        contentLabel.textColor = Color.BaseColor.gray7
+        contentLabel.textAlignment = .center
+        
+        setupGestureRecognizer()
     }
     
     override func setupLayout() {
@@ -70,21 +87,29 @@ class EmailViewController: BaseViewController {
         }
         
         
-        titleBackVoew.addSubview(titleLabel)
+        [titleLabel, contentLabel].forEach {
+            titleBackView.addSubview($0)
+        }
+        
         titleLabel.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
         
+        contentLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(8)
+            make.centerX.equalTo(titleLabel.snp.centerX)
+        }
         
-        contentView.addSubview(titleBackVoew)
-        titleBackVoew.snp.makeConstraints { make in
+        
+        contentView.addSubview(titleBackView)
+        titleBackView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalToSuperview()
             make.height.equalTo(view.snp.height).multipliedBy(222.0/812.0)
         }
         
         contentView.addSubview(enmailTextFieldView)
         enmailTextFieldView.snp.makeConstraints { make in
-            make.top.equalTo(titleBackVoew.snp.bottom)
+            make.top.equalTo(titleBackView.snp.bottom)
             make.horizontalEdges.equalToSuperview().inset(16)
         }
         
@@ -99,20 +124,47 @@ class EmailViewController: BaseViewController {
     
     override func setData() {
         titleLabel.text = "이메일을 입력해 주세요"
+        contentLabel.text = "휴대폰 번호 변경 시 인증을 위해 사용해요"
         enmailTextFieldView.textField.placeholder = "SeSAC@email.com"
     }
     
     override func setupBinding() {
         /// Action
+        enmailTextFieldView.textField.rx.text
+            .orEmpty
+            .distinctUntilChanged()
+            .map { EmailViewModel.Action.inputEmail($0) }
+            .bind(to: viewModel.action)
+            .disposed(by: disposeBag)
+        
+        
         DoneButton.rx.tap
             .bind{ [weak self] in
+                LocalUserDefaults.shared.set(key: .email, value: self?.viewModel.store.email)
                 self?.coordinator?.startGender()
             }
             .disposed(by: disposeBag)
         
+        enmailTextFieldView.textField.rx.controlEvent(.editingDidBegin)
+            .map { true }
+            .bind { [weak self] value in
+                self?.enmailTextFieldView.focusTexField(value: value)}
+            .disposed(by: disposeBag)
+        
+        enmailTextFieldView.textField.rx.controlEvent(.editingDidEnd)
+            .map { false }
+            .bind { [weak self] value in
+                self?.enmailTextFieldView
+                .focusTexField(value: value)}
+            .disposed(by: disposeBag)
         
         /// State
-        
+        viewModel.currentStore
+            .map { $0.checEmailValid }
+            .bind { [weak self] value in
+                self?.DoneButton.ButtonisEnabled(value: value)
+            }
+            .disposed(by: disposeBag)
     }
     
 }

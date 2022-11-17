@@ -44,4 +44,17 @@ extension String {
             }
         return pureNumber
     }
+    
+    
+//    func isValidEmail() -> Bool {
+//        let emailRegEx = "[a-zA-Z0-9-_.]+@[a-zA-Z0-9-_.]+\\.[a-zA-Z]{2,5}"
+//        guard let regex = try? NSRegularExpression(pattern: emailRegEx, options: .caseInsensitive) else { return false }
+//        return regex.firstMatch(in: self, options: [], range: NSRange(self.startIndex..., in: self)) != nil
+//    }
+    
+    var isvalidEmail: Bool {
+        let emailRegEx = "[a-zA-Z0-9-_.]+@[a-zA-Z0-9-_.]+\\.[a-zA-Z]{2,5}"
+        guard let regex = try? NSRegularExpression(pattern: emailRegEx, options: .caseInsensitive) else { return false }
+        return regex.firstMatch(in: self, options: [], range: NSRange(self.startIndex..., in: self)) != nil
+    }
 }
