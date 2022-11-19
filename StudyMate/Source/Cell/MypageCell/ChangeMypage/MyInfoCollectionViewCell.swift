@@ -8,6 +8,8 @@
 import UIKit
 
 import SnapKit
+import RxSwift
+import RxCocoa
 
 
 class MyInfoCollectionViewCell: BaseCollectionViewCell {
@@ -59,7 +61,6 @@ class MyInfoCollectionViewCell: BaseCollectionViewCell {
 
 
 final class GenderView: BaseView {
-    
     
     /// UI
     private let titleLabel = LineHeightLabel()
@@ -193,6 +194,8 @@ final class AgeView: BaseView {
     
     private let ageLabel = LineHeightLabel()
     
+    private let rangeSlider = RangeSlider(frame: CGRect.zero)
+    
     
     /// Life Cycle
     override func setupAttributes() {
@@ -204,11 +207,13 @@ final class AgeView: BaseView {
         ageLabel.textColor = Color.BaseColor.green
         ageLabel.text = "asdasd"
         
-//        configure()
+        configure()
+        
+        rangeSlider.addTarget(self, action: #selector(rangeSliderValueChanged(_:)), for: .valueChanged)
     }
     
     override func setupLayout() {
-        [titleLabel, ageLabel].forEach {
+        [titleLabel, ageLabel, rangeSlider].forEach {
             addSubview($0)
         }
         
@@ -221,10 +226,20 @@ final class AgeView: BaseView {
             make.centerY.equalTo(titleLabel.snp.centerY)
             make.trailing.equalToSuperview()
         }
+        
+        rangeSlider.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(10)
+            make.width.equalTo(200)
+            make.height.equalTo(31)
+        }
     }
     
     func configure(startTime: Int = 23, endTime: Int = 32) {
         ageLabel.text = "\(startTime) - \(endTime)"
+    }
+    
+    @objc func rangeSliderValueChanged(_ rangeSlider: RangeSlider) {
+        print("Range slider value changed: (\(rangeSlider.lowerValue) , \(rangeSlider.upperValue))")
     }
     
 }
