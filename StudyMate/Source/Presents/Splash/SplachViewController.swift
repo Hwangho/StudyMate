@@ -68,7 +68,7 @@ final class SplachViewController: BaseViewController {
             .map { $0.serverType }
             .bind { [weak self] type in
                 let value: Bool? = LocalUserDefaults.shared.value(key: .onBoarding)
-                
+
                 if value == nil {
                     self?.coordinator.showInitialView(with: .onBoarding)
                 }
@@ -76,11 +76,11 @@ final class SplachViewController: BaseViewController {
                     guard let type = type else { return }
                     switch type {
                     case .successed:
-//                        self?.coordinator.showInitialView(with: .main)
-                        self?.coordinator.showInitialView(with: .certification)
+                        self?.coordinator.showInitialView(with: .main)
                     case .FireBaseToken:
-                        self?.fireBaseIDTokenRefresh{}
-                        self?.viewModel.action.accept(.login)
+                        self?.fireBaseIDTokenRefresh {
+                            self?.viewModel.action.accept(.login)
+                        }
                     case .noneSignup, .clientError:
                         self?.coordinator.showInitialView(with: .certification)
                     default:

@@ -33,7 +33,7 @@ struct APIKeys {
         init(type: BuildType = .test) {
             switch type {
             case .test:
-                baseURL = "http://api.sesac.co.kr:1207"
+                baseURL = "http://api.sesac.co.kr:1210"
                 
             case .real:
                 baseURL = " "

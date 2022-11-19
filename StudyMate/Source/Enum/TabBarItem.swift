@@ -12,32 +12,32 @@ enum TabBarItem: Int, CaseIterable {
     case home
 //    case shop
 //    case friends
-//    case myInfo
+    case myInfo
     
     var title: String {
         switch self {
         case .home: return "홈"
 //        case .shop: return "새싹샵"
 //        case .friends: return "새싹친구"
-//        case .myInfo: return "내정보"
+        case .myInfo: return "내정보"
         }
     }
     
     var image: UIImage {
         switch self {
-        case .home: return UIImage(systemName: "text.book.closed")!
+        case .home: return UIImage(named: "home_deselect")!
 //        case .shop: return UIImage(systemName: "text.book.closed")!
 //        case .friends: return UIImage(systemName: "text.book.closed")!
-//        case .myInfo: return UIImage(systemName: "text.book.closed")!
+        case .myInfo: return UIImage(named: "person_deselect")!
         }
     }
     
     var selectedImage: UIImage {
         switch self {
-        case .home: return UIImage(systemName: "text.book.closed")!
+        case .home: return UIImage(named: "home_select")!
 //        case .shop: return UIImage(systemName: "text.book.closed")!
 //        case .friends: return UIImage(systemName: "text.book.closed")!
-//        case .myInfo: return UIImage(systemName: "text.book.closed")!
+        case .myInfo: return UIImage(named: "person_select")!
         }
     }
     
@@ -46,7 +46,7 @@ enum TabBarItem: Int, CaseIterable {
         case .home: return HomeCoordinator(presenter: presenter)
 //        case .shop: return
 //        case .friends: return
-//        case .myInfo: return
+        case .myInfo: return MyPageCoordinator(presenter: presenter)
         }
     }
     
