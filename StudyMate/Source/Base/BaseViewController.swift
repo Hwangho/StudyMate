@@ -112,11 +112,15 @@ class BaseViewController: UIViewController {
     func navigation() {
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.backgroundColor = Color.BaseColor.white
-        
-        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Color.BaseColor.black,
-                                                       NSAttributedString.Key.font: UIFont(name: Font.Title3_M14.fontType,
-                                                                                           size: Font.Title3_M14.fontSize)! ]
-        
+
+        let attributes = [NSAttributedString.Key.foregroundColor: Color.BaseColor.black,
+                          NSAttributedString.Key.font: UIFont(name: Font.Title3_M14.fontType,
+                                                              size: Font.Title3_M14.fontSize)! ]
+
+        navigationBarAppearance.titleTextAttributes = attributes
+        navigationBarAppearance.buttonAppearance.normal.titleTextAttributes = attributes
+        navigationBarAppearance.doneButtonAppearance.normal.titleTextAttributes = attributes
+
         let backImage = UIImage(named: "arrow")
         navigationBarAppearance.setBackIndicatorImage(backImage, transitionMaskImage: backImage)
 

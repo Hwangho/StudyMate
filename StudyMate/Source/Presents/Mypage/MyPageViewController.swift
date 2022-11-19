@@ -21,13 +21,18 @@ final class MyPageViewController: BaseViewController {
     
     
     /// life Cycle
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     override func setupAttributes() {
         super.setupAttributes()
         navigationItem.title = "내 정보"
         
         collectionView.delegate = self
     }
- 
+    
     override func setData() {
         setupDataSource()
         

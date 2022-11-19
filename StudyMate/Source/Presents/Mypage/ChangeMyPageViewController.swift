@@ -38,12 +38,30 @@ final class ChangeMyPageViewController: BaseViewController {
     
     
     /// Life Cycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+        tabBarController?.tabBar.isTranslucent = true
+    }
+    
     override func setupAttributes() {
         super.setupAttributes()
         
         collectionview.delegate = self
+        navigationItem.title = "정보 관리"
+        
+        let saveButton = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(tapSaveButton))
+        
+        navigationItem.rightBarButtonItem = saveButton
 //        setupGestureRecognizer()    /// TextField KeyBoard 내리기
     }
+    
+    
+    @objc
+    func tapSaveButton() {
+        print("내 마음 속에 저장~")
+    }
+    
     
     override func setupLayout() {
         view.addSubview(collectionview)
@@ -59,7 +77,7 @@ final class ChangeMyPageViewController: BaseViewController {
     override func setData() {
         setDataSource()
     }
-    
+
 }
 
 
@@ -90,8 +108,8 @@ extension ChangeMyPageViewController {
  
     /// Set CollectionView
     func setDataSource() {
-        let cardCell = CardCellRegister.init { cell, indexPath, itemIdentifier in
-            self.addChild(cell.cardInfoViewcontroller)
+        let cardCell = CardCellRegister.init { [weak self] cell, indexPath, itemIdentifier in
+            self?.addChild(cell.cardInfoViewcontroller)
         }
         
         let myinfoCell = MyInfoCeollRegister { cell, indexPath, itemIdentifier in
