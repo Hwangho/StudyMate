@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E08EED02928E9090098C1A1 /* MultiSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E08EECF2928E9090098C1A1 /* MultiSlider.swift */; };
 		0E4644FC2925C4B500EEC90C /* SplachCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4644FB2925C4B500EEC90C /* SplachCoordinator.swift */; };
 		0E4644FE2925C4DD00EEC90C /* SplachCoordinatorContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4644FD2925C4DD00EEC90C /* SplachCoordinatorContext.swift */; };
 		0E4645012926394F00EEC90C /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4645002926394F00EEC90C /* MyPageViewController.swift */; };
@@ -126,6 +127,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E08EECF2928E9090098C1A1 /* MultiSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSlider.swift; sourceTree = "<group>"; };
 		0E4644FB2925C4B500EEC90C /* SplachCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplachCoordinator.swift; sourceTree = "<group>"; };
 		0E4644FD2925C4DD00EEC90C /* SplachCoordinatorContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplachCoordinatorContext.swift; sourceTree = "<group>"; };
 		0E4645002926394F00EEC90C /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
@@ -679,6 +681,7 @@
 				0EAE3334291B917200AA4FE6 /* LineTextFieldView.swift */,
 				0EAE3365291D045600AA4FE6 /* BirthLineTextFieldView.swift */,
 				0EAE3338291BA9D800AA4FE6 /* CertificationTextFieldView.swift */,
+				0E08EECF2928E9090098C1A1 /* MultiSlider.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -1146,6 +1149,7 @@
 				0E4645012926394F00EEC90C /* MyPageViewController.swift in Sources */,
 				0EAE335B291CEA9800AA4FE6 /* EmailCoordinatorContext.swift in Sources */,
 				0E46450F29264FE100EEC90C /* SettingCollectionViewCell.swift in Sources */,
+				0E08EED02928E9090098C1A1 /* MultiSlider.swift in Sources */,
 				0EAE3354291CE8B000AA4FE6 /* BirthCoordinator.swift in Sources */,
 				0E4645132926586B00EEC90C /* ChangeMyPageCoordinator.swift in Sources */,
 				0E464506292639CE00EEC90C /* MyPageCoordinatorContext.swift in Sources */,
