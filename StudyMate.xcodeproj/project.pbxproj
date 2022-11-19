@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		0E08EED02928E9090098C1A1 /* MultiSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E08EECF2928E9090098C1A1 /* MultiSlider.swift */; };
+		0E08EED429291B660098C1A1 /* GenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E08EED329291B660098C1A1 /* GenderView.swift */; };
+		0E08EED629291B800098C1A1 /* StudyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E08EED529291B800098C1A1 /* StudyView.swift */; };
+		0E08EED829291B940098C1A1 /* SearchallowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E08EED729291B940098C1A1 /* SearchallowView.swift */; };
+		0E08EEDA29291BAF0098C1A1 /* AgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E08EED929291BAF0098C1A1 /* AgeView.swift */; };
+		0E08EEDC29291BC70098C1A1 /* WithDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E08EEDB29291BC70098C1A1 /* WithDrawView.swift */; };
 		0E4644FC2925C4B500EEC90C /* SplachCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4644FB2925C4B500EEC90C /* SplachCoordinator.swift */; };
 		0E4644FE2925C4DD00EEC90C /* SplachCoordinatorContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4644FD2925C4DD00EEC90C /* SplachCoordinatorContext.swift */; };
 		0E4645012926394F00EEC90C /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4645002926394F00EEC90C /* MyPageViewController.swift */; };
@@ -128,6 +133,11 @@
 
 /* Begin PBXFileReference section */
 		0E08EECF2928E9090098C1A1 /* MultiSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSlider.swift; sourceTree = "<group>"; };
+		0E08EED329291B660098C1A1 /* GenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderView.swift; sourceTree = "<group>"; };
+		0E08EED529291B800098C1A1 /* StudyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyView.swift; sourceTree = "<group>"; };
+		0E08EED729291B940098C1A1 /* SearchallowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchallowView.swift; sourceTree = "<group>"; };
+		0E08EED929291BAF0098C1A1 /* AgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeView.swift; sourceTree = "<group>"; };
+		0E08EEDB29291BC70098C1A1 /* WithDrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawView.swift; sourceTree = "<group>"; };
 		0E4644FB2925C4B500EEC90C /* SplachCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplachCoordinator.swift; sourceTree = "<group>"; };
 		0E4644FD2925C4DD00EEC90C /* SplachCoordinatorContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplachCoordinatorContext.swift; sourceTree = "<group>"; };
 		0E4645002926394F00EEC90C /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
@@ -276,6 +286,26 @@
 				8BAA7A9CF80E6040823CED8F /* Pods_StudyMateTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0E08EED129291B390098C1A1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0E08EED229291B510098C1A1 /* MyPage */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0E08EED229291B510098C1A1 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				0E08EED329291B660098C1A1 /* GenderView.swift */,
+				0E08EED529291B800098C1A1 /* StudyView.swift */,
+				0E08EED729291B940098C1A1 /* SearchallowView.swift */,
+				0E08EED929291BAF0098C1A1 /* AgeView.swift */,
+				0E08EEDB29291BC70098C1A1 /* WithDrawView.swift */,
+			);
+			path = MyPage;
 			sourceTree = "<group>";
 		};
 		0E4644FA2925C4A700EEC90C /* Splash */ = {
@@ -516,6 +546,7 @@
 				0EB826C82918E0EB00CA626A /* Service */,
 				0EB826C92918E0F200CA626A /* Repository */,
 				0EB826C72918E0D800CA626A /* Router */,
+				0E08EED129291B390098C1A1 /* View */,
 				0EB826D62918E2E400CA626A /* Constants */,
 				0EB826DF2918F31D00CA626A /* Custom */,
 				0EB826CF2918E1B900CA626A /* Base */,
@@ -1071,6 +1102,7 @@
 				0EAE3366291D045600AA4FE6 /* BirthLineTextFieldView.swift in Sources */,
 				0EB82711291A31B500CA626A /* HomeViewController.swift in Sources */,
 				0EAE3339291BA9D800AA4FE6 /* CertificationTextFieldView.swift in Sources */,
+				0E08EED629291B800098C1A1 /* StudyView.swift in Sources */,
 				0EAE333B291BC27C00AA4FE6 /* LineTextFieldType.swift in Sources */,
 				0E46450A29263CB700EEC90C /* ChangeMyPageViewModel.swift in Sources */,
 				0E4644FC2925C4B500EEC90C /* SplachCoordinator.swift in Sources */,
@@ -1104,6 +1136,7 @@
 				0EB82709291A299A00CA626A /* CertificationCoordinatorContext.swift in Sources */,
 				0EAE3346291CD30F00AA4FE6 /* EmailViewController.swift in Sources */,
 				0EA9E3C82922CB7800FFC0D5 /* UserRouter.swift in Sources */,
+				0E08EED829291B940098C1A1 /* SearchallowView.swift in Sources */,
 				0EB826FD2919737B00CA626A /* MainCoordinator.swift in Sources */,
 				0E46451729275EAA00EEC90C /* BaseCollectionHeaderFooterView.swift in Sources */,
 				0EAE3342291CD0E400AA4FE6 /* NickNameViewController.swift in Sources */,
@@ -1118,8 +1151,10 @@
 				0EB826F7291966E500CA626A /* OnBoardingViewController.swift in Sources */,
 				0E843CE1291F70C000D7D259 /* BirthViewModel.swift in Sources */,
 				0EE856F72922ECC900EA9AE5 /* UserService.swift in Sources */,
+				0E08EED429291B660098C1A1 /* GenderView.swift in Sources */,
 				0E46452B2928B1DF00EEC90C /* UICollectionViewDiffableDataSource+Extension.swift in Sources */,
 				0EB82718291A46B100CA626A /* UILabel+Extension.swift in Sources */,
+				0E08EEDA29291BAF0098C1A1 /* AgeView.swift in Sources */,
 				0EB826932918B4AF00CA626A /* AppDelegate.swift in Sources */,
 				0E46452729288A2300EEC90C /* CardDetailCollectionViewController.swift in Sources */,
 				0EB826EE29193B3600CA626A /* Coordinator.swift in Sources */,
@@ -1152,6 +1187,7 @@
 				0E08EED02928E9090098C1A1 /* MultiSlider.swift in Sources */,
 				0EAE3354291CE8B000AA4FE6 /* BirthCoordinator.swift in Sources */,
 				0E4645132926586B00EEC90C /* ChangeMyPageCoordinator.swift in Sources */,
+				0E08EEDC29291BC70098C1A1 /* WithDrawView.swift in Sources */,
 				0E464506292639CE00EEC90C /* MyPageCoordinatorContext.swift in Sources */,
 				0EB826D52918E2C600CA626A /* BaseCollectionViewCell.swift in Sources */,
 				0EAE3360291CEC5300AA4FE6 /* GenderCoordinatorContext.swift in Sources */,
