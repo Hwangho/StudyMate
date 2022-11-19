@@ -50,30 +50,32 @@ final class AppCoordinator: Coordinator {
     
     /// Custom Func
     func showInitialView(with type: InitalViewType) {
-        
         presenter = UINavigationController()
         
-        switch type {
-        case .splash:
-            showSplash(window: window)
-            
-        case .onBoarding:
-            firstStartOnBoarding(present: presenter)
-            self.window.rootViewController = presenter
-            
-        case .certification:
-            let value: String? = LocalUserDefaults.shared.value(key: .FirebaseidToken)
-            if value == nil {
-                firstStartCertification(prsent: presenter)
-            } else {
-                firstStartNickName(present: presenter)
-            }
-            self.window.rootViewController = presenter
-            
-        case .main:
-            firstStartMain(tabbar: tabbar)
-            self.window.rootViewController = tabbar
-        }
+//        switch type {
+//        case .splash:
+//            showSplash(window: window)
+//            
+//        case .onBoarding:
+//            firstStartOnBoarding(present: presenter)
+//            self.window.rootViewController = presenter
+//            
+//        case .certification:
+//            let value: String? = LocalUserDefaults.shared.value(key: .FirebaseidToken)
+//            if value == nil {
+//                firstStartCertification(prsent: presenter)
+//            } else {
+//                firstStartNickName(present: presenter)
+//            }
+//            self.window.rootViewController = presenter
+//            
+//        case .main:
+//            firstStartMain(tabbar: tabbar)
+//            self.window.rootViewController = tabbar
+//        }
+//        
+        firstStartMain(tabbar: tabbar)
+        self.window.rootViewController = tabbar
         
         self.window.makeKeyAndVisible()
         

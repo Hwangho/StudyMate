@@ -1,5 +1,5 @@
 //
-//  BaseCollectionHeaderView.swift
+//  BaseCollectionHeaderFooterView.swift
 //  StudyMate
 //
 //  Created by 송황호 on 2022/11/18.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BaseCollectionHeaderView: UICollectionReusableView {
+class BaseCollectionHeaderFooterView: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
