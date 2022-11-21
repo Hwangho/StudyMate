@@ -111,27 +111,24 @@ class BaseViewController: UIViewController {
     // MARK: Custom Func
     func navigation() {
         let navigationBarAppearance = UINavigationBarAppearance()
-        /// 다크모트, 화이트모드에 알맞는 view 생성
-//        navigationBarAppearance.configureWithOpaqueBackground()
         navigationBarAppearance.backgroundColor = Color.BaseColor.white
 
-        /// iOS 15 이상부터 Navigation -> PushViewController 할 때
-        ///  bar appearance객체를 transparent background와 shadow가 없게 configure한다!!
-        navigationBarAppearance.configureWithTransparentBackground()
+        let attributes = [NSAttributedString.Key.foregroundColor: Color.BaseColor.black,
+                          NSAttributedString.Key.font: UIFont(name: Font.Title3_M14.fontType,
+                                                              size: Font.Title3_M14.fontSize)! ]
+
+        navigationBarAppearance.titleTextAttributes = attributes
+        navigationBarAppearance.buttonAppearance.normal.titleTextAttributes = attributes
+        navigationBarAppearance.doneButtonAppearance.normal.titleTextAttributes = attributes
+
+        let backImage = UIImage(named: "arrow")?.withAlignmentRectInsets(UIEdgeInsets(top: 0.0, left: -6.0, bottom: 0.0, right: 0.0))
         
-        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Color.BaseColor.black,
-                                                       NSAttributedString.Key.font: UIFont(name: Font.Title3_M14.fontType,
-                                                                                           size: Font.Title3_M14.fontSize)! ]
-        
+        navigationBarAppearance.setBackIndicatorImage(backImage, transitionMaskImage: backImage)
+
         UINavigationBar.appearance().standardAppearance = navigationBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         
-        let backBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow"), style: .done, target: self, action: nil)
-        self.navigationItem.backBarButtonItem = backBarButtonItem
-        
-        let backButton  = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
-        navigationItem.backBarButtonItem = backButton
-        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationController?.navigationBar.tintColor = Color.BaseColor.black
         navigationController?.view.backgroundColor = Color.BaseColor.white              /// Navagation 배경 색상을 지정
     }
@@ -166,8 +163,12 @@ extension BaseViewController {
     
     /// scroll in textfield
     func setupGestureRecognizer() {
-      let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-      view.addGestureRecognizer(tap)
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+        
+//      let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+//      view.addGestureRecognizer(tap)
     }
 
     @objc func handleTap(_ gesture: UITapGestureRecognizer) {

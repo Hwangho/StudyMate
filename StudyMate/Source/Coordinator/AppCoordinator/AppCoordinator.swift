@@ -50,7 +50,6 @@ final class AppCoordinator: Coordinator {
     
     /// Custom Func
     func showInitialView(with type: InitalViewType) {
-        
         presenter = UINavigationController()
         
         switch type {
@@ -74,6 +73,9 @@ final class AppCoordinator: Coordinator {
             firstStartMain(tabbar: tabbar)
             self.window.rootViewController = tabbar
         }
+        
+//        firstStartMain(tabbar: tabbar)
+//        self.window.rootViewController = tabbar
         
         self.window.makeKeyAndVisible()
         

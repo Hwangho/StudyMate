@@ -12,10 +12,10 @@ import RxSwift
 
 protocol UserRepositoryPorotocool {
     
-    typealias SingleResponse = Single<ResponseWrapper<User>>
-    
     func signin() -> Single<Response>
     func signup(_ phoneNumber: String, _ nick: String, _ birth: String, _ email: String, _ gender: Int) -> Single<Response>
+    func withdraw() -> Single<Response>
+    func changeMypage(_ searchable: Int, _ ageMin: Int, _ ageMax: Int, _ gender: Int, _ study: String) -> Single<Response>
 }
 
 struct UserRepository: UserRepositoryPorotocool {
@@ -34,6 +34,14 @@ struct UserRepository: UserRepositoryPorotocool {
     
     func signup(_ phoneNumber: String, _ nick: String, _ birth: String, _ email: String, _ gender: Int) -> Single<Response> {
         return provider.rx.request(.signup(phoneNumber, nick, birth, email, gender))
-            
+    }
+    
+    func withdraw() -> Single<Response> {
+        return provider.rx.request(.withdraw)
+    }
+    
+    func changeMypage(_ searchable: Int, _ ageMin: Int, _ ageMax: Int, _ gender: Int, _ study: String) -> Single<Response> {
+        return provider.rx.request(.changeMypage(searchable, ageMin, ageMax, gender, study))
     }
 }
+

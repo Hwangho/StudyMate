@@ -124,28 +124,3 @@ final class GenderViewModel {
 }
 
 
-
-
-
-//
-//class UserMoya {
-//
-//    let provider: MoyaProvider<UserRouter>
-//
-//    init(provider: MoyaProvider<UserRouter> = MoyaProvider<UserRouter>() ) {
-//        self.provider = provider
-//    }
-//
-//    func signup(_ phoneNumber: String, _ nick: String, _ birth: String, _ email: String, _ gender: Int) -> Single<Void> {
-//        return provider.request(.signup(phoneNumber, nick, birth, email, gender)) { result in
-//            switch result {
-//            case .success(let data):
-//                print(data)
-//                return
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-//
-//    }
-//}
