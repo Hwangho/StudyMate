@@ -71,5 +71,7 @@ final class AgeView: BaseView {
     func configure(ageMin: Int, ageMax: Int) {
         slider.lower = Double(ageMin)
         slider.upper = Double(ageMax)
+        ageLabel.text = "\(ageMin) ~ \(ageMax)"
+        delegate?.sendAge(ageMin: ageMin, ageMax: ageMax)
     }
 }

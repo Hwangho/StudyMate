@@ -15,6 +15,7 @@ protocol UserServiceProtocool {
     func signin() -> Single<Response?>
     func signup(_ phoneNumber: String, _ nick: String, _ birth: String, _ email: String, _ gender: Int) -> Single<Response?>
     func withdraw() -> Single<Response?>
+    func changeMypage(_ searchable: Int, _ ageMin: Int, _ ageMax: Int, _ gender: Int, _ study: String) -> Single<Response?>
 }
 
 
@@ -41,6 +42,12 @@ struct UserService: UserServiceProtocool {
     func withdraw() -> Single<Response?> {
         return repository
             .withdraw()
+            .map { $0 }
+    }
+    
+    func changeMypage(_ searchable: Int, _ ageMin: Int, _ ageMax: Int, _ gender: Int, _ study: String) -> Single<Response?> {
+        return repository
+            .changeMypage(searchable, ageMin, ageMax, gender, study)
             .map { $0 }
     }
 }

@@ -51,6 +51,7 @@ class MyInfoCollectionViewCell: BaseCollectionViewCell {
         genderView.configure(gender: user.gender)
         studyView.configure(study: user.study ?? "")
         searchallowView.configure(allow: user.searchable)
+        ageView.configure(ageMin: user.ageMin, ageMax: user.ageMax)
     }
     
 }
