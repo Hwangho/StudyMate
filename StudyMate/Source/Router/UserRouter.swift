@@ -11,6 +11,8 @@ import Moya
 enum UserRouter {
     case signin
     case signup(_ phoneNumber: String, _ nick: String, _ birth: String, _ email: String, _ gender: Int)
+    case withdraw
+    case changeMypage(_ searchable: Int, _ ageMin: Int, _ ageMax: Int, _ gender: Int, _ study: String)
 }
 
 extension UserRouter: TargetType {
@@ -22,13 +24,21 @@ extension UserRouter: TargetType {
     var path: String {
         switch self {
         case .signin, .signup: return "/v1/user"
+        case .withdraw: return "/v1/user/withdraw"
+        case .changeMypage: return "/v1/user/mypage"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .signup: return .post
-        default: return .get
+        case .signup, .withdraw:
+            return .post
+            
+        case .changeMypage:
+            return .put
+            
+        default:
+            return .get
         }
     }
     
@@ -43,6 +53,16 @@ extension UserRouter: TargetType {
                      "email": email,
                      "gender" : gender
                    ]
+            
+        case .changeMypage(let searchable, let ageMin, let ageMax, let gender, let study):
+           return [
+               "searchable" : searchable,
+               "ageMin" : ageMin,
+               "ageMax" : ageMax,
+               "gender" : gender,
+               "study" : study
+            ]
+
         
         default: return [:]
         }
@@ -50,17 +70,11 @@ extension UserRouter: TargetType {
     
     var task: Moya.Task {
         switch self {
-        case .signin:
+            
+        default:
             return .requestParameters(
                 parameters: self.parameters,
                 encoding: URLEncoding.default)
-            
-        case .signup:
-            return .requestParameters(
-                parameters: self.parameters,
-                encoding: URLEncoding.default)
-            
-//        default: return .requestPlain
         }
     }
 
@@ -68,19 +82,12 @@ extension UserRouter: TargetType {
         let idToken: String? = LocalUserDefaults.shared.value(key: .FirebaseidToken)
         
         switch self {
-        case .signin:
+        default:
             return [
                 "Content-Type": "application/x-www-form-urlencoded",
                 "idtoken": "\(idToken ?? "")"
             ]
             
-        case .signup:
-            return [
-                "Content-Type": "application/x-www-form-urlencoded",
-                "idtoken": "\(idToken ?? "")"
-            ]
-            
-        
         }
     }
     

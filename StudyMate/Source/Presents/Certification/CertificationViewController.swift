@@ -254,6 +254,8 @@ final class CertificationViewController: BaseViewController {
                         verificationCode: (self?.viewModel.store.certificationNumber)!
                     )
                     
+                    Auth.auth().settings?.isAppVerificationDisabledForTesting = true
+                    
                     Auth.auth().signIn(with: credential) { authData, error in
                         
                         if let error = error {

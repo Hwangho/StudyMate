@@ -104,6 +104,7 @@ extension AppDelegate {
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         // Firebase 에서 대리자로 APNs 토큰을 설정해주는 곳
         Messaging.messaging().apnsToken = deviceToken
+        Auth.auth().setAPNSToken(deviceToken, type: .prod)
     }
 }
 

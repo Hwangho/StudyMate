@@ -7,8 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E08EED02928E9090098C1A1 /* MultiSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E08EECF2928E9090098C1A1 /* MultiSlider.swift */; };
+		0E08EED429291B660098C1A1 /* GenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E08EED329291B660098C1A1 /* GenderView.swift */; };
+		0E08EED629291B800098C1A1 /* StudyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E08EED529291B800098C1A1 /* StudyView.swift */; };
+		0E08EED829291B940098C1A1 /* SearchallowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E08EED729291B940098C1A1 /* SearchallowView.swift */; };
+		0E08EEDA29291BAF0098C1A1 /* AgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E08EED929291BAF0098C1A1 /* AgeView.swift */; };
+		0E08EEDC29291BC70098C1A1 /* WithDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E08EEDB29291BC70098C1A1 /* WithDrawView.swift */; };
+		0E08EEDE292A367E0098C1A1 /* Rx+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E08EEDD292A367E0098C1A1 /* Rx+Extension.swift */; };
+		0E08EEE0292A37370098C1A1 /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E08EEDF292A37370098C1A1 /* MyPageViewModel.swift */; };
+		0E08EEE2292A64480098C1A1 /* CardTypeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E08EEE1292A64480098C1A1 /* CardTypeCollectionView.swift */; };
+		0E08EEE4292A89420098C1A1 /* CardDetailCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E08EEE3292A89420098C1A1 /* CardDetailCollectionViewModel.swift */; };
+		0E08EEE6292A93E30098C1A1 /* MoreReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E08EEE5292A93E20098C1A1 /* MoreReviewViewController.swift */; };
+		0E08EEE8292B45EC0098C1A1 /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E08EEE7292B45EC0098C1A1 /* CustomAlertViewController.swift */; };
+		0E08EEEB292B462F0098C1A1 /* CustomAlertCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E08EEEA292B462F0098C1A1 /* CustomAlertCoordinator.swift */; };
+		0E08EEED292B46480098C1A1 /* CustomAlertCoordinatorContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E08EEEC292B46480098C1A1 /* CustomAlertCoordinatorContext.swift */; };
 		0E4644FC2925C4B500EEC90C /* SplachCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4644FB2925C4B500EEC90C /* SplachCoordinator.swift */; };
 		0E4644FE2925C4DD00EEC90C /* SplachCoordinatorContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4644FD2925C4DD00EEC90C /* SplachCoordinatorContext.swift */; };
+		0E4645012926394F00EEC90C /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4645002926394F00EEC90C /* MyPageViewController.swift */; };
+		0E464504292639C000EEC90C /* MyPageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E464503292639C000EEC90C /* MyPageCoordinator.swift */; };
+		0E464506292639CE00EEC90C /* MyPageCoordinatorContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E464505292639CE00EEC90C /* MyPageCoordinatorContext.swift */; };
+		0E46450A29263CB700EEC90C /* ChangeMyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E46450929263CB700EEC90C /* ChangeMyPageViewModel.swift */; };
+		0E46450D29264F9700EEC90C /* MyPageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E46450C29264F9700EEC90C /* MyPageCollectionViewCell.swift */; };
+		0E46450F29264FE100EEC90C /* SettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E46450E29264FE100EEC90C /* SettingCollectionViewCell.swift */; };
+		0E4645112926529B00EEC90C /* ChangeMyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4645102926529B00EEC90C /* ChangeMyPageViewController.swift */; };
+		0E4645132926586B00EEC90C /* ChangeMyPageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4645122926586B00EEC90C /* ChangeMyPageCoordinator.swift */; };
+		0E464515292658AE00EEC90C /* ChangeMyPageCoordinatorContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E464514292658AE00EEC90C /* ChangeMyPageCoordinatorContext.swift */; };
+		0E46451729275EAA00EEC90C /* BaseCollectionHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E46451629275EAA00EEC90C /* BaseCollectionHeaderFooterView.swift */; };
+		0E46451A2927D96100EEC90C /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4645192927D96100EEC90C /* CardCollectionViewCell.swift */; };
+		0E46451C2927D97700EEC90C /* CardCollectionViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E46451B2927D97700EEC90C /* CardCollectionViewHeaderView.swift */; };
+		0E46451E2927D99400EEC90C /* MyInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E46451D2927D99400EEC90C /* MyInfoCollectionViewCell.swift */; };
+		0E4645232928847500EEC90C /* CardReputationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4645222928847400EEC90C /* CardReputationCollectionViewCell.swift */; };
+		0E4645252928848E00EEC90C /* CardReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4645242928848E00EEC90C /* CardReviewCollectionViewCell.swift */; };
+		0E46452729288A2300EEC90C /* CardDetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E46452629288A2300EEC90C /* CardDetailCollectionViewController.swift */; };
+		0E4645292928A96A00EEC90C /* CardDetalCollectionViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4645282928A96A00EEC90C /* CardDetalCollectionViewHeaderView.swift */; };
+		0E46452B2928B1DF00EEC90C /* UICollectionViewDiffableDataSource+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E46452A2928B1DF00EEC90C /* UICollectionViewDiffableDataSource+Extension.swift */; };
 		0E843CE1291F70C000D7D259 /* BirthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E843CE0291F70C000D7D259 /* BirthViewModel.swift */; };
 		0E843CF52920AF0900D7D259 /* CertificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E843CF42920AF0900D7D259 /* CertificationService.swift */; };
 		0E8A2305292549600073E261 /* SplachViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8A2304292549600073E261 /* SplachViewController.swift */; };
@@ -108,8 +140,40 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E08EECF2928E9090098C1A1 /* MultiSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSlider.swift; sourceTree = "<group>"; };
+		0E08EED329291B660098C1A1 /* GenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderView.swift; sourceTree = "<group>"; };
+		0E08EED529291B800098C1A1 /* StudyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyView.swift; sourceTree = "<group>"; };
+		0E08EED729291B940098C1A1 /* SearchallowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchallowView.swift; sourceTree = "<group>"; };
+		0E08EED929291BAF0098C1A1 /* AgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeView.swift; sourceTree = "<group>"; };
+		0E08EEDB29291BC70098C1A1 /* WithDrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawView.swift; sourceTree = "<group>"; };
+		0E08EEDD292A367E0098C1A1 /* Rx+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+Extension.swift"; sourceTree = "<group>"; };
+		0E08EEDF292A37370098C1A1 /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
+		0E08EEE1292A64480098C1A1 /* CardTypeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypeCollectionView.swift; sourceTree = "<group>"; };
+		0E08EEE3292A89420098C1A1 /* CardDetailCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailCollectionViewModel.swift; sourceTree = "<group>"; };
+		0E08EEE5292A93E20098C1A1 /* MoreReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreReviewViewController.swift; sourceTree = "<group>"; };
+		0E08EEE7292B45EC0098C1A1 /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
+		0E08EEEA292B462F0098C1A1 /* CustomAlertCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertCoordinator.swift; sourceTree = "<group>"; };
+		0E08EEEC292B46480098C1A1 /* CustomAlertCoordinatorContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertCoordinatorContext.swift; sourceTree = "<group>"; };
 		0E4644FB2925C4B500EEC90C /* SplachCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplachCoordinator.swift; sourceTree = "<group>"; };
 		0E4644FD2925C4DD00EEC90C /* SplachCoordinatorContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplachCoordinatorContext.swift; sourceTree = "<group>"; };
+		0E4645002926394F00EEC90C /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		0E464503292639C000EEC90C /* MyPageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCoordinator.swift; sourceTree = "<group>"; };
+		0E464505292639CE00EEC90C /* MyPageCoordinatorContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCoordinatorContext.swift; sourceTree = "<group>"; };
+		0E46450929263CB700EEC90C /* ChangeMyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMyPageViewModel.swift; sourceTree = "<group>"; };
+		0E46450C29264F9700EEC90C /* MyPageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCollectionViewCell.swift; sourceTree = "<group>"; };
+		0E46450E29264FE100EEC90C /* SettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCollectionViewCell.swift; sourceTree = "<group>"; };
+		0E4645102926529B00EEC90C /* ChangeMyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMyPageViewController.swift; sourceTree = "<group>"; };
+		0E4645122926586B00EEC90C /* ChangeMyPageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMyPageCoordinator.swift; sourceTree = "<group>"; };
+		0E464514292658AE00EEC90C /* ChangeMyPageCoordinatorContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMyPageCoordinatorContext.swift; sourceTree = "<group>"; };
+		0E46451629275EAA00EEC90C /* BaseCollectionHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionHeaderFooterView.swift; sourceTree = "<group>"; };
+		0E4645192927D96100EEC90C /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		0E46451B2927D97700EEC90C /* CardCollectionViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewHeaderView.swift; sourceTree = "<group>"; };
+		0E46451D2927D99400EEC90C /* MyInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoCollectionViewCell.swift; sourceTree = "<group>"; };
+		0E4645222928847400EEC90C /* CardReputationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardReputationCollectionViewCell.swift; sourceTree = "<group>"; };
+		0E4645242928848E00EEC90C /* CardReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardReviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		0E46452629288A2300EEC90C /* CardDetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailCollectionViewController.swift; sourceTree = "<group>"; };
+		0E4645282928A96A00EEC90C /* CardDetalCollectionViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetalCollectionViewHeaderView.swift; sourceTree = "<group>"; };
+		0E46452A2928B1DF00EEC90C /* UICollectionViewDiffableDataSource+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewDiffableDataSource+Extension.swift"; sourceTree = "<group>"; };
 		0E843CE0291F70C000D7D259 /* BirthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthViewModel.swift; sourceTree = "<group>"; };
 		0E843CF42920AF0900D7D259 /* CertificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationService.swift; sourceTree = "<group>"; };
 		0E8A2304292549600073E261 /* SplachViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplachViewController.swift; sourceTree = "<group>"; };
@@ -240,13 +304,120 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		0E4644FA2925C4A700EEC90C /* SplashCoordinator */ = {
+		0E08EED129291B390098C1A1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0E08EED229291B510098C1A1 /* MyPage */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0E08EED229291B510098C1A1 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				0E08EED329291B660098C1A1 /* GenderView.swift */,
+				0E08EED529291B800098C1A1 /* StudyView.swift */,
+				0E08EED729291B940098C1A1 /* SearchallowView.swift */,
+				0E08EED929291BAF0098C1A1 /* AgeView.swift */,
+				0E08EEDB29291BC70098C1A1 /* WithDrawView.swift */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
+		0E08EEE9292B460D0098C1A1 /* CustomAlert */ = {
+			isa = PBXGroup;
+			children = (
+				0E08EEEA292B462F0098C1A1 /* CustomAlertCoordinator.swift */,
+				0E08EEEC292B46480098C1A1 /* CustomAlertCoordinatorContext.swift */,
+			);
+			path = CustomAlert;
+			sourceTree = "<group>";
+		};
+		0E4644FA2925C4A700EEC90C /* Splash */ = {
 			isa = PBXGroup;
 			children = (
 				0E4644FB2925C4B500EEC90C /* SplachCoordinator.swift */,
 				0E4644FD2925C4DD00EEC90C /* SplachCoordinatorContext.swift */,
 			);
-			path = SplashCoordinator;
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		0E4644FF292638EA00EEC90C /* Mypage */ = {
+			isa = PBXGroup;
+			children = (
+				0E4645282928A96A00EEC90C /* CardDetalCollectionViewHeaderView.swift */,
+				0E4645002926394F00EEC90C /* MyPageViewController.swift */,
+				0E4645102926529B00EEC90C /* ChangeMyPageViewController.swift */,
+			);
+			path = Mypage;
+			sourceTree = "<group>";
+		};
+		0E4645022926397600EEC90C /* Mypage */ = {
+			isa = PBXGroup;
+			children = (
+				0E464503292639C000EEC90C /* MyPageCoordinator.swift */,
+				0E464505292639CE00EEC90C /* MyPageCoordinatorContext.swift */,
+				0E4645122926586B00EEC90C /* ChangeMyPageCoordinator.swift */,
+				0E464514292658AE00EEC90C /* ChangeMyPageCoordinatorContext.swift */,
+			);
+			path = Mypage;
+			sourceTree = "<group>";
+		};
+		0E46450729263C8D00EEC90C /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				0E08EEDF292A37370098C1A1 /* MyPageViewModel.swift */,
+				0E46450929263CB700EEC90C /* ChangeMyPageViewModel.swift */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
+		0E46450829263CAB00EEC90C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0E46450B29264F8700EEC90C /* MypageCell */ = {
+			isa = PBXGroup;
+			children = (
+				0E46451F2927D9AA00EEC90C /* Mypage */,
+				0E4645202927D9B700EEC90C /* ChangeMypage */,
+			);
+			path = MypageCell;
+			sourceTree = "<group>";
+		};
+		0E46451F2927D9AA00EEC90C /* Mypage */ = {
+			isa = PBXGroup;
+			children = (
+				0E46450C29264F9700EEC90C /* MyPageCollectionViewCell.swift */,
+				0E46450E29264FE100EEC90C /* SettingCollectionViewCell.swift */,
+			);
+			path = Mypage;
+			sourceTree = "<group>";
+		};
+		0E4645202927D9B700EEC90C /* ChangeMypage */ = {
+			isa = PBXGroup;
+			children = (
+				0E46451D2927D99400EEC90C /* MyInfoCollectionViewCell.swift */,
+			);
+			path = ChangeMypage;
+			sourceTree = "<group>";
+		};
+		0E4645212927E78E00EEC90C /* CustomCard */ = {
+			isa = PBXGroup;
+			children = (
+				0E46451B2927D97700EEC90C /* CardCollectionViewHeaderView.swift */,
+				0E4645192927D96100EEC90C /* CardCollectionViewCell.swift */,
+				0E46452629288A2300EEC90C /* CardDetailCollectionViewController.swift */,
+				0E08EEE3292A89420098C1A1 /* CardDetailCollectionViewModel.swift */,
+				0E08EEE1292A64480098C1A1 /* CardTypeCollectionView.swift */,
+				0E4645222928847400EEC90C /* CardReputationCollectionViewCell.swift */,
+				0E4645242928848E00EEC90C /* CardReviewCollectionViewCell.swift */,
+				0E08EEE5292A93E20098C1A1 /* MoreReviewViewController.swift */,
+			);
+			path = CustomCard;
 			sourceTree = "<group>";
 		};
 		0E8A23032925494F0073E261 /* Splash */ = {
@@ -295,7 +466,7 @@
 			path = Signup;
 			sourceTree = "<group>";
 		};
-		0EAE334C291CD73500AA4FE6 /* SignupCoordinator */ = {
+		0EAE334C291CD73500AA4FE6 /* Signup */ = {
 			isa = PBXGroup;
 			children = (
 				0EAE3351291CE88800AA4FE6 /* NickName */,
@@ -303,7 +474,7 @@
 				0EAE3357291CEA7F00AA4FE6 /* Email */,
 				0EAE335C291CEC2000AA4FE6 /* Gender */,
 			);
-			path = SignupCoordinator;
+			path = Signup;
 			sourceTree = "<group>";
 		};
 		0EAE3351291CE88800AA4FE6 /* NickName */ = {
@@ -404,6 +575,7 @@
 				0EB826C82918E0EB00CA626A /* Service */,
 				0EB826C92918E0F200CA626A /* Repository */,
 				0EB826C72918E0D800CA626A /* Router */,
+				0E08EED129291B390098C1A1 /* View */,
 				0EB826D62918E2E400CA626A /* Constants */,
 				0EB826DF2918F31D00CA626A /* Custom */,
 				0EB826CF2918E1B900CA626A /* Base */,
@@ -438,11 +610,12 @@
 			isa = PBXGroup;
 			children = (
 				0E8A23032925494F0073E261 /* Splash */,
-				0EB8270A291A2B0000CA626A /* Tabbar */,
 				0EB826F12919668900CA626A /* Onboarding */,
+				0EB8270A291A2B0000CA626A /* Tabbar */,
 				0EB826F22919669600CA626A /* Certification */,
 				0EAE333C291CCD5C00AA4FE6 /* Signup */,
 				0EB8270F291A319F00CA626A /* Home */,
+				0E4644FF292638EA00EEC90C /* Mypage */,
 			);
 			path = Presents;
 			sourceTree = "<group>";
@@ -454,6 +627,8 @@
 				0EB8271E291A745B00CA626A /* OnBoarding */,
 				0EAE332F291B65FC00AA4FE6 /* Certification */,
 				0EAE3349291CD40B00AA4FE6 /* Signup */,
+				0E46450829263CAB00EEC90C /* Home */,
+				0E46450729263C8D00EEC90C /* MyPage */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -497,6 +672,8 @@
 				0EB82717291A46B100CA626A /* UILabel+Extension.swift */,
 				0EAE3332291B722F00AA4FE6 /* UITextField+Extension.swift */,
 				0EAE3336291BA07200AA4FE6 /* String+Extension.swift */,
+				0E46452A2928B1DF00EEC90C /* UICollectionViewDiffableDataSource+Extension.swift */,
+				0E08EEDD292A367E0098C1A1 /* Rx+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -504,6 +681,7 @@
 		0EB826CC2918E12100CA626A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				0E46450B29264F8700EEC90C /* MypageCell */,
 				0EB8271B291A4DB400CA626A /* OnBoardingCell */,
 				0EE8570229246FF100EA9AE5 /* GenderCell */,
 			);
@@ -538,6 +716,7 @@
 				0EB826D02918E1C900CA626A /* BaseViewController.swift */,
 				0EB826D22918E29500CA626A /* BaseView.swift */,
 				0EB826D42918E2C600CA626A /* BaseCollectionViewCell.swift */,
+				0E46451629275EAA00EEC90C /* BaseCollectionHeaderFooterView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -556,12 +735,15 @@
 		0EB826DF2918F31D00CA626A /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				0E4645212927E78E00EEC90C /* CustomCard */,
 				0EB826E02918F42200CA626A /* SelectButton.swift */,
 				0EB826E8291932E500CA626A /* keywordButton.swift */,
 				0EB82719291A486300CA626A /* LineHeightLabel.swift */,
 				0EAE3334291B917200AA4FE6 /* LineTextFieldView.swift */,
 				0EAE3365291D045600AA4FE6 /* BirthLineTextFieldView.swift */,
 				0EAE3338291BA9D800AA4FE6 /* CertificationTextFieldView.swift */,
+				0E08EECF2928E9090098C1A1 /* MultiSlider.swift */,
+				0E08EEE7292B45EC0098C1A1 /* CustomAlertViewController.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -572,12 +754,14 @@
 				0EB826FE2919F7F400CA626A /* BaseCoordinatorContext.swift */,
 				0EB826ED29193B3600CA626A /* Coordinator.swift */,
 				0EB827002919F86900CA626A /* AppCoordinator */,
-				0E4644FA2925C4A700EEC90C /* SplashCoordinator */,
-				0EB827012919F89100CA626A /* OnBoardingCoordinator */,
-				0EB827022919F89E00CA626A /* CertificationCoordinator */,
-				0EAE334C291CD73500AA4FE6 /* SignupCoordinator */,
-				0EB827032919F8AA00CA626A /* MainCoordinator */,
-				0EB82712291A31E900CA626A /* HomeCoordinator */,
+				0E4644FA2925C4A700EEC90C /* Splash */,
+				0EB827012919F89100CA626A /* OnBoarding */,
+				0EB827022919F89E00CA626A /* Certification */,
+				0EAE334C291CD73500AA4FE6 /* Signup */,
+				0EB827032919F8AA00CA626A /* Main */,
+				0EB82712291A31E900CA626A /* Home */,
+				0E4645022926397600EEC90C /* Mypage */,
+				0E08EEE9292B460D0098C1A1 /* CustomAlert */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -607,31 +791,31 @@
 			path = AppCoordinator;
 			sourceTree = "<group>";
 		};
-		0EB827012919F89100CA626A /* OnBoardingCoordinator */ = {
+		0EB827012919F89100CA626A /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
 				0EB826F82919736500CA626A /* OnBoardingCoordinator.swift */,
 				0EB82704291A265700CA626A /* OnBoardingCoordinatorContext.swift */,
 			);
-			path = OnBoardingCoordinator;
+			path = OnBoarding;
 			sourceTree = "<group>";
 		};
-		0EB827022919F89E00CA626A /* CertificationCoordinator */ = {
+		0EB827022919F89E00CA626A /* Certification */ = {
 			isa = PBXGroup;
 			children = (
 				0EB826FA2919736F00CA626A /* CertificationCoordinator.swift */,
 				0EB82708291A299A00CA626A /* CertificationCoordinatorContext.swift */,
 			);
-			path = CertificationCoordinator;
+			path = Certification;
 			sourceTree = "<group>";
 		};
-		0EB827032919F8AA00CA626A /* MainCoordinator */ = {
+		0EB827032919F8AA00CA626A /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				0EB826FC2919737B00CA626A /* MainCoordinator.swift */,
 				0EB8270D291A2E5E00CA626A /* MainCoordinatorContext.swift */,
 			);
-			path = MainCoordinator;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		0EB8270A291A2B0000CA626A /* Tabbar */ = {
@@ -650,13 +834,13 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		0EB82712291A31E900CA626A /* HomeCoordinator */ = {
+		0EB82712291A31E900CA626A /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				0EB82713291A320F00CA626A /* HomeCoordinator.swift */,
 				0EB82715291A328800CA626A /* HomeCoordinatorContext.swift */,
 			);
-			path = HomeCoordinator;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		0EB8271B291A4DB400CA626A /* OnBoardingCell */ = {
@@ -950,9 +1134,13 @@
 				0EAE3366291D045600AA4FE6 /* BirthLineTextFieldView.swift in Sources */,
 				0EB82711291A31B500CA626A /* HomeViewController.swift in Sources */,
 				0EAE3339291BA9D800AA4FE6 /* CertificationTextFieldView.swift in Sources */,
+				0E08EED629291B800098C1A1 /* StudyView.swift in Sources */,
+				0E08EEE2292A64480098C1A1 /* CardTypeCollectionView.swift in Sources */,
 				0EAE333B291BC27C00AA4FE6 /* LineTextFieldType.swift in Sources */,
+				0E46450A29263CB700EEC90C /* ChangeMyPageViewModel.swift in Sources */,
 				0E4644FC2925C4B500EEC90C /* SplachCoordinator.swift in Sources */,
 				0EB826FF2919F7F400CA626A /* BaseCoordinatorContext.swift in Sources */,
+				0E46451A2927D96100EEC90C /* CardCollectionViewCell.swift in Sources */,
 				0EB826FB2919736F00CA626A /* CertificationCoordinator.swift in Sources */,
 				0EAE334E291CD76A00AA4FE6 /* NickNameCoordinator.swift in Sources */,
 				0EE856FB2923218500EA9AE5 /* User.swift in Sources */,
@@ -967,9 +1155,13 @@
 				0E843CF52920AF0900D7D259 /* CertificationService.swift in Sources */,
 				0EE856FF29240B0200EA9AE5 /* EmailViewModel.swift in Sources */,
 				0EAE335E291CEC3000AA4FE6 /* GenderCoordinator.swift in Sources */,
+				0E46450D29264F9700EEC90C /* MyPageCollectionViewCell.swift in Sources */,
+				0E08EEE4292A89420098C1A1 /* CardDetailCollectionViewModel.swift in Sources */,
+				0E08EEE6292A93E30098C1A1 /* MoreReviewViewController.swift in Sources */,
 				0EAE3337291BA07200AA4FE6 /* String+Extension.swift in Sources */,
 				0EB8270C291A2CAD00CA626A /* TabBarItem.swift in Sources */,
 				0EB82716291A328800CA626A /* HomeCoordinatorContext.swift in Sources */,
+				0E4645112926529B00EEC90C /* ChangeMyPageViewController.swift in Sources */,
 				0EB82707291A28E400CA626A /* CertificationViewController.swift in Sources */,
 				0EB826F029193CE800CA626A /* AppCoordinator.swift in Sources */,
 				0E8A2305292549600073E261 /* SplachViewController.swift in Sources */,
@@ -979,19 +1171,30 @@
 				0EB82709291A299A00CA626A /* CertificationCoordinatorContext.swift in Sources */,
 				0EAE3346291CD30F00AA4FE6 /* EmailViewController.swift in Sources */,
 				0EA9E3C82922CB7800FFC0D5 /* UserRouter.swift in Sources */,
+				0E08EED829291B940098C1A1 /* SearchallowView.swift in Sources */,
 				0EB826FD2919737B00CA626A /* MainCoordinator.swift in Sources */,
+				0E46451729275EAA00EEC90C /* BaseCollectionHeaderFooterView.swift in Sources */,
 				0EAE3342291CD0E400AA4FE6 /* NickNameViewController.swift in Sources */,
 				0EB826E9291932E500CA626A /* keywordButton.swift in Sources */,
 				0EB826E329191D2000CA626A /* SDSSelectButton.swift in Sources */,
 				0E4644FE2925C4DD00EEC90C /* SplachCoordinatorContext.swift in Sources */,
+				0E46451C2927D97700EEC90C /* CardCollectionViewHeaderView.swift in Sources */,
+				0E4645232928847500EEC90C /* CardReputationCollectionViewCell.swift in Sources */,
 				0EB826D32918E29500CA626A /* BaseView.swift in Sources */,
+				0E464504292639C000EEC90C /* MyPageCoordinator.swift in Sources */,
 				0EAE3331291B6AAF00AA4FE6 /* Certification.swift in Sources */,
 				0EB826F7291966E500CA626A /* OnBoardingViewController.swift in Sources */,
 				0E843CE1291F70C000D7D259 /* BirthViewModel.swift in Sources */,
 				0EE856F72922ECC900EA9AE5 /* UserService.swift in Sources */,
+				0E08EEDE292A367E0098C1A1 /* Rx+Extension.swift in Sources */,
+				0E08EED429291B660098C1A1 /* GenderView.swift in Sources */,
+				0E46452B2928B1DF00EEC90C /* UICollectionViewDiffableDataSource+Extension.swift in Sources */,
 				0EB82718291A46B100CA626A /* UILabel+Extension.swift in Sources */,
+				0E08EEDA29291BAF0098C1A1 /* AgeView.swift in Sources */,
 				0EB826932918B4AF00CA626A /* AppDelegate.swift in Sources */,
+				0E46452729288A2300EEC90C /* CardDetailCollectionViewController.swift in Sources */,
 				0EB826EE29193B3600CA626A /* Coordinator.swift in Sources */,
+				0E4645292928A96A00EEC90C /* CardDetalCollectionViewHeaderView.swift in Sources */,
 				0EB826DD2918E2E400CA626A /* Font.swift in Sources */,
 				0EAE3340291CCEB700AA4FE6 /* SignupType.swift in Sources */,
 				0EE857062924D27F00EA9AE5 /* ResponseWrapper.swift in Sources */,
@@ -1001,18 +1204,31 @@
 				0EB82705291A265700CA626A /* OnBoardingCoordinatorContext.swift in Sources */,
 				0EB8270E291A2E5E00CA626A /* MainCoordinatorContext.swift in Sources */,
 				0EB82720291A746F00CA626A /* CertificationViewModel.swift in Sources */,
+				0E08EEE8292B45EC0098C1A1 /* CustomAlertViewController.swift in Sources */,
 				0EB826952918B4AF00CA626A /* SceneDelegate.swift in Sources */,
+				0E08EEE0292A37370098C1A1 /* MyPageViewModel.swift in Sources */,
+				0E4645252928848E00EEC90C /* CardReviewCollectionViewCell.swift in Sources */,
 				0E8A230829254B230073E261 /* SplachviewModel.swift in Sources */,
+				0E464515292658AE00EEC90C /* ChangeMyPageCoordinatorContext.swift in Sources */,
 				0EAE3344291CD2B700AA4FE6 /* BirthViewController.swift in Sources */,
 				0EE8570429246FFF00EA9AE5 /* GenderCollectionViewCell.swift in Sources */,
+				0E08EEED292B46480098C1A1 /* CustomAlertCoordinatorContext.swift in Sources */,
+				0E08EEEB292B462F0098C1A1 /* CustomAlertCoordinator.swift in Sources */,
 				0EA9E3CC2922E0E700FFC0D5 /* UserRepository.swift in Sources */,
+				0E46451E2927D99400EEC90C /* MyInfoCollectionViewCell.swift in Sources */,
 				0EAE3335291B917200AA4FE6 /* LineTextFieldView.swift in Sources */,
 				0EAE3350291CDD3E00AA4FE6 /* NickNameCoordinatorContext.swift in Sources */,
 				0EAE3356291CE8F100AA4FE6 /* BirthCoordinatorContext.swift in Sources */,
 				0EAE3348291CD31B00AA4FE6 /* GenderViewController.swift in Sources */,
 				0EAE3359291CEA8E00AA4FE6 /* EmailCoordinator.swift in Sources */,
+				0E4645012926394F00EEC90C /* MyPageViewController.swift in Sources */,
 				0EAE335B291CEA9800AA4FE6 /* EmailCoordinatorContext.swift in Sources */,
+				0E46450F29264FE100EEC90C /* SettingCollectionViewCell.swift in Sources */,
+				0E08EED02928E9090098C1A1 /* MultiSlider.swift in Sources */,
 				0EAE3354291CE8B000AA4FE6 /* BirthCoordinator.swift in Sources */,
+				0E4645132926586B00EEC90C /* ChangeMyPageCoordinator.swift in Sources */,
+				0E08EEDC29291BC70098C1A1 /* WithDrawView.swift in Sources */,
+				0E464506292639CE00EEC90C /* MyPageCoordinatorContext.swift in Sources */,
 				0EB826D52918E2C600CA626A /* BaseCollectionViewCell.swift in Sources */,
 				0EAE3360291CEC5300AA4FE6 /* GenderCoordinatorContext.swift in Sources */,
 			);
@@ -1199,7 +1415,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1233,7 +1449,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
