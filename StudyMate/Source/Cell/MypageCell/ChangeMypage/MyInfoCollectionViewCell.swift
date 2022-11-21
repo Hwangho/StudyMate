@@ -17,15 +17,15 @@ class MyInfoCollectionViewCell: BaseCollectionViewCell {
     /// UI
     private let stackView = UIStackView()
     
-    private let genderView = GenderView()
+    let genderView = GenderView()
     
-    private let studyView = StudyView()
+    let studyView = StudyView()
     
-    private let searchallowView = SearchallowView()
+    let searchallowView = SearchallowView()
     
-    private let ageView = AgeView()
+    let ageView = AgeView()
     
-    private let withDrawView = WithDrawView()
+    let withDrawView = WithDrawView()
     
     
     /// Life Cycle
@@ -47,8 +47,10 @@ class MyInfoCollectionViewCell: BaseCollectionViewCell {
         }
     }
     
-    func configure() {
-        
+    func configure(user: User) {
+        genderView.configure(gender: user.gender)
+        studyView.configure(study: user.study ?? "")
+        searchallowView.configure(allow: user.searchable)
     }
     
 }

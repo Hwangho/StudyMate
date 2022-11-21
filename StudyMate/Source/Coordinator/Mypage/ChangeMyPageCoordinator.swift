@@ -27,6 +27,23 @@ class ChangeMyPageCoordinator: Coordinator {
         viewController.coordinatorDelegate = self
         presenter.pushViewController(viewController, animated: true)
     }
-    
-    
+}
+
+
+// MARK: - MoreReviewView
+extension ChangeMyPageCoordinator: MoreReviewViewCoordinatorContext { }
+
+
+// MARK: - appCoordinatorContext
+extension ChangeMyPageCoordinator: AppCoordinatorContext { }
+
+
+
+extension ChangeMyPageCoordinator: CustomAlertCoordinatorContext {
+    func presentCustomAlert(title: String, content: String, confirmButtonTitle: String = "확인", cancelButtonTitle: String = "취소") {
+        let coordinator = CustomAlertCoordinator(present: presenter, title: title, content: content, confirmButtonTitle: confirmButtonTitle, cancelButtonTitle: cancelButtonTitle)
+        coordinator.delegate = self
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
 }

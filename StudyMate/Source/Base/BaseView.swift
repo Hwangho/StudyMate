@@ -8,6 +8,8 @@
 
 import UIKit
 
+import FirebaseAuth
+
 
 class BaseView: UIView {
     
@@ -16,6 +18,7 @@ class BaseView: UIView {
         setupAttributes()
         setupLayout()
         setupData()
+        setupBinding()
     }
     
     required init?(coder: NSCoder) {
@@ -44,5 +47,18 @@ class BaseView: UIView {
      */
     func setupBinding() {
         
+    }
+    
+    func fireBaseIDTokenRefresh(handler: (() -> ())?) {
+        let currentUser = Auth.auth().currentUser
+        currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
+            if let error = error {
+                // Handle error
+                print(error)
+                return
+            }
+            LocalUserDefaults.shared.set(key: .FirebaseidToken, value: idToken)
+            handler?()
+        }
     }
 }

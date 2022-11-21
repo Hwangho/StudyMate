@@ -10,6 +10,12 @@ import UIKit
 import SnapKit
 
 
+
+protocol SendGenderProtocool {
+    func sendGender(gender: Int)
+}
+
+
 final class GenderView: BaseView {
     
     /// UI
@@ -21,6 +27,8 @@ final class GenderView: BaseView {
     
     private let stackView = UIStackView()
     
+    var delegate: SendGenderProtocool?
+    
     
     /// Life Cycle
     override func setupAttributes() {
@@ -31,6 +39,9 @@ final class GenderView: BaseView {
         stackView.axis = .horizontal
         stackView.spacing = 8
         stackView.distribution = .fillEqually
+        
+        manButton.addTarget(self, action: #selector(tapManButton), for: .touchUpInside)
+        womanButton.addTarget(self, action: #selector(tapWomanButton), for: .touchUpInside)
     }
     
     override func setupLayout() {
@@ -52,6 +63,24 @@ final class GenderView: BaseView {
             make.width.equalTo(120)
             make.height.equalTo(48)
         }
+    }
+    
+    
+    /// Custom Func
+    func configure(gender: Int) {
+        manButton.setupAttribute(type: gender == 0 ? .inactive : .fill)
+        womanButton.setupAttribute(type: gender == 0 ? .fill : .inactive)
+        delegate?.sendGender(gender: gender)
+    }
+    
+    @objc
+    func tapManButton() {
+        configure(gender: 1)
+    }
+    
+    @objc
+    func tapWomanButton() {
+        configure(gender: 0)
     }
     
 }

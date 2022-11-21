@@ -8,12 +8,17 @@
 import UIKit
 
 import SnapKit
+import RxSwift
+
+
 
 
 final class CardDetailCollectionViewController: UICollectionViewController {
     
     /// Properties
-    var datasource: DataSource!
+    var myinfoDatasource: MyinfoDataSource!
+    
+    var searchDatasource: SearchStudyDataSource!
     
     var collectionViewHeightConstraint: NSLayoutConstraint!
     
@@ -23,76 +28,25 @@ final class CardDetailCollectionViewController: UICollectionViewController {
     
     let reviewList: [String] = ["아무아무아무아무거나아무아무아무아무거나"]
     
+    let viewmodel = CardDetailCollectionViewModel()
+    
+    let disposeBag = DisposeBag()
+    
+    let type: CardType
+    
+    var coordinator: ChangeMyPageCoordinator?
+    
     
     /// initialization
-    init() {
-        let layout =  UICollectionViewCompositionalLayout.init { sectionIndex, envieroment in
-            switch Section.allCases[sectionIndex] {
-            case .title:
-                let itemsize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .absolute(40))
-                let item1 = NSCollectionLayoutItem(layoutSize: itemsize)
-                let item2 = NSCollectionLayoutItem(layoutSize: itemsize)
-                item1.contentInsets = NSDirectionalEdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 4)
-                item2.contentInsets = NSDirectionalEdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 0)
-                
-                let horizontalgroupsize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(32))
-                let horizontalgroup = NSCollectionLayoutGroup.horizontal(layoutSize: horizontalgroupsize, subitems: [item1, item2])
-                
-                let verticalgroupsize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(112))
-                let verticalgroup = NSCollectionLayoutGroup.vertical(layoutSize: verticalgroupsize, subitems: [horizontalgroup])
-                
-                let section = NSCollectionLayoutSection(group: verticalgroup)
-                
-                let headersize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(54))
-                let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headersize, elementKind: "header", alignment: .top)
-                
-                section.boundarySupplementaryItems = [header]
-                
-                return section
-                
-            case .study:
-                let itemsize = NSCollectionLayoutSize(widthDimension: .estimated(32), heightDimension: .absolute(32))
-                let item = NSCollectionLayoutItem(layoutSize: itemsize)
-                
-                let groupsize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(112))
-                let horizontalgroup = NSCollectionLayoutGroup.horizontal(layoutSize: groupsize, subitems: [item])
-                horizontalgroup.interItemSpacing = NSCollectionLayoutSpacing.fixed(8)
-                
-                let section = NSCollectionLayoutSection(group: horizontalgroup)
-                section.interGroupSpacing = 8
-                
-                let headersize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(54))
-                let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headersize, elementKind: "header", alignment: .top)
-                
-                section.boundarySupplementaryItems = [header]
-                
-                return section
-                
-            case .review:
-                let itemsize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(32))
-                let item = NSCollectionLayoutItem(layoutSize: itemsize)
-                
-                let groupsize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(32))
-                let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupsize, subitems: [item])
-                
-                
-                let section = NSCollectionLayoutSection(group: group)
-                
-                let headersize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(54))
-                let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headersize, elementKind: "header", alignment: .top)
-                
-                section.boundarySupplementaryItems = [header]
-                
-                return section
-            }
-        }
-        super.init(collectionViewLayout: layout)
+    init(type: CardType) {
+        self.type = type
+        super.init(collectionViewLayout: CardTypeCollectionView(type: type).layout() )
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     
     /// Lfie Cycle
     override func viewDidLoad() {
@@ -102,6 +56,7 @@ final class CardDetailCollectionViewController: UICollectionViewController {
         
         collectionView.isScrollEnabled = false
         setDatasource()
+        setupBinding()
     }
     
     override func viewWillLayoutSubviews() {
@@ -109,40 +64,39 @@ final class CardDetailCollectionViewController: UICollectionViewController {
         collectionViewHeightConstraint.constant = collectionViewLayout.collectionViewContentSize.height
     }
     
+    
+    func setupBinding() {
+        viewmodel.currentStore
+            .map { $0.user }
+            .distinctUntilChanged()
+            .bind { [weak self] _ in
+                guard let `self` = self else { return }
+                
+                switch self.type {
+                case .myInfo:
+                    self.myinfoDatasource.apply(self.myinfoSnapShot())
+                case .searchStduy:
+                    self.searchDatasource.apply(self.searchStudySnapShot())
+                }
+                
+            }
+            .disposed(by: disposeBag)
+    }
 }
 
 
 // MARK: - Dffable Collectionview
 extension CardDetailCollectionViewController {
-    
-    /// Section, Item
-    enum Section: String, Hashable, CaseIterable {
-        case title = "새싹 타이틀"
-        case study = "하고 싶은 스터디"
-        case review = "새싹 리뷰"
-    }
-    
-    enum Item: Hashable {
-        case titleItem(String)
-        case studyItem(String)
-        case reviewItem(String?)
-    }
-    
-    
-    enum ItemTitle: String, Hashable, CaseIterable {
-        case manner = "좋은 매너"
-        case time = "정확한 시간 약속"
-        case response = "빠른 응답"
-        case kindness = "친절한 성격"
-        case skill = "능숙한 실력"
-        case beneficial = "유익한 시간"
-    }
-    
+
     
     /// typealias
-    typealias DataSource = UICollectionViewDiffableDataSource<Section, Item>
+    typealias SearchStudyDataSource = UICollectionViewDiffableDataSource<CardTypeCollectionView.SearchStudySection, CardTypeCollectionView.SearchStudyItem>
     
-    typealias SnapShot = NSDiffableDataSourceSnapshot<Section, Item>
+    typealias SearchStudySnapShot = NSDiffableDataSourceSnapshot<CardTypeCollectionView.SearchStudySection, CardTypeCollectionView.SearchStudyItem>
+    
+    typealias MyinfoDataSource = UICollectionViewDiffableDataSource<CardTypeCollectionView.myInfoSection, CardTypeCollectionView.myInfoStudyItem>
+    
+    typealias MyinfoSnapShot = NSDiffableDataSourceSnapshot<CardTypeCollectionView.myInfoSection, CardTypeCollectionView.myInfoStudyItem>
     
     typealias CardReputationCellRegister = UICollectionView.CellRegistration<CardReputationCollectionViewCell, String>
     
@@ -153,55 +107,117 @@ extension CardDetailCollectionViewController {
     
     /// Datasource
     private func setDatasource() {
-        let cardReputationCellRegister = CardReputationCellRegister { cell, indexPath, itemIdentifier in
-            switch Section.allCases[indexPath.section] {
-            case .title:
-                cell.studyConfigure(title: itemIdentifier, count: Int.random(in: (0...1)))
-            case .study:
-                cell.titleConfigure(title: itemIdentifier)
-            default: break
+        
+        switch type {
+        case .myInfo:
+            let cardReputationCellRegister = CardReputationCellRegister { [weak self] cell, indexPath, itemIdentifier in
+                switch CardTypeCollectionView.myInfoSection.allCases[indexPath.section] {
+                case .title:
+                    guard let data = self?.viewmodel.store.user else { return }
+                    cell.studyConfigure(title: itemIdentifier, count: data.reputation[indexPath.item] )
+                default: break
+                }
             }
-        }
-        
-        let cardReviewCellRegister = CardReviewCellRegister { cell, indexPath, itemIdentifier in
-            cell.configure(review: itemIdentifier)
-        }
-        
-        let cardDetailHeaderViewRegister = CardDetailHeaderViewRegister.init(elementKind: "header") { supplementaryView, elementKind, indexPath in
-            supplementaryView.configure(type: Section.allCases[indexPath.section])
-        }
-        
-        
-        datasource = DataSource(collectionView: self.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
-            switch itemIdentifier {
-            case .titleItem(let value):
-                return collectionView.dequeueConfiguredReusableCell(using: cardReputationCellRegister, for: indexPath, item: value)
-                
-            case .studyItem(let value):
-                return collectionView.dequeueConfiguredReusableCell(using: cardReputationCellRegister, for: indexPath, item: value)
-                
-            case .reviewItem(let value):
-                return collectionView.dequeueConfiguredReusableCell(using: cardReviewCellRegister, for: indexPath, item: value)
+            
+            let cardReviewCellRegister = CardReviewCellRegister { cell, indexPath, itemIdentifier in
+                cell.configure(review: itemIdentifier)
             }
-        })
-        
-        datasource.supplementaryViewProvider = { collectionView, elementKind, indexPath in
-            collectionView.dequeueConfiguredReusableSupplementary(using: cardDetailHeaderViewRegister, for: indexPath)
+            
+            let cardDetailHeaderViewRegister = CardDetailHeaderViewRegister.init(elementKind: "header") { [weak self] supplementaryView, elementKind, indexPath in
+                guard let data = self?.viewmodel.store.user else { return }
+                supplementaryView.myInfoConfigure(type: CardTypeCollectionView.myInfoSection.allCases[indexPath.section], reviews: data.comment)
+                supplementaryView.coordinator = self?.coordinator
+            }
+            
+            myinfoDatasource = MyinfoDataSource(collectionView: self.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+                switch itemIdentifier {
+                case .titleItem(let value):
+                    return collectionView.dequeueConfiguredReusableCell(using: cardReputationCellRegister, for: indexPath, item: value)
+   
+                case .reviewItem(let value):
+                    return collectionView.dequeueConfiguredReusableCell(using: cardReviewCellRegister, for: indexPath, item: value)
+                }
+            })
+            
+            myinfoDatasource.supplementaryViewProvider = { collectionView, elementKind, indexPath in
+                collectionView.dequeueConfiguredReusableSupplementary(using: cardDetailHeaderViewRegister, for: indexPath)
+            }
+            
+            myinfoDatasource.apply(myinfoSnapShot())
+            
+        case .searchStduy:
+            let cardReputationCellRegister = CardReputationCellRegister { [weak self] cell, indexPath, itemIdentifier in
+                switch CardTypeCollectionView.SearchStudySection.allCases[indexPath.section] {
+                case .title:
+                    guard let data = self?.viewmodel.store.user else { return }
+                    cell.studyConfigure(title: itemIdentifier, count: data.reputation[indexPath.item] )
+                    
+                case .study:
+                    guard let data = self?.viewmodel.store.user else { return }
+                    cell.titleConfigure(title: itemIdentifier)
+                default: break
+                }
+            }
+            
+            let cardReviewCellRegister = CardReviewCellRegister { cell, indexPath, itemIdentifier in
+                cell.configure(review: itemIdentifier)
+            }
+            
+            let cardDetailHeaderViewRegister = CardDetailHeaderViewRegister.init(elementKind: "header") { supplementaryView, elementKind, indexPath in
+                supplementaryView.searchStudyConfigure(type: CardTypeCollectionView.SearchStudySection.allCases[indexPath.section])
+            }
+            
+            searchDatasource = SearchStudyDataSource(collectionView: self.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+                switch itemIdentifier {
+                case .titleItem(let value):
+                    return collectionView.dequeueConfiguredReusableCell(using: cardReputationCellRegister, for: indexPath, item: value)
+                    
+                case .studyItem(let value):
+                    return collectionView.dequeueConfiguredReusableCell(using: cardReputationCellRegister, for: indexPath, item: value)
+                    
+                case .reviewItem(let value):
+                    return collectionView.dequeueConfiguredReusableCell(using: cardReviewCellRegister, for: indexPath, item: value)
+                }
+            })
+            
+            searchDatasource.supplementaryViewProvider = { collectionView, elementKind, indexPath in
+                collectionView.dequeueConfiguredReusableSupplementary(using: cardDetailHeaderViewRegister, for: indexPath)
+            }
+            
+            searchDatasource.apply(searchStudySnapShot())
         }
         
-        datasource.apply(snapshot())
     }
     
-    private func snapshot() -> SnapShot {
-        var snapshot = SnapShot()
+    
+    
+    private func myinfoSnapShot() -> MyinfoSnapShot {
+        var snapshot = MyinfoSnapShot()
         
-        snapshot.appendSections(Section.allCases)
-        snapshot.appendItems(ItemTitle.allCases.map{ Item.titleItem($0.rawValue) }, toSection: .title)
-        snapshot.appendItems(studyList.map{Item.studyItem($0) }, toSection: .study)
-        snapshot.appendItems([Item.reviewItem(reviewList.first ?? "")], toSection: .review)
+        guard let data = viewmodel.store.user else {
+            return snapshot
+        }
+
+        snapshot.appendSections(CardTypeCollectionView.myInfoSection.allCases)
+        snapshot.appendItems(CardTypeCollectionView.ItemTitle.allCases.map{ CardTypeCollectionView.myInfoStudyItem.titleItem($0.rawValue) }, toSection: .title)
+        snapshot.appendItems([CardTypeCollectionView.myInfoStudyItem.reviewItem(data.comment.first ?? "")], toSection: .review)
+        
+        return snapshot
+    }
+    
+    private func searchStudySnapShot() -> SearchStudySnapShot {
+        var snapshot = SearchStudySnapShot()
+
+//        guard let data = viewmodel.store.user else {
+//            return snapshot
+//        }
+        
+        snapshot.appendSections(CardTypeCollectionView.SearchStudySection.allCases)
+        snapshot.appendItems(CardTypeCollectionView.ItemTitle.allCases.map{ CardTypeCollectionView.SearchStudyItem.titleItem($0.rawValue) }, toSection: .title)
+        snapshot.appendItems(studyList.map{CardTypeCollectionView.SearchStudyItem.studyItem($0) }, toSection: .study)
+        snapshot.appendItems([CardTypeCollectionView.SearchStudyItem.reviewItem(reviewList.first ?? "")], toSection: .review)
         
         return snapshot
     }
 
 }
-

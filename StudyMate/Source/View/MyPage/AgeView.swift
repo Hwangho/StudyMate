@@ -9,6 +9,9 @@ import UIKit
 
 import SnapKit
 
+protocol sendAgeProtocool {
+    func sendAge(ageMin: Int, ageMax: Int)
+}
 
 final class AgeView: BaseView {
     
@@ -19,6 +22,7 @@ final class AgeView: BaseView {
     
     private let slider = MultiSlider()
     
+    var delegate: sendAgeProtocool?
     
     /// Life Cycle
     override func setupAttributes() {
@@ -31,9 +35,8 @@ final class AgeView: BaseView {
         
         slider.minValue = 18
         slider.maxValue = 65
-        slider.lower = 20
-        slider.upper = 35
-        self.ageLabel.text = "\(Int(self.slider.lower)) ~ \(Int(self.slider.upper))"
+
+        ageLabel.text = "\(Int(slider.lower)) ~ \(Int(slider.upper))"
         slider.addTarget(self, action: #selector(changeValue), for: .valueChanged)
     }
     
@@ -59,8 +62,14 @@ final class AgeView: BaseView {
             make.bottom.equalToSuperview().inset(17)
         }
     }
-
+    
     @objc private func changeValue() {
-        self.ageLabel.text = "\(Int(self.slider.lower)) ~ \(Int(self.slider.upper))"
-      }
+        ageLabel.text = "\(Int(slider.lower)) ~ \(Int(slider.upper))"
+        delegate?.sendAge(ageMin: Int(slider.lower), ageMax: Int(slider.upper))
+    }
+    
+    func configure(ageMin: Int, ageMax: Int) {
+        slider.lower = Double(ageMin)
+        slider.upper = Double(ageMax)
+    }
 }

@@ -8,7 +8,13 @@
 import UIKit
 
 import SnapKit
+import RxSwift
+import RxCocoa
 
+
+protocol SendSearchAllowProtocool {
+    func sendSearchAllow(allow: Int)
+}
 
 final class SearchallowView: BaseView {
     
@@ -16,6 +22,10 @@ final class SearchallowView: BaseView {
     private let titleLabel = LineHeightLabel()
     
     private let switchButton = UISwitch()
+    
+    var delegate: SendSearchAllowProtocool?
+    
+    var disposeBag = DisposeBag()
     
     
     /// Life Cycle
@@ -41,4 +51,17 @@ final class SearchallowView: BaseView {
         }
     }
     
+    override func setupBinding() {
+        switchButton.rx.isOn
+            .bind { [weak self] value in
+                self?.delegate?.sendSearchAllow(allow: value ? 1 : 0)
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    
+    /// Custom Func
+    func configure(allow: Int) {
+        switchButton.isOn = allow == 0 ?  false : true
+    }
 }

@@ -8,6 +8,13 @@
 import UIKit
 
 import SnapKit
+import RxCocoa
+import RxSwift
+
+
+protocol SendStudyProtocool {
+    func sendStudy(study: String?)
+}
 
 
 final class StudyView: BaseView {
@@ -15,8 +22,11 @@ final class StudyView: BaseView {
     /// UI
     private let titleLabel = LineHeightLabel()
     
-    private let stduyTextField = LineTextFieldView()
+    private let studyTextField = LineTextFieldView()
     
+    var delegate: SendStudyProtocool?
+    
+    var disposeBag = DisposeBag()
     
     /// Lfie Cycle
     override func setupAttributes() {
@@ -24,13 +34,24 @@ final class StudyView: BaseView {
         titleLabel.setupFont(type: .Title4_R14)
         titleLabel.text = "자주하는 스터디"
         
-        stduyTextField.textField.placeholder = "스터디를 입력해 주세요."
-        stduyTextField.textField.textAlignment = .left
+        studyTextField.textField.placeholder = "스터디를 입력해 주세요."
+        studyTextField.textField.textAlignment = .left
         
     }
+
+    override func setupBinding() {
+        studyTextField.textField.rx.text
+            .orEmpty
+            .distinctUntilChanged()
+            .bind { [weak self] study in
+                self?.delegate?.sendStudy(study: study)
+            }
+            .disposed(by: disposeBag)
+    }
+    
     
     override func setupLayout() {
-        [titleLabel, stduyTextField].forEach {
+        [titleLabel, studyTextField].forEach {
             addSubview($0)
         }
         
@@ -39,11 +60,15 @@ final class StudyView: BaseView {
             make.leading.equalToSuperview()
         }
         
-        stduyTextField.snp.makeConstraints { make in
+        studyTextField.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.top)
             make.trailing.equalToSuperview()
             make.width.equalTo(164)
         }
     }
     
+    
+    func configure(study: String) {
+        studyTextField.textField.text = study
+    }
 }

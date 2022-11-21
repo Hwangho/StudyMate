@@ -34,11 +34,15 @@ class CardReviewCollectionViewCell: BaseCollectionViewCell {
     
     /// Custom func
     func configure(review: String) {
+        
         if review.isEmpty {
             reviewLabel.text = "첫 리뷰를 기다리는 중이에요!"
             reviewLabel.textColor = Color.BaseColor.gray6
-        } else {
+        }
+        else {
             reviewLabel.text = review
+            reviewLabel.textColor = Color.BaseColor.black
         }
     }
+    
 }

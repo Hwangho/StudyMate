@@ -41,6 +41,11 @@ final class MyPageViewController: BaseViewController {
             make.edges.equalToSuperview()
         }
     }
+    
+    override func setupBinding() {
+
+
+    }
        
 }
 

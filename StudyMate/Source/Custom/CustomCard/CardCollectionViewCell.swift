@@ -21,7 +21,7 @@ class CardCollectionViewCell: BaseCollectionViewCell {
     
     let stackView = UIStackView()
 
-    let cardInfoViewcontroller = CardDetailCollectionViewController() // CardInfoView()
+    var cardInfoViewcontroller = CardDetailCollectionViewController(type: .myInfo)
     
     let padding: CGFloat = 16
     
@@ -45,8 +45,6 @@ class CardCollectionViewCell: BaseCollectionViewCell {
         contentView.layer.cornerRadius = 8
         
         stackView.axis = .vertical
-        
-        nameLabel.text = "송황호"
         
         moreImage.image = UIImage(named: "card_more_arrow")
                 
@@ -83,16 +81,11 @@ class CardCollectionViewCell: BaseCollectionViewCell {
         clickConstraint?.deactivate()
         unclickContsraint?.activate()
      
-        
-        
-//        contentView.addSubview(cardInfoView)
-//        cardInfoView.snp.makeConstraints { make in
-//            make.edges.equalToSuperview()
-//        }
     }
     
-    func configure() {
-
+    func configure(user: User) {
+        nameLabel.text = user.nick
+        cardInfoViewcontroller.viewmodel.action.accept(.sendUserData(user))
     }
     
     private func constraintChange() {
@@ -112,5 +105,3 @@ class CardCollectionViewCell: BaseCollectionViewCell {
     }
     
 }
-
-

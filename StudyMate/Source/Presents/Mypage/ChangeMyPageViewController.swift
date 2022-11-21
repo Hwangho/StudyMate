@@ -48,7 +48,10 @@ final class ChangeMyPageViewController: BaseViewController {
         super.setupAttributes()
         
         collectionview.delegate = self
+        collectionview.contentInset.top = 16
+        
         navigationItem.title = "정보 관리"
+        
         
         let saveButton = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(tapSaveButton))
         
@@ -70,8 +73,23 @@ final class ChangeMyPageViewController: BaseViewController {
         }
     }
     
+    override func setupLifeCycleBinding() {
+        rx.viewDidLoad
+            .map{ ChangeMyPageViewModel.Action.myInfo }
+            .bind(to: viewModel.action)
+            .disposed(by: disposeBag)
+    }
+    
     override func setupBinding() {
-
+        viewModel.currentStore
+            .map { $0.user }
+            .distinctUntilChanged()
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                guard let `self` = self else { return }
+                self.datasource?.apply(self.snapshot(), animatingDifferences: false)
+            })
+            .disposed(by: disposeBag)
     }
     
     override func setData() {
@@ -84,6 +102,7 @@ final class ChangeMyPageViewController: BaseViewController {
 // MARK: - Diffable CollectionView
 extension ChangeMyPageViewController {
     
+    /// typealiase
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Item>
 
     typealias SnapShot = NSDiffableDataSourceSnapshot<Section, Item>
@@ -96,28 +115,40 @@ extension ChangeMyPageViewController {
     
     
     /// Section Item
-    enum Section: CaseIterable, Hashable {
-        case first
+    enum Section: Hashable {
+        case first(User)
     }
     
-    enum Item: CaseIterable, Hashable {
-        case myCard
-        case myInfo
+    enum Item: Hashable {
+        case myCard(User)
+        case myInfo(User)
     }
     
  
     /// Set CollectionView
     func setDataSource() {
         let cardCell = CardCellRegister.init { [weak self] cell, indexPath, itemIdentifier in
+            guard let user = self?.viewModel.store.user else { return }
+            cell.cardInfoViewcontroller.viewmodel.action.accept(.sendUserData(user))
+            cell.cardInfoViewcontroller.coordinator = self?.coordinator
+            cell.configure(user: user)
+            
             self?.addChild(cell.cardInfoViewcontroller)
         }
         
-        let myinfoCell = MyInfoCeollRegister { cell, indexPath, itemIdentifier in
-            print("ddd")
+        let myinfoCell = MyInfoCeollRegister {[weak self] cell, indexPath, itemIdentifier in
+            cell.withDrawView.coordinator = self?.coordinator
+            guard let user = self?.viewModel.store.user else { return }
+            cell.configure(user: user)
+            cell.genderView.delegate = self
+            cell.studyView.delegate = self
+            cell.searchallowView.delegate = self
+            cell.ageView.delegate = self
         }
         
-        let headerView = HeaderViewRegister.init(elementKind: "CardHeader") { supplementaryView, elementKind, indexPath in
-            supplementaryView.configure()
+        let headerView = HeaderViewRegister.init(elementKind: "CardHeader") { [weak self] supplementaryView, elementKind, indexPath in
+            guard let user = self?.viewModel.store.user else { return }
+            supplementaryView.configure(user: user)
         }
         
         datasource = DataSource.init(collectionView: collectionview, cellProvider: { collectionView, indexPath, itemIdentifier in
@@ -140,8 +171,13 @@ extension ChangeMyPageViewController {
     
     func snapshot() -> SnapShot {
         var snapshot = SnapShot()
-        snapshot.appendSections(Section.allCases)
-        snapshot.appendItems(Item.allCases)
+        
+        guard let data = viewModel.store.user else {
+            return snapshot
+        }
+        
+        snapshot.appendSections([Section.first(data)])
+        snapshot.appendItems([Item.myCard(data), Item.myInfo(data)])
         
         return snapshot
     }
@@ -149,26 +185,22 @@ extension ChangeMyPageViewController {
     private func layout() -> UICollectionViewLayout {
         
         return UICollectionViewCompositionalLayout { sectionIndex, enviroment in
-            switch Section.allCases[sectionIndex] {
-            case .first:
-                
-                let itemsize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(45))
-                let item = NSCollectionLayoutItem(layoutSize: itemsize)
-                
-                let groupsize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(45))
-                let group = NSCollectionLayoutGroup.vertical(layoutSize: groupsize, subitems: [item])
-                
-                
-                let section = NSCollectionLayoutSection(group: group)
-                section.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
-                
-                let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(194))
-                let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerFooterSize, elementKind: "CardHeader", alignment: .top)
-                
-                section.boundarySupplementaryItems = [sectionHeader]
-                
-                return section
-            }
+            
+            let itemsize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(45))
+            let item = NSCollectionLayoutItem(layoutSize: itemsize)
+            
+            let groupsize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(45))
+            let group = NSCollectionLayoutGroup.vertical(layoutSize: groupsize, subitems: [item])
+            
+            let section = NSCollectionLayoutSection(group: group)
+            section.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
+            
+            let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(194))
+            let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerFooterSize, elementKind: "CardHeader", alignment: .top)
+            
+            section.boundarySupplementaryItems = [sectionHeader]
+            
+            return section
         }
     }
     
@@ -190,4 +222,26 @@ extension ChangeMyPageViewController: UICollectionViewDelegate {
 
         return false
     }
+}
+
+
+// MARK: - data set
+extension ChangeMyPageViewController: SendGenderProtocool, SendStudyProtocool, SendSearchAllowProtocool, sendAgeProtocool {
+
+    func sendGender(gender: Int) {
+        print("내 성별 \(gender)")
+    }
+    
+    func sendStudy(study: String?) {
+        print("내가 하고싶은 스터디 \(study ?? "")")
+    }
+    
+    func sendSearchAllow(allow: Int) {
+        print("허용 할거야?? \(allow)")
+    }
+    
+    func sendAge(ageMin: Int, ageMax: Int) {
+        print("최소 나이: \(ageMin), 최대 나이: \(ageMax)")
+    }
+    
 }
