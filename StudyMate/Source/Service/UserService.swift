@@ -14,6 +14,7 @@ protocol UserServiceProtocool {
     
     func signin() -> Single<Response?>
     func signup(_ phoneNumber: String, _ nick: String, _ birth: String, _ email: String, _ gender: Int) -> Single<Response?>
+    func withdraw() -> Single<Response?>
 }
 
 
@@ -34,6 +35,12 @@ struct UserService: UserServiceProtocool {
     func signup(_ phoneNumber: String, _ nick: String, _ birth: String, _ email: String, _ gender: Int) -> Single<Response?> {
         return repository
             .signup(phoneNumber, nick, birth, email, gender)
+            .map { $0 }
+    }
+    
+    func withdraw() -> Single<Response?> {
+        return repository
+            .withdraw()
             .map { $0 }
     }
 }

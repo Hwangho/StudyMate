@@ -11,6 +11,7 @@ import Moya
 enum UserRouter {
     case signin
     case signup(_ phoneNumber: String, _ nick: String, _ birth: String, _ email: String, _ gender: Int)
+    case withdraw
 }
 
 extension UserRouter: TargetType {
@@ -22,12 +23,13 @@ extension UserRouter: TargetType {
     var path: String {
         switch self {
         case .signin, .signup: return "/v1/user"
+        case .withdraw: return "/v1/user/withdraw"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .signup: return .post
+        case .signup, .withdraw: return .post
         default: return .get
         }
     }
@@ -50,12 +52,8 @@ extension UserRouter: TargetType {
     
     var task: Moya.Task {
         switch self {
-        case .signin:
-            return .requestParameters(
-                parameters: self.parameters,
-                encoding: URLEncoding.default)
             
-        case .signup:
+        default:
             return .requestParameters(
                 parameters: self.parameters,
                 encoding: URLEncoding.default)
@@ -68,19 +66,12 @@ extension UserRouter: TargetType {
         let idToken: String? = LocalUserDefaults.shared.value(key: .FirebaseidToken)
         
         switch self {
-        case .signin:
+        default:
             return [
                 "Content-Type": "application/x-www-form-urlencoded",
                 "idtoken": "\(idToken ?? "")"
             ]
             
-        case .signup:
-            return [
-                "Content-Type": "application/x-www-form-urlencoded",
-                "idtoken": "\(idToken ?? "")"
-            ]
-            
-        
         }
     }
     

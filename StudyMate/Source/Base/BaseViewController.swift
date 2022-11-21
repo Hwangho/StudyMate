@@ -121,7 +121,8 @@ class BaseViewController: UIViewController {
         navigationBarAppearance.buttonAppearance.normal.titleTextAttributes = attributes
         navigationBarAppearance.doneButtonAppearance.normal.titleTextAttributes = attributes
 
-        let backImage = UIImage(named: "arrow")
+        let backImage = UIImage(named: "arrow")?.withAlignmentRectInsets(UIEdgeInsets(top: 0.0, left: -6.0, bottom: 0.0, right: 0.0))
+        
         navigationBarAppearance.setBackIndicatorImage(backImage, transitionMaskImage: backImage)
 
         UINavigationBar.appearance().standardAppearance = navigationBarAppearance
