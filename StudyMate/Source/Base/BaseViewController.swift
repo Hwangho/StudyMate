@@ -163,8 +163,12 @@ extension BaseViewController {
     
     /// scroll in textfield
     func setupGestureRecognizer() {
-      let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-      view.addGestureRecognizer(tap)
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+        
+//      let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+//      view.addGestureRecognizer(tap)
     }
 
     @objc func handleTap(_ gesture: UITapGestureRecognizer) {

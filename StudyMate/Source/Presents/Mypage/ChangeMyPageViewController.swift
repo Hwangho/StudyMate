@@ -56,13 +56,13 @@ final class ChangeMyPageViewController: BaseViewController {
         let saveButton = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(tapSaveButton))
         
         navigationItem.rightBarButtonItem = saveButton
-//        setupGestureRecognizer()    /// TextField KeyBoard 내리기
+        setupGestureRecognizer()    /// TextField KeyBoard 내리기
     }
     
     
     @objc
     func tapSaveButton() {
-        print("내 마음 속에 저장~")
+        viewModel.action.accept(.saveMyInfo)
     }
     
     
@@ -84,12 +84,33 @@ final class ChangeMyPageViewController: BaseViewController {
         viewModel.currentStore
             .map { $0.user }
             .distinctUntilChanged()
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
                 guard let `self` = self else { return }
                 self.datasource?.apply(self.snapshot(), animatingDifferences: false)
             })
             .disposed(by: disposeBag)
+        
+        viewModel.currentStore
+            .distinctUntilChanged{$0.myInfoStatusType}
+            .map { $0.myInfoStatusType }
+            .subscribe(onNext: { [weak self] type in
+                guard let type = type else { return }
+                
+                switch type {
+                case .sucess:
+                    self?.coordinator?.presenter.popViewController(animated: true)
+                    
+                case .FireBaseToken:
+                    self?.fireBaseIDTokenRefresh(handler: {
+                        self?.viewModel.action.accept(.saveMyInfo)
+                    })
+                default:
+                    print(type.message)
+                }
+            })
+            .disposed(by: disposeBag)
+            
     }
     
     override func setData() {
@@ -139,11 +160,11 @@ extension ChangeMyPageViewController {
         let myinfoCell = MyInfoCeollRegister {[weak self] cell, indexPath, itemIdentifier in
             cell.withDrawView.coordinator = self?.coordinator
             guard let user = self?.viewModel.store.user else { return }
-            cell.configure(user: user)
             cell.genderView.delegate = self
-            cell.studyView.delegate = self
             cell.searchallowView.delegate = self
             cell.ageView.delegate = self
+            cell.studyView.delegate = self
+            cell.configure(user: user)
         }
         
         let headerView = HeaderViewRegister.init(elementKind: "CardHeader") { [weak self] supplementaryView, elementKind, indexPath in
@@ -229,19 +250,19 @@ extension ChangeMyPageViewController: UICollectionViewDelegate {
 extension ChangeMyPageViewController: SendGenderProtocool, SendStudyProtocool, SendSearchAllowProtocool, sendAgeProtocool {
 
     func sendGender(gender: Int) {
-        print("내 성별 \(gender)")
+        viewModel.action.accept(.mygender(gender))
     }
     
     func sendStudy(study: String?) {
-        print("내가 하고싶은 스터디 \(study ?? "")")
+        viewModel.action.accept(.study(study))
     }
     
     func sendSearchAllow(allow: Int) {
-        print("허용 할거야?? \(allow)")
+        viewModel.action.accept(.searchAllow(allow))
     }
     
     func sendAge(ageMin: Int, ageMax: Int) {
-        print("최소 나이: \(ageMin), 최대 나이: \(ageMax)")
+        viewModel.action.accept(.age(ageMin, ageMax))
     }
     
 }
