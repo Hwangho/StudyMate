@@ -12,6 +12,7 @@ import RxSwift
 
 protocol QueueRepositoryPorotocool {
     func search(lat: Double, long: Double) -> Single<Response>
+    func queueState() -> Single<Response>
 }
 
 
@@ -26,6 +27,9 @@ struct QueueRepository: QueueRepositoryPorotocool {
     func search(lat: Double, long: Double) -> Single<Response> {
         
         return provider.rx.request(.search(lat, long))
+    }
+    func queueState() -> Single<Response> {
+        return provider.rx.request(.queueState)
     }
     
 }

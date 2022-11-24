@@ -11,6 +11,7 @@ import Moya
 
 enum QueueRouter {
     case search(Double, Double)
+    case queueState
 }
 
 extension QueueRouter: TargetType {
@@ -23,6 +24,8 @@ extension QueueRouter: TargetType {
         switch self {
         case .search:
             return "/v1/queue/search"
+        case .queueState:
+            return "/v1/queue/myQueueState"
         }
     }
     
@@ -30,6 +33,9 @@ extension QueueRouter: TargetType {
         switch self {
         case .search:
             return .post
+            
+        default:
+            return .get
         }
     }
     
@@ -37,13 +43,14 @@ extension QueueRouter: TargetType {
 //        let FCMToken: String? = LocalUserDefaults.shared.value(key: .FCMToken)
         
         switch self {
-       
         case .search(let lat, let long):
             return [
                 "lat": lat,
                 "long": long,
             ]
 
+        default:
+            return [:]
         }
     }
     
