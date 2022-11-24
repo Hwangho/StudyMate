@@ -12,6 +12,7 @@ import RxCocoa
 
 protocol QueueServiceProtocool {
     func search(lat: Double, long: Double) -> Single<Response?>
+    func queueState() -> Single<Response?>
 }
 
 
@@ -27,6 +28,12 @@ struct QueueService: QueueServiceProtocool {
         
         return repository
             .search(lat: lat, long: long)
+            .map { $0 }
+    }
+    
+    func queueState() -> Single<Response?> {
+        return repository
+            .queueState()
             .map { $0 }
     }
 

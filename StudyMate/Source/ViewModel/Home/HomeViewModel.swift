@@ -17,19 +17,24 @@ final class HomeViewModel {
 
     enum Action {
         case searchSesac(Double, Double)
+        case queueState
     }
 
     enum Mutation {
         case setQueueData([NMFMarker], [NMFMarker], [NMFMarker])
         case setError(QueueResponseType?)
+        case setQueueState(QueueState?)
+        case setQueuestateError(QueueStateResponseType?)
     }
 
     struct Store {
-//        var queueData: Queue?
         var errorType: QueueResponseType?
+        var queuestateError: QueueStateResponseType?
         var allMarker: [NMFMarker] = []
         var manMarker: [NMFMarker] = []
         var womanMarker: [NMFMarker] = []
+        
+        var queueState: QueueState?
     }
 
     
@@ -61,7 +66,7 @@ final class HomeViewModel {
         case .searchSesac(let lat, let long):
             return service.search(lat: lat, long: long)
                 .asObservable()
-                .map {[weak self] response -> Mutation in
+                .map { response -> Mutation in
                     let decoder = JSONDecoder()
                     let servertype = QueueResponseType(rawValue: response!.statusCode)
                     
@@ -85,6 +90,22 @@ final class HomeViewModel {
                         return .setError(servertype)
                     }
                 }
+        case .queueState:
+            return service.queueState()
+                .asObservable()
+                .map { response -> Mutation in
+                    let decoder = JSONDecoder()
+                    let servertype = QueueStateResponseType(rawValue: response!.statusCode)
+
+                    if let data = response?.data, let decodeData = try? decoder.decode(QueueState.self, from: data) {
+                        return .setQueueState(decodeData)
+                    }
+                    else if servertype == .normal {
+                        return .setQueueState(nil)
+                    } else {
+                        return .setQueuestateError(servertype)
+                    }
+                }
         }
         
     }
@@ -95,12 +116,6 @@ final class HomeViewModel {
             store.allMarker.forEach {
                 $0.mapView = nil
             }
-            store.manMarker.forEach {
-                $0.mapView = nil
-            }
-            store.womanMarker.forEach {
-                $0.mapView = nil
-            }
             
             store.allMarker = all
             store.manMarker = man
@@ -108,9 +123,63 @@ final class HomeViewModel {
             
         case .setError(let error):
             store.errorType = error
+            
+        case .setQueueState(let queueState):
+            store.queueState = queueState
+            
+        case .setQueuestateError(let type):
+            store.queuestateError = type
         }
         
         return .just(store)
     }
     
+}
+
+
+
+
+// MARK: - QueueState
+struct QueueState: Codable {
+    let dodged, matched, reviewed: Int
+    let matchedNick, matchedUid: String
+    
+    enum CodingKeys: String, CodingKey {
+        case dodged, matched, reviewed
+        case matchedNick, matchedUid
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        dodged = try values.decode(Int.self, forKey: .dodged)
+        matched = try values.decode(Int.self, forKey: .dodged)
+        reviewed = try values.decode(Int.self, forKey: .dodged)
+        matchedNick = try values.decodeIfPresent(String.self, forKey: .dodged) ?? ""
+        matchedUid = try values.decodeIfPresent(String.self, forKey: .dodged) ?? ""
+    }
+    
+}
+
+
+enum QueueStateResponseType: Int {
+    case sucess = 200
+    case normal = 201
+    case FireBaseToken = 401
+    case noneSignup = 406
+    case serverError = 500
+    case clientError = 501
+    
+    var message: String {
+        switch self {
+        case .sucess: return "성공~"
+        case .normal: return "일반 상태"
+        case .FireBaseToken: return "FireBase IDToken 갱신해야 될듯"
+        case .noneSignup: return "아직 가입 안된 상태"
+        case .serverError: return "Server에 문제가 생겼나봐요..."
+        case .clientError: return "API 요청시 Header와 RequestBody에 값을 빠트리지 않고 전송했는지 확인"
+            
+        default: return "error가 발생하였습니다."
+        }
+    }
 }

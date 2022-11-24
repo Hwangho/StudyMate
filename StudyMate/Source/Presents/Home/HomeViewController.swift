@@ -21,6 +21,8 @@ final class HomeViewController: BaseViewController {
     
     private let pinImageVidew = UIImageView()
     
+    private let searchButton = UIButton()
+    
     private let filterView = FilterGenderView()
     
     
@@ -54,6 +56,8 @@ final class HomeViewController: BaseViewController {
         
         pinImageVidew.image = UIImage(named: "map_marker")
         
+        searchButton.setImage(UIImage(named: "map_search"), for: .normal)
+        
         filterView.delegate = self
 
         setMapAttributes()
@@ -61,12 +65,14 @@ final class HomeViewController: BaseViewController {
     
     override func setupLayout() {
         
-        [mapView, pinImageVidew, filterView, locationButton].forEach {
+        [mapView, pinImageVidew, filterView, locationButton, searchButton].forEach {
             view.addSubview($0)
         }
         
         mapView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.horizontalEdges.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
+            
         }
         
         pinImageVidew.snp.makeConstraints { make in
@@ -87,13 +93,51 @@ final class HomeViewController: BaseViewController {
             make.width.equalTo(filterView.snp.width)
             make.height.equalTo(locationButton.snp.width)
         }
+        
+        searchButton.snp.makeConstraints { make in
+            make.width.height.equalTo(64)
+            make.trailing.equalToSuperview().inset(16)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
+        }
     }
     
     override func setData() {
         filterView.configure()
     }
     
+    override func setupLifeCycleBinding() {
+        rx.viewWillAppear
+            .asObservable()
+            .map{ _ in HomeViewModel.Action.queueState }
+            .bind(to: viewModel.action)
+            .disposed(by: disposeBag)
+        
+        rx.viewWillAppear
+            .bind(onNext: { [weak self] _ in
+                self?.searchCurrentSesac()
+            })
+            .disposed(by: disposeBag)
+            
+    }
+    
     override func setupBinding() {
+        
+        /// Action
+        searchButton.rx.tap
+            .bind {[weak self] in
+                let stateData = self?.viewModel.store.queueState
+                if stateData == nil {
+                    print("검색 화면으로")
+                } else if stateData?.matched  == 0 {
+                    print("매칭 대기중")
+                } else {
+                    print("매칭 되었당")
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        
+        /// State
         viewModel.currentStore
             .distinctUntilChanged{$0.allMarker}
             .bind { [weak self] _ in
@@ -110,15 +154,29 @@ final class HomeViewController: BaseViewController {
                 switch type {
                 case .FireBaseToken:
                     self?.fireBaseIDTokenRefresh {
-                        let cameraPosition = self?.mapView.cameraPosition // 중앙 위치 좌표
-                        self?.viewModel.action.accept(.searchSesac(cameraPosition!.target.lat, cameraPosition!.target.lng)) // API 받아서 뿌려주기
+                        self?.searchCurrentSesac()
                     }
                 default:
                     print(type.message)
                 }
             }
             .disposed(by: disposeBag)
+        
+        viewModel.currentStore
+            .map { $0.queueState }
+            .bind { [weak self] queueState in
+                if queueState == nil {
+                    self?.searchButton.setImage(UIImage(named: "map_search"), for: .normal)
+                } else if queueState?.matched  == 0 {
+                    self?.searchButton.setImage(UIImage(named: "map_matching"), for: .normal)
+                } else {
+                    self?.searchButton.setImage(UIImage(named: "map_message"), for: .normal)
+                }
+            }
+            .disposed(by: disposeBag)
     }
+    
+    
     
 }
 
@@ -152,6 +210,10 @@ extension HomeViewController: NMFMapViewCameraDelegate, NMFMapViewTouchDelegate 
     
     /// 화면 전환이 끝이 났을 떄 해당 함수 호출
     func mapViewCameraIdle(_ mapView: NMFMapView) {
+        searchCurrentSesac()
+    }
+    
+    func searchCurrentSesac() {
         let cameraPosition = mapView.cameraPosition // 중앙 위치 좌표
         viewModel.action.accept(.searchSesac(cameraPosition.target.lat, cameraPosition.target.lng)) // API 받아서 뿌려주기
     }
@@ -175,7 +237,6 @@ extension HomeViewController: NMFMapViewCameraDelegate, NMFMapViewTouchDelegate 
         @unknown default:
             print("'aa'")
         }
-        
     }
 }
 
