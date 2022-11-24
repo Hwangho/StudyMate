@@ -10,6 +10,7 @@ import UIKit
 import FirebaseCore
 import FirebaseAuth
 import FirebaseMessaging
+import NMapsMap
 
 
 @main
@@ -42,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 메시지 대리자 설정 (MessagingDelegate 상속 필요)
         Messaging.messaging().delegate = self
         
+        NMFAuthManager.shared().clientId = APIKeys.shared.server.ClientMapID
         checkToken()
         return true
     }

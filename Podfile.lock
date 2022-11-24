@@ -57,6 +57,7 @@ PODS:
     - nanopb/encode (= 2.30909.0)
   - nanopb/decode (2.30909.0)
   - nanopb/encode (2.30909.0)
+  - NMapsMap (3.16.0)
   - PromisesObjC (2.1.1)
   - RxCocoa (6.5.0):
     - RxRelay (= 6.5.0)
@@ -70,6 +71,7 @@ DEPENDENCIES:
   - FirebaseAuth
   - FirebaseMessaging
   - Moya/RxSwift (~> 15.0)
+  - NMapsMap
   - RxCocoa (= 6.5.0)
   - RxSwift (= 6.5.0)
   - SnapKit (~> 5.6.0)
@@ -87,6 +89,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - Moya
     - nanopb
+    - NMapsMap
     - PromisesObjC
     - RxCocoa
     - RxRelay
@@ -105,12 +108,13 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: ffbb25ec00ebcb5201adab0a56d808f6f1902d9f
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
+  NMapsMap: a2593320fca2bb09e521c05b4dffee4da42e96ed
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
 
-PODFILE CHECKSUM: 43ba20c4a6dad24314921b4455cdfa27a8d875cc
+PODFILE CHECKSUM: 7ee8a4177875fe780cfc5a9936af22723895f07e
 
 COCOAPODS: 1.11.3

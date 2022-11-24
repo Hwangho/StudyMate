@@ -14,6 +14,8 @@ target 'StudyMate' do
     pod 'FirebaseAuth'
     pod 'FirebaseMessaging'
 
+    pod 'NMapsMap'
+
 
   target 'StudyMateTests' do
     inherit! :search_paths

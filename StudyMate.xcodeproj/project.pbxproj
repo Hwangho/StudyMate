@@ -21,6 +21,15 @@
 		0E08EEE8292B45EC0098C1A1 /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E08EEE7292B45EC0098C1A1 /* CustomAlertViewController.swift */; };
 		0E08EEEB292B462F0098C1A1 /* CustomAlertCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E08EEEA292B462F0098C1A1 /* CustomAlertCoordinator.swift */; };
 		0E08EEED292B46480098C1A1 /* CustomAlertCoordinatorContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E08EEEC292B46480098C1A1 /* CustomAlertCoordinatorContext.swift */; };
+		0E27D522292E233A005809D2 /* GenderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E27D521292E233A005809D2 /* GenderButton.swift */; };
+		0E27D525292E32DF005809D2 /* FilterGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E27D524292E32DF005809D2 /* FilterGenderView.swift */; };
+		0E27D527292E9B98005809D2 /* QueueRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E27D526292E9B98005809D2 /* QueueRouter.swift */; };
+		0E27D529292E9D3A005809D2 /* QueueRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E27D528292E9D3A005809D2 /* QueueRepository.swift */; };
+		0E27D52B292EA11D005809D2 /* QueueService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E27D52A292EA11D005809D2 /* QueueService.swift */; };
+		0E27D52D292F48A8005809D2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E27D52C292F48A8005809D2 /* HomeViewModel.swift */; };
+		0E27D52F292F4FDD005809D2 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E27D52E292F4FDD005809D2 /* Queue.swift */; };
+		0E27D531292F4FEE005809D2 /* QueueUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E27D530292F4FEE005809D2 /* QueueUser.swift */; };
+		0E27D534292F7E60005809D2 /* QueueResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E27D533292F7E60005809D2 /* QueueResponseType.swift */; };
 		0E4644FC2925C4B500EEC90C /* SplachCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4644FB2925C4B500EEC90C /* SplachCoordinator.swift */; };
 		0E4644FE2925C4DD00EEC90C /* SplachCoordinatorContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4644FD2925C4DD00EEC90C /* SplachCoordinatorContext.swift */; };
 		0E4645012926394F00EEC90C /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4645002926394F00EEC90C /* MyPageViewController.swift */; };
@@ -154,6 +163,15 @@
 		0E08EEE7292B45EC0098C1A1 /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
 		0E08EEEA292B462F0098C1A1 /* CustomAlertCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertCoordinator.swift; sourceTree = "<group>"; };
 		0E08EEEC292B46480098C1A1 /* CustomAlertCoordinatorContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertCoordinatorContext.swift; sourceTree = "<group>"; };
+		0E27D521292E233A005809D2 /* GenderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderButton.swift; sourceTree = "<group>"; };
+		0E27D524292E32DF005809D2 /* FilterGenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterGenderView.swift; sourceTree = "<group>"; };
+		0E27D526292E9B98005809D2 /* QueueRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueRouter.swift; sourceTree = "<group>"; };
+		0E27D528292E9D3A005809D2 /* QueueRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueRepository.swift; sourceTree = "<group>"; };
+		0E27D52A292EA11D005809D2 /* QueueService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueService.swift; sourceTree = "<group>"; };
+		0E27D52C292F48A8005809D2 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		0E27D52E292F4FDD005809D2 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		0E27D530292F4FEE005809D2 /* QueueUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueUser.swift; sourceTree = "<group>"; };
+		0E27D533292F7E60005809D2 /* QueueResponseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueResponseType.swift; sourceTree = "<group>"; };
 		0E4644FB2925C4B500EEC90C /* SplachCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplachCoordinator.swift; sourceTree = "<group>"; };
 		0E4644FD2925C4DD00EEC90C /* SplachCoordinatorContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplachCoordinatorContext.swift; sourceTree = "<group>"; };
 		0E4645002926394F00EEC90C /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
@@ -307,6 +325,7 @@
 		0E08EED129291B390098C1A1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0E27D523292E32D7005809D2 /* Home */,
 				0E08EED229291B510098C1A1 /* MyPage */,
 			);
 			path = View;
@@ -331,6 +350,22 @@
 				0E08EEEC292B46480098C1A1 /* CustomAlertCoordinatorContext.swift */,
 			);
 			path = CustomAlert;
+			sourceTree = "<group>";
+		};
+		0E27D523292E32D7005809D2 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0E27D524292E32DF005809D2 /* FilterGenderView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0E27D532292F7E54005809D2 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				0E27D533292F7E60005809D2 /* QueueResponseType.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		0E4644FA2925C4A700EEC90C /* Splash */ = {
@@ -375,6 +410,7 @@
 		0E46450829263CAB00EEC90C /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				0E27D52C292F48A8005809D2 /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -569,6 +605,7 @@
 				0EB826C62918E0C800CA626A /* ViewModel */,
 				0EB826CC2918E12100CA626A /* Cell */,
 				0EB826CA2918E10B00CA626A /* Model */,
+				0E27D532292F7E54005809D2 /* Error */,
 				0EB826CD2918E12F00CA626A /* Enum */,
 				0EB826EC29193AE100CA626A /* Coordinator */,
 				0EB826CB2918E11300CA626A /* Extension */,
@@ -637,6 +674,7 @@
 			isa = PBXGroup;
 			children = (
 				0EA9E3C72922CB7800FFC0D5 /* UserRouter.swift */,
+				0E27D526292E9B98005809D2 /* QueueRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -646,6 +684,7 @@
 			children = (
 				0E843CF42920AF0900D7D259 /* CertificationService.swift */,
 				0EE856F62922ECC900EA9AE5 /* UserService.swift */,
+				0E27D52A292EA11D005809D2 /* QueueService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -654,6 +693,7 @@
 			isa = PBXGroup;
 			children = (
 				0EA9E3CB2922E0E700FFC0D5 /* UserRepository.swift */,
+				0E27D528292E9D3A005809D2 /* QueueRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -662,6 +702,8 @@
 			isa = PBXGroup;
 			children = (
 				0EE856FA2923218500EA9AE5 /* User.swift */,
+				0E27D52E292F4FDD005809D2 /* Queue.swift */,
+				0E27D530292F4FEE005809D2 /* QueueUser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -744,6 +786,7 @@
 				0EAE3338291BA9D800AA4FE6 /* CertificationTextFieldView.swift */,
 				0E08EECF2928E9090098C1A1 /* MultiSlider.swift */,
 				0E08EEE7292B45EC0098C1A1 /* CustomAlertViewController.swift */,
+				0E27D521292E233A005809D2 /* GenderButton.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -1142,6 +1185,7 @@
 				0EB826FF2919F7F400CA626A /* BaseCoordinatorContext.swift in Sources */,
 				0E46451A2927D96100EEC90C /* CardCollectionViewCell.swift in Sources */,
 				0EB826FB2919736F00CA626A /* CertificationCoordinator.swift in Sources */,
+				0E27D529292E9D3A005809D2 /* QueueRepository.swift in Sources */,
 				0EAE334E291CD76A00AA4FE6 /* NickNameCoordinator.swift in Sources */,
 				0EE856FB2923218500EA9AE5 /* User.swift in Sources */,
 				0EB826E12918F42200CA626A /* SelectButton.swift in Sources */,
@@ -1151,11 +1195,13 @@
 				0EE856FD29240A0C00EA9AE5 /* ServerWrapper.swift in Sources */,
 				0EE8570129240B0900EA9AE5 /* GenderViewModel.swift in Sources */,
 				0EA9E3C62920C79C00FFC0D5 /* LocalUserDefaults.swift in Sources */,
+				0E27D525292E32DF005809D2 /* FilterGenderView.swift in Sources */,
 				0EB8271A291A486300CA626A /* LineHeightLabel.swift in Sources */,
 				0E843CF52920AF0900D7D259 /* CertificationService.swift in Sources */,
 				0EE856FF29240B0200EA9AE5 /* EmailViewModel.swift in Sources */,
 				0EAE335E291CEC3000AA4FE6 /* GenderCoordinator.swift in Sources */,
 				0E46450D29264F9700EEC90C /* MyPageCollectionViewCell.swift in Sources */,
+				0E27D522292E233A005809D2 /* GenderButton.swift in Sources */,
 				0E08EEE4292A89420098C1A1 /* CardDetailCollectionViewModel.swift in Sources */,
 				0E08EEE6292A93E30098C1A1 /* MoreReviewViewController.swift in Sources */,
 				0EAE3337291BA07200AA4FE6 /* String+Extension.swift in Sources */,
@@ -1170,12 +1216,15 @@
 				0EB826DE2918E2E400CA626A /* Color.swift in Sources */,
 				0EB82709291A299A00CA626A /* CertificationCoordinatorContext.swift in Sources */,
 				0EAE3346291CD30F00AA4FE6 /* EmailViewController.swift in Sources */,
+				0E27D52F292F4FDD005809D2 /* Queue.swift in Sources */,
 				0EA9E3C82922CB7800FFC0D5 /* UserRouter.swift in Sources */,
 				0E08EED829291B940098C1A1 /* SearchallowView.swift in Sources */,
 				0EB826FD2919737B00CA626A /* MainCoordinator.swift in Sources */,
 				0E46451729275EAA00EEC90C /* BaseCollectionHeaderFooterView.swift in Sources */,
+				0E27D534292F7E60005809D2 /* QueueResponseType.swift in Sources */,
 				0EAE3342291CD0E400AA4FE6 /* NickNameViewController.swift in Sources */,
 				0EB826E9291932E500CA626A /* keywordButton.swift in Sources */,
+				0E27D52D292F48A8005809D2 /* HomeViewModel.swift in Sources */,
 				0EB826E329191D2000CA626A /* SDSSelectButton.swift in Sources */,
 				0E4644FE2925C4DD00EEC90C /* SplachCoordinatorContext.swift in Sources */,
 				0E46451C2927D97700EEC90C /* CardCollectionViewHeaderView.swift in Sources */,
@@ -1216,8 +1265,10 @@
 				0E08EEEB292B462F0098C1A1 /* CustomAlertCoordinator.swift in Sources */,
 				0EA9E3CC2922E0E700FFC0D5 /* UserRepository.swift in Sources */,
 				0E46451E2927D99400EEC90C /* MyInfoCollectionViewCell.swift in Sources */,
+				0E27D52B292EA11D005809D2 /* QueueService.swift in Sources */,
 				0EAE3335291B917200AA4FE6 /* LineTextFieldView.swift in Sources */,
 				0EAE3350291CDD3E00AA4FE6 /* NickNameCoordinatorContext.swift in Sources */,
+				0E27D527292E9B98005809D2 /* QueueRouter.swift in Sources */,
 				0EAE3356291CE8F100AA4FE6 /* BirthCoordinatorContext.swift in Sources */,
 				0EAE3348291CD31B00AA4FE6 /* GenderViewController.swift in Sources */,
 				0EAE3359291CEA8E00AA4FE6 /* EmailCoordinator.swift in Sources */,
@@ -1226,6 +1277,7 @@
 				0E46450F29264FE100EEC90C /* SettingCollectionViewCell.swift in Sources */,
 				0E08EED02928E9090098C1A1 /* MultiSlider.swift in Sources */,
 				0EAE3354291CE8B000AA4FE6 /* BirthCoordinator.swift in Sources */,
+				0E27D531292F4FEE005809D2 /* QueueUser.swift in Sources */,
 				0E4645132926586B00EEC90C /* ChangeMyPageCoordinator.swift in Sources */,
 				0E08EEDC29291BC70098C1A1 /* WithDrawView.swift in Sources */,
 				0E464506292639CE00EEC90C /* MyPageCoordinatorContext.swift in Sources */,
