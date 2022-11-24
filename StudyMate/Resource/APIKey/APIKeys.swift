@@ -29,6 +29,8 @@ struct APIKeys {
         
         let baseURL: String                     // server url
         
+        let ClientMapID: String = "5wkvxmz78b"
+        
         
         init(type: BuildType = .test) {
             switch type {

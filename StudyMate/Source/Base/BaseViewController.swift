@@ -50,7 +50,7 @@ class BaseViewController: UIViewController {
     
     deinit {
         coordinatorDelegate?.didFinishCoordinator()
-        dump("DEINIT: \(self.className)")
+        dump("❤️❤️ DEINIT: \(self.className) ❤️❤️")
     }
     
     
@@ -145,6 +145,18 @@ extension BaseViewController {
         alert.addAction(ok)
         present(alert, animated: true)
     }
+    
+    func showSelectAlertMessage(title: String, button: String = "확인", handler: (() -> Void)? = nil) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        let canel = UIAlertAction(title: "아니요", style: .cancel)
+        let ok = UIAlertAction(title: button, style: .default) { _ in
+            handler?()
+        }
+        alert.addAction(ok)
+        alert.addAction(canel)
+        present(alert, animated: true)
+    }
+    
     
     
     func fireBaseIDTokenRefresh(handler: (() -> ())?) {
