@@ -73,7 +73,7 @@ final class BirthViewController: BaseViewController {
         stackView.distribution = .fillEqually
         
         setupDatePicker()
-        setupGestureRecognizer()
+        keyBoardHiddenGesture()
     }
     
     override func setupLayout() {

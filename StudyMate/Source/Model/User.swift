@@ -13,7 +13,7 @@ struct User: Codable, Hashable {
     let v: Int
     let uid, phoneNumber, email, fcMtoken: String
     let nick, birth: String
-    let gender: Int
+    let gender: Int         //0: 여자, 1: 남자
     let study: String?
     let comment: [String]
     let reputation: [Int]

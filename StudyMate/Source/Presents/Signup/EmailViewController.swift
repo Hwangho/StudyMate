@@ -70,7 +70,7 @@ final class EmailViewController: BaseViewController {
         contentLabel.textColor = Color.BaseColor.gray7
         contentLabel.textAlignment = .center
         
-        setupGestureRecognizer()
+        keyBoardHiddenGesture()
     }
     
     override func setupLayout() {

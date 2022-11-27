@@ -76,7 +76,7 @@ final class CertificationViewController: BaseViewController {
         titleLabel.setupFont(type: .Display1_R20)
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 2
-        setupGestureRecognizer()
+        keyBoardHiddenGesture()
         
         switch type {
         case .phoneNumber:

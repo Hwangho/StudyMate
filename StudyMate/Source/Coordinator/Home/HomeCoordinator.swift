@@ -29,5 +29,8 @@ class HomeCoordinator: Coordinator {
         presenter.pushViewController(viewController, animated: true)
     }
     
-    
 }
+
+
+// MARK: - Search 화면
+extension HomeCoordinator: SearchCoordinatorContext { }

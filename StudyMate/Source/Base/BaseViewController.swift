@@ -42,6 +42,7 @@ class BaseViewController: UIViewController {
         setupLifeCycleBinding()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupLifeCycleBinding()
@@ -50,7 +51,7 @@ class BaseViewController: UIViewController {
     
     deinit {
         coordinatorDelegate?.didFinishCoordinator()
-        dump("DEINIT: \(self.className)")
+        dump("❤️❤️ DEINIT: \(self.className) ❤️❤️")
     }
     
     
@@ -133,6 +134,10 @@ class BaseViewController: UIViewController {
         navigationController?.view.backgroundColor = Color.BaseColor.white              /// Navagation 배경 색상을 지정
     }
     
+    private func configureNavigationBar() {
+            navigationController?.isNavigationBarHidden = true
+            navigationController?.interactivePopGestureRecognizer?.delegate = nil   /// navigation bar를 hidden 처리 하더라도 swipe Gesture는 작동하도록!!
+        }
 }
 
 
@@ -145,6 +150,18 @@ extension BaseViewController {
         alert.addAction(ok)
         present(alert, animated: true)
     }
+    
+    func showSelectAlertMessage(title: String, button: String = "확인", handler: (() -> Void)? = nil) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        let canel = UIAlertAction(title: "아니요", style: .cancel)
+        let ok = UIAlertAction(title: button, style: .default) { _ in
+            handler?()
+        }
+        alert.addAction(ok)
+        alert.addAction(canel)
+        present(alert, animated: true)
+    }
+    
     
     
     func fireBaseIDTokenRefresh(handler: (() -> ())?) {
@@ -162,7 +179,7 @@ extension BaseViewController {
     
     
     /// scroll in textfield
-    func setupGestureRecognizer() {
+    func keyBoardHiddenGesture() {
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
