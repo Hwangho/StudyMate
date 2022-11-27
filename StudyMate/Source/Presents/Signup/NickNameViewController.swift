@@ -60,7 +60,7 @@ final class NickNameViewController: BaseViewController {
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 2
         
-        setupGestureRecognizer()
+        keyBoardHiddenGesture()
     }
     
     override func setupLayout() {

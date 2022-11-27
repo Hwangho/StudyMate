@@ -25,6 +25,7 @@ class ChangeMyPageCoordinator: Coordinator {
         let viewController = ChangeMyPageViewController()
         viewController.coordinator = self
         viewController.coordinatorDelegate = self
+        viewController.hidesBottomBarWhenPushed = true
         presenter.pushViewController(viewController, animated: true)
     }
 }

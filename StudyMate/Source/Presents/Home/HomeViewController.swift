@@ -37,11 +37,16 @@ final class HomeViewController: BaseViewController {
     
     
     /// LIfe Cycle
+    override func viewWillAppear(_ animated: Bool) {
+      navigationController?.setNavigationBarHidden(true, animated: true) // 뷰 컨트롤러가 나타날 때 숨기기
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+      navigationController?.setNavigationBarHidden(false, animated: true) // 뷰 컨트롤러가 사라질 때 나타내기
+    }
+    
     override func setupAttributes() {
         super.setupAttributes()
-        view.backgroundColor = Color.BaseColor.green
-        navigationController?.navigationBar.isHidden = true
-        
         locationButton.layer.masksToBounds = true
         locationButton.layer.cornerRadius = 8
         locationButton.backgroundColor = .clear
@@ -117,7 +122,7 @@ final class HomeViewController: BaseViewController {
                 self?.searchCurrentSesac()
             })
             .disposed(by: disposeBag)
-            
+
     }
     
     override func setupBinding() {
@@ -127,7 +132,11 @@ final class HomeViewController: BaseViewController {
             .bind {[weak self] in
                 let stateData = self?.viewModel.store.queueState
                 if stateData == nil {
-                    print("검색 화면으로")
+                    let cameraPosition = self?.mapView.cameraPosition // 중앙 위치 좌표
+                    LocalUserDefaults.shared.set(key: .lat, value: cameraPosition?.target.lat)
+                    LocalUserDefaults.shared.set(key: .lng, value: cameraPosition?.target.lng)
+                    
+                    self?.coordinator?.startSearch()
                 } else if stateData?.matched  == 0 {
                     print("매칭 대기중")
                 } else {
@@ -176,11 +185,10 @@ final class HomeViewController: BaseViewController {
             .disposed(by: disposeBag)
     }
     
-    
-    
 }
 
 
+// MARK: = Map
 extension HomeViewController: NMFMapViewCameraDelegate, NMFMapViewTouchDelegate {
     
     /// Custom Func
@@ -211,6 +219,10 @@ extension HomeViewController: NMFMapViewCameraDelegate, NMFMapViewTouchDelegate 
     /// 화면 전환이 끝이 났을 떄 해당 함수 호출
     func mapViewCameraIdle(_ mapView: NMFMapView) {
         searchCurrentSesac()
+        mapView.isScrollGestureEnabled = false
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+            self.mapView.isScrollGestureEnabled = true
+        }
     }
     
     func searchCurrentSesac() {
@@ -220,7 +232,6 @@ extension HomeViewController: NMFMapViewCameraDelegate, NMFMapViewTouchDelegate 
 
     @objc
     func tapLocationButton(_ sender: UIButton) {
-        
         switch locationManager.authorizationStatus {
         case .authorizedAlways, .authorizedWhenInUse:
             mapView.positionMode = .direction

@@ -42,6 +42,7 @@ class BaseViewController: UIViewController {
         setupLifeCycleBinding()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupLifeCycleBinding()
@@ -133,6 +134,10 @@ class BaseViewController: UIViewController {
         navigationController?.view.backgroundColor = Color.BaseColor.white              /// Navagation 배경 색상을 지정
     }
     
+    private func configureNavigationBar() {
+            navigationController?.isNavigationBarHidden = true
+            navigationController?.interactivePopGestureRecognizer?.delegate = nil   /// navigation bar를 hidden 처리 하더라도 swipe Gesture는 작동하도록!!
+        }
 }
 
 
@@ -174,7 +179,7 @@ extension BaseViewController {
     
     
     /// scroll in textfield
-    func setupGestureRecognizer() {
+    func keyBoardHiddenGesture() {
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
