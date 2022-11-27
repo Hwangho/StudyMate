@@ -105,9 +105,9 @@ final class SearchViewController: BaseViewController {
 extension SearchViewController {
     
     /// Section, Item
-    enum Section: Hashable, CaseIterable {
-        case around
-        case my
+    enum Section: String, Hashable, CaseIterable {
+        case around = "지금 주변에는"
+        case my = "내가 하고 싶은"
     }
     
     enum Item: Hashable {
@@ -139,14 +139,8 @@ extension SearchViewController {
         }
         
         let header = HeaderRegister.init(elementKind: "header") { supplementaryView, elementKind, indexPath in
-            
-            switch Section.allCases[indexPath.section] {
-            case .around:
-                supplementaryView.configure(title: "지금 주변에는")
-            case .my:
-                supplementaryView.configure(title: "내가 하고 싶은")
-            }
-            
+            let type = Section.allCases[indexPath.section]
+            supplementaryView.configure(title: type.rawValue)
         }
         
         datasource = DataSource(collectionView: collectionview, cellProvider: { collectionView, indexPath, itemIdentifier in

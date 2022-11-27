@@ -39,6 +39,7 @@
 		0E27D54529327197005809D2 /* SearchRecomandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E27D54429327196005809D2 /* SearchRecomandCollectionViewCell.swift */; };
 		0E27D547293271B0005809D2 /* SearchMyStudyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E27D546293271B0005809D2 /* SearchMyStudyCollectionViewCell.swift */; };
 		0E27D549293271C5005809D2 /* SearchCollectionviewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E27D548293271C5005809D2 /* SearchCollectionviewHeaderView.swift */; };
+		0E27D54B29332067005809D2 /* LookupStudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E27D54A29332067005809D2 /* LookupStudyViewController.swift */; };
 		0E4644FC2925C4B500EEC90C /* SplachCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4644FB2925C4B500EEC90C /* SplachCoordinator.swift */; };
 		0E4644FE2925C4DD00EEC90C /* SplachCoordinatorContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4644FD2925C4DD00EEC90C /* SplachCoordinatorContext.swift */; };
 		0E4645012926394F00EEC90C /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4645002926394F00EEC90C /* MyPageViewController.swift */; };
@@ -190,6 +191,7 @@
 		0E27D54429327196005809D2 /* SearchRecomandCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRecomandCollectionViewCell.swift; sourceTree = "<group>"; };
 		0E27D546293271B0005809D2 /* SearchMyStudyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMyStudyCollectionViewCell.swift; sourceTree = "<group>"; };
 		0E27D548293271C5005809D2 /* SearchCollectionviewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionviewHeaderView.swift; sourceTree = "<group>"; };
+		0E27D54A29332067005809D2 /* LookupStudyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupStudyViewController.swift; sourceTree = "<group>"; };
 		0E4644FB2925C4B500EEC90C /* SplachCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplachCoordinator.swift; sourceTree = "<group>"; };
 		0E4644FD2925C4DD00EEC90C /* SplachCoordinatorContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplachCoordinatorContext.swift; sourceTree = "<group>"; };
 		0E4645002926394F00EEC90C /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
@@ -915,6 +917,7 @@
 			children = (
 				0EB82710291A31B500CA626A /* HomeViewController.swift */,
 				0E27D53529308E85005809D2 /* SearchViewController.swift */,
+				0E27D54A29332067005809D2 /* LookupStudyViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1252,6 +1255,7 @@
 				0EB8270C291A2CAD00CA626A /* TabBarItem.swift in Sources */,
 				0EB82716291A328800CA626A /* HomeCoordinatorContext.swift in Sources */,
 				0E4645112926529B00EEC90C /* ChangeMyPageViewController.swift in Sources */,
+				0E27D54B29332067005809D2 /* LookupStudyViewController.swift in Sources */,
 				0EB82707291A28E400CA626A /* CertificationViewController.swift in Sources */,
 				0EB826F029193CE800CA626A /* AppCoordinator.swift in Sources */,
 				0E8A2305292549600073E261 /* SplachViewController.swift in Sources */,
