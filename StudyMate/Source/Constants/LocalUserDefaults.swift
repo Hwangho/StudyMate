@@ -19,6 +19,9 @@ enum UserDefaultsType: String, CaseIterable {
     case birth
     case email
     case gender
+    
+    case lat
+    case lng
 }
 
 final class LocalUserDefaults {

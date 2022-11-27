@@ -13,5 +13,22 @@ struct Queue: Codable, Hashable {
     let fromQueueDB: [QueueUser]
     let fromQueueDBRequested: [QueueUser]
     let fromRecommend: [String]
+}
 
+
+struct RecomandStudy: Hashable {
+    var recomand: [String]
+    var sesacStudy: [String]
+}
+
+
+struct RecomandStudys: Hashable {
+    var type: recomandType
+    var title: String
+}
+
+
+enum recomandType {
+    case recomand
+    case around
 }

@@ -30,6 +30,15 @@
 		0E27D52F292F4FDD005809D2 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E27D52E292F4FDD005809D2 /* Queue.swift */; };
 		0E27D531292F4FEE005809D2 /* QueueUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E27D530292F4FEE005809D2 /* QueueUser.swift */; };
 		0E27D534292F7E60005809D2 /* QueueResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E27D533292F7E60005809D2 /* QueueResponseType.swift */; };
+		0E27D53629308E86005809D2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E27D53529308E85005809D2 /* SearchViewController.swift */; };
+		0E27D5392930919A005809D2 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E27D5382930919A005809D2 /* SearchCoordinator.swift */; };
+		0E27D53B293091B0005809D2 /* SearchCoordinatorContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E27D53A293091B0005809D2 /* SearchCoordinatorContext.swift */; };
+		0E27D53E2930CF70005809D2 /* QueueState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E27D53D2930CF70005809D2 /* QueueState.swift */; };
+		0E27D5402930CF8A005809D2 /* QueueStateResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E27D53F2930CF8A005809D2 /* QueueStateResponseType.swift */; };
+		0E27D5422930DAB0005809D2 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E27D5412930DAB0005809D2 /* SearchViewModel.swift */; };
+		0E27D54529327197005809D2 /* SearchRecomandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E27D54429327196005809D2 /* SearchRecomandCollectionViewCell.swift */; };
+		0E27D547293271B0005809D2 /* SearchMyStudyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E27D546293271B0005809D2 /* SearchMyStudyCollectionViewCell.swift */; };
+		0E27D549293271C5005809D2 /* SearchCollectionviewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E27D548293271C5005809D2 /* SearchCollectionviewHeaderView.swift */; };
 		0E4644FC2925C4B500EEC90C /* SplachCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4644FB2925C4B500EEC90C /* SplachCoordinator.swift */; };
 		0E4644FE2925C4DD00EEC90C /* SplachCoordinatorContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4644FD2925C4DD00EEC90C /* SplachCoordinatorContext.swift */; };
 		0E4645012926394F00EEC90C /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4645002926394F00EEC90C /* MyPageViewController.swift */; };
@@ -172,6 +181,15 @@
 		0E27D52E292F4FDD005809D2 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		0E27D530292F4FEE005809D2 /* QueueUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueUser.swift; sourceTree = "<group>"; };
 		0E27D533292F7E60005809D2 /* QueueResponseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueResponseType.swift; sourceTree = "<group>"; };
+		0E27D53529308E85005809D2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		0E27D5382930919A005809D2 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
+		0E27D53A293091B0005809D2 /* SearchCoordinatorContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinatorContext.swift; sourceTree = "<group>"; };
+		0E27D53D2930CF70005809D2 /* QueueState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueState.swift; sourceTree = "<group>"; };
+		0E27D53F2930CF8A005809D2 /* QueueStateResponseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueStateResponseType.swift; sourceTree = "<group>"; };
+		0E27D5412930DAB0005809D2 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		0E27D54429327196005809D2 /* SearchRecomandCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRecomandCollectionViewCell.swift; sourceTree = "<group>"; };
+		0E27D546293271B0005809D2 /* SearchMyStudyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMyStudyCollectionViewCell.swift; sourceTree = "<group>"; };
+		0E27D548293271C5005809D2 /* SearchCollectionviewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionviewHeaderView.swift; sourceTree = "<group>"; };
 		0E4644FB2925C4B500EEC90C /* SplachCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplachCoordinator.swift; sourceTree = "<group>"; };
 		0E4644FD2925C4DD00EEC90C /* SplachCoordinatorContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplachCoordinatorContext.swift; sourceTree = "<group>"; };
 		0E4645002926394F00EEC90C /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
@@ -364,8 +382,28 @@
 			isa = PBXGroup;
 			children = (
 				0E27D533292F7E60005809D2 /* QueueResponseType.swift */,
+				0E27D53F2930CF8A005809D2 /* QueueStateResponseType.swift */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		0E27D53C293091C1005809D2 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				0E27D5382930919A005809D2 /* SearchCoordinator.swift */,
+				0E27D53A293091B0005809D2 /* SearchCoordinatorContext.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		0E27D54329327187005809D2 /* HomeCell */ = {
+			isa = PBXGroup;
+			children = (
+				0E27D548293271C5005809D2 /* SearchCollectionviewHeaderView.swift */,
+				0E27D54429327196005809D2 /* SearchRecomandCollectionViewCell.swift */,
+				0E27D546293271B0005809D2 /* SearchMyStudyCollectionViewCell.swift */,
+			);
+			path = HomeCell;
 			sourceTree = "<group>";
 		};
 		0E4644FA2925C4A700EEC90C /* Splash */ = {
@@ -411,6 +449,7 @@
 			isa = PBXGroup;
 			children = (
 				0E27D52C292F48A8005809D2 /* HomeViewModel.swift */,
+				0E27D5412930DAB0005809D2 /* SearchViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -704,6 +743,7 @@
 				0EE856FA2923218500EA9AE5 /* User.swift */,
 				0E27D52E292F4FDD005809D2 /* Queue.swift */,
 				0E27D530292F4FEE005809D2 /* QueueUser.swift */,
+				0E27D53D2930CF70005809D2 /* QueueState.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -723,6 +763,7 @@
 		0EB826CC2918E12100CA626A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				0E27D54329327187005809D2 /* HomeCell */,
 				0E46450B29264F8700EEC90C /* MypageCell */,
 				0EB8271B291A4DB400CA626A /* OnBoardingCell */,
 				0EE8570229246FF100EA9AE5 /* GenderCell */,
@@ -873,6 +914,7 @@
 			isa = PBXGroup;
 			children = (
 				0EB82710291A31B500CA626A /* HomeViewController.swift */,
+				0E27D53529308E85005809D2 /* SearchViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -882,6 +924,7 @@
 			children = (
 				0EB82713291A320F00CA626A /* HomeCoordinator.swift */,
 				0EB82715291A328800CA626A /* HomeCoordinatorContext.swift */,
+				0E27D53C293091C1005809D2 /* Search */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1191,6 +1234,7 @@
 				0EB826E12918F42200CA626A /* SelectButton.swift in Sources */,
 				0EA9E3CA2922CBEB00FFC0D5 /* APIKeys.swift in Sources */,
 				0EB826F5291966C900CA626A /* TabbarViewController.swift in Sources */,
+				0E27D5422930DAB0005809D2 /* SearchViewModel.swift in Sources */,
 				0EAE3333291B722F00AA4FE6 /* UITextField+Extension.swift in Sources */,
 				0EE856FD29240A0C00EA9AE5 /* ServerWrapper.swift in Sources */,
 				0EE8570129240B0900EA9AE5 /* GenderViewModel.swift in Sources */,
@@ -1219,6 +1263,7 @@
 				0E27D52F292F4FDD005809D2 /* Queue.swift in Sources */,
 				0EA9E3C82922CB7800FFC0D5 /* UserRouter.swift in Sources */,
 				0E08EED829291B940098C1A1 /* SearchallowView.swift in Sources */,
+				0E27D53B293091B0005809D2 /* SearchCoordinatorContext.swift in Sources */,
 				0EB826FD2919737B00CA626A /* MainCoordinator.swift in Sources */,
 				0E46451729275EAA00EEC90C /* BaseCollectionHeaderFooterView.swift in Sources */,
 				0E27D534292F7E60005809D2 /* QueueResponseType.swift in Sources */,
@@ -1231,16 +1276,19 @@
 				0E4645232928847500EEC90C /* CardReputationCollectionViewCell.swift in Sources */,
 				0EB826D32918E29500CA626A /* BaseView.swift in Sources */,
 				0E464504292639C000EEC90C /* MyPageCoordinator.swift in Sources */,
+				0E27D53E2930CF70005809D2 /* QueueState.swift in Sources */,
 				0EAE3331291B6AAF00AA4FE6 /* Certification.swift in Sources */,
 				0EB826F7291966E500CA626A /* OnBoardingViewController.swift in Sources */,
 				0E843CE1291F70C000D7D259 /* BirthViewModel.swift in Sources */,
 				0EE856F72922ECC900EA9AE5 /* UserService.swift in Sources */,
 				0E08EEDE292A367E0098C1A1 /* Rx+Extension.swift in Sources */,
+				0E27D53629308E86005809D2 /* SearchViewController.swift in Sources */,
 				0E08EED429291B660098C1A1 /* GenderView.swift in Sources */,
 				0E46452B2928B1DF00EEC90C /* UICollectionViewDiffableDataSource+Extension.swift in Sources */,
 				0EB82718291A46B100CA626A /* UILabel+Extension.swift in Sources */,
 				0E08EEDA29291BAF0098C1A1 /* AgeView.swift in Sources */,
 				0EB826932918B4AF00CA626A /* AppDelegate.swift in Sources */,
+				0E27D547293271B0005809D2 /* SearchMyStudyCollectionViewCell.swift in Sources */,
 				0E46452729288A2300EEC90C /* CardDetailCollectionViewController.swift in Sources */,
 				0EB826EE29193B3600CA626A /* Coordinator.swift in Sources */,
 				0E4645292928A96A00EEC90C /* CardDetalCollectionViewHeaderView.swift in Sources */,
@@ -1248,8 +1296,10 @@
 				0EAE3340291CCEB700AA4FE6 /* SignupType.swift in Sources */,
 				0EE857062924D27F00EA9AE5 /* ResponseWrapper.swift in Sources */,
 				0EB82722291A88B000CA626A /* AppCoordinatorContext.swift in Sources */,
+				0E27D5392930919A005809D2 /* SearchCoordinator.swift in Sources */,
 				0EB826F92919736500CA626A /* OnBoardingCoordinator.swift in Sources */,
 				0EB82714291A320F00CA626A /* HomeCoordinator.swift in Sources */,
+				0E27D54529327197005809D2 /* SearchRecomandCollectionViewCell.swift in Sources */,
 				0EB82705291A265700CA626A /* OnBoardingCoordinatorContext.swift in Sources */,
 				0EB8270E291A2E5E00CA626A /* MainCoordinatorContext.swift in Sources */,
 				0EB82720291A746F00CA626A /* CertificationViewModel.swift in Sources */,
@@ -1271,6 +1321,8 @@
 				0E27D527292E9B98005809D2 /* QueueRouter.swift in Sources */,
 				0EAE3356291CE8F100AA4FE6 /* BirthCoordinatorContext.swift in Sources */,
 				0EAE3348291CD31B00AA4FE6 /* GenderViewController.swift in Sources */,
+				0E27D549293271C5005809D2 /* SearchCollectionviewHeaderView.swift in Sources */,
+				0E27D5402930CF8A005809D2 /* QueueStateResponseType.swift in Sources */,
 				0EAE3359291CEA8E00AA4FE6 /* EmailCoordinator.swift in Sources */,
 				0E4645012926394F00EEC90C /* MyPageViewController.swift in Sources */,
 				0EAE335B291CEA9800AA4FE6 /* EmailCoordinatorContext.swift in Sources */,

@@ -38,6 +38,12 @@ final class ChangeMyPageViewController: BaseViewController {
     
     
     /// Life Cycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+        tabBarController?.tabBar.isTranslucent = true
+    }
+    
     override func setupAttributes() {
         super.setupAttributes()
         
@@ -50,7 +56,7 @@ final class ChangeMyPageViewController: BaseViewController {
         let saveButton = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(tapSaveButton))
         
         navigationItem.rightBarButtonItem = saveButton
-        keyBoardHiddenGesture()    /// TextField KeyBoard 내리기
+        setupGestureRecognizer()    /// TextField KeyBoard 내리기
     }
     
     
