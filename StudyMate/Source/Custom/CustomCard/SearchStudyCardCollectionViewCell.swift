@@ -1,8 +1,8 @@
 //
-//  CardCollectionViewCell.swift
+//  SearchStudyCardCollectionViewCell.swift
 //  StudyMate
 //
-//  Created by 송황호 on 2022/11/19.
+//  Created by 송황호 on 2022/11/30.
 //
 
 import UIKit
@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 
-class MyInfoCardCollectionViewCell: BaseCollectionViewCell {
+class SearchStudyCardCollectionViewCell: BaseCollectionViewCell {
     
     /// UI
     let titleStackView = UIStackView()
@@ -21,7 +21,7 @@ class MyInfoCardCollectionViewCell: BaseCollectionViewCell {
     
     let stackView = UIStackView()
 
-    lazy var cardInfoViewcontroller = CardDetailCollectionViewController(type: .myInfo)
+    lazy var cardInfoViewcontroller = CardDetailCollectionViewController(type: .searchStduy)
     
     let padding: CGFloat = 16
     

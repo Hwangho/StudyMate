@@ -42,9 +42,9 @@ class CardCollectionViewHeaderView: BaseCollectionHeaderFooterView {
         }
     }
     
-    func configure(user: User) {
+    func configure(queueUser: QueueUser) {
         /// 서버에서 이미지 받아와야 함!! ( Kingfisher 말고 직접 캐쉬해서 저장 처리 해보자구~!!!! )
-        backgroundImage.image = UIImage(named: user.background)
-        sesacImage.image = UIImage(named: user.sesac)
+        backgroundImage.image = UIImage(named: queueUser.background)
+        sesacImage.image = UIImage(named: queueUser.sesac)
     }
 }

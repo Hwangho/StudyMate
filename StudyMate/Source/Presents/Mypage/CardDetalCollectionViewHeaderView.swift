@@ -19,6 +19,8 @@ class CardDetalCollectionViewHeaderView: BaseCollectionHeaderFooterView {
     
     var coordinator: ChangeMyPageCoordinator?
     
+    var type: CardType?
+    
     /// Life Cycle
     override func setupAttributes() {
         super.setupAttributes()
@@ -61,9 +63,15 @@ class CardDetalCollectionViewHeaderView: BaseCollectionHeaderFooterView {
         }
     }
     
-    func searchStudyConfigure(type: CardTypeCollectionView.SearchStudySection) {
+    func searchStudyConfigure(type: CardTypeCollectionView.SearchStudySection, reviews: [String]) {
         titleLabel.text = type.rawValue
         titleLabel.textColor = Color.BaseColor.black
         titleLabel.setupFont(type: .Title6_R12)
+
+        if type == .review {
+            if reviews.count > 1 {
+                moreReviewButton.isHidden = false
+            }
+        }
     }
 }
