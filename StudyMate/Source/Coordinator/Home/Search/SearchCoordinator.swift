@@ -27,8 +27,12 @@ class SearchCoordinator: Coordinator {
         viewcontroller.coordinator = self
         viewcontroller.coordinatorDelegate = self
         viewcontroller.hidesBottomBarWhenPushed = true
-        presenter.pushViewController(viewcontroller, animated: true)
+        presenter.pushViewController(viewcontroller, animated: animated)
     }
     
     
 }
+
+
+// MARK: - Lookup Study
+extension SearchCoordinator: LookupStudyCoordinatorContext { }

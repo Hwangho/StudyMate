@@ -72,13 +72,19 @@ final class SearchViewController: BaseViewController {
         
         searchButton.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(16)
-            make.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top).inset(-UIApplication.shared.keyWindow!.safeAreaInsets.bottom)
+            make.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top).inset(-16)
             make.height.equalTo(48)
         }
         
     }
     
     override func setupBinding() {
+        
+        searchButton.rx.tap
+            .bind {[weak self] in
+                self?.coordinator?.startLookupStudy()
+            }
+            .disposed(by: disposeBag)
         
         /// State
         viewModel.currentStore
@@ -263,7 +269,7 @@ extension SearchViewController {
         // 키보드의 높이만큼 화면을 내려준다.
         self.searchButton.snp.remakeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(16)
-            make.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top).inset( -UIApplication.shared.windows.first!.safeAreaInsets.bottom)
+            make.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top).inset(-16)
             make.height.equalTo(48)
         }
     }

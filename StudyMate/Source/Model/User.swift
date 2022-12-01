@@ -27,6 +27,8 @@ struct User: Codable, Hashable {
     let dodgepenalty, dodgeNum, ageMin, ageMax: Int
     let searchable: Int
     let createdAt: String
+    
+    let queue: QueueUser
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -73,6 +75,18 @@ struct User: Codable, Hashable {
         ageMax =  try values.decode(Int.self, forKey: .ageMax)
         searchable =  try values.decode(Int.self, forKey: .searchable)
         createdAt =  try values.decode(String.self, forKey: .createdAt)
+        
+        queue = QueueUser(uid: id,
+                          nick: nick,
+                          lat: 0,
+                          long: 0,
+                          reputation: reputation,
+                          studylist: [],
+                          reviews: comment,
+                          gender: gender,
+                          type: 0,
+                          sesac: sesac,
+                          background: background)
     }
     
 }

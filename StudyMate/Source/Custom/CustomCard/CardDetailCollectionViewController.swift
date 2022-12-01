@@ -24,10 +24,6 @@ final class CardDetailCollectionViewController: UICollectionViewController {
     
     let padding: CGFloat = 16
     
-    let studyList = ["aaa", "Anything", "아무아무아무아무거나아무아무아무아무거나"]
-    
-    let reviewList: [String] = ["아무아무아무아무거나아무아무아무아무거나"]
-    
     let viewmodel = CardDetailCollectionViewModel()
     
     let disposeBag = DisposeBag()
@@ -123,9 +119,9 @@ extension CardDetailCollectionViewController {
                 cell.configure(review: itemIdentifier)
             }
             
-            let cardDetailHeaderViewRegister = CardDetailHeaderViewRegister.init(elementKind: "header") { [weak self] supplementaryView, elementKind, indexPath in
+            let cardDetailHeaderViewRegister = CardDetailHeaderViewRegister.init(elementKind: "header") {[weak self] supplementaryView, elementKind, indexPath in
                 guard let data = self?.viewmodel.store.user else { return }
-                supplementaryView.myInfoConfigure(type: CardTypeCollectionView.myInfoSection.allCases[indexPath.section], reviews: data.comment)
+                supplementaryView.myInfoConfigure(type: CardTypeCollectionView.myInfoSection.allCases[indexPath.section], reviews: data.reviews)
                 supplementaryView.coordinator = self?.coordinator
             }
             
@@ -162,9 +158,10 @@ extension CardDetailCollectionViewController {
             let cardReviewCellRegister = CardReviewCellRegister { cell, indexPath, itemIdentifier in
                 cell.configure(review: itemIdentifier)
             }
-            
-            let cardDetailHeaderViewRegister = CardDetailHeaderViewRegister.init(elementKind: "header") { supplementaryView, elementKind, indexPath in
-                supplementaryView.searchStudyConfigure(type: CardTypeCollectionView.SearchStudySection.allCases[indexPath.section])
+            let cardDetailHeaderViewRegister = CardDetailHeaderViewRegister.init(elementKind: "header") { [weak self] supplementaryView, elementKind, indexPath in
+                guard let data = self?.viewmodel.store.user else { return }
+                supplementaryView.searchStudyConfigure(type: CardTypeCollectionView.SearchStudySection.allCases[indexPath.section], reviews: data.reviews)
+                supplementaryView.coordinator = self?.coordinator
             }
             
             searchDatasource = SearchStudyDataSource(collectionView: self.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
@@ -200,7 +197,7 @@ extension CardDetailCollectionViewController {
 
         snapshot.appendSections(CardTypeCollectionView.myInfoSection.allCases)
         snapshot.appendItems(CardTypeCollectionView.ItemTitle.allCases.map{ CardTypeCollectionView.myInfoStudyItem.titleItem($0.rawValue) }, toSection: .title)
-        snapshot.appendItems([CardTypeCollectionView.myInfoStudyItem.reviewItem(data.comment.first ?? "")], toSection: .review)
+        snapshot.appendItems([CardTypeCollectionView.myInfoStudyItem.reviewItem(data.reviews.first ?? "")], toSection: .review)
         
         return snapshot
     }
@@ -208,14 +205,14 @@ extension CardDetailCollectionViewController {
     private func searchStudySnapShot() -> SearchStudySnapShot {
         var snapshot = SearchStudySnapShot()
 
-//        guard let data = viewmodel.store.user else {
-//            return snapshot
-//        }
+        guard let data = viewmodel.store.user else {
+            return snapshot
+        }
         
         snapshot.appendSections(CardTypeCollectionView.SearchStudySection.allCases)
         snapshot.appendItems(CardTypeCollectionView.ItemTitle.allCases.map{ CardTypeCollectionView.SearchStudyItem.titleItem($0.rawValue) }, toSection: .title)
-        snapshot.appendItems(studyList.map{CardTypeCollectionView.SearchStudyItem.studyItem($0) }, toSection: .study)
-        snapshot.appendItems([CardTypeCollectionView.SearchStudyItem.reviewItem(reviewList.first ?? "")], toSection: .review)
+        snapshot.appendItems(data.studylist.map{CardTypeCollectionView.SearchStudyItem.studyItem($0) }, toSection: .study)
+        snapshot.appendItems([CardTypeCollectionView.SearchStudyItem.reviewItem(data.reviews.first ?? "")], toSection: .review)
         
         return snapshot
     }

@@ -122,7 +122,7 @@ extension ChangeMyPageViewController {
 
     typealias SnapShot = NSDiffableDataSourceSnapshot<Section, Item>
     
-    typealias CardCellRegister = UICollectionView.CellRegistration<CardCollectionViewCell, Item>
+    typealias CardCellRegister = UICollectionView.CellRegistration<MyInfoCardCollectionViewCell, Item>
     
     typealias MyInfoCeollRegister = UICollectionView.CellRegistration<MyInfoCollectionViewCell, Item>
     
@@ -131,11 +131,11 @@ extension ChangeMyPageViewController {
     
     /// Section Item
     enum Section: Hashable {
-        case first(User)
+        case first(QueueUser)
     }
     
     enum Item: Hashable {
-        case myCard(User)
+        case myCard(QueueUser)
         case myInfo(User)
     }
     
@@ -143,10 +143,10 @@ extension ChangeMyPageViewController {
     /// Set CollectionView
     func setDataSource() {
         let cardCell = CardCellRegister.init { [weak self] cell, indexPath, itemIdentifier in
-            guard let user = self?.viewModel.store.user else { return }
-            cell.cardInfoViewcontroller.viewmodel.action.accept(.sendUserData(user))
+            guard let queue = self?.viewModel.store.user?.queue else { return }
+            cell.cardInfoViewcontroller.viewmodel.action.accept(.sendUserData(queue))
             cell.cardInfoViewcontroller.coordinator = self?.coordinator
-            cell.configure(user: user)
+            cell.configure(queueUser: queue)
             
             self?.addChild(cell.cardInfoViewcontroller)
         }
@@ -162,8 +162,8 @@ extension ChangeMyPageViewController {
         }
         
         let headerView = HeaderViewRegister.init(elementKind: "CardHeader") { [weak self] supplementaryView, elementKind, indexPath in
-            guard let user = self?.viewModel.store.user else { return }
-            supplementaryView.configure(user: user)
+            guard let queueUser = self?.viewModel.store.user?.queue else { return }
+            supplementaryView.configure(queueUser: queueUser)
         }
         
         datasource = DataSource.init(collectionView: collectionview, cellProvider: { collectionView, indexPath, itemIdentifier in
@@ -191,8 +191,8 @@ extension ChangeMyPageViewController {
             return snapshot
         }
         
-        snapshot.appendSections([Section.first(data)])
-        snapshot.appendItems([Item.myCard(data), Item.myInfo(data)])
+        snapshot.appendSections([Section.first(data.queue)])
+        snapshot.appendItems([Item.myCard(data.queue), Item.myInfo(data)])
         
         return snapshot
     }
