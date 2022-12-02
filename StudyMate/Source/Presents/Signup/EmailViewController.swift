@@ -31,7 +31,7 @@ final class EmailViewController: BaseViewController {
     
     
     /// variable
-    var coordinator: EmailCoordinator?
+    weak var coordinator: EmailCoordinator?
     
     private let viewModel: EmailViewModel
     

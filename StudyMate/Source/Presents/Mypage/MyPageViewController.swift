@@ -17,7 +17,7 @@ final class MyPageViewController: BaseViewController {
     
     var datasource: DatSource!
     
-    var coordinator: MyPageCoordinator?
+    weak var coordinator: MyPageCoordinator?
     
     
     /// life Cycle

@@ -32,7 +32,7 @@ final class CertificationViewController: BaseViewController {
     
     
     /// variable
-    var coordinator: CertificationCoordinator?
+    weak var coordinator: CertificationCoordinator?
     
     private let type: Certification
     

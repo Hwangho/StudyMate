@@ -32,6 +32,14 @@ class LookupStudyCoordinator: Coordinator {
         presenter.pushViewController(viewController, animated: animated)
     }
     
+    func popandgoMap() {
+        let viewControllers = presenter.viewControllers
+        presenter.popToViewController(viewControllers[viewControllers.count - 3 ], animated: true)
+    }
+    
+    func popLookupStudy() {
+        presenter.popViewController(animated: true)
+    }
 }
 
 

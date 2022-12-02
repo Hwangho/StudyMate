@@ -10,7 +10,7 @@ import UIKit
 
 class MoreReviewViewController: BaseViewController {
     
-    var coordinator: MoreReviewViewCoordinator?
+    weak var coordinator: MoreReviewViewCoordinator?
     
     override func setupAttributes() {
         super.setupAttributes()

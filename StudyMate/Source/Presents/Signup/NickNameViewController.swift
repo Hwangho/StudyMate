@@ -29,7 +29,7 @@ final class NickNameViewController: BaseViewController {
     
     
     /// variable
-    var coordinator: NickNameCoordinator?
+    weak var coordinator: NickNameCoordinator?
     
     private let viewModel: NickNameViewModel
     

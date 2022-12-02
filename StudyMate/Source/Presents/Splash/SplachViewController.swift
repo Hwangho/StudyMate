@@ -19,7 +19,7 @@ final class SplachViewController: BaseViewController {
     
     private let viewModel = SplachviewModel()
     
-    var coordinator: SplachCoordinator!
+    weak var coordinator: SplachCoordinator!
     
     
     

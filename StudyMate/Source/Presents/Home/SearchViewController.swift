@@ -21,7 +21,7 @@ final class SearchViewController: BaseViewController {
     
     
     /// Properties
-    var coordinator: SearchCoordinator?
+    weak var coordinator: SearchCoordinator?
     
     private let viewModel = SearchViewModel()
     
@@ -82,7 +82,10 @@ final class SearchViewController: BaseViewController {
         
         searchButton.rx.tap
             .bind {[weak self] in
-                self?.coordinator?.startLookupStudy()
+                let lat: Double? = LocalUserDefaults.shared.value(key: .lat)
+                let lng: Double? = LocalUserDefaults.shared.value(key: .lng)
+                let studyList = self?.viewModel.store.searchStudyList ?? []
+                self?.viewModel.action.accept(.searchStudy(lat!, lng!, studyList))
             }
             .disposed(by: disposeBag)
         
@@ -99,6 +102,19 @@ final class SearchViewController: BaseViewController {
             .bind { [weak self] isTrue in
                 if isTrue {
                     self?.showAlertMessage(title: "스터디를 더 이상 추가할 수 없습니다.")
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.currentStore
+            .map { $0.searchStudyType }
+            .distinctUntilChanged()
+            .bind { [weak self]  type in
+                switch type {
+                case .success:
+                    self?.coordinator?.startLookupStudy()
+                default:
+                    break
                 }
             }
             .disposed(by: disposeBag)

@@ -11,7 +11,11 @@ import Moya
 
 enum QueueRouter {
     case search(Double, Double)
+    case searchStudy(Double, Double, [String])
+    case stop
     case queueState
+    case studyrequest(String)
+    case studyaccept(String)
 }
 
 extension QueueRouter: TargetType {
@@ -24,15 +28,28 @@ extension QueueRouter: TargetType {
         switch self {
         case .search:
             return "/v1/queue/search"
+            
+        case .searchStudy, .stop:
+            return "/v1/queue"
+            
         case .queueState:
             return "/v1/queue/myQueueState"
+            
+        case .studyrequest:
+            return "/v1/queue/studyrequest"
+            
+        case .studyaccept:
+            return "/v1/queue/studyaccept"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .search:
+        case .search, .searchStudy, .studyrequest, .studyaccept:
             return .post
+            
+        case .stop:
+            return .delete
             
         default:
             return .get
@@ -48,7 +65,18 @@ extension QueueRouter: TargetType {
                 "lat": lat,
                 "long": long,
             ]
+            
+        case .searchStudy(let lat, let long, let studyList):
+            let studylist = studyList.isEmpty ? ["anything"] : studyList
+            return [
+                "lat": lat,
+                "long": long,
+                "studylist": studylist
+            ]
 
+        case .studyrequest(let uid), .studyaccept(let uid):
+            return ["otheruid": uid]
+            
         default:
             return [:]
         }
@@ -56,6 +84,10 @@ extension QueueRouter: TargetType {
     
     var task: Moya.Task {
         switch self {
+        case .searchStudy:
+            return .requestParameters(
+                parameters: self.parameters,
+                encoding: URLEncoding(arrayEncoding: .noBrackets))
             
         default:
             return .requestParameters(

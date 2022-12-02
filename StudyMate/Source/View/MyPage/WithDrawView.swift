@@ -24,11 +24,11 @@ final class WithDrawView: BaseView {
     
     private let disposeBag = DisposeBag()
     
-    var coordinator: ChangeMyPageCoordinator?
+    weak var coordinator: ChangeMyPageCoordinator?
 
     private var viewModel: WithDrawViewModel
     
-    var customAlertViewController = CustomAlertViewController(alertTitleText: "정말 탈퇴하시곘습니까?", alertContentText: "탈퇴하시면 새싹 스터디를 이용할 수 없어요ㅠ")
+    var customAlertViewController = CustomAlertViewController()
     
     
     /// life Cycle
@@ -78,7 +78,6 @@ final class WithDrawView: BaseView {
             .distinctUntilChanged{ $0.statusCode }
             .map { $0.statusCode ?? .error }
             .bind {[weak self] statusType in
-                guard statusType != nil else { return }
                 switch statusType {
                 case .fireBaseToken:
                     self?.fireBaseIDTokenRefresh {
@@ -95,6 +94,7 @@ final class WithDrawView: BaseView {
     
     @objc
     func tapWithdrawButton() {
+        customAlertViewController.configure(alertTitleText: "정말 탈퇴하시곘습니까?", alertContentText: "탈퇴하시면 새싹 스터디를 이용할 수 없어요ㅠ")
         customAlertViewController.modalPresentationStyle = .overFullScreen
         coordinator?.presenter.present(customAlertViewController, animated: true)
     }

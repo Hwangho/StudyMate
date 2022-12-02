@@ -41,8 +41,8 @@ extension ChangeMyPageCoordinator: AppCoordinatorContext { }
 
 
 extension ChangeMyPageCoordinator: CustomAlertCoordinatorContext {
-    func presentCustomAlert(title: String, content: String, confirmButtonTitle: String = "확인", cancelButtonTitle: String = "취소") {
-        let coordinator = CustomAlertCoordinator(present: presenter, title: title, content: content, confirmButtonTitle: confirmButtonTitle, cancelButtonTitle: cancelButtonTitle)
+    func presentCustomAlert() {
+        let coordinator = CustomAlertCoordinator(present: presenter)
         coordinator.delegate = self
         childCoordinators.append(coordinator)
         coordinator.start()
