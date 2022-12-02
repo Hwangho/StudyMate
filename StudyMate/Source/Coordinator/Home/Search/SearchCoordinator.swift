@@ -15,6 +15,7 @@ class SearchCoordinator: Coordinator {
     var presenter: UINavigationController
     
     var childCoordinators: [Coordinator]
+
     
 
     init(presenter: UINavigationController) {
@@ -30,13 +31,13 @@ class SearchCoordinator: Coordinator {
         presenter.pushViewController(viewcontroller, animated: animated)
     }
     
-    func gotoLookup() {
+    func gotoLookup(lat: Double, lng: Double) {
         let viewcontroller = SearchViewController()
         viewcontroller.coordinator = self
         viewcontroller.coordinatorDelegate = self
         viewcontroller.hidesBottomBarWhenPushed = true
         presenter.pushViewController(viewcontroller, animated: false)
-        startLookupStudy()
+        startLookupStudyfromMap(lat: lat, lng: lng)
     }
 }
 
