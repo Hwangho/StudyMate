@@ -37,7 +37,7 @@ final class BirthViewController: BaseViewController {
     
     
     /// variable
-    var coordinator: BirthCoordinator?
+    weak var coordinator: BirthCoordinator?
     
     private let viewModel: BirthViewModel
     

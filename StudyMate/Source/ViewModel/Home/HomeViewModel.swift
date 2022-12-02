@@ -66,7 +66,7 @@ final class HomeViewModel {
         case .searchSesac(let lat, let long):
             return service.search(lat: lat, long: long)
                 .asObservable()
-                .map { response -> Mutation in
+                .map { response in
                     let decoder = JSONDecoder()
                     let servertype = QueueResponseType(rawValue: response!.statusCode)
                     
@@ -93,7 +93,7 @@ final class HomeViewModel {
         case .queueState:
             return service.queueState()
                 .asObservable()
-                .map { response -> Mutation in
+                .map { response in
                     let decoder = JSONDecoder()
                     let servertype = QueueStateResponseType(rawValue: response!.statusCode)
 

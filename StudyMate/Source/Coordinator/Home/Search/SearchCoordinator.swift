@@ -27,8 +27,19 @@ class SearchCoordinator: Coordinator {
         viewcontroller.coordinator = self
         viewcontroller.coordinatorDelegate = self
         viewcontroller.hidesBottomBarWhenPushed = true
-        presenter.pushViewController(viewcontroller, animated: true)
+        presenter.pushViewController(viewcontroller, animated: animated)
     }
     
-    
+    func gotoLookup() {
+        let viewcontroller = SearchViewController()
+        viewcontroller.coordinator = self
+        viewcontroller.coordinatorDelegate = self
+        viewcontroller.hidesBottomBarWhenPushed = true
+        presenter.pushViewController(viewcontroller, animated: false)
+        startLookupStudy()
+    }
 }
+
+
+// MARK: - Lookup Study
+extension SearchCoordinator: LookupStudyCoordinatorContext { }

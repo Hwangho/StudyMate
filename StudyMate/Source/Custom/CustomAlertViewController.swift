@@ -37,32 +37,18 @@ class CustomAlertViewController: BaseViewController {
     
     
     /// properties
-    var alertTitleText: String
+    var alertTitleText: String?
     
-    var alertContentText: String
+    var alertContentText: String?
     
-    var cancelButtonText: String
+    var cancelButtonText: String?
     
-    var confirmButtonText: String
+    var confirmButtonText: String?
     
-    var coordinator: CustomAlertCoordinator?
+    weak var coordinator: CustomAlertCoordinator?
     
     var delegate: CustomAlertActionProtocool?
-    
-    
-    /// initialization
-    init(alertTitleText: String , alertContentText: String, cancelButtonText: String = "취소", confirmButtonText: String = "확인") {
-        self.alertTitleText = alertTitleText
-        self.alertContentText = alertContentText
-        self.cancelButtonText = cancelButtonText
-        self.confirmButtonText = confirmButtonText
-        super.init()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+
     
     /// Life Cylce
     override func viewDidAppear(_ animated: Bool) {
@@ -92,6 +78,7 @@ class CustomAlertViewController: BaseViewController {
         
         contentLabel.setupFont(type: .Title4_R14)
         contentLabel.textColor = Color.BaseColor.black
+        contentLabel.numberOfLines = 0
         contentLabel.text = alertContentText
         contentLabel.textAlignment = .center
         
@@ -146,8 +133,15 @@ class CustomAlertViewController: BaseViewController {
         alertView.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(343.0/375.0)
-            make.height.equalTo(alertView.snp.width).multipliedBy(156.0/343.0)
+            make.height.greaterThanOrEqualTo(alertView.snp.width).multipliedBy(156.0/343.0)
         }
+    }
+    
+    func configure(alertTitleText: String , alertContentText: String, cancelButtonText: String = "취소", confirmButtonText: String = "확인") {
+        self.alertTitleText = alertTitleText
+        self.alertContentText = alertContentText
+        self.cancelButtonText = cancelButtonText
+        self.confirmButtonText = confirmButtonText
     }
     
     @objc

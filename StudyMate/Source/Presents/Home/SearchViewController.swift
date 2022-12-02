@@ -21,7 +21,7 @@ final class SearchViewController: BaseViewController {
     
     
     /// Properties
-    var coordinator: SearchCoordinator?
+    weak var coordinator: SearchCoordinator?
     
     private let viewModel = SearchViewModel()
     
@@ -72,13 +72,22 @@ final class SearchViewController: BaseViewController {
         
         searchButton.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(16)
-            make.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top).inset(-UIApplication.shared.keyWindow!.safeAreaInsets.bottom)
+            make.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top).inset(-16)
             make.height.equalTo(48)
         }
         
     }
     
     override func setupBinding() {
+        
+        searchButton.rx.tap
+            .bind {[weak self] in
+                let lat: Double? = LocalUserDefaults.shared.value(key: .lat)
+                let lng: Double? = LocalUserDefaults.shared.value(key: .lng)
+                let studyList = self?.viewModel.store.searchStudyList ?? []
+                self?.viewModel.action.accept(.searchStudy(lat!, lng!, studyList))
+            }
+            .disposed(by: disposeBag)
         
         /// State
         viewModel.currentStore
@@ -93,6 +102,19 @@ final class SearchViewController: BaseViewController {
             .bind { [weak self] isTrue in
                 if isTrue {
                     self?.showAlertMessage(title: "스터디를 더 이상 추가할 수 없습니다.")
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.currentStore
+            .map { $0.searchStudyType }
+            .distinctUntilChanged()
+            .bind { [weak self]  type in
+                switch type {
+                case .success:
+                    self?.coordinator?.startLookupStudy()
+                default:
+                    break
                 }
             }
             .disposed(by: disposeBag)
@@ -263,7 +285,7 @@ extension SearchViewController {
         // 키보드의 높이만큼 화면을 내려준다.
         self.searchButton.snp.remakeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(16)
-            make.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top).inset( -UIApplication.shared.windows.first!.safeAreaInsets.bottom)
+            make.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top).inset(-16)
             make.height.equalTo(48)
         }
     }

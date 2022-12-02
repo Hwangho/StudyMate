@@ -9,7 +9,7 @@ import Foundation
 
 
 // MARK: - QueueState
-struct QueueState: Codable {
+struct QueueState: Codable, Equatable {
     let dodged, matched, reviewed: Int
     let matchedNick, matchedUid: String
     
@@ -22,10 +22,10 @@ struct QueueState: Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         
         dodged = try values.decode(Int.self, forKey: .dodged)
-        matched = try values.decode(Int.self, forKey: .dodged)
-        reviewed = try values.decode(Int.self, forKey: .dodged)
-        matchedNick = try values.decodeIfPresent(String.self, forKey: .dodged) ?? ""
-        matchedUid = try values.decodeIfPresent(String.self, forKey: .dodged) ?? ""
+        matched = try values.decode(Int.self, forKey: .matched)
+        reviewed = try values.decode(Int.self, forKey: .reviewed)
+        matchedNick = try values.decodeIfPresent(String.self, forKey: .matchedNick) ?? ""
+        matchedUid = try values.decodeIfPresent(String.self, forKey: .matchedUid) ?? ""
     }
     
 }

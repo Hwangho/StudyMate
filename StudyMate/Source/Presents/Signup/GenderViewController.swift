@@ -38,7 +38,7 @@ final class GenderViewController: BaseViewController {
     /// variable
     private  let viewModel: GenderViewModel
     
-    var coordinator: GenderCoordinator?
+    weak var coordinator: GenderCoordinator?
     
     private var datasource: DataSource!
         

@@ -17,12 +17,15 @@ final class SearchViewModel {
 
     enum Action {
         case searchSesac(Double, Double)
+        case searchStudy(Double, Double, [String])
         case addStudy(String)
         case deleteStudy(String)
     }
 
     enum Mutation {
         case setStudyList([RecomandStudys])
+        
+        case setSearchStudyType(SearchStudyType)
         case setError(QueueResponseType?)
         case setMyStudy([String])
         case setListIsFull(Bool)
@@ -30,6 +33,7 @@ final class SearchViewModel {
 
     struct Store {
         var recomandStudy: [RecomandStudys]?
+        var searchStudyType: SearchStudyType?
         var errorType: QueueResponseType?
         
         var searchStudyList: [String] = []
@@ -78,6 +82,14 @@ final class SearchViewModel {
                     }
                 }
             
+        case .searchStudy(let lat, let long, let studyList):
+            return service.searchStudy(lat: lat, long: long, studyList: studyList)
+                .asObservable()
+                .map { response -> Mutation in
+                    guard let servertype = SearchStudyType(rawValue: response!.statusCode) else {return .setSearchStudyType(.clientError) }
+                    return .setSearchStudyType(servertype)
+                }
+            
         case .addStudy(let study):
             var StudyList = store.searchStudyList
             var isFull = false
@@ -115,6 +127,9 @@ final class SearchViewModel {
         switch muation {
         case .setStudyList(let studyList):
             store.recomandStudy = studyList
+            
+        case .setSearchStudyType(let type):
+            store.searchStudyType = type
             
         case .setError(let error):
             store.errorType = error
@@ -175,3 +190,29 @@ extension SearchViewModel {
 }
 
 
+
+enum SearchStudyType: Int {
+    case success = 200
+    case threeTimereported = 201
+    case penaltyOne = 203
+    case penaltyTwo = 204
+    case penaltyThree = 205
+    case FireBaseToken = 401
+    case noneSignup = 406
+    case serverError = 500
+    case clientError = 501
+    
+    var message: String {
+        switch self {
+        case .success: return "스터디 함께할 새싹 찾기 요청 성공"
+        case .threeTimereported: return "신고하기 3번 이상 받은 유저"
+        case .penaltyOne: return "스터디 취소 페널티 1단계"
+        case .penaltyTwo: return "스터디 취소 페널티 페널티 2단계"
+        case .penaltyThree: return "스터디 취소 페널티 페널티 3단계"
+        case .FireBaseToken: return "Firebase Token Error"
+        case .noneSignup: return "미가입 회원"
+        case .serverError: return "Server Error"
+        case .clientError: return "Client Error"
+        }
+    }
+}

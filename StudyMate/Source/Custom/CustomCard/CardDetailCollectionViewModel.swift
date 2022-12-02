@@ -14,15 +14,15 @@ final class CardDetailCollectionViewModel {
     
     
     enum Action {
-        case sendUserData(User)
+        case sendUserData(QueueUser)
     }
     
     enum Mutation {
-        case setUserData(User)
+        case setUserData(QueueUser)
     }
     
     struct Store {
-        var user: User?
+        var user: QueueUser?
     }
     
     
