@@ -66,7 +66,7 @@ final class ArroundStudyViewController: BaseViewController {
     override func setData() {
         let lat: Double? = LocalUserDefaults.shared.value(key: .lat)
         let lng: Double? = LocalUserDefaults.shared.value(key: .lng)
-        viewModel.action.accept(.searchSesac(lat!, lng!))
+        viewModel.action.accept(.searchSesac)
     }
     
     override func setupBinding() {
@@ -80,7 +80,7 @@ final class ArroundStudyViewController: BaseViewController {
             .bind { [weak self] in
                 let lat: Double? = LocalUserDefaults.shared.value(key: .lat)
                 let lng: Double? = LocalUserDefaults.shared.value(key: .lng)
-                self?.viewModel.action.accept(.searchSesac(lat!, lng!))
+                self?.viewModel.action.accept(.searchSesac)
             }
             .disposed(by: disposeBag)
         

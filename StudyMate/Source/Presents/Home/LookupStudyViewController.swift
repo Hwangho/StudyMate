@@ -44,6 +44,11 @@ final class LookupStudyViewController: BaseViewController {
     let viewModel = LookupStudyViewModel()
         
     
+    init(lat: Double?, lng: Double?) {
+        super.init()
+        viewModel.action.accept(.saveLocation(lat, lng))
+    }
+    
     /// Life Cycle
     override func setupAttributes() {
         super.setupAttributes()

@@ -16,7 +16,8 @@ import NMapsMap
 final class LookupStudyViewModel {
 
     enum Action {
-        case searchSesac(Double, Double)
+        case saveLocation(Double?, Double?)
+        case searchSesac
         case stopSearch
         
         case studyrequest
@@ -26,6 +27,7 @@ final class LookupStudyViewModel {
     }
 
     enum Mutation {
+        case setLocation(Double?, Double?)
         case setQueue(Queue)
         case setError(QueueResponseType?)
         case setStop(StopSearchType)
@@ -37,6 +39,7 @@ final class LookupStudyViewModel {
     }
 
     struct Store {
+        var location: (Double?, Double?)?
         var queue: Queue?
         var errorType: QueueResponseType?
         var stopSearchType:StopSearchType?
@@ -73,8 +76,15 @@ final class LookupStudyViewModel {
     
     private func mutate(_ action: Action) -> Observable<Mutation> {
         switch action {
-        case .searchSesac(let lat, let long):
-            return service.search(lat: lat, long: long)
+            
+        case .saveLocation(let lat, let lng):
+            return .just(.setLocation(lat, lng))
+            
+        case .searchSesac:
+            let lat = store.location?.0 != nil ? store.location?.0 : LocalUserDefaults.shared.value(key: .lat)
+            let lng = store.location?.1 != nil ? store.location?.1 : LocalUserDefaults.shared.value(key: .lng)
+            
+            return service.search(lat: lat!, long: lng!)
                 .asObservable()
                 .map { response -> Mutation in
                     let decoder = JSONDecoder()
@@ -128,6 +138,10 @@ final class LookupStudyViewModel {
     
     private func reduce(_ muation: Mutation) -> Observable<Store> {
         switch muation {
+            
+        case .setLocation(let lat, let lng):
+            store.location = (lat, lng)
+            
         case .setQueue(let queue):
             store.queue = queue
             
