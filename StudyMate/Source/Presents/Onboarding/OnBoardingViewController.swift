@@ -25,7 +25,7 @@ final class OnBoardingViewController: BaseViewController {
     
     
     /// variable
-    var coordinator: OnBoardingCoordinator?
+    weak var coordinator: OnBoardingCoordinator?
     
     var datasource: DataSource!
     

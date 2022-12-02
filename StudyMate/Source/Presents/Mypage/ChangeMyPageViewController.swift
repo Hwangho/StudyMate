@@ -21,7 +21,7 @@ final class ChangeMyPageViewController: BaseViewController {
     /// Property
     var datasource: DataSource!
     
-    var coordinator: ChangeMyPageCoordinator?
+    weak var coordinator: ChangeMyPageCoordinator?
     
     var viewModel: ChangeMyPageViewModel
     
@@ -104,7 +104,6 @@ final class ChangeMyPageViewController: BaseViewController {
                 }
             })
             .disposed(by: disposeBag)
-            
     }
     
     override func setData() {
@@ -163,7 +162,7 @@ extension ChangeMyPageViewController {
         
         let headerView = HeaderViewRegister.init(elementKind: "CardHeader") { [weak self] supplementaryView, elementKind, indexPath in
             guard let queueUser = self?.viewModel.store.user?.queue else { return }
-            supplementaryView.configure(queueUser: queueUser)
+            supplementaryView.configure(queueUser: queueUser, type: .none)
         }
         
         datasource = DataSource.init(collectionView: collectionview, cellProvider: { collectionView, indexPath, itemIdentifier in

@@ -16,26 +16,14 @@ class CustomAlertCoordinator: Coordinator {
     
     var childCoordinators: [Coordinator]
     
-    let title: String
     
-    let content: String
-    
-    let confirmButtonTitle: String
-    
-    let cancelButtonTitle: String
-    
-    
-    init(present: UINavigationController = UINavigationController(), title: String, content: String, confirmButtonTitle: String, cancelButtonTitle: String) {
+    init(present: UINavigationController = UINavigationController()) {
         self.presenter = present
         self.childCoordinators = []
-        self.title = title
-        self.content = content
-        self.confirmButtonTitle = confirmButtonTitle
-        self.cancelButtonTitle = cancelButtonTitle
     }
     
     func start(animated: Bool = true) {
-        let viewController = CustomAlertViewController(alertTitleText: title, alertContentText: content, cancelButtonText: cancelButtonTitle, confirmButtonText: confirmButtonTitle)
+        let viewController = CustomAlertViewController()
         viewController.coordinator = self
         viewController.coordinatorDelegate = self
         viewController.modalPresentationStyle = .overFullScreen

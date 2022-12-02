@@ -11,7 +11,6 @@ import RxSwift
 
 
 protocol UserRepositoryPorotocool {
-    
     func signin() -> Single<Response>
     func signup(_ phoneNumber: String, _ nick: String, _ birth: String, _ email: String, _ gender: Int) -> Single<Response>
     func withdraw() -> Single<Response>

@@ -17,7 +17,7 @@ class CardDetalCollectionViewHeaderView: BaseCollectionHeaderFooterView {
     
     private let moreReviewButton = UIButton()
     
-    var coordinator: ChangeMyPageCoordinator?
+    weak var coordinator: ChangeMyPageCoordinator?
     
     var type: CardType?
     

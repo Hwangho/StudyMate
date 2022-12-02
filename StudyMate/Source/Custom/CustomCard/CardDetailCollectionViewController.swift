@@ -30,7 +30,7 @@ final class CardDetailCollectionViewController: UICollectionViewController {
     
     let type: CardType
     
-    var coordinator: ChangeMyPageCoordinator?
+    weak var coordinator: ChangeMyPageCoordinator?
     
     
     /// initialization

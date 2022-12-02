@@ -25,10 +25,15 @@ final class ArroundStudyViewController: BaseViewController {
     
     var viewModel: LookupStudyViewModel
     
+    weak var coordinator: LookupStudyCoordinator?
+    
+    var customAlertViewController = CustomAlertViewController()
+
     
     /// initialization
-    init(viewModel: LookupStudyViewModel) {
+    init(viewModel: LookupStudyViewModel, coordinator: LookupStudyCoordinator) {
         self.viewModel = viewModel
+        self.coordinator = coordinator
         super.init()
     }
     
@@ -40,6 +45,7 @@ final class ArroundStudyViewController: BaseViewController {
         collectionview.allowsMultipleSelection = true
         collectionview.showsVerticalScrollIndicator = false
         
+        customAlertViewController.delegate = self
         setDataSource()
     }
     
@@ -64,6 +70,19 @@ final class ArroundStudyViewController: BaseViewController {
     }
     
     override func setupBinding() {
+        emptyView.changeStudyButton.rx.tap
+            .bind {[weak self] in
+                self?.coordinator?.popLookupStudy()
+            }
+            .disposed(by: disposeBag)
+        
+        emptyView.refreshButton.rx.tap
+            .bind { [weak self] in
+                let lat: Double? = LocalUserDefaults.shared.value(key: .lat)
+                let lng: Double? = LocalUserDefaults.shared.value(key: .lng)
+                self?.viewModel.action.accept(.searchSesac(lat!, lng!))
+            }
+            .disposed(by: disposeBag)
         
         /// State
         viewModel.currentStore
@@ -122,7 +141,8 @@ extension ArroundStudyViewController {
         
         let headerView = HeaderViewRegister.init(elementKind: "CardHeader") { [weak self] supplementaryView, elementKind, indexPath in
             guard let queueUser = self?.viewModel.store.queue?.fromQueueDB else { return }
-            supplementaryView.configure(queueUser: queueUser[indexPath.section])
+            supplementaryView.headerDelegate = self
+            supplementaryView.configure(queueUser: queueUser[indexPath.section], type: .request)
         }
         
         datasource = DataSource.init(collectionView: collectionview, cellProvider: { collectionView, indexPath, itemIdentifier in
@@ -196,7 +216,32 @@ extension ArroundStudyViewController: UICollectionViewDelegate {
 
 
 
+extension ArroundStudyViewController: HeaderButtonDelegate, CustomAlertActionProtocool {
 
+    func tapStudyButton(type: CardCollectionViewHeaderView.buttonType, uuid: String?) {
+        
+        switch type {
+        case .request:
+            customAlertViewController.configure(alertTitleText: "스터디를 요청할게요!", alertContentText: "상대방이 요청을 수락하면\n 채팅창에서 대화를 나눌 수 있어요")
+            customAlertViewController.modalPresentationStyle = .overFullScreen
+            coordinator?.presenter.present(customAlertViewController, animated: true)
+
+            viewModel.action.accept(.saveUID(uuid))
+        default:
+            break
+        }
+    }
+    
+    func tapCancel() {
+        coordinator?.presenter.dismiss(animated: true)
+    }
+    
+    func tapConfirm() {
+        viewModel.action.accept(.studyrequest)
+        
+    }
+    
+}
 
 
 

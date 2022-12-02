@@ -19,5 +19,6 @@ extension LookupStudyCoordinatorContext {
         childCoordinators.append(coordinator)
         coordinator.start()
     }
+
 }
 

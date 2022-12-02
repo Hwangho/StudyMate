@@ -12,6 +12,7 @@ import RxSwift
 import RxCocoa
 
 
+
 final class LookupStudyViewController: BaseViewController {
     
     enum StudyType {
@@ -32,9 +33,9 @@ final class LookupStudyViewController: BaseViewController {
     
     private let scrollview = UIScrollView()
     
-    private lazy var arroundStudyVC = ArroundStudyViewController(viewModel: viewModel)
+    private lazy var arroundStudyVC = ArroundStudyViewController(viewModel: viewModel, coordinator: coordinator!)
     
-    private lazy var responseStudyVC = ResponseStudyViewController(viewModel: viewModel)
+    private lazy var responseStudyVC = ResponseStudyViewController(viewModel: viewModel, coordinator: coordinator!)
     
     
     /// properties
@@ -64,6 +65,9 @@ final class LookupStudyViewController: BaseViewController {
         scrollview.contentSize.width = view.frame.width * 2
         scrollview.showsHorizontalScrollIndicator = false
         scrollview.isPagingEnabled = true
+            
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow"), style: .plain, target: self, action: #selector(customBackButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "찾기 중단", style: .plain, target: self, action: #selector(stopSearchStudy))
     }
     
     override func setupLayout() {
@@ -112,6 +116,8 @@ final class LookupStudyViewController: BaseViewController {
     }
     
     override func setupBinding() {
+        
+        // Action
         scrollview.rx.contentOffset
             .distinctUntilChanged()
             .map { $0.x }
@@ -127,6 +133,20 @@ final class LookupStudyViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        // State
+        viewModel.currentStore
+            .map { $0.stopSearchType }
+            .distinctUntilChanged()
+            .bind { [weak self] type in
+                switch type {
+                case .success:
+                    self?.coordinator?.popandgoMap()
+                    
+                default:
+                    break
+                }
+            }
+            .disposed(by: disposeBag)
     }
     
     
@@ -139,6 +159,16 @@ final class LookupStudyViewController: BaseViewController {
     @objc
     func tapresponseButton(sender: UIButton) {
         scrollview.setContentOffset(CGPoint(x: view.frame.width, y: 0), animated: true)
+    }
+    
+    @objc
+    func customBackButton() {
+        coordinator?.popandgoMap()
+    }
+    
+    @objc
+    func stopSearchStudy() {
+        viewModel.action.accept(.stopSearch)
     }
     
     private func setArroundView(type: StudyType) {
@@ -190,9 +220,9 @@ class EmptyView: BaseView {
     
     private let refreshStackview = UIStackView()
     
-    private let changeStudyButton = SelectButton(type: .fill, title: "스터디 변경하기")
+    let changeStudyButton = SelectButton(type: .fill, title: "스터디 변경하기")
     
-    private let refreshButton = UIButton()
+    let refreshButton = UIButton()
     
     override func setupAttributes() {
         super.setupAttributes()

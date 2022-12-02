@@ -10,6 +10,7 @@ import Foundation
 
 protocol SearchCoordinatorContext: BaseCoordinatorContext {
     func startSearch()
+    func pushtoLookupStudy()
 }
 
 extension SearchCoordinatorContext {
@@ -18,5 +19,12 @@ extension SearchCoordinatorContext {
         coordinator.delegate = self
         childCoordinators.append(coordinator)
         coordinator.start()
+    }
+    
+    func pushtoLookupStudy() {
+        let coordinator = SearchCoordinator(presenter: presenter)
+        coordinator.delegate = self
+        childCoordinators.append(coordinator)
+        coordinator.gotoLookup()
     }
 }

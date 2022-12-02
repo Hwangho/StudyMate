@@ -10,6 +10,8 @@ import UIKit
 import NMapsMap
 import CoreLocation
 import SnapKit
+import RxSwift
+import RxCocoa
 
 
 final class HomeViewController: BaseViewController {
@@ -27,7 +29,7 @@ final class HomeViewController: BaseViewController {
     
     
     /// properties
-    var coordinator: HomeCoordinator?
+    weak var coordinator: HomeCoordinator?
     
     var locationManager = CLLocationManager()
     
@@ -111,15 +113,16 @@ final class HomeViewController: BaseViewController {
     }
     
     override func setupLifeCycleBinding() {
-        rx.viewWillAppear
-            .asObservable()
-            .map{ _ in HomeViewModel.Action.queueState }
-            .bind(to: viewModel.action)
-            .disposed(by: disposeBag)
+        
+//        rx.viewWillAppear
+//            .map{ _ in HomeViewModel.Action.queueState }
+//            .bind(to: viewModel.action)
+//            .disposed(by: disposeBag)
         
         rx.viewWillAppear
             .bind(onNext: { [weak self] _ in
                 self?.searchCurrentSesac()
+                self?.viewModel.action.accept(.queueState)
             })
             .disposed(by: disposeBag)
 
@@ -135,10 +138,9 @@ final class HomeViewController: BaseViewController {
                     let cameraPosition = self?.mapView.cameraPosition // 중앙 위치 좌표
                     LocalUserDefaults.shared.set(key: .lat, value: cameraPosition?.target.lat)
                     LocalUserDefaults.shared.set(key: .lng, value: cameraPosition?.target.lng)
-                    
                     self?.coordinator?.startSearch()
                 } else if stateData?.matched  == 0 {
-                    print("매칭 대기중")
+                    self?.coordinator?.pushtoLookupStudy()
                 } else {
                     print("매칭 되었당")
                 }
@@ -172,6 +174,7 @@ final class HomeViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         viewModel.currentStore
+            .distinctUntilChanged{ $0.queueState }
             .map { $0.queueState }
             .bind { [weak self] queueState in
                 if queueState == nil {
