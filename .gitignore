@@ -95,7 +95,8 @@ iOSInjectionProject/
 
 ### Xcode ###
 
-StudyMate/Resource/APIKey
+StudyMate/Resource/APIKey/
+GoogleService-Info.plist
 
 ## Xcode 8 and earlier
 
