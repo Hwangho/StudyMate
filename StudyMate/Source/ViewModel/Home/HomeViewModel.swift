@@ -54,7 +54,7 @@ final class HomeViewModel {
         self.service = serive
 
         action
-            .flatMapLatest(mutate)
+            .flatMap(mutate)
             .flatMapLatest(reduce)
             .bind(to: currentStore)
             .disposed(by: disposeBag)

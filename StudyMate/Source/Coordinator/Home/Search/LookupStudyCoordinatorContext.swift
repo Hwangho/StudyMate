@@ -10,6 +10,7 @@ import Foundation
 
 protocol LookupStudyCoordinatorContext: BaseCoordinatorContext {
     func startLookupStudy()
+    func startLookupStudyfromMap(lat: Double, lng: Double)
 }
 
 extension LookupStudyCoordinatorContext {
@@ -20,5 +21,11 @@ extension LookupStudyCoordinatorContext {
         coordinator.start()
     }
 
+    func startLookupStudyfromMap(lat: Double, lng: Double) {
+        let coordinator = LookupStudyCoordinator(presenter: presenter)
+        coordinator.delegate = self
+        childCoordinators.append(coordinator)
+        coordinator.homepushStart(lat: lat, lng: lng)
+    }
 }
 

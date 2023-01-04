@@ -18,7 +18,7 @@ class LookupStudyCoordinator: Coordinator {
     
     
     /// Initialization
-    init(presenter: UINavigationController) {
+    init(presenter: UINavigationController, lat: Double = 0, lng: Double = 0) {
         self.presenter = presenter
         self.childCoordinators = []
     }
@@ -26,15 +26,26 @@ class LookupStudyCoordinator: Coordinator {
     
     /// Start
     func start(animated: Bool = true) {
-        let viewController = LookupStudyViewController()
+        let viewController = LookupStudyViewController(lat: nil, lng: nil)
+        viewController.coordinator = self
+        viewController.coordinatorDelegate = self
+        presenter.pushViewController(viewController, animated: animated)
+    }
+    
+    func homepushStart(animated: Bool = true, lat: Double, lng: Double) {
+        let viewController = LookupStudyViewController(lat: lat, lng: lng)
         viewController.coordinator = self
         viewController.coordinatorDelegate = self
         presenter.pushViewController(viewController, animated: animated)
     }
     
     func popandgoMap() {
-        let viewControllers = presenter.viewControllers
-        presenter.popToViewController(viewControllers[viewControllers.count - 3 ], animated: true)
+        presenter.popToRootViewController(animated: true)
+    }
+    
+    func popandgoChat() {
+        presenter.popToRootViewController(animated: true)
+        startChat()
     }
     
     func popLookupStudy() {
@@ -43,4 +54,9 @@ class LookupStudyCoordinator: Coordinator {
 }
 
 
+// MARK: - Review
 extension LookupStudyCoordinator: MoreReviewViewCoordinatorContext { }
+
+
+// MARK: - Chat
+extension LookupStudyCoordinator: ChatCoordinatorContext { }

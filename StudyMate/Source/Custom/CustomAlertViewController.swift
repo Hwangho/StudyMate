@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 
-protocol CustomAlertActionProtocool {
+protocol CustomAlertActionProtocool: AnyObject {
     func tapCancel()
     func tapConfirm()
 }
@@ -47,7 +47,7 @@ class CustomAlertViewController: BaseViewController {
     
     weak var coordinator: CustomAlertCoordinator?
     
-    var delegate: CustomAlertActionProtocool?
+    weak var delegate: CustomAlertActionProtocool?
 
     
     /// Life Cylce

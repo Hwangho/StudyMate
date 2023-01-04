@@ -21,6 +21,7 @@ class BaseView: UIView {
         setupBinding()
     }
     
+    
     required init?(coder: NSCoder) {
         fatalError()
     }

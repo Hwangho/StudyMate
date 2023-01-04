@@ -114,15 +114,10 @@ final class HomeViewController: BaseViewController {
     
     override func setupLifeCycleBinding() {
         
-//        rx.viewWillAppear
-//            .map{ _ in HomeViewModel.Action.queueState }
-//            .bind(to: viewModel.action)
-//            .disposed(by: disposeBag)
-        
         rx.viewWillAppear
             .bind(onNext: { [weak self] _ in
-                self?.searchCurrentSesac()
                 self?.viewModel.action.accept(.queueState)
+                self?.searchCurrentSesac()
             })
             .disposed(by: disposeBag)
 
@@ -140,9 +135,10 @@ final class HomeViewController: BaseViewController {
                     LocalUserDefaults.shared.set(key: .lng, value: cameraPosition?.target.lng)
                     self?.coordinator?.startSearch()
                 } else if stateData?.matched  == 0 {
-                    self?.coordinator?.pushtoLookupStudy()
+                    let cameraPosition = self?.mapView.cameraPosition // 중앙 위치 좌표
+                    self?.coordinator?.pushtoLookupStudy(lat: cameraPosition!.target.lat, lng: cameraPosition!.target.lng)
                 } else {
-                    print("매칭 되었당")
+                    self?.coordinator?.startChat()
                 }
             }
             .disposed(by: disposeBag)

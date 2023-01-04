@@ -17,7 +17,7 @@ final class ArroundStudyViewController: BaseViewController {
     /// UI
     private lazy var collectionview = UICollectionView(frame: .zero, collectionViewLayout: layout())
     
-    let emptyView = EmptyView()
+    let emptyView = EmptyView(type: .around)
     
     
     /// Property
@@ -36,6 +36,7 @@ final class ArroundStudyViewController: BaseViewController {
         self.coordinator = coordinator
         super.init()
     }
+    
     
     /// Life Cycle
     override func setupAttributes() {
@@ -64,9 +65,7 @@ final class ArroundStudyViewController: BaseViewController {
     }
     
     override func setData() {
-        let lat: Double? = LocalUserDefaults.shared.value(key: .lat)
-        let lng: Double? = LocalUserDefaults.shared.value(key: .lng)
-        viewModel.action.accept(.searchSesac(lat!, lng!))
+        viewModel.action.accept(.searchSesac)
     }
     
     override func setupBinding() {
@@ -78,9 +77,7 @@ final class ArroundStudyViewController: BaseViewController {
         
         emptyView.refreshButton.rx.tap
             .bind { [weak self] in
-                let lat: Double? = LocalUserDefaults.shared.value(key: .lat)
-                let lng: Double? = LocalUserDefaults.shared.value(key: .lng)
-                self?.viewModel.action.accept(.searchSesac(lat!, lng!))
+                self?.viewModel.action.accept(.searchSesac)
             }
             .disposed(by: disposeBag)
         
@@ -131,10 +128,8 @@ extension ArroundStudyViewController {
         let cardCell = CardCellRegister.init { [weak self] cell, indexPath, itemIdentifier in
             switch itemIdentifier {
             case .myCard(let queueUser):
-                
                 cell.cardInfoViewcontroller.viewmodel.action.accept(.sendUserData(queueUser))
                 cell.configure(queueUser: queueUser)
-            
                 self?.addChild(cell.cardInfoViewcontroller)
             }
         }
@@ -213,9 +208,6 @@ extension ArroundStudyViewController: UICollectionViewDelegate {
 
 
 
-
-
-
 extension ArroundStudyViewController: HeaderButtonDelegate, CustomAlertActionProtocool {
 
     func tapStudyButton(type: CardCollectionViewHeaderView.buttonType, uuid: String?) {
@@ -237,7 +229,9 @@ extension ArroundStudyViewController: HeaderButtonDelegate, CustomAlertActionPro
     }
     
     func tapConfirm() {
+        print("acept")
         viewModel.action.accept(.studyrequest)
+        coordinator?.presenter.dismiss(animated: true)
         
     }
     

@@ -34,3 +34,7 @@ class HomeCoordinator: Coordinator {
 
 // MARK: - Search 화면
 extension HomeCoordinator: SearchCoordinatorContext { }
+
+
+// MARK: - Chat
+extension HomeCoordinator: ChatCoordinatorContext { }

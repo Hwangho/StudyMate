@@ -16,6 +16,7 @@ target 'StudyMate' do
 
     pod 'NMapsMap'
 
+    pod 'Socket.IO-Client-Swift', '~> 15.2.0'
 
   target 'StudyMateTests' do
     inherit! :search_paths

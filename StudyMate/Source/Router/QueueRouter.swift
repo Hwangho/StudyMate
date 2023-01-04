@@ -16,6 +16,8 @@ enum QueueRouter {
     case queueState
     case studyrequest(String)
     case studyaccept(String)
+    case dodge(String)
+    case review(String, [Int], String)
 }
 
 extension QueueRouter: TargetType {
@@ -40,6 +42,12 @@ extension QueueRouter: TargetType {
             
         case .studyaccept:
             return "/v1/queue/studyaccept"
+            
+        case .dodge:
+            return "/v1/queue/dodge"
+            
+        case .review(let uid, _, _):
+            return "/v1/queue/rate/\(uid)"
         }
     }
     
@@ -74,8 +82,15 @@ extension QueueRouter: TargetType {
                 "studylist": studylist
             ]
 
-        case .studyrequest(let uid), .studyaccept(let uid):
+        case .studyrequest(let uid), .studyaccept(let uid), .dodge(let uid):
             return ["otheruid": uid]
+            
+        case .review(let uid, let checkList, let review):
+            return [
+                "otheruid" : uid,
+                "reputation": checkList,
+                "comment" : review
+            ]
             
         default:
             return [:]
@@ -84,7 +99,7 @@ extension QueueRouter: TargetType {
     
     var task: Moya.Task {
         switch self {
-        case .searchStudy:
+        case .searchStudy, .review:
             return .requestParameters(
                 parameters: self.parameters,
                 encoding: URLEncoding(arrayEncoding: .noBrackets))

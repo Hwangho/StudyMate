@@ -149,7 +149,7 @@ extension CardDetailCollectionViewController {
                     cell.studyConfigure(title: itemIdentifier, count: data.reputation[indexPath.item] )
                     
                 case .study:
-                    guard let data = self?.viewmodel.store.user else { return }
+//                    guard let data = self?.viewmodel.store.user else { return }
                     cell.titleConfigure(title: itemIdentifier)
                 default: break
                 }
