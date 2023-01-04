@@ -116,8 +116,8 @@ final class HomeViewController: BaseViewController {
         
         rx.viewWillAppear
             .bind(onNext: { [weak self] _ in
-                self?.searchCurrentSesac()
                 self?.viewModel.action.accept(.queueState)
+                self?.searchCurrentSesac()
             })
             .disposed(by: disposeBag)
 
@@ -138,7 +138,7 @@ final class HomeViewController: BaseViewController {
                     let cameraPosition = self?.mapView.cameraPosition // 중앙 위치 좌표
                     self?.coordinator?.pushtoLookupStudy(lat: cameraPosition!.target.lat, lng: cameraPosition!.target.lng)
                 } else {
-                    print("매칭 되었당")
+                    self?.coordinator?.startChat()
                 }
             }
             .disposed(by: disposeBag)

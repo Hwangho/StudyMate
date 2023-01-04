@@ -40,8 +40,12 @@ class LookupStudyCoordinator: Coordinator {
     }
     
     func popandgoMap() {
-        let viewControllers = presenter.viewControllers
-        presenter.popToViewController(viewControllers[viewControllers.count - 3 ], animated: true)
+        presenter.popToRootViewController(animated: true)
+    }
+    
+    func popandgoChat() {
+        presenter.popToRootViewController(animated: true)
+        startChat()
     }
     
     func popLookupStudy() {
@@ -50,4 +54,9 @@ class LookupStudyCoordinator: Coordinator {
 }
 
 
+// MARK: - Review
 extension LookupStudyCoordinator: MoreReviewViewCoordinatorContext { }
+
+
+// MARK: - Chat
+extension LookupStudyCoordinator: ChatCoordinatorContext { }

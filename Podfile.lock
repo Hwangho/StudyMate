@@ -66,6 +66,9 @@ PODS:
     - RxSwift (= 6.5.0)
   - RxSwift (6.5.0)
   - SnapKit (5.6.0)
+  - Socket.IO-Client-Swift (15.2.0):
+    - Starscream (~> 3.1)
+  - Starscream (3.1.1)
 
 DEPENDENCIES:
   - FirebaseAuth
@@ -75,6 +78,7 @@ DEPENDENCIES:
   - RxCocoa (= 6.5.0)
   - RxSwift (= 6.5.0)
   - SnapKit (~> 5.6.0)
+  - Socket.IO-Client-Swift (~> 15.2.0)
 
 SPEC REPOS:
   trunk:
@@ -95,6 +99,8 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SnapKit
+    - Socket.IO-Client-Swift
+    - Starscream
 
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
@@ -114,7 +120,9 @@ SPEC CHECKSUMS:
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  Socket.IO-Client-Swift: 1e3e3a1f09f3312a167f0d781eb2f383d477357c
+  Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
 
-PODFILE CHECKSUM: 7ee8a4177875fe780cfc5a9936af22723895f07e
+PODFILE CHECKSUM: 1a905a6bdf6600c643d981f775bbdd09c7b4848a
 
 COCOAPODS: 1.11.3

@@ -18,6 +18,20 @@ final class LookupStudyViewController: BaseViewController {
     enum StudyType {
         case around
         case response
+        
+        var title: String {
+            switch self {
+            case .around: return "아쉽게도 주변에 새싹이 없어요ㅠ"
+            case .response: return "아직 받은 요청이 없어요ㅠ"
+            }
+        }
+        
+        var content: String {
+            switch self {
+            case .around: return "스터디를 변경하거나 조금만 더 기다려 주세요!"
+            case .response: return "스터디를 변경하거나 조금만 더 기다려 주세요!"
+            }
+        }
     }
     
     /// UI
@@ -206,90 +220,4 @@ final class LookupStudyViewController: BaseViewController {
         }
     }
     
-}
-
-
-
-
-
-
-class EmptyView: BaseView {
-    
-    private let backView = UIView()
-    
-    private let imageView = UIImageView()
-    
-    private let titleLabel = LineHeightLabel()
-    
-    private let contentLabel = LineHeightLabel()
-    
-    private let refreshStackview = UIStackView()
-    
-    let changeStudyButton = SelectButton(type: .fill, title: "스터디 변경하기")
-    
-    let refreshButton = UIButton()
-    
-    override func setupAttributes() {
-        super.setupAttributes()
-        
-        imageView.image = UIImage(named: "empty")
-        titleLabel.text = "아쉽게도 주변에 새싹이 없어요ㅠ"
-        titleLabel.setupFont(type: .Display1_R20)
-        
-        contentLabel.text = "스터디를 변경하거나 조금만 더 기다려 주세요!"
-        contentLabel.setupFont(type: .Title4_R14)
-        
-        refreshButton.setImage(UIImage(named: "refresh-line"), for: .normal)
-        refreshButton.layer.cornerRadius = 8
-        refreshButton.layer.borderColor = Color.BaseColor.green.cgColor
-        refreshButton.layer.borderWidth = 1
-        
-        refreshStackview.axis = .horizontal
-        refreshStackview.spacing = 8
-    }
-    
-    override func setupLayout() {
-        [imageView, titleLabel, contentLabel].forEach {
-            backView.addSubview($0)
-        }
-        
-        imageView.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().multipliedBy(0.8)
-            make.width.height.equalTo(64)
-        }
-        
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom).offset(32)
-            make.centerX.equalTo(imageView.snp.centerX)
-        }
-        
-        contentLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(8)
-            make.centerX.equalTo(titleLabel.snp.centerX)
-        }
-        
-        [changeStudyButton, refreshButton].forEach {
-            refreshStackview.addArrangedSubview($0)
-        }
-        
-        refreshButton.snp.makeConstraints { make in
-            make.width.height.equalTo(48)
-        }
-        
-        [backView, refreshStackview].forEach {
-            addSubview($0)
-        }
-        
-        backView.snp.makeConstraints { make in
-            make.horizontalEdges.top.equalToSuperview()
-        }
-        
-        refreshStackview.snp.makeConstraints { make in
-            make.top.equalTo(backView.snp.bottom)
-            make.horizontalEdges.equalToSuperview().inset(16)
-            make.bottom.equalToSuperview().inset(16)
-            make.height.equalTo(48)
-        }
-    }
 }

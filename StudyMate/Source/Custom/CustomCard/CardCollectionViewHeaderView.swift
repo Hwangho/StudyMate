@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import RxSwift
 
-protocol HeaderButtonDelegate {
+protocol HeaderButtonDelegate: AnyObject {
     func tapStudyButton(type: CardCollectionViewHeaderView.buttonType, uuid: String?)
 }
 
@@ -29,7 +29,7 @@ class CardCollectionViewHeaderView: BaseCollectionHeaderFooterView {
     
     var queueUser: QueueUser?
     
-    var headerDelegate: HeaderButtonDelegate?
+    weak var headerDelegate: HeaderButtonDelegate?
     
     
     /// UI

@@ -60,8 +60,16 @@
 		0E46452729288A2300EEC90C /* CardDetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E46452629288A2300EEC90C /* CardDetailCollectionViewController.swift */; };
 		0E4645292928A96A00EEC90C /* CardDetalCollectionViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4645282928A96A00EEC90C /* CardDetalCollectionViewHeaderView.swift */; };
 		0E46452B2928B1DF00EEC90C /* UICollectionViewDiffableDataSource+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E46452A2928B1DF00EEC90C /* UICollectionViewDiffableDataSource+Extension.swift */; };
+		0E4FFB2B293DD86500F3582A /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4FFB2A293DD86500F3582A /* ChatViewModel.swift */; };
+		0E4FFB2D293DD8C600F3582A /* ChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4FFB2C293DD8C600F3582A /* ChatRepository.swift */; };
+		0E4FFB2F293DD8F900F3582A /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4FFB2E293DD8F900F3582A /* ChatService.swift */; };
 		0E843CE1291F70C000D7D259 /* BirthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E843CE0291F70C000D7D259 /* BirthViewModel.swift */; };
 		0E843CF52920AF0900D7D259 /* CertificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E843CF42920AF0900D7D259 /* CertificationService.swift */; };
+		0E8715312939EF9700C8142E /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8715302939EF9700C8142E /* EmptyView.swift */; };
+		0E871534293DACF100C8142E /* ChatRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E871533293DACF100C8142E /* ChatRouter.swift */; };
+		0E871537293DB7F700C8142E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E871536293DB7F700C8142E /* ChatViewController.swift */; };
+		0E87153A293DCF4D00C8142E /* ChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E871539293DCF4D00C8142E /* ChatCoordinator.swift */; };
+		0E87153D293DCF6C00C8142E /* ChatCoordinatorContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E87153C293DCF6C00C8142E /* ChatCoordinatorContext.swift */; };
 		0E8A2305292549600073E261 /* SplachViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8A2304292549600073E261 /* SplachViewController.swift */; };
 		0E8A230829254B230073E261 /* SplachviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8A230729254B230073E261 /* SplachviewModel.swift */; };
 		0EA9E3C62920C79C00FFC0D5 /* LocalUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA9E3C52920C79C00FFC0D5 /* LocalUserDefaults.swift */; };
@@ -218,8 +226,16 @@
 		0E46452629288A2300EEC90C /* CardDetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailCollectionViewController.swift; sourceTree = "<group>"; };
 		0E4645282928A96A00EEC90C /* CardDetalCollectionViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetalCollectionViewHeaderView.swift; sourceTree = "<group>"; };
 		0E46452A2928B1DF00EEC90C /* UICollectionViewDiffableDataSource+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewDiffableDataSource+Extension.swift"; sourceTree = "<group>"; };
+		0E4FFB2A293DD86500F3582A /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		0E4FFB2C293DD8C600F3582A /* ChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepository.swift; sourceTree = "<group>"; };
+		0E4FFB2E293DD8F900F3582A /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
 		0E843CE0291F70C000D7D259 /* BirthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthViewModel.swift; sourceTree = "<group>"; };
 		0E843CF42920AF0900D7D259 /* CertificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationService.swift; sourceTree = "<group>"; };
+		0E8715302939EF9700C8142E /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		0E871533293DACF100C8142E /* ChatRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRouter.swift; sourceTree = "<group>"; };
+		0E871536293DB7F700C8142E /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		0E871539293DCF4D00C8142E /* ChatCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCoordinator.swift; sourceTree = "<group>"; };
+		0E87153C293DCF6C00C8142E /* ChatCoordinatorContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCoordinatorContext.swift; sourceTree = "<group>"; };
 		0E8A2304292549600073E261 /* SplachViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplachViewController.swift; sourceTree = "<group>"; };
 		0E8A230729254B230073E261 /* SplachviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplachviewModel.swift; sourceTree = "<group>"; };
 		0EA9E3C42920C39D00FFC0D5 /* StudyMate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StudyMate.entitlements; sourceTree = "<group>"; };
@@ -513,6 +529,31 @@
 			path = CustomCard;
 			sourceTree = "<group>";
 		};
+		0E4FFB29293DD7F800F3582A /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				0E4FFB2A293DD86500F3582A /* ChatViewModel.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		0E871532293DA42B00C8142E /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				0E871536293DB7F700C8142E /* ChatViewController.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		0E871538293DCF4600C8142E /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				0E871539293DCF4D00C8142E /* ChatCoordinator.swift */,
+				0E87153C293DCF6C00C8142E /* ChatCoordinatorContext.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 		0E8A23032925494F0073E261 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
@@ -709,6 +750,7 @@
 				0EB826F22919669600CA626A /* Certification */,
 				0EAE333C291CCD5C00AA4FE6 /* Signup */,
 				0EB8270F291A319F00CA626A /* Home */,
+				0E871532293DA42B00C8142E /* Chat */,
 				0E4644FF292638EA00EEC90C /* Mypage */,
 			);
 			path = Presents;
@@ -722,6 +764,7 @@
 				0EAE332F291B65FC00AA4FE6 /* Certification */,
 				0EAE3349291CD40B00AA4FE6 /* Signup */,
 				0E46450829263CAB00EEC90C /* Home */,
+				0E4FFB29293DD7F800F3582A /* Chat */,
 				0E46450729263C8D00EEC90C /* MyPage */,
 			);
 			path = ViewModel;
@@ -732,6 +775,7 @@
 			children = (
 				0EA9E3C72922CB7800FFC0D5 /* UserRouter.swift */,
 				0E27D526292E9B98005809D2 /* QueueRouter.swift */,
+				0E871533293DACF100C8142E /* ChatRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -742,6 +786,7 @@
 				0E843CF42920AF0900D7D259 /* CertificationService.swift */,
 				0EE856F62922ECC900EA9AE5 /* UserService.swift */,
 				0E27D52A292EA11D005809D2 /* QueueService.swift */,
+				0E4FFB2E293DD8F900F3582A /* ChatService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -751,6 +796,7 @@
 			children = (
 				0EA9E3CB2922E0E700FFC0D5 /* UserRepository.swift */,
 				0E27D528292E9D3A005809D2 /* QueueRepository.swift */,
+				0E4FFB2C293DD8C600F3582A /* ChatRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -846,6 +892,7 @@
 				0E08EECF2928E9090098C1A1 /* MultiSlider.swift */,
 				0E08EEE7292B45EC0098C1A1 /* CustomAlertViewController.swift */,
 				0E27D521292E233A005809D2 /* GenderButton.swift */,
+				0E8715302939EF9700C8142E /* EmptyView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -853,6 +900,7 @@
 		0EB826EC29193AE100CA626A /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				0E871538293DCF4600C8142E /* Chat */,
 				0EB826FE2919F7F400CA626A /* BaseCoordinatorContext.swift */,
 				0EB826ED29193B3600CA626A /* Coordinator.swift */,
 				0EB827002919F86900CA626A /* AppCoordinator */,
@@ -1256,6 +1304,7 @@
 				0EAE334E291CD76A00AA4FE6 /* NickNameCoordinator.swift in Sources */,
 				0EE856FB2923218500EA9AE5 /* User.swift in Sources */,
 				0EB826E12918F42200CA626A /* SelectButton.swift in Sources */,
+				0E4FFB2F293DD8F900F3582A /* ChatService.swift in Sources */,
 				0EA9E3CA2922CBEB00FFC0D5 /* APIKeys.swift in Sources */,
 				0EB826F5291966C900CA626A /* TabbarViewController.swift in Sources */,
 				0E27D5422930DAB0005809D2 /* SearchViewModel.swift in Sources */,
@@ -1271,6 +1320,7 @@
 				0E46450D29264F9700EEC90C /* MyPageCollectionViewCell.swift in Sources */,
 				0E27D522292E233A005809D2 /* GenderButton.swift in Sources */,
 				0E08EEE4292A89420098C1A1 /* CardDetailCollectionViewModel.swift in Sources */,
+				0E87153D293DCF6C00C8142E /* ChatCoordinatorContext.swift in Sources */,
 				0E08EEE6292A93E30098C1A1 /* MoreReviewViewController.swift in Sources */,
 				0EAE3337291BA07200AA4FE6 /* String+Extension.swift in Sources */,
 				0EB8270C291A2CAD00CA626A /* TabBarItem.swift in Sources */,
@@ -1281,6 +1331,7 @@
 				0EB826F029193CE800CA626A /* AppCoordinator.swift in Sources */,
 				0E8A2305292549600073E261 /* SplachViewController.swift in Sources */,
 				0EB826D12918E1C900CA626A /* BaseViewController.swift in Sources */,
+				0E8715312939EF9700C8142E /* EmptyView.swift in Sources */,
 				0EAE334B291CD42A00AA4FE6 /* NickNameViewModel.swift in Sources */,
 				0EB826DE2918E2E400CA626A /* Color.swift in Sources */,
 				0EB82709291A299A00CA626A /* CertificationCoordinatorContext.swift in Sources */,
@@ -1318,6 +1369,7 @@
 				0EB826932918B4AF00CA626A /* AppDelegate.swift in Sources */,
 				0E27D547293271B0005809D2 /* SearchMyStudyCollectionViewCell.swift in Sources */,
 				0E46452729288A2300EEC90C /* CardDetailCollectionViewController.swift in Sources */,
+				0E871537293DB7F700C8142E /* ChatViewController.swift in Sources */,
 				0EB826EE29193B3600CA626A /* Coordinator.swift in Sources */,
 				0E4645292928A96A00EEC90C /* CardDetalCollectionViewHeaderView.swift in Sources */,
 				0EB826DD2918E2E400CA626A /* Font.swift in Sources */,
@@ -1340,16 +1392,19 @@
 				0EAE3344291CD2B700AA4FE6 /* BirthViewController.swift in Sources */,
 				0EE8570429246FFF00EA9AE5 /* GenderCollectionViewCell.swift in Sources */,
 				0E08EEED292B46480098C1A1 /* CustomAlertCoordinatorContext.swift in Sources */,
+				0E4FFB2D293DD8C600F3582A /* ChatRepository.swift in Sources */,
 				0E08EEEB292B462F0098C1A1 /* CustomAlertCoordinator.swift in Sources */,
 				0EA9E3CC2922E0E700FFC0D5 /* UserRepository.swift in Sources */,
 				0E46451E2927D99400EEC90C /* MyInfoCollectionViewCell.swift in Sources */,
 				0E27D52B292EA11D005809D2 /* QueueService.swift in Sources */,
+				0E871534293DACF100C8142E /* ChatRouter.swift in Sources */,
 				0EAE3335291B917200AA4FE6 /* LineTextFieldView.swift in Sources */,
 				0EAE3350291CDD3E00AA4FE6 /* NickNameCoordinatorContext.swift in Sources */,
 				0E27D527292E9B98005809D2 /* QueueRouter.swift in Sources */,
 				0EAE3356291CE8F100AA4FE6 /* BirthCoordinatorContext.swift in Sources */,
 				0EAE3348291CD31B00AA4FE6 /* GenderViewController.swift in Sources */,
 				0E27D549293271C5005809D2 /* SearchCollectionviewHeaderView.swift in Sources */,
+				0E87153A293DCF4D00C8142E /* ChatCoordinator.swift in Sources */,
 				0E27D5402930CF8A005809D2 /* QueueStateResponseType.swift in Sources */,
 				0EAE3359291CEA8E00AA4FE6 /* EmailCoordinator.swift in Sources */,
 				0E4645012926394F00EEC90C /* MyPageViewController.swift in Sources */,
@@ -1362,6 +1417,7 @@
 				0E08EEDC29291BC70098C1A1 /* WithDrawView.swift in Sources */,
 				0E464506292639CE00EEC90C /* MyPageCoordinatorContext.swift in Sources */,
 				0EB826D52918E2C600CA626A /* BaseCollectionViewCell.swift in Sources */,
+				0E4FFB2B293DD86500F3582A /* ChatViewModel.swift in Sources */,
 				0EAE3360291CEC5300AA4FE6 /* GenderCoordinatorContext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
