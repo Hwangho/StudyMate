@@ -12,12 +12,12 @@ import RxSwift
 import RxCocoa
 
 
-class ResponseStudyViewController: BaseViewController {
+final class ResponseStudyViewController: BaseViewController {
     
     /// UI
     private lazy var collectionview = UICollectionView(frame: .zero, collectionViewLayout: layout())
     
-    let emptyView = EmptyView()
+    let emptyView = EmptyView(type: .response)
     
     
     /// Property
@@ -65,8 +65,6 @@ class ResponseStudyViewController: BaseViewController {
     }
     
     override func setData() {
-        let lat: Double? = LocalUserDefaults.shared.value(key: .lat)
-        let lng: Double? = LocalUserDefaults.shared.value(key: .lng)
         viewModel.action.accept(.searchSesac)
     }
     
@@ -80,8 +78,6 @@ class ResponseStudyViewController: BaseViewController {
         
         emptyView.refreshButton.rx.tap
             .bind { [weak self] in
-                let lat: Double? = LocalUserDefaults.shared.value(key: .lat)
-                let lng: Double? = LocalUserDefaults.shared.value(key: .lng)
                 self?.viewModel.action.accept(.searchSesac)
             }
             .disposed(by: disposeBag)
@@ -138,7 +134,6 @@ extension ResponseStudyViewController {
                 self?.addChild(cell.cardInfoViewcontroller)
             }
         }
-        
         
         let headerView = HeaderViewRegister.init(elementKind: "CardHeader") { [weak self] supplementaryView, elementKind, indexPath in
             
@@ -219,7 +214,7 @@ extension ResponseStudyViewController: HeaderButtonDelegate, CustomAlertActionPr
     func tapStudyButton(type: CardCollectionViewHeaderView.buttonType, uuid: String?) {
         
         switch type {
-        case .request:
+        case .response:
             customAlertViewController.configure(alertTitleText: "스터디를 수락할까요?", alertContentText: "요청을 수락하면 채팅창에서 대화를 나눌 수 있어요")
             customAlertViewController.modalPresentationStyle = .overFullScreen
             coordinator?.presenter.present(customAlertViewController, animated: true)
@@ -235,7 +230,12 @@ extension ResponseStudyViewController: HeaderButtonDelegate, CustomAlertActionPr
     }
     
     func tapConfirm() {
+        print("response")
         viewModel.action.accept(.studyaccept)
+        coordinator?.presenter.dismiss(animated: true) {
+//            guard let `self` = self else { return }
+            self.coordinator?.popLookupStudy()
+        }
     }
     
 }
